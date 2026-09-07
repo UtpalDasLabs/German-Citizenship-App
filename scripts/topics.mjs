@@ -25,7 +25,7 @@ export const TOPICS = {
  * @type {[keyof typeof TOPICS, RegExp][]}
  */
 const TOPIC_RULES = [
-  ['history', /nationalsozial|hitler|holocaust|judenverfolgung|drittes reich|zweite[nr]? weltkrieg|erste[nr]? weltkrieg|\bddr\b|deutsche demokratische republik|mauer(fall|bau)?|berliner mauer|wiedervereinigung|weimarer|kaiserreich|1848|1919|1933|1945|1949|1961|1989|1990|17\. juni|9\. november|3\. oktober|besatzungszone|alliierte|stasi|\bsed\b|montagsdemo|tag der deutschen einheit|nachkriegs|adenauer|willy brandt|\bnazi/i],
+  ['history', /nationalsozial|hitler|holocaust|judenverfolgung|drittes reich|zweite[nr]? weltkrieg|erste[nr]? weltkrieg|\bddr\b|deutsche[nr]? demokratische[nr]? republik|mauer(fall|bau)?|berliner mauer|wiedervereinigung|weimarer|kaiserreich|1848|1919|1933|1945|1949|1961|1989|1990|17\. juni|9\. november|3\. oktober|besatzungszone|alliierte|stasi|\bsed\b|montagsdemo|tag der deutschen einheit|nachkriegs|adenauer|willy brandt|\bnazi/i],
   ['europe', /europäisch|europa\b|europas|\beu\b|euro\b|nato|vereinte nationen|\buno\b|schengen|europaparlament|europawahl|brüssel|straßburg|mitgliedsstaat|nachbarland|nachbarstaat|grenzt an/i],
   ['law', /verfassungsgericht|gericht|richter|urteil|staatsanwalt|prozess|klage|angeklagt|zeuge|strafe\b|straftat|strafbar|anwalt|polizei|gefängnis|\bhaft\b|schöffe|justiz|rechtsstaat|gewaltenteilung|unschuldsvermutung/i],
   ['constitution', /grundgesetz|grundrecht|menschenwürde|menschenrecht|meinungsfreiheit|religionsfreiheit|pressefreiheit|versammlungsfreiheit|glaubensfreiheit|freizügigkeit|gleichberechtigung|gleichheit vor dem gesetz|diskriminier|zensur|artikel \d|verfassung|freiheitlich|asylrecht|\basyl\b|briefgeheimnis|unverletzlich|grundordnung|toleranz|religiöse vielfalt/i],
