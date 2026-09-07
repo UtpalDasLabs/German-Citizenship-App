@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Leben in Deutschland",
+    "slug": "leben-in-deutschland",
+    "scheme": "lebenindeutschland",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B1220"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.utpaldaslabs.lebenindeutschland"
+    },
+    "android": {
+      "package": "com.utpaldaslabs.lebenindeutschland",
+      "edgeToEdgeEnabled": true,
+      "adaptiveIcon": {
+        "backgroundColor": "#0B1220",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "baseUrl": "/German-Citizenship-App"
+    }
+  }
+}
