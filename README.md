@@ -58,13 +58,15 @@ npm run android      # requires Android Studio
 `npm start` opens the Expo dev server, so you can also scan the QR code with the
 Expo Go app to run it on a physical device without any native build.
 
-## Enabling GitHub Pages
+## GitHub Pages
 
-1. Push to `main` (or the feature branch listed in the workflow).
-2. In the repository, go to **Settings → Pages** and set **Source** to
-   **GitHub Actions**.
-3. The `Deploy web app to GitHub Pages` workflow builds the static export and
-   publishes it. Subsequent pushes redeploy automatically.
+Pushing to `main` (or the feature branch listed in the workflow) runs
+`Deploy web app to GitHub Pages`, which type-checks, builds the static export
+and publishes it. The workflow enables the Pages site itself on its first run,
+so there is nothing to configure by hand.
+
+If you would rather turn it on manually, **Settings → Pages → Source: GitHub
+Actions** does the same thing.
 
 ## Project layout
 
