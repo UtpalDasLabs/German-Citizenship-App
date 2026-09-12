@@ -60,13 +60,18 @@ Expo Go app to run it on a physical device without any native build.
 
 ## GitHub Pages
 
-Pushing to `main` (or the feature branch listed in the workflow) runs
-`Deploy web app to GitHub Pages`, which type-checks, builds the static export
-and publishes it. The workflow enables the Pages site itself on its first run,
-so there is nothing to configure by hand.
+**One-time setup:** go to **Settings → Pages** and set **Source** to **GitHub
+Actions**. The workflow cannot do this for you — the `GITHUB_TOKEN` it runs with
+is not permitted to create a Pages site — so the first deploy fails with
+`Get Pages site failed` until this is done.
 
-If you would rather turn it on manually, **Settings → Pages → Source: GitHub
-Actions** does the same thing.
+Note that Pages on a **private** repository requires GitHub Pro, Team or
+Enterprise. On a free plan the repository has to be public for Pages to be
+available at all.
+
+After that, every push to `main` (or the feature branch listed in the workflow)
+runs `Deploy web app to GitHub Pages`, which type-checks, builds the static
+export and publishes it.
 
 ## Project layout
 
