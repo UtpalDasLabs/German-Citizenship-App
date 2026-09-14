@@ -12,6 +12,7 @@ const DEFAULTS: Settings = {
   examDate: null,
   storageNoticeSeen: false,
   storagePersisted: false,
+  onboarded: false,
 };
 
 type Ctx = {

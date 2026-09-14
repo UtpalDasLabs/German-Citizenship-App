@@ -68,6 +68,8 @@ export type Settings = {
   storageNoticeSeen: boolean;
   /** Whether durable storage has been granted by the browser. */
   storagePersisted: boolean;
+  /** Set once the intro has been seen, so it shows only on a first visit. */
+  onboarded: boolean;
 };
 
 /**

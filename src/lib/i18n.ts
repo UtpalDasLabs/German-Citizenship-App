@@ -117,6 +117,42 @@ const strings = {
     generalQuestions: 'General questions',
     stateQuestions: 'State questions',
 
+    // install
+    installTitle: 'Put it on your home screen',
+    installWhy: 'It opens like a normal app, works without internet, and your progress is much safer there.',
+    installNow: 'Install',
+    installedBody: 'Installed. You can open it from your home screen.',
+    installNoStore: 'No app store, no account, no download.',
+    iosStep1: 'Tap the Share button at the bottom of Safari.',
+    iosStep2: 'Scroll down and tap "Add to Home Screen".',
+    iosStep3: 'Tap "Add". The eagle appears on your home screen.',
+    iosOtherBrowser: 'Open this page in Safari, then tap Share and "Add to Home Screen".',
+    androidStep1: 'Tap the three dots menu in Chrome.',
+    androidStep2: 'Tap "Add to Home screen" or "Install app".',
+    desktopStep1: 'Look for the install icon in the address bar.',
+    desktopStep2: 'Or open the browser menu and choose "Install".',
+    maybeLater: 'Maybe later',
+
+    // onboarding
+    obWelcomeTitle: 'Welcome to LID-test',
+    obWelcomeBody:
+      'All 460 official questions for the German citizenship test, in one place. Free, and it works offline.',
+    obWhyTitle: 'Understand, don\u2019t just memorise',
+    obWhyBody:
+      'Most apps make you learn answers by heart. Every card here also tells you what it means in real life, so you learn how Germany actually works.',
+    obHowTitle: 'Swipe to learn',
+    obHowBody:
+      'Tap a card to see the answer. Swipe right if you knew it, left to see it again. Hard cards come back sooner, easy ones later.',
+    obStateTitle: 'Where do you live?',
+    obStateBody: 'Your test has 10 extra questions about your Bundesland. Pick yours and we will add them.',
+    obGoalTitle: 'How much per day?',
+    obGoalBody: 'Pick a pace. You can change it any time.',
+    obInstallTitle: 'One last thing',
+    next: 'Next',
+    back: 'Back',
+    startLearning: 'Start learning',
+    skip: 'Skip',
+
     // swipe + study
     welcomeBack: 'Ready to learn?',
     pathFootnote: 'Finish every topic to fill the trophy ring.',
@@ -183,7 +219,7 @@ const strings = {
       'Everything you do stays on this device. Nothing is uploaded and there is no account.',
     storageLoss: 'You will lose your progress if you clear this site\u2019s data, or use private browsing.',
     storageInstall: 'Install the app to make your progress much safer.',
-    installApp: 'Install app',
+    protectStorage: 'Protect my progress',
     installed: 'Installed',
     backup: 'Backup',
     exportBackup: 'Save a backup file',
@@ -299,6 +335,40 @@ const strings = {
     generalQuestions: 'Allgemeine Fragen',
     stateQuestions: 'Landesfragen',
 
+    installTitle: 'Leg sie auf deinen Startbildschirm',
+    installWhy: 'Sie öffnet sich wie eine normale App, funktioniert ohne Internet, und dein Fortschritt ist dort viel sicherer.',
+    installNow: 'Installieren',
+    installedBody: 'Installiert. Du kannst sie vom Startbildschirm öffnen.',
+    installNoStore: 'Kein App Store, kein Konto, kein Download.',
+    iosStep1: 'Tippe unten in Safari auf das Teilen-Symbol.',
+    iosStep2: 'Scrolle nach unten und tippe auf „Zum Home-Bildschirm".',
+    iosStep3: 'Tippe auf „Hinzufügen". Der Adler erscheint auf deinem Startbildschirm.',
+    iosOtherBrowser: 'Öffne diese Seite in Safari, tippe auf Teilen und „Zum Home-Bildschirm".',
+    androidStep1: 'Tippe in Chrome auf das Menü mit den drei Punkten.',
+    androidStep2: 'Tippe auf „Zum Startbildschirm hinzufügen" oder „App installieren".',
+    desktopStep1: 'Suche das Installieren-Symbol in der Adressleiste.',
+    desktopStep2: 'Oder öffne das Browsermenü und wähle „Installieren".',
+    maybeLater: 'Später',
+
+    obWelcomeTitle: 'Willkommen bei LID-test',
+    obWelcomeBody:
+      'Alle 460 offiziellen Fragen für den Einbürgerungstest an einem Ort. Kostenlos, und es funktioniert offline.',
+    obWhyTitle: 'Verstehen statt auswendig lernen',
+    obWhyBody:
+      'Die meisten Apps lassen dich Antworten auswendig lernen. Hier steht bei jeder Karte auch, was sie im echten Leben bedeutet.',
+    obHowTitle: 'Wischen statt büffeln',
+    obHowBody:
+      'Tippe auf eine Karte für die Antwort. Nach rechts wischen, wenn du es wusstest, nach links zum Wiederholen. Schwere Karten kommen früher wieder.',
+    obStateTitle: 'Wo wohnst du?',
+    obStateBody: 'Dein Test hat 10 zusätzliche Fragen zu deinem Bundesland. Wähle deins aus.',
+    obGoalTitle: 'Wie viel pro Tag?',
+    obGoalBody: 'Wähle dein Tempo. Du kannst es jederzeit ändern.',
+    obInstallTitle: 'Noch eine Sache',
+    next: 'Weiter',
+    back: 'Zurück',
+    startLearning: 'Los lernen',
+    skip: 'Überspringen',
+
     welcomeBack: 'Bereit zum Lernen?',
     pathFootnote: 'Schaffe jedes Thema, um alle Pokale zu sammeln.',
     learnTitle: 'Deutschland verstehen',
@@ -360,7 +430,7 @@ const strings = {
     storageLoss:
       'Dein Fortschritt geht verloren, wenn du die Daten dieser Seite l\u00f6schst oder privat surfst.',
     storageInstall: 'Installiere die App, damit dein Fortschritt viel sicherer ist.',
-    installApp: 'App installieren',
+    protectStorage: 'Fortschritt schützen',
     installed: 'Installiert',
     backup: 'Sicherung',
     exportBackup: 'Sicherungsdatei speichern',
