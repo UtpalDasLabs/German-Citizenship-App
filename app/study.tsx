@@ -1,14 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useCallback, useMemo, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Platform, Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Flashcard } from '@/components/Flashcard';
 import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { Mascot } from '@/components/Mascot';
 import { SwipeDeck, SwipeStamp, type SwipeDirection } from '@/components/SwipeDeck';
-import { Button, ProgressBar, Screen, Txt } from '@/components/ui';
+import { Button, ProgressBar, Screen, Txt, useShadow } from '@/components/ui';
 import { GOALS } from '@/lib/goals';
 import { makeHaptics } from '@/lib/haptics';
 import { deckFor, filterDeck, orderForStudy } from '@/lib/questions';
@@ -63,6 +63,26 @@ export default function StudyScreen() {
 
   const onSwipe = useCallback((dir: SwipeDirection) => decide(dir === 'right'), [decide]);
 
+  /**
+   * Keyboard support. Swiping is a touch gesture, so without this the deck
+   * would be unusable with a keyboard once the grading buttons went away.
+   */
+  useEffect(() => {
+    if (Platform.OS !== 'web' || typeof window === 'undefined') return undefined;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        setFlipped((f) => !f);
+        return;
+      }
+      if (!flipped) return;
+      if (e.key === 'ArrowRight') decide(true);
+      if (e.key === 'ArrowLeft') decide(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [flipped, decide]);
+
   const appReady = useAppReady();
   if (!appReady) return <LoadingScreen />;
 
@@ -90,22 +110,6 @@ export default function StudyScreen() {
     );
   }
 
-  const card = (
-    <Flashcard
-      question={question}
-      flipped={flipped}
-      language={settings.language}
-      labels={{
-        tapToFlip: t('tapToFlip'),
-        answer: t('answer'),
-        why: t('whyLabel'),
-        realLife: t('realLifeLabel'),
-        learnMore: t('deepDiveLabel'),
-      }}
-    />
-  );
-
-  // Blank shells behind the top card, so the deck reads as a stack.
   const shell = (
     <View
       style={{
@@ -139,6 +143,14 @@ export default function StudyScreen() {
         <Txt variant="caption" tone="faint">
           {index + 1}/{queue.length}
         </Txt>
+
+        {/* Learn more lives up here, well away from the card: on the card it
+            sat inside the swipe area and was easy to open by accident. */}
+        <LearnMoreButton
+          dive={flipped ? question.deepDive : null}
+          label={t('deepDiveLabel')}
+          onPress={(d) => router.push(`/learn?dive=${d}`)}
+        />
       </View>
 
       <View style={{ flex: 1, paddingHorizontal: space.lg, paddingBottom: space.md }}>
@@ -149,50 +161,150 @@ export default function StudyScreen() {
           }}
           accessibilityRole="button"
           accessibilityLabel={flipped ? t('answer') : t('tapToFlip')}
+          // Screen readers cannot swipe, so grading is exposed as rotor actions.
+          accessibilityActions={
+            flipped
+              ? [
+                  { name: 'knewIt', label: t('knewIt') },
+                  { name: 'reviewAgain', label: t('reviewAgain') },
+                ]
+              : undefined
+          }
+          onAccessibilityAction={(e) => {
+            if (e.nativeEvent.actionName === 'knewIt') decide(true);
+            if (e.nativeEvent.actionName === 'reviewAgain') decide(false);
+          }}
           style={{ flex: 1 }}
         >
           <SwipeDeck
             cardKey={question.id}
             onSwipe={onSwipe}
-            // Only gradeable once the answer has been seen.
             swipeEnabled={flipped}
             behind={[shell, shell]}
             overlayRight={<SwipeStamp label={t('knewIt')} color={colors.success} rotate={-12} />}
             overlayLeft={<SwipeStamp label={t('reviewAgain')} color={colors.danger} rotate={12} />}
           >
-            {card}
+            <Flashcard
+              question={question}
+              flipped={flipped}
+              language={settings.language}
+              labels={{
+                tapToFlip: t('tapToFlip'),
+                answer: t('answer'),
+                why: t('whyLabel'),
+                realLife: t('realLifeLabel'),
+              }}
+            />
           </SwipeDeck>
         </Pressable>
       </View>
 
-      <View style={{ paddingHorizontal: space.lg, paddingBottom: insets.bottom + space.lg, gap: space.sm }}>
+      {/* Small round controls rather than two full-width bars: swiping is the
+          primary gesture, but a tap target has to remain for anyone who does
+          not swipe, and for pointer users. */}
+      <View
+        style={{
+          paddingHorizontal: space.lg,
+          paddingBottom: insets.bottom + space.lg,
+          gap: space.sm,
+          alignItems: 'center',
+        }}
+      >
         <Txt variant="caption" tone="faint" style={{ textAlign: 'center' }}>
           {flipped ? t('swipeHint') : t('tapToFlip')}
         </Txt>
-        <View style={{ flexDirection: 'row', gap: space.md, opacity: flipped ? 1 : 0.35 }} pointerEvents={flipped ? 'auto' : 'none'}>
-          <View style={{ flex: 1 }}>
-            <Button
-              title={t('reviewAgain')}
-              variant="danger"
-              size="lg"
-              full
-              icon={<Ionicons name="arrow-undo" size={18} color="#FFFFFF" />}
-              onPress={() => decide(false)}
-            />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Button
-              title={t('knewIt')}
-              variant="success"
-              size="lg"
-              full
-              icon={<Ionicons name="checkmark" size={20} color="#FFFFFF" />}
-              onPress={() => decide(true)}
-            />
-          </View>
+        <View
+          style={{ flexDirection: 'row', gap: space.xxl, opacity: flipped ? 1 : 0.3 }}
+          pointerEvents={flipped ? 'auto' : 'none'}
+        >
+          <RoundButton
+            icon="arrow-undo"
+            colour={colors.danger}
+            edge={colors.dangerEdge}
+            label={t('reviewAgain')}
+            onPress={() => decide(false)}
+          />
+          <RoundButton
+            icon="checkmark"
+            colour={colors.success}
+            edge={colors.successEdge}
+            label={t('knewIt')}
+            onPress={() => decide(true)}
+          />
         </View>
       </View>
     </Screen>
+  );
+}
+
+function LearnMoreButton({
+  dive,
+  label,
+  onPress,
+}: {
+  dive: string | null;
+  label: string;
+  onPress: (dive: string) => void;
+}) {
+  const { colors, radius } = useTheme();
+  if (!dive) return <View style={{ width: 34 }} />;
+  return (
+    <Pressable
+      onPress={() => onPress(dive)}
+      accessibilityRole="link"
+      accessibilityLabel={label}
+      hitSlop={10}
+      style={({ pressed }) => ({
+        width: 34,
+        height: 34,
+        borderRadius: radius.pill,
+        backgroundColor: colors.infoBg,
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: pressed ? 0.7 : 1,
+      })}
+    >
+      <Ionicons name="bulb" size={19} color={colors.info} />
+    </Pressable>
+  );
+}
+
+function RoundButton({
+  icon,
+  colour,
+  edge,
+  label,
+  onPress,
+}: {
+  icon: React.ComponentProps<typeof Ionicons>['name'];
+  colour: string;
+  edge: string;
+  label: string;
+  onPress: () => void;
+}) {
+  const shadow = useShadow(2);
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      style={({ pressed }) => [
+        {
+          width: 66,
+          height: 66,
+          borderRadius: 33,
+          backgroundColor: colour,
+          borderBottomWidth: pressed ? 0 : 4,
+          borderBottomColor: edge,
+          marginTop: pressed ? 4 : 0,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        shadow,
+      ]}
+    >
+      <Ionicons name={icon} size={30} color="#FFFFFF" />
+    </Pressable>
   );
 }
 

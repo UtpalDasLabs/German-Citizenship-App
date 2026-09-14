@@ -107,6 +107,34 @@ export const DEEP_DIVES: DeepDive[] = [
   },
 
   {
+    key: 'bundestag',
+    topic: 'institutions',
+    icon: '🏛️',
+    title: { de: 'Wer regiert eigentlich?', en: 'Who actually governs?' },
+    summary: {
+      de: 'Bundestag, Kanzler, Bundespräsident, Bundesrat – wer was darf, und wer wen absetzen kann.',
+      en: 'Bundestag, chancellor, president, Bundesrat: who may do what, and who can remove whom.',
+    },
+    body: {
+      en: [
+        'You elect exactly one thing at federal level: the Bundestag. It then elects the chancellor, who picks the ministers. So a government exists only for as long as it holds a Bundestag majority, and losing that majority is how governments fall here - not a fixed term running out.',
+        'The Bundespräsident is head of state but deliberately weak: representing the country, signing laws, and formally appointing the chancellor the Bundestag chose. The Weimar Republic had a powerful directly-elected president who could rule by decree, and that is precisely what the Grundgesetz set out to avoid. The president is elected by the Bundesversammlung, which meets for nothing else.',
+        'Laws are passed by parliament, never by the government alone. Bills that affect the states also need the Bundesrat, whose members are sent by the sixteen state governments. And a chancellor can only be removed by electing a successor in the same vote - the konstruktives Misstrauensvotum - so parliament can never leave the country without a government.',
+      ],
+      de: [
+        'Auf Bundesebene wählst du genau eines: den Bundestag. Der wählt die Kanzlerin, die sich die Ministerinnen aussucht. Eine Regierung besteht also nur, solange sie eine Mehrheit im Bundestag hat – daran scheitern Regierungen hier, nicht am Ablauf einer Frist.',
+        'Der Bundespräsident ist Staatsoberhaupt, aber bewusst schwach: Er vertritt das Land, unterschreibt Gesetze und ernennt formal die Kanzlerin, die der Bundestag gewählt hat. Die Weimarer Republik hatte einen mächtigen, direkt gewählten Präsidenten, der per Notverordnung regieren konnte – genau das sollte das Grundgesetz verhindern.',
+        'Gesetze beschließt das Parlament, nie die Regierung allein. Vorhaben, die die Länder betreffen, brauchen zusätzlich den Bundesrat. Und eine Kanzlerin kann nur abgelöst werden, indem gleichzeitig eine Nachfolgerin gewählt wird – das konstruktive Misstrauensvotum. So bleibt das Land nie ohne Regierung.',
+      ],
+    },
+    vocab: [
+      { term: 'Bundesversammlung', gloss: { de: 'wählt nur den Bundespräsidenten', en: 'elects only the president' } },
+      { term: 'konstruktives Misstrauensvotum', gloss: { de: 'Abwahl nur mit Nachfolger', en: 'removal only by electing a successor' } },
+      { term: 'Fraktion', gloss: { de: 'Gruppe einer Partei im Parlament', en: 'a party\u2019s group in parliament' } },
+    ],
+  },
+
+  {
     key: 'federalism',
     topic: 'institutions',
     icon: '🗺️',

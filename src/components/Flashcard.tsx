@@ -1,7 +1,5 @@
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
 import React from 'react';
-import { Pressable, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Animated, { interpolate, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
 import { OptionImage, QuestionVisual } from '@/components/QuestionVisual';
@@ -24,10 +22,9 @@ export function Flashcard({
   question: Question;
   flipped: boolean;
   language: Language;
-  labels: { tapToFlip: string; answer: string; why: string; realLife: string; learnMore: string };
+  labels: { tapToFlip: string; answer: string; why: string; realLife: string };
 }) {
   const { colors, radius, space } = useTheme();
-  const router = useRouter();
   const topic = meta.topics[question.topic];
 
   const spin = useDerivedValue(() => withTiming(flipped ? 1 : 0, { duration: 380 }), [flipped]);
@@ -108,26 +105,6 @@ export function Flashcard({
             </Note>
           ) : null}
 
-          {question.deepDive ? (
-            <Pressable
-              accessibilityRole="link"
-              accessibilityLabel={labels.learnMore}
-              onPress={() => router.push(`/learn?dive=${question.deepDive}`)}
-              style={({ pressed }) => ({
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: space.xs,
-                paddingVertical: space.sm,
-                opacity: pressed ? 0.7 : 1,
-              })}
-            >
-              <Ionicons name="book-outline" size={16} color={colors.info} />
-              <Txt variant="caption" style={{ color: colors.info }}>
-                {labels.learnMore}
-              </Txt>
-            </Pressable>
-          ) : null}
         </ScrollView>
       </Animated.View>
     </View>

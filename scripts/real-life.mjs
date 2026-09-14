@@ -12,6 +12,7 @@
  * confidently wrong note is worse than no note.
  */
 import { GENERAL_NOTES } from './general-notes.mjs';
+export { deepDiveFor } from './deep-dive-map.mjs';
 
 /** Pattern index within each ten-question state block. */
 const PATTERNS = [
@@ -73,24 +74,6 @@ const STATE_NOTE_DE = {
     `Länder haben Ministerien für ihre eigenen Aufgaben: Schule, Polizei, Kultur, Umwelt. Für Bundesthemen wie Verteidigung oder Außenpolitik haben sie keine – das ist der Trick an dieser Frage.`,
 };
 
-/** Maps a question to the most relevant deep-dive explainer. */
-const DIVE_RULES = [
-  ['anmeldung', /anmeld|meldeamt|umzug|wohnung|einwohnermelde/i],
-  ['grundgesetz', /grundgesetz|grundrecht|menschenwürde|artikel \d|verfassung|meinungsfreiheit|glaubensfreiheit|versammlungsfreiheit|pressefreiheit/i],
-  ['elections', /wahl|wähl|stimmzettel|erststimme|zweitstimme|wahlrecht|wahlgrunds|partei/i],
-  ['federalism', /bundesland|bundesländer|föderal|bundesrat|landtag|landkreis|hauptstadt/i],
-  ['courts', /gericht|richter|urteil|justiz|rechtsstaat|gewaltenteilung|anwalt|unschuld|strafe/i],
-  ['work', /arbeit|beruf|lohn|kündig|gewerkschaft|betriebsrat|mindestlohn|urlaub/i],
-  ['social', /versicher|krankenkasse|rente|arbeitslos|sozial|pflege|gesundheit|arzt/i],
-  ['school', /schule|schul|bildung|ausbildung|universität|studium/i],
-  ['ns-zeit', /nationalsozial|hitler|holocaust|jüdisch|jud|1933|1945|zweite[nr]? weltkrieg|nsdap|drittes reich/i],
-  ['ddr', /\bddr\b|mauer|wiedervereinigung|deutsche einheit|sed\b|stasi|1989|1990|3\. oktober/i],
-  ['eu', /europäisch|europa|\beu\b|euro\b|schengen/i],
-  ['religion', /kirche|religion|glaube|christ|islam|muslim|konfession|kirchensteuer/i],
-  ['participation', /verein|ehrenamt|bürgerinitiative|demonstr|petition|engagier|nachbar/i],
-  ['alltag', /rundfunk|müll|ruhezeit|pfand|feiertag|sonntag|miete|nebenkosten/i],
-];
-
 function haystack(q) {
   return [q.text, ...Object.values(q.options ?? {})].join(' \n ');
 }
@@ -104,10 +87,4 @@ export function realLifeFor(q) {
   return GENERAL_NOTES[q.id] ?? null;
 }
 
-export function deepDiveFor(q) {
-  const hay = haystack(q);
-  for (const [key, pattern] of DIVE_RULES) {
-    if (pattern.test(hay)) return key;
-  }
-  return null;
-}
+

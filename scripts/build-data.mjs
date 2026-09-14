@@ -178,11 +178,23 @@ async function main() {
   await buildImages(sorted);
   writeImageMap(sorted);
 
+  // A dangling explainer key would render a "Learn more" link that opens
+  // nothing, so fail the build rather than ship one.
+  const diveSource = fs.readFileSync(path.join(ROOT, 'src/data/deepDives.ts'), 'utf8');
+  const known = new Set([...diveSource.matchAll(/^  \{\n    key: '([^']+)'/gm)].map((m) => m[1]));
+  const dangling = [...new Set(questions.map((q) => q.deepDive).filter(Boolean))].filter(
+    (k) => !known.has(k),
+  );
+  if (dangling.length) {
+    throw new Error(`Questions reference explainers that do not exist: ${dangling.join(', ')}`);
+  }
+
   const dist = {};
   for (const q of general) dist[q.topic] = (dist[q.topic] ?? 0) + 1;
   console.log(`  corrections applied: ${Object.keys(CORRECTIONS).length}`);
   console.log(`Wrote ${questions.length} questions (${general.length} general + ${questions.length - general.length} state).`);
   console.log('  general topic split:', dist);
+  console.log(`  explainer links: ${questions.filter((q) => q.deepDive).length} of ${questions.length}`);
   console.log('  illustrations:', new Set(questions.map((q) => q.illustration).filter(Boolean)).size, 'distinct scenes');
   console.log('  without any visual:', questions.filter((q) => !q.images.length && !q.illustration).length);
 }
