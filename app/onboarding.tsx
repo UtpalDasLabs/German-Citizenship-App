@@ -9,6 +9,7 @@ import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { Mascot, type MascotMood } from '@/components/Mascot';
 import { Button, Chip, ProgressBar, Screen, Txt } from '@/components/ui';
 import { GOALS, GOAL_ORDER } from '@/lib/goals';
+import { isEmbeddedArtifact } from '@/lib/install';
 import { meta } from '@/lib/questions';
 import type { GoalId } from '@/lib/types';
 import { useT } from '@/lib/useT';
@@ -17,10 +18,16 @@ import { useTheme } from '@/theme/ThemeProvider';
 
 type StepId = 'welcome' | 'why' | 'how' | 'state' | 'goal' | 'install';
 
-/** The install step is meaningless on a native build, where it already is an app. */
-const STEPS: StepId[] = Platform.OS === 'web'
-  ? ['welcome', 'why', 'how', 'state', 'goal', 'install']
-  : ['welcome', 'why', 'how', 'state', 'goal'];
+const BASE_STEPS: StepId[] = ['welcome', 'why', 'how', 'state', 'goal'];
+
+/**
+ * The install step only means something on a real web page: a native build is
+ * already an app, and an embedded artifact has no page to install.
+ */
+function stepsFor(): StepId[] {
+  if (Platform.OS !== 'web' || isEmbeddedArtifact()) return BASE_STEPS;
+  return [...BASE_STEPS, 'install'];
+}
 
 const MOODS: Record<StepId, MascotMood> = {
   welcome: 'happy',
@@ -43,9 +50,11 @@ export default function OnboardingScreen() {
   const insets = useSafeAreaInsets();
   const { settings, update } = useSettings();
   const [index, setIndex] = useState(0);
+  // Frozen per mount: the step list depends on environment, not on state.
+  const [steps] = useState(stepsFor);
 
-  const step = STEPS[index];
-  const isLast = index === STEPS.length - 1;
+  const step = steps[index];
+  const isLast = index === steps.length - 1;
 
   const finish = useCallback(() => {
     update({ onboarded: true });
@@ -67,7 +76,7 @@ export default function OnboardingScreen() {
         }}
       >
         <View style={{ flex: 1 }}>
-          <ProgressBar value={(index + 1) / STEPS.length} color={colors.success} height={10} />
+          <ProgressBar value={(index + 1) / steps.length} color={colors.success} height={10} />
         </View>
         <Pressable onPress={finish} accessibilityRole="button" hitSlop={10}>
           <Txt variant="small" tone="faint">

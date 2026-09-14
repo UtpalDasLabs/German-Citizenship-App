@@ -6,6 +6,7 @@ import { Button, Txt } from '@/components/ui';
 import {
   canPromptInstall,
   detectPlatform,
+  isEmbeddedArtifact,
   isInstalled,
   isIosSafari,
   onInstallable,
@@ -31,8 +32,10 @@ export function InstallGuide({ compact = false }: { compact?: boolean }) {
   const [installed, setInstalled] = useState(false);
   const [promptable, setPromptable] = useState(false);
   const [done, setDone] = useState(false);
+  const [embedded, setEmbedded] = useState(false);
 
   useEffect(() => {
+    setEmbedded(isEmbeddedArtifact());
     setPlatform(detectPlatform());
     setInstalled(isInstalled());
     setPromptable(canPromptInstall());
@@ -49,6 +52,8 @@ export function InstallGuide({ compact = false }: { compact?: boolean }) {
   }, []);
 
   if (Platform.OS !== 'web') return null;
+  // Inside an embedded artifact there is no page to install.
+  if (embedded) return null;
 
   if (installed || done) {
     return (
