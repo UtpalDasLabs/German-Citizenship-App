@@ -1,5 +1,5 @@
 {
-  "name": "leben-in-deutschland",
+  "name": "lid-test",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "private": true,
@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "data": "node scripts/build-data.mjs",
     "build:web": "expo export --platform web --output-dir dist",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "icons": "node scripts/build-icons.mjs"
   },
   "dependencies": {
     "@expo/metro-runtime": "~57.0.15",

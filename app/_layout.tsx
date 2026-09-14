@@ -1,4 +1,5 @@
 import { Stack } from 'expo-router';
+import Head from 'expo-router/head';
 import React, { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -13,6 +14,12 @@ function Navigator() {
   const { colors, dark } = useTheme();
   return (
     <>
+      {/* expo-router renders a helmet-managed <title> into the head; without a
+          value here it emits an empty one and the tab shows nothing. */}
+      <Head>
+        <title>LID-test</title>
+        <meta name="description" content="Learn all 460 official German citizenship test questions." />
+      </Head>
       <StatusBar style={dark ? 'light' : 'dark'} />
       <Stack
         screenOptions={{
