@@ -64,23 +64,64 @@ export function buildBackup(progress: Progress, settings: Settings): BackupFile 
   };
 }
 
-/** Triggers a file download in the browser. No-op elsewhere. */
-export function downloadBackup(backup: BackupFile): boolean {
-  if (!isWeb) return false;
+/**
+ * Minimal shape of the claude.ai artifact runtime, present only when the app
+ * is running inside a published Artifact.
+ */
+type ClaudeHost = {
+  use?: (name: string) => Promise<{
+    save?: (req: { filename: string; data: string | Blob }) => Promise<unknown>;
+  } | null>;
+};
+
+function artifactHost(): ClaudeHost | undefined {
+  return (globalThis as unknown as { claude?: ClaudeHost }).claude;
+}
+
+export type SaveOutcome = 'saved' | 'declined' | 'failed';
+
+/**
+ * Offers the backup as a file.
+ *
+ * An ordinary web page can just click an anchor. Inside a published Artifact
+ * the viewer sandbox blocks that silently, so the runtime's downloads
+ * capability has to mediate the save instead - and the viewer may decline,
+ * which is a normal outcome rather than an error.
+ */
+export async function downloadBackup(backup: BackupFile): Promise<SaveOutcome> {
+  if (!isWeb) return 'failed';
+
+  const json = JSON.stringify(backup, null, 2);
+  const filename = `leben-in-deutschland-${backup.exportedAt.slice(0, 10)}.json`;
+
+  const host = artifactHost();
+  if (typeof host?.use === 'function') {
+    try {
+      const downloads = await host.use('downloads');
+      if (downloads?.save) {
+        await downloads.save({ filename, data: json });
+        return 'saved';
+      }
+    } catch (err) {
+      const code = (err as { code?: string } | null)?.code;
+      return code === 'declined' ? 'declined' : 'failed';
+    }
+  }
+
   try {
-    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `leben-in-deutschland-${backup.exportedAt.slice(0, 10)}.json`;
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     a.remove();
     // Revoking immediately can cancel the download in some browsers.
     setTimeout(() => URL.revokeObjectURL(url), 10_000);
-    return true;
+    return 'saved';
   } catch {
-    return false;
+    return 'failed';
   }
 }
 

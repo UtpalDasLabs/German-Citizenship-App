@@ -63,9 +63,9 @@ export default function YouScreen() {
     setNote(ok ? t('storageSecured') : t('storageLoss'));
   }, [t]);
 
-  const onExport = useCallback(() => {
-    const ok = downloadBackup(buildBackup(progress, settings));
-    setNote(ok ? t('exportDone') : t('importFailed'));
+  const onExport = useCallback(async () => {
+    const outcome = await downloadBackup(buildBackup(progress, settings));
+    setNote(outcome === 'saved' ? t('exportDone') : outcome === 'declined' ? null : t('importFailed'));
   }, [progress, settings, t]);
 
   const onImport = useCallback(async () => {
@@ -191,7 +191,7 @@ export default function YouScreen() {
                 variant="secondary"
                 full
                 icon={<Ionicons name="download-outline" size={18} color={colors.text} />}
-                onPress={onExport}
+                onPress={() => void onExport()}
               />
             </View>
             <View style={{ flex: 1 }}>
