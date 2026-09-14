@@ -8,6 +8,7 @@ import { AnswerOption, type OptionState } from '@/components/AnswerOption';
 import { QuestionVisual } from '@/components/QuestionVisual';
 import { Button, Card, ProgressBar, Screen, Txt } from '@/components/ui';
 import { makeHaptics } from '@/lib/haptics';
+import { GOALS } from '@/lib/goals';
 import { deckFor, filterDeck, meta, OPTION_KEYS, orderForStudy } from '@/lib/questions';
 import type { OptionKey, TopicKey } from '@/lib/types';
 import { LoadingScreen, useAppReady } from '@/components/Loading';
@@ -27,6 +28,7 @@ export default function PracticeScreen() {
 
   const haptics = useMemo(() => makeHaptics(settings.haptics), [settings.haptics]);
   const count = Math.max(1, Number(params.count ?? 10) || 10);
+  const goalXp = GOALS[settings.goal].xp;
 
   const [seed, setSeed] = useState(() => Date.now());
   const queue = useMemo(() => {
@@ -51,10 +53,10 @@ export default function PracticeScreen() {
     if (!question || picked == null) return;
     const right = picked === question.answer;
     right ? haptics.success() : haptics.error();
-    grade(question.id, right);
+    grade(question.id, right, goalXp);
     if (right) setScore((s) => s + 1);
     setChecked(true);
-  }, [question, picked, grade, haptics]);
+  }, [question, picked, grade, haptics, goalXp]);
 
   const next = useCallback(() => {
     setChecked(false);

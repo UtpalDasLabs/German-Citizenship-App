@@ -196,7 +196,8 @@ const strings = {
       'Cards need a few days apart to stick. Even studying hard, the earliest realistic date is about',
     examPassed: 'That date has passed',
     setGoal: 'Set your daily goal',
-    readyCards: 'cards exam-ready',
+    readyCards: 'fully mastered',
+    cardsStarted: 'cards started',
     pace: 'Pace',
 
     // booking
@@ -409,7 +410,8 @@ const strings = {
       'Karten m\u00fcssen ein paar Tage auseinander wiederholt werden. Realistisch fr\u00fchestens in etwa',
     examPassed: 'Dieses Datum ist vorbei',
     setGoal: 'Tagesziel festlegen',
-    readyCards: 'Karten pr\u00fcfungsreif',
+    readyCards: 'ganz sicher',
+    cardsStarted: 'Karten begonnen',
     pace: 'Tempo',
 
     bookTitle: 'Den echten Test buchen',

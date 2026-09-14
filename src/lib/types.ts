@@ -64,10 +64,6 @@ export type Settings = {
   goal: GoalId;
   /** ISO yyyy-mm-dd of the planned exam date, or null if undecided. */
   examDate: string | null;
-  /** Dismissed the storage explainer, so it stops appearing on Home. */
-  storageNoticeSeen: boolean;
-  /** Whether durable storage has been granted by the browser. */
-  storagePersisted: boolean;
   /** Set once the intro has been seen, so it shows only on a first visit. */
   onboarded: boolean;
 };

@@ -8,6 +8,7 @@ import { AnswerOption, type OptionState } from '@/components/AnswerOption';
 import { QuestionVisual } from '@/components/QuestionVisual';
 import { Button, Card, ProgressBar, Screen, Txt } from '@/components/ui';
 import { makeHaptics } from '@/lib/haptics';
+import { GOALS } from '@/lib/goals';
 import {
   buildExam,
   EXAM_PASS,
@@ -38,6 +39,7 @@ export default function ExamScreen() {
   const { grade, recordExam } = useProgress();
 
   const haptics = useMemo(() => makeHaptics(settings.haptics), [settings.haptics]);
+  const goalXp = GOALS[settings.goal].xp;
   const [seed] = useState(() => Date.now());
   const paper = useMemo(() => buildExam(settings.state, seed), [settings.state, seed]);
 
@@ -54,7 +56,7 @@ export default function ExamScreen() {
       const correct = paper.filter((q) => answers[q.id] === q.answer).length;
       // A mock exam is real practice, so it feeds the same spaced-repetition
       // schedule as the flashcards.
-      for (const q of paper) grade(q.id, answers[q.id] === q.answer);
+      for (const q of paper) grade(q.id, answers[q.id] === q.answer, goalXp);
       recordExam({
         at: Date.now(),
         correct,
@@ -65,7 +67,7 @@ export default function ExamScreen() {
       correct >= EXAM_PASS ? haptics.success() : haptics.error();
       return true;
     });
-  }, [paper, answers, grade, recordExam, haptics]);
+  }, [paper, answers, grade, recordExam, haptics, goalXp]);
 
   useEffect(() => {
     if (submitted) return undefined;

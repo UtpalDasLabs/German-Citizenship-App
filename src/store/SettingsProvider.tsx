@@ -10,8 +10,6 @@ const DEFAULTS: Settings = {
   haptics: true,
   goal: 'regular',
   examDate: null,
-  storageNoticeSeen: false,
-  storagePersisted: false,
   onboarded: false,
 };
 

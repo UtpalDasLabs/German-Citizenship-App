@@ -138,10 +138,16 @@ export default function HomeScreen() {
               <Ionicons name="chevron-forward" size={20} color={colors.textFaint} />
             </View>
 
-            <ProgressBar value={f.total ? f.ready / f.total : 0} color={colors.info} />
-            <Txt variant="small" tone="muted">
-              {f.ready} / {f.total} {t('readyCards')}
-            </Txt>
+            <ProgressBar value={f.score} color={colors.info} />
+            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: space.sm }}>
+              <Txt variant="heading" tone="info">
+                {Math.round(f.score * 100)}%
+              </Txt>
+              <Txt variant="small" tone="muted" style={{ flex: 1 }}>
+                {f.started} / {f.total} {t('cardsStarted')}
+                {f.ready > 0 ? ` · ${f.ready} ${t('cardsMastered').toLowerCase()}` : ''}
+              </Txt>
+            </View>
 
             {plan ? (
               plan.daysLeft <= 0 ? (

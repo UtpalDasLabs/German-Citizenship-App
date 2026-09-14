@@ -8,6 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 import { registerServiceWorker } from '@/lib/durability';
 import { hideSplash } from '@/lib/splash';
 import { useAppReady } from '@/components/Loading';
+import { useProgress } from '@/store/ProgressProvider';
 import { useSettings } from '@/store/SettingsProvider';
 import { ProgressProvider } from '@/store/ProgressProvider';
 import { SettingsProvider } from '@/store/SettingsProvider';
@@ -16,7 +17,8 @@ import { ThemeProvider, useTheme } from '@/theme/ThemeProvider';
 function Navigator() {
   const { colors, dark } = useTheme();
   const ready = useAppReady();
-  const { settings } = useSettings();
+  const { settings, update } = useSettings();
+  const { progress } = useProgress();
   const router = useRouter();
   const segments = useSegments();
 
@@ -31,9 +33,18 @@ function Navigator() {
   useEffect(() => {
     if (!ready) return;
     if (settings.onboarded) return;
+
+    // Anyone who already has progress installed the app before the intro
+    // existed. Their stored settings have no `onboarded` flag, so the defaults
+    // would mark them new and show it again. Prior work is proof they are not.
+    if (progress.xp > 0 || Object.keys(progress.cards).length > 0) {
+      update({ onboarded: true });
+      return;
+    }
+
     if (segments[0] === 'onboarding') return;
     router.replace('/onboarding');
-  }, [ready, settings.onboarded, segments, router]);
+  }, [ready, settings.onboarded, progress.xp, progress.cards, segments, router, update]);
 
   return (
     <>
