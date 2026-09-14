@@ -37,6 +37,16 @@ export function isIosSafari(): boolean {
   return iOS && !/crios|fxios|edgios|opios/i.test(ua);
 }
 
+/**
+ * True when the app is embedded in a claude.ai Artifact rather than served as
+ * its own page. Home-screen install does not apply there, so the guide would be
+ * telling the viewer to do something that cannot work.
+ */
+export function isEmbeddedArtifact(): boolean {
+  if (!isWeb) return false;
+  return typeof (window as unknown as { claude?: { use?: unknown } }).claude?.use === 'function';
+}
+
 /** True once the app is running from a home-screen install. */
 export function isInstalled(): boolean {
   if (!isWeb) return false;
