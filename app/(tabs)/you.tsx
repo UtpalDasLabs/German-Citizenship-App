@@ -16,7 +16,8 @@ import {
   requestDurableStorage,
 } from '@/lib/durability';
 import { deckFor, meta } from '@/lib/questions';
-import { masteredCount, overallProgress, topicStats } from '@/lib/stats';
+import { forecast } from '@/lib/forecast';
+import { topicStats } from '@/lib/stats';
 import type { Appearance, Language } from '@/lib/types';
 import { useT } from '@/lib/useT';
 import { useProgress } from '@/store/ProgressProvider';
@@ -52,8 +53,7 @@ export default function YouScreen() {
 
   const deck = useMemo(() => deckFor(settings.state), [settings.state]);
   const stats = useMemo(() => topicStats(deck, progress.cards), [deck, progress.cards]);
-  const overall = useMemo(() => overallProgress(deck, progress.cards), [deck, progress.cards]);
-  const mastered = useMemo(() => masteredCount(deck, progress.cards), [deck, progress.cards]);
+  const f = useMemo(() => forecast(deck, progress.cards, settings.goal), [deck, progress.cards, settings.goal]);
 
   const onProtect = useCallback(async () => {
     const ok = await requestDurableStorage();
@@ -99,12 +99,15 @@ export default function YouScreen() {
         <Txt variant="display">{t('yourProgress')}</Txt>
 
         <Card level={2} style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
-          <ProgressRing value={overall} size={92} stroke={12} color={colors.info}>
-            <Txt variant="heading">{Math.round(overall * 100)}%</Txt>
+          <ProgressRing value={f.score} size={92} stroke={12} color={colors.info}>
+            <Txt variant="heading">{Math.round(f.score * 100)}%</Txt>
           </ProgressRing>
           <View style={{ flex: 1, gap: 2 }}>
             <Txt variant="heading">
-              {mastered} / {deck.length}
+              {f.started} / {f.total}
+            </Txt>
+            <Txt variant="small" tone="muted">
+              {t('cardsStarted')}
             </Txt>
             <Txt variant="small" tone="muted">
               🔥 {progress.streak} {t('dayStreak')} · ⚡ {progress.xp} {t('xp')}

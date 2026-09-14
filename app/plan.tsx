@@ -106,9 +106,17 @@ export default function PlanScreen() {
         {/* readiness */}
         <Card style={{ gap: space.sm }}>
           <Txt variant="heading">{t('readyLabel')}</Txt>
-          <ProgressBar value={f.total ? f.ready / f.total : 0} color={colors.info} />
-          <Txt variant="small" tone="muted">
-            {f.ready} / {f.total} {t('readyCards')}
+          <ProgressBar value={f.score} color={colors.info} />
+          <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: space.sm }}>
+            <Txt variant="title" tone="info">
+              {Math.round(f.score * 100)}%
+            </Txt>
+            <Txt variant="small" tone="muted" style={{ flex: 1 }}>
+              {f.started} / {f.total} {t('cardsStarted')}
+            </Txt>
+          </View>
+          <Txt variant="caption" tone="faint">
+            {f.ready} {t('readyCards')}
           </Txt>
           {f.reviewsLeft > 0 ? (
             <Txt variant="small" tone="muted">

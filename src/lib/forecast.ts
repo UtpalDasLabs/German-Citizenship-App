@@ -14,7 +14,18 @@ export const READY_BOX = 4;
 export type Forecast = {
   /** Cards already at or past READY_BOX. */
   ready: number;
+  /** Cards reviewed at least once, whatever box they reached. */
+  started: number;
   total: number;
+  /**
+   * Readiness as a fraction, 0-1, giving partial credit for partial progress.
+   *
+   * The headline number used to be `ready / total`, which is a count of fully
+   * mastered cards - so a real session of 36 cards showed 0%, because reaching
+   * READY_BOX takes four correct reviews spread over a week. That reads as
+   * "you achieved nothing", which is both discouraging and untrue.
+   */
+  score: number;
   /** Reviews still needed to bring every card to READY_BOX. */
   reviewsLeft: number;
   /** Days at the chosen pace, ignoring the spacing floor. */
@@ -47,12 +58,19 @@ export function forecast(
   now = Date.now(),
 ): Forecast {
   let ready = 0;
+  let started = 0;
+  let scoreSum = 0;
   let reviewsLeft = 0;
   /** Worst remaining spacing debt across the deck, in days. */
   let longestPath = 0;
 
   for (const q of deck) {
-    const box = cards[q.id]?.box ?? 0;
+    const card = cards[q.id];
+    const box = card?.box ?? 0;
+    if ((card?.seen ?? 0) > 0) started += 1;
+    // Credit progress towards READY_BOX; boxes beyond it are already full marks.
+    scoreSum += Math.min(1, box / READY_BOX);
+
     if (box >= READY_BOX) {
       ready += 1;
       continue;
@@ -71,6 +89,8 @@ export function forecast(
 
   return {
     ready,
+    started,
+    score: deck.length ? scoreSum / deck.length : 0,
     total: deck.length,
     reviewsLeft,
     daysAtPace,
