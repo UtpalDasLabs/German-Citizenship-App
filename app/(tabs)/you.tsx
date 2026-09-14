@@ -1,43 +1,85 @@
 import { Ionicons } from '@expo/vector-icons';
-import React, { useMemo, useState } from 'react';
+import { useRouter } from 'expo-router';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, Platform, Pressable, ScrollView, Switch, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { ProgressRing } from '@/components/ProgressRing';
 import { Button, Card, Chip, Divider, ProgressBar, Screen, Txt } from '@/components/ui';
+import {
+  buildBackup,
+  downloadBackup,
+  isInstalled,
+  isStoragePersisted,
+  pickBackup,
+  requestDurableStorage,
+} from '@/lib/durability';
 import { deckFor, meta } from '@/lib/questions';
 import { masteredCount, overallProgress, topicStats } from '@/lib/stats';
 import type { Appearance, Language } from '@/lib/types';
-import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { useT } from '@/lib/useT';
 import { useProgress } from '@/store/ProgressProvider';
 import { useSettings } from '@/store/SettingsProvider';
 import { useTheme } from '@/theme/ThemeProvider';
 
+function confirm(message: string, onYes: () => void, title?: string, yesLabel = 'OK', cancelLabel = 'Cancel') {
+  if (Platform.OS === 'web') {
+    // eslint-disable-next-line no-alert -- the only confirmation primitive on web
+    if (typeof window === 'undefined' || window.confirm(message)) onYes();
+    return;
+  }
+  Alert.alert(title ?? message, title ? message : undefined, [
+    { text: cancelLabel, style: 'cancel' },
+    { text: yesLabel, style: 'destructive', onPress: onYes },
+  ]);
+}
+
 export default function YouScreen() {
   const { colors, space, radius } = useTheme();
   const { t, locale } = useT();
   const insets = useSafeAreaInsets();
+  const router = useRouter();
   const { settings, update } = useSettings();
-  const { progress, reset } = useProgress();
+  const { progress, reset, restore } = useProgress();
   const [statesOpen, setStatesOpen] = useState(settings.state == null);
+  const [persisted, setPersisted] = useState(false);
+  const [installed, setInstalled] = useState(false);
+  const [note, setNote] = useState<string | null>(null);
+
+  useEffect(() => {
+    setInstalled(isInstalled());
+    void isStoragePersisted().then(setPersisted);
+  }, []);
 
   const deck = useMemo(() => deckFor(settings.state), [settings.state]);
   const stats = useMemo(() => topicStats(deck, progress.cards), [deck, progress.cards]);
   const overall = useMemo(() => overallProgress(deck, progress.cards), [deck, progress.cards]);
   const mastered = useMemo(() => masteredCount(deck, progress.cards), [deck, progress.cards]);
 
-  function confirmReset() {
-    if (Platform.OS === 'web') {
-      // eslint-disable-next-line no-alert -- the only confirmation primitive on web
-      if (typeof window === 'undefined' || window.confirm(t('resetConfirm'))) reset();
+  const onProtect = useCallback(async () => {
+    const ok = await requestDurableStorage();
+    setPersisted(ok);
+    setNote(ok ? t('storageSecured') : t('storageLoss'));
+  }, [t]);
+
+  const onExport = useCallback(() => {
+    const ok = downloadBackup(buildBackup(progress, settings));
+    setNote(ok ? t('exportDone') : t('importFailed'));
+  }, [progress, settings, t]);
+
+  const onImport = useCallback(async () => {
+    const file = await pickBackup();
+    if (!file) {
+      setNote(t('importFailed'));
       return;
     }
-    Alert.alert(t('resetProgress'), t('resetConfirm'), [
-      { text: t('cancel'), style: 'cancel' },
-      { text: t('reset'), style: 'destructive', onPress: reset },
-    ]);
-  }
+    confirm(t('importConfirm'), () => {
+      restore(file.progress);
+      if (file.settings) update(file.settings);
+      setNote(t('importDone'));
+    });
+  }, [restore, update, t]);
 
   const appReady = useAppReady();
   if (!appReady) return <LoadingScreen />;
@@ -50,7 +92,7 @@ export default function YouScreen() {
           paddingHorizontal: space.lg,
           paddingBottom: space.xxxl,
           gap: space.lg,
-          maxWidth: 720,
+          maxWidth: 640,
           width: '100%',
           alignSelf: 'center',
         }}
@@ -58,22 +100,27 @@ export default function YouScreen() {
       >
         <Txt variant="display">{t('yourProgress')}</Txt>
 
-        <Card level={2} style={{ flexDirection: 'row', alignItems: 'center', gap: space.xl }}>
-          <ProgressRing value={overall} size={100} stroke={11}>
-            <Txt variant="title">{Math.round(overall * 100)}%</Txt>
+        <Card level={2} style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
+          <ProgressRing value={overall} size={92} stroke={12} color={colors.info}>
+            <Txt variant="heading">{Math.round(overall * 100)}%</Txt>
           </ProgressRing>
-          <View style={{ flex: 1, gap: space.xs }}>
-            <Txt variant="overline" tone="faint">
-              {t('overall').toUpperCase()}
-            </Txt>
+          <View style={{ flex: 1, gap: 2 }}>
             <Txt variant="heading">
               {mastered} / {deck.length}
             </Txt>
             <Txt variant="small" tone="muted">
-              🔥 {progress.streak} {t('dayStreak')} · {locale === 'de' ? 'Rekord' : 'best'} {progress.bestStreak}
+              🔥 {progress.streak} {t('dayStreak')} · ⚡ {progress.xp} {t('xp')}
             </Txt>
           </View>
         </Card>
+
+        <Button
+          title={t('planTitle')}
+          variant="secondary"
+          full
+          icon={<Ionicons name="calendar" size={18} color={colors.text} />}
+          onPress={() => router.push('/plan')}
+        />
 
         <Card style={{ gap: space.md }}>
           <Txt variant="heading">{t('topicBreakdown')}</Txt>
@@ -87,9 +134,81 @@ export default function YouScreen() {
                   {s.mastered}/{s.total}
                 </Txt>
               </View>
-              <ProgressBar value={s.progress} color={meta.topics[s.topic].color} height={6} />
+              <ProgressBar value={s.progress} color={meta.topics[s.topic].color} height={10} />
             </View>
           ))}
+        </Card>
+
+        {/* Storage - written plainly, because the consequences are real. */}
+        <Card style={{ gap: space.md }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
+            <Ionicons name="save-outline" size={20} color={colors.info} />
+            <Txt variant="heading" style={{ flex: 1 }}>
+              {t('storageTitle')}
+            </Txt>
+          </View>
+
+          <Txt variant="small" tone="muted">
+            {t('storageBody')}
+          </Txt>
+          <View style={{ backgroundColor: colors.dangerBg, borderRadius: radius.md, padding: space.md }}>
+            <Txt variant="small" style={{ color: colors.danger }}>
+              ⚠︎ {t('storageLoss')}
+            </Txt>
+          </View>
+
+          {Platform.OS === 'web' ? (
+            <>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
+                <Ionicons
+                  name={persisted ? 'shield-checkmark' : 'shield-outline'}
+                  size={18}
+                  color={persisted ? colors.success : colors.textFaint}
+                />
+                <Txt variant="small" tone={persisted ? 'success' : 'muted'} style={{ flex: 1 }}>
+                  {persisted ? t('storageSecured') : t('storageInstall')}
+                </Txt>
+              </View>
+              {!persisted ? (
+                <Button title={t('installApp')} variant="secondary" full onPress={onProtect} />
+              ) : null}
+              {installed ? (
+                <Txt variant="caption" tone="success">
+                  ✓ {t('installed')}
+                </Txt>
+              ) : null}
+            </>
+          ) : null}
+
+          <Divider />
+          <Txt variant="overline" tone="faint">
+            {t('backup').toUpperCase()}
+          </Txt>
+          <View style={{ flexDirection: 'row', gap: space.sm }}>
+            <View style={{ flex: 1 }}>
+              <Button
+                title={t('exportBackup')}
+                variant="secondary"
+                full
+                icon={<Ionicons name="download-outline" size={18} color={colors.text} />}
+                onPress={onExport}
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Button
+                title={t('importBackup')}
+                variant="secondary"
+                full
+                icon={<Ionicons name="folder-open-outline" size={18} color={colors.text} />}
+                onPress={onImport}
+              />
+            </View>
+          </View>
+          {note ? (
+            <Txt variant="caption" tone="info">
+              {note}
+            </Txt>
+          ) : null}
         </Card>
 
         {/* Bundesland */}
@@ -107,7 +226,6 @@ export default function YouScreen() {
             </Txt>
             <Ionicons name={statesOpen ? 'chevron-up' : 'chevron-down'} size={18} color={colors.textFaint} />
           </Pressable>
-
           {statesOpen ? (
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.sm }}>
               {meta.states.map((s) => (
@@ -125,7 +243,6 @@ export default function YouScreen() {
           ) : null}
         </Card>
 
-        {/* Settings */}
         <Card style={{ gap: space.lg }}>
           <Txt variant="heading">{t('settings')}</Txt>
 
@@ -141,12 +258,7 @@ export default function YouScreen() {
                   ['both', t('langBoth')],
                 ] as [Language, string][]
               ).map(([value, label]) => (
-                <Chip
-                  key={value}
-                  label={label}
-                  active={settings.language === value}
-                  onPress={() => update({ language: value })}
-                />
+                <Chip key={value} label={label} active={settings.language === value} onPress={() => update({ language: value })} />
               ))}
             </View>
           </View>
@@ -165,12 +277,7 @@ export default function YouScreen() {
                   ['dark', t('themeDark')],
                 ] as [Appearance, string][]
               ).map(([value, label]) => (
-                <Chip
-                  key={value}
-                  label={label}
-                  active={settings.appearance === value}
-                  onPress={() => update({ appearance: value })}
-                />
+                <Chip key={value} label={label} active={settings.appearance === value} onPress={() => update({ appearance: value })} />
               ))}
             </View>
           </View>
@@ -193,21 +300,6 @@ export default function YouScreen() {
           <Txt variant="small" tone="muted">
             {t('aboutBody')}
           </Txt>
-          <View
-            style={{
-              flexDirection: 'row',
-              gap: space.md,
-              marginTop: space.sm,
-              padding: space.md,
-              borderRadius: radius.md,
-              backgroundColor: colors.surfaceAlt,
-            }}
-          >
-            <Txt variant="caption" tone="faint" style={{ flex: 1 }}>
-              {meta.counts.total} {t('questions')} · {meta.counts.general} {t('generalQuestions').toLowerCase()} ·{' '}
-              {meta.states.length} {locale === 'de' ? 'Bundesländer' : 'federal states'}
-            </Txt>
-          </View>
         </Card>
 
         <Button
@@ -215,8 +307,7 @@ export default function YouScreen() {
           variant="ghost"
           full
           icon={<Ionicons name="trash-outline" size={18} color={colors.danger} />}
-          onPress={confirmReset}
-          style={{ marginTop: space.md }}
+          onPress={() => confirm(t('resetConfirm'), reset, t('resetProgress'), t('reset'), t('cancel'))}
         />
       </ScrollView>
     </Screen>

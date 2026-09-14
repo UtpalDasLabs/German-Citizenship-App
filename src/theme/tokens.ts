@@ -1,17 +1,40 @@
 /**
- * Design tokens. The palette is built around the German flag (black / red /
- * gold) but pulled towards calmer, modern values so long study sessions stay
- * comfortable in both light and dark mode.
+ * Design tokens.
+ *
+ * The app should feel like a game you want to open, not a form you have to
+ * fill in, so the system is built on saturated colour, chunky rounded shapes
+ * and heavy type. Buttons carry a solid bottom edge that compresses when
+ * pressed - the single detail that makes the whole UI feel tactile.
+ *
+ * The hues are drawn from the German flag (black, red, gold) and pushed to
+ * friendlier, brighter values so nine topic colours can sit side by side
+ * without clashing.
  */
 
 export const palette = {
-  gold: '#F5B301',
-  goldSoft: '#FDE68A',
-  red: '#E1462C',
-  redSoft: '#FECACA',
-  ink: '#0B1220',
-  green: '#10B981',
-  greenSoft: '#A7F3D0',
+  gold: '#FFC63D',
+  goldDeep: '#E8A600',
+  red: '#FF4B4B',
+  redDeep: '#D93025',
+  green: '#4CC93F',
+  greenDeep: '#3AA32F',
+  blue: '#2BB3F3',
+  blueDeep: '#1892CC',
+  purple: '#A472F0',
+  ink: '#14181F',
+} as const;
+
+/** Per-topic colours. Kept equally saturated so no topic looks less important. */
+export const topicColors = {
+  constitution: '#2BB3F3',
+  democracy: '#A472F0',
+  institutions: '#0FA3B1',
+  history: '#FF9F1C',
+  law: '#FF4B4B',
+  work: '#18B98A',
+  society: '#F45D9C',
+  europe: '#5B7CF5',
+  states: '#4CC93F',
 } as const;
 
 type Scheme = {
@@ -19,62 +42,84 @@ type Scheme = {
   bgElevated: string;
   surface: string;
   surfaceAlt: string;
+  /** Flat fill behind an inactive control. */
+  track: string;
   border: string;
   borderStrong: string;
   text: string;
   textMuted: string;
   textFaint: string;
   accent: string;
-  accentText: string;
+  accentEdge: string;
   onAccent: string;
   success: string;
+  successEdge: string;
   successBg: string;
   danger: string;
+  dangerEdge: string;
   dangerBg: string;
+  info: string;
+  infoBg: string;
+  streak: string;
+  xp: string;
   shadow: string;
   overlay: string;
 };
 
 export const light: Scheme = {
-  bg: '#F6F7FB',
-  bgElevated: '#FFFFFF',
+  bg: '#FFFFFF',
+  bgElevated: '#F7F9FC',
   surface: '#FFFFFF',
-  surfaceAlt: '#EFF1F7',
-  border: '#E4E7F0',
-  borderStrong: '#CBD2E1',
-  text: '#0B1220',
-  textMuted: '#5A6478',
-  textFaint: '#93A0B5',
-  accent: '#1E2A44',
-  accentText: '#1E2A44',
+  surfaceAlt: '#F1F4F9',
+  track: '#E5E9F0',
+  border: '#E2E7EF',
+  borderStrong: '#C8D0DD',
+  text: '#14181F',
+  textMuted: '#5C6675',
+  textFaint: '#8C97A8',
+  accent: '#4CC93F',
+  accentEdge: '#3AA32F',
   onAccent: '#FFFFFF',
-  success: '#0F9D68',
-  successBg: '#E6F7F0',
-  danger: '#D93A29',
-  dangerBg: '#FDECEA',
-  shadow: 'rgba(11, 18, 32, 0.10)',
-  overlay: 'rgba(11, 18, 32, 0.45)',
+  success: '#4CC93F',
+  successEdge: '#3AA32F',
+  successBg: '#E8F9E5',
+  danger: '#FF4B4B',
+  dangerEdge: '#D93025',
+  dangerBg: '#FFECEB',
+  info: '#2BB3F3',
+  infoBg: '#E6F5FE',
+  streak: '#FF9600',
+  xp: '#FFC63D',
+  shadow: 'rgba(20, 24, 31, 0.10)',
+  overlay: 'rgba(20, 24, 31, 0.55)',
 };
 
 export const dark: Scheme = {
-  bg: '#0B1220',
-  bgElevated: '#131C2E',
-  surface: '#161F33',
-  surfaceAlt: '#1E293F',
-  border: '#24304A',
-  borderStrong: '#33415F',
-  text: '#F2F5FA',
-  textMuted: '#9BA8BF',
-  textFaint: '#6B7894',
-  accent: '#F5B301',
-  accentText: '#F8C74A',
-  onAccent: '#1A1200',
-  success: '#3DDC97',
-  successBg: '#10331F',
+  bg: '#131720',
+  bgElevated: '#1A2030',
+  surface: '#1D2433',
+  surfaceAlt: '#252D3F',
+  track: '#2E384D',
+  border: '#2B3447',
+  borderStrong: '#3D4A63',
+  text: '#F3F6FB',
+  textMuted: '#A3AFC2',
+  textFaint: '#74829A',
+  accent: '#4CC93F',
+  accentEdge: '#2F8827',
+  onAccent: '#08240A',
+  success: '#4CC93F',
+  successEdge: '#2F8827',
+  successBg: '#14301A',
   danger: '#FF6B5B',
-  dangerBg: '#3A1712',
-  shadow: 'rgba(0, 0, 0, 0.5)',
-  overlay: 'rgba(0, 0, 0, 0.6)',
+  dangerEdge: '#C3392C',
+  dangerBg: '#3A1A16',
+  info: '#2BB3F3',
+  infoBg: '#10293A',
+  streak: '#FFA726',
+  xp: '#FFC63D',
+  shadow: 'rgba(0, 0, 0, 0.55)',
+  overlay: 'rgba(0, 0, 0, 0.7)',
 };
 
 export const space = {
@@ -88,22 +133,29 @@ export const space = {
 } as const;
 
 export const radius = {
-  sm: 8,
-  md: 14,
-  lg: 20,
-  xl: 28,
+  sm: 10,
+  md: 16,
+  lg: 22,
+  xl: 30,
   pill: 999,
 } as const;
 
+/**
+ * Depth of the solid bottom edge under pressable surfaces. The button moves
+ * down by exactly this much when pressed, so the edge disappears instead of
+ * the whole control jumping.
+ */
+export const edge = { sm: 3, md: 4, lg: 5 } as const;
+
 export const type = {
-  display: { fontSize: 32, lineHeight: 38, fontWeight: '800' },
-  title: { fontSize: 24, lineHeight: 30, fontWeight: '800' },
-  heading: { fontSize: 19, lineHeight: 25, fontWeight: '700' },
-  body: { fontSize: 16, lineHeight: 23, fontWeight: '500' },
-  bodyStrong: { fontSize: 16, lineHeight: 23, fontWeight: '700' },
-  small: { fontSize: 14, lineHeight: 20, fontWeight: '500' },
-  caption: { fontSize: 12, lineHeight: 16, fontWeight: '600' },
-  overline: { fontSize: 11, lineHeight: 14, fontWeight: '800', letterSpacing: 0.8 },
+  display: { fontSize: 34, lineHeight: 40, fontWeight: '800' },
+  title: { fontSize: 26, lineHeight: 32, fontWeight: '800' },
+  heading: { fontSize: 20, lineHeight: 27, fontWeight: '800' },
+  body: { fontSize: 16, lineHeight: 24, fontWeight: '600' },
+  bodyStrong: { fontSize: 16, lineHeight: 24, fontWeight: '800' },
+  small: { fontSize: 14, lineHeight: 21, fontWeight: '600' },
+  caption: { fontSize: 12, lineHeight: 17, fontWeight: '700' },
+  overline: { fontSize: 11, lineHeight: 14, fontWeight: '800', letterSpacing: 1 },
 } as const;
 
 export type Theme = {
@@ -111,6 +163,7 @@ export type Theme = {
   dark: boolean;
   space: typeof space;
   radius: typeof radius;
+  edge: typeof edge;
   type: typeof type;
   palette: typeof palette;
 };

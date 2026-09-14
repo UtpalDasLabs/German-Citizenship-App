@@ -5,17 +5,22 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Illustration } from '@/components/Illustration';
-import { Button, Card, ProgressBar, Screen, Txt } from '@/components/ui';
-import { deckFor, filterDeck, meta } from '@/lib/questions';
-import { topicStats } from '@/lib/stats';
 import { LoadingScreen, useAppReady } from '@/components/Loading';
+import { Mascot } from '@/components/Mascot';
+import { ProgressRing } from '@/components/ProgressRing';
+import { Card, Screen, Txt, useShadow } from '@/components/ui';
+import { deckFor, filterDeck, meta } from '@/lib/questions';
+import { topicStats, type TopicStat } from '@/lib/stats';
 import { useT } from '@/lib/useT';
 import { useProgress } from '@/store/ProgressProvider';
 import { useSettings } from '@/store/SettingsProvider';
 import { useTheme } from '@/theme/ThemeProvider';
 
-export default function TopicsScreen() {
-  const { colors, space, radius } = useTheme();
+/** Horizontal offsets that make the column of nodes wind like a path. */
+const WEAVE = [0, 54, 78, 54, 0, -54, -78, -54, 0];
+
+export default function PathScreen() {
+  const { colors, space } = useTheme();
   const { t, locale } = useT();
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -24,14 +29,8 @@ export default function TopicsScreen() {
 
   const deck = useMemo(() => deckFor(settings.state), [settings.state]);
   const stats = useMemo(() => topicStats(deck, progress.cards), [deck, progress.cards]);
-  const dueCount = useMemo(
-    () => filterDeck(deck, progress.cards, { dueOnly: true }).length,
-    [deck, progress.cards],
-  );
-  const trickyCount = useMemo(
-    () => filterDeck(deck, progress.cards, { trickyOnly: true }).length,
-    [deck, progress.cards],
-  );
+  const dueCount = useMemo(() => filterDeck(deck, progress.cards, { dueOnly: true }).length, [deck, progress.cards]);
+  const trickyCount = useMemo(() => filterDeck(deck, progress.cards, { trickyOnly: true }).length, [deck, progress.cards]);
 
   const appReady = useAppReady();
   if (!appReady) return <LoadingScreen />;
@@ -44,7 +43,7 @@ export default function TopicsScreen() {
           paddingHorizontal: space.lg,
           paddingBottom: space.xxxl,
           gap: space.lg,
-          maxWidth: 720,
+          maxWidth: 560,
           width: '100%',
           alignSelf: 'center',
         }}
@@ -52,12 +51,12 @@ export default function TopicsScreen() {
       >
         <Txt variant="display">{t('byTopic')}</Txt>
 
-        <View style={{ flexDirection: 'row', gap: space.sm }}>
+        <View style={{ flexDirection: 'row', gap: space.md }}>
           <QuickDeck
             label={t('due')}
             count={dueCount}
             icon="time"
-            color={colors.accent}
+            color={colors.info}
             onPress={() => router.push('/study?mode=due')}
           />
           <QuickDeck
@@ -69,56 +68,89 @@ export default function TopicsScreen() {
           />
         </View>
 
-        {stats.map((s) => {
-          const topic = meta.topics[s.topic];
-          return (
-            <Pressable
+        <View style={{ alignItems: 'center', gap: space.xl, marginTop: space.md }}>
+          {stats.map((s, i) => (
+            <PathNode
               key={s.topic}
-              accessibilityRole="button"
+              stat={s}
+              offset={WEAVE[i % WEAVE.length]}
+              label={meta.topics[s.topic].label[locale]}
+              color={meta.topics[s.topic].color}
               onPress={() => router.push(`/study?mode=all&topic=${s.topic}`)}
-              style={({ pressed }) => ({ opacity: pressed ? 0.85 : 1 })}
-            >
-              <Card style={{ gap: space.md }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
-                  <View
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: radius.md,
-                      backgroundColor: `${topic.color}1F`,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Illustration name={`topic-${s.topic}`} color={topic.color} size={40} />
-                  </View>
-                  <View style={{ flex: 1 }}>
-                    <Txt variant="bodyStrong">{topic.label[locale]}</Txt>
-                    <Txt variant="small" tone="muted">
-                      {s.mastered}/{s.total} {t('cardsMastered').toLowerCase()}
-                    </Txt>
-                  </View>
-                  <Txt variant="caption" tone="faint">
-                    {Math.round(s.progress * 100)}%
-                  </Txt>
-                  <Ionicons name="chevron-forward" size={18} color={colors.textFaint} />
-                </View>
-                <ProgressBar value={s.progress} color={topic.color} height={6} />
-              </Card>
-            </Pressable>
-          );
-        })}
+            />
+          ))}
 
-        <Button
-          title={t('quickPractice')}
-          variant="secondary"
-          full
-          size="lg"
-          icon={<Ionicons name="flash" size={18} color={colors.text} />}
-          onPress={() => router.push('/practice?count=10')}
-        />
+          <View style={{ alignItems: 'center', gap: space.sm, marginTop: space.lg }}>
+            <Mascot mood="happy" size={110} />
+            <Txt variant="small" tone="muted" style={{ textAlign: 'center', maxWidth: 260 }}>
+              {t('pathFootnote')}
+            </Txt>
+          </View>
+        </View>
       </ScrollView>
     </Screen>
+  );
+}
+
+function PathNode({
+  stat,
+  offset,
+  label,
+  color,
+  onPress,
+}: {
+  stat: TopicStat;
+  offset: number;
+  label: string;
+  color: string;
+  onPress: () => void;
+}) {
+  const { colors, space } = useTheme();
+  const shadow = useShadow(2);
+  const complete = stat.mastered === stat.total;
+
+  return (
+    <View style={{ alignItems: 'center', transform: [{ translateX: offset }], gap: space.xs }}>
+      <Pressable
+        onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={`${label}, ${stat.mastered} of ${stat.total} mastered`}
+        style={({ pressed }) => ({ transform: [{ translateY: pressed ? 3 : 0 }] })}
+      >
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <ProgressRing value={stat.progress} size={104} stroke={9} color={color}>
+            <View
+              style={[
+                {
+                  width: 78,
+                  height: 78,
+                  borderRadius: 39,
+                  backgroundColor: complete ? color : colors.surface,
+                  borderWidth: 3,
+                  borderColor: complete ? color : colors.border,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                },
+                shadow,
+              ]}
+            >
+              {complete ? (
+                <Ionicons name="trophy" size={34} color="#FFFFFF" />
+              ) : (
+                <Illustration name={`topic-${stat.topic}`} color={color} size={52} />
+              )}
+            </View>
+          </ProgressRing>
+        </View>
+      </Pressable>
+
+      <Txt variant="bodyStrong" style={{ textAlign: 'center', maxWidth: 170 }}>
+        {label}
+      </Txt>
+      <Txt variant="caption" tone="faint">
+        {stat.mastered}/{stat.total}
+      </Txt>
+    </View>
   );
 }
 
@@ -144,7 +176,7 @@ function QuickDeck({
       style={({ pressed }) => ({ flex: 1, opacity: count === 0 ? 0.45 : pressed ? 0.85 : 1 })}
     >
       <Card style={{ gap: space.xs, alignItems: 'flex-start' }}>
-        <Ionicons name={icon} size={20} color={color} />
+        <Ionicons name={icon} size={22} color={color} />
         <Txt variant="title">{count}</Txt>
         <Txt variant="caption" tone="muted">
           {label}

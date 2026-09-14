@@ -184,14 +184,35 @@ export default function PracticeScreen() {
         </View>
 
         {checked && question.context ? (
-          <View style={{ backgroundColor: colors.surfaceAlt, borderRadius: radius.md, padding: space.lg, gap: space.xs }}>
-            <Txt variant="overline" tone="faint">
+          <View style={{ backgroundColor: colors.infoBg, borderRadius: radius.md, padding: space.lg, gap: space.xs }}>
+            <Txt variant="overline" style={{ color: colors.info }}>
               {t('whyLabel').toUpperCase()}
             </Txt>
             <Txt variant="small" tone="muted">
               {question.context}
             </Txt>
           </View>
+        ) : null}
+
+        {checked && question.realLife ? (
+          <View style={{ backgroundColor: colors.surfaceAlt, borderRadius: radius.md, padding: space.lg, gap: space.xs }}>
+            <Txt variant="overline" style={{ color: colors.streak }}>
+              {t('realLifeLabel').toUpperCase()}
+            </Txt>
+            <Txt variant="small" tone="muted">
+              {question.realLife[settings.language === 'de' ? 'de' : 'en']}
+            </Txt>
+          </View>
+        ) : null}
+
+        {checked && question.deepDive ? (
+          <Button
+            title={t('deepDiveLabel')}
+            variant="secondary"
+            full
+            icon={<Ionicons name="book-outline" size={18} color={colors.text} />}
+            onPress={() => router.push(`/learn?dive=${question.deepDive}`)}
+          />
         ) : null}
       </ScrollView>
 

@@ -2,13 +2,14 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from '
 import { Appearance } from 'react-native';
 
 import { useSettings } from '@/store/SettingsProvider';
-import { dark, light, palette, radius, space, type Theme, type as typeScale } from './tokens';
+import { dark, edge, light, palette, radius, space, type Theme, type as typeScale } from './tokens';
 
 const ThemeContext = createContext<Theme>({
   colors: light,
   dark: false,
   space,
   radius,
+  edge,
   type: typeScale,
   palette,
 });
@@ -50,6 +51,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       dark: isDark,
       space,
       radius,
+      edge,
       type: typeScale,
       palette,
     }),

@@ -26,8 +26,12 @@ export type Question = {
   imageCredit: string | null;
   de: { text: string; options: Record<OptionKey, string> };
   en: { text: string | null; options: Record<OptionKey, string> | null };
-  /** Plain-English explanation shown on the back of the flashcard. */
+  /** Plain-English explanation of why the answer is right. */
   context: string | null;
+  /** What this actually means for someone living in Germany. */
+  realLife: { de: string; en: string } | null;
+  /** Key of a longer topic explainer this question belongs to, if any. */
+  deepDive: string | null;
   answer: OptionKey;
 };
 
@@ -48,11 +52,22 @@ export type Meta = {
 export type Language = 'de' | 'en' | 'both';
 export type Appearance = 'system' | 'light' | 'dark';
 
+/** Daily XP target. Named so the UI can show intent, not just a number. */
+export type GoalId = 'casual' | 'regular' | 'serious' | 'intense';
+
 export type Settings = {
   language: Language;
   state: string | null;
   appearance: Appearance;
   haptics: boolean;
+  /** Daily XP goal. */
+  goal: GoalId;
+  /** ISO yyyy-mm-dd of the planned exam date, or null if undecided. */
+  examDate: string | null;
+  /** Dismissed the storage explainer, so it stops appearing on Home. */
+  storageNoticeSeen: boolean;
+  /** Whether durable storage has been granted by the browser. */
+  storagePersisted: boolean;
 };
 
 /**
@@ -86,4 +101,11 @@ export type Progress = {
   lastStudyDay: string | null;
   streak: number;
   bestStreak: number;
+  /** Lifetime XP. */
+  xp: number;
+  /** XP earned on `xpDay`; resets when the day rolls over. */
+  xpToday: number;
+  xpDay: string | null;
+  /** yyyy-mm-dd for each day the daily goal was met, newest first, capped. */
+  goalDays: string[];
 };
