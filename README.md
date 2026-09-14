@@ -55,6 +55,19 @@ npx http-server dist -p 8080
 > (set in `app.json` under `experiments.baseUrl`). If you fork this repo under a
 > different name, change that value to match, or the CSS and JS will 404 on Pages.
 
+## Installing it as an app
+
+There is no app store build and none is needed: the web app installs to a home
+screen and then behaves like a native app, offline included.
+
+- **iOS (Safari):** Share → Add to Home Screen
+- **Android (Chrome):** menu → Add to Home screen / Install app
+- **Desktop (Chrome, Edge):** the install icon in the address bar
+
+The app detects which of these applies and shows the right steps, during the
+first-run intro and again under **You → Where your progress lives**. On Chromium
+it skips the instructions and offers a one-tap install button instead.
+
 ## Run on iOS / Android
 
 ```bash

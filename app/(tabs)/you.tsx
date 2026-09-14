@@ -4,13 +4,13 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, Platform, Pressable, ScrollView, Switch, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { InstallGuide } from '@/components/InstallGuide';
 import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { ProgressRing } from '@/components/ProgressRing';
 import { Button, Card, Chip, Divider, ProgressBar, Screen, Txt } from '@/components/ui';
 import {
   buildBackup,
   downloadBackup,
-  isInstalled,
   isStoragePersisted,
   pickBackup,
   requestDurableStorage,
@@ -44,11 +44,9 @@ export default function YouScreen() {
   const { progress, reset, restore } = useProgress();
   const [statesOpen, setStatesOpen] = useState(settings.state == null);
   const [persisted, setPersisted] = useState(false);
-  const [installed, setInstalled] = useState(false);
   const [note, setNote] = useState<string | null>(null);
 
   useEffect(() => {
-    setInstalled(isInstalled());
     void isStoragePersisted().then(setPersisted);
   }, []);
 
@@ -170,13 +168,20 @@ export default function YouScreen() {
                 </Txt>
               </View>
               {!persisted ? (
-                <Button title={t('installApp')} variant="secondary" full onPress={onProtect} />
+                <Button
+                  title={t('protectStorage')}
+                  variant="secondary"
+                  full
+                  icon={<Ionicons name="shield-outline" size={18} color={colors.text} />}
+                  onPress={() => void onProtect()}
+                />
               ) : null}
-              {installed ? (
-                <Txt variant="caption" tone="success">
-                  ✓ {t('installed')}
-                </Txt>
-              ) : null}
+
+              <Divider />
+              <Txt variant="overline" tone="faint">
+                {t('installTitle').toUpperCase()}
+              </Txt>
+              <InstallGuide />
             </>
           ) : null}
 
