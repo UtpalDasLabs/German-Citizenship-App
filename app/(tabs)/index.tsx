@@ -56,6 +56,14 @@ export default function HomeScreen() {
         }}
         showsVerticalScrollIndicator={false}
       >
+        {/* wordmark */}
+        <View>
+          <Txt variant="title">{t('appName')}</Txt>
+          <Txt variant="caption" tone="faint">
+            {t('appSubtitle').toUpperCase()}
+          </Txt>
+        </View>
+
         {/* top counters */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
           <StatPill
