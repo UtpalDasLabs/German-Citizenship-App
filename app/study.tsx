@@ -8,7 +8,7 @@ import { Flashcard } from '@/components/Flashcard';
 import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { Mascot } from '@/components/Mascot';
 import { SwipeDeck, SwipeStamp, type SwipeDirection } from '@/components/SwipeDeck';
-import { Button, ProgressBar, Screen, Txt, useShadow } from '@/components/ui';
+import { Button, ProgressBar, Screen, Txt } from '@/components/ui';
 import { GOALS } from '@/lib/goals';
 import { makeHaptics } from '@/lib/haptics';
 import { deckFor, filterDeck, orderForStudy } from '@/lib/questions';
@@ -199,40 +199,42 @@ export default function StudyScreen() {
         </Pressable>
       </View>
 
-      {/* Small round controls rather than two full-width bars: swiping is the
-          primary gesture, but a tap target has to remain for anyone who does
-          not swipe, and for pointer users. */}
+      {/* No grading buttons: the card is the control. Swipe on touch, drag
+          with a mouse, arrow keys on a keyboard, rotor actions with a screen
+          reader. This is a directional hint, not a control - which is why the
+          two halves are plain text rather than anything tappable. */}
       <View
         style={{
           paddingHorizontal: space.lg,
           paddingBottom: insets.bottom + space.lg,
-          gap: space.sm,
+          gap: space.xs,
           alignItems: 'center',
+          opacity: flipped ? 1 : 0.45,
         }}
       >
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+            <Ionicons name="arrow-back" size={16} color={colors.danger} />
+            <Txt variant="caption" tone="danger">
+              {t('reviewAgain')}
+            </Txt>
+          </View>
+          <Txt variant="caption" tone="faint">
+            ·
+          </Txt>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+            <Txt variant="caption" tone="success">
+              {t('knewIt')}
+            </Txt>
+            <Ionicons name="arrow-forward" size={16} color={colors.success} />
+          </View>
+        </View>
+
         <Txt variant="caption" tone="faint" style={{ textAlign: 'center' }}>
           {flipped ? t('swipeHint') : t('tapToFlip')}
         </Txt>
-        <View
-          style={{ flexDirection: 'row', gap: space.xxl, opacity: flipped ? 1 : 0.3 }}
-          pointerEvents={flipped ? 'auto' : 'none'}
-        >
-          <RoundButton
-            icon="arrow-undo"
-            colour={colors.danger}
-            edge={colors.dangerEdge}
-            label={t('reviewAgain')}
-            onPress={() => decide(false)}
-          />
-          <RoundButton
-            icon="checkmark"
-            colour={colors.success}
-            edge={colors.successEdge}
-            label={t('knewIt')}
-            onPress={() => decide(true)}
-          />
-        </View>
       </View>
+
     </Screen>
   );
 }
@@ -265,45 +267,6 @@ function LearnMoreButton({
       })}
     >
       <Ionicons name="bulb" size={19} color={colors.info} />
-    </Pressable>
-  );
-}
-
-function RoundButton({
-  icon,
-  colour,
-  edge,
-  label,
-  onPress,
-}: {
-  icon: React.ComponentProps<typeof Ionicons>['name'];
-  colour: string;
-  edge: string;
-  label: string;
-  onPress: () => void;
-}) {
-  const shadow = useShadow(2);
-  return (
-    <Pressable
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      style={({ pressed }) => [
-        {
-          width: 66,
-          height: 66,
-          borderRadius: 33,
-          backgroundColor: colour,
-          borderBottomWidth: pressed ? 0 : 4,
-          borderBottomColor: edge,
-          marginTop: pressed ? 4 : 0,
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        shadow,
-      ]}
-    >
-      <Ionicons name={icon} size={30} color="#FFFFFF" />
     </Pressable>
   );
 }
