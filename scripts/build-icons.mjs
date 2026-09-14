@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+/**
+ * Rasterises the app mark in scripts/icon.mjs into every size the platforms
+ * need. Run with `npm run icons` after changing the artwork.
+ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
+
+import { badge, foreground, monochrome, splash, COLOURS } from './icon.mjs';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/** target path, svg source, pixel size, flatten colour (null keeps alpha) */
+const TARGETS = [
+  ['assets/icon.png', badge(), 1024, COLOURS.cream],
+  ['assets/favicon.png', badge(), 196, COLOURS.cream],
+  ['assets/splash-icon.png', splash(), 512, null],
+  ['assets/android-icon-foreground.png', foreground(), 1024, null],
+  ['assets/android-icon-monochrome.png', monochrome(), 1024, null],
+  ['public/icon-192.png', badge(), 192, COLOURS.cream],
+  ['public/icon-512.png', badge(), 512, COLOURS.cream],
+];
+
+const written = [];
+for (const [rel, svg, size, flatten] of TARGETS) {
+  let pipeline = sharp(Buffer.from(svg), { density: 384 }).resize(size, size, {
+    fit: 'contain',
+    background: { r: 0, g: 0, b: 0, alpha: 0 },
+  });
+  // iOS and the web manifest reject transparency in app icons; the Android
+  // adaptive layers require it.
+  if (flatten) pipeline = pipeline.flatten({ background: flatten });
+  const out = path.join(ROOT, rel);
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  await pipeline.png({ compressionLevel: 9 }).toFile(out);
+  written.push(`${rel} (${size}px, ${(fs.statSync(out).size / 1024).toFixed(0)} KB)`);
+}
+
+// The android-icon-background layer is a flat colour, not artwork.
+const bg = path.join(ROOT, 'assets/android-icon-background.png');
+await sharp({
+  create: { width: 1024, height: 1024, channels: 3, background: COLOURS.cream },
+}).png().toFile(bg);
+written.push('assets/android-icon-background.png (flat)');
+
+console.log(`Wrote ${written.length} icon files:`);
+for (const w of written) console.log('  ' + w);

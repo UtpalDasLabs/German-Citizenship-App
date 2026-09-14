@@ -20,7 +20,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
 
         <meta
           name="description"
-          content="Learn all 460 official German citizenship test questions with flashcards, visuals and mock exams."
+          content="LID-test: learn all 460 official German citizenship test questions with flashcards, visuals and mock exams."
         />
         <meta name="theme-color" content="#4CC93F" />
 
@@ -29,7 +29,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
         <link rel="apple-touch-icon" href="icon-192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Leben in DE" />
+        <meta name="apple-mobile-web-app-title" content="LID-test" />
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* Keeps <ScrollView> from scrolling the page body. */}

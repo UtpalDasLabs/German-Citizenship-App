@@ -6,7 +6,8 @@ import type { Language } from './types';
  */
 const strings = {
   en: {
-    appName: 'Leben in Deutschland',
+    appName: 'LID-test',
+    appSubtitle: 'Leben in Deutschland',
     tagline: 'Pass the German citizenship test',
 
     // tabs
@@ -195,7 +196,8 @@ const strings = {
   },
 
   de: {
-    appName: 'Leben in Deutschland',
+    appName: 'LID-test',
+    appSubtitle: 'Leben in Deutschland',
     tagline: 'Bestehe den Einbürgerungstest',
 
     tabHome: 'Start',
