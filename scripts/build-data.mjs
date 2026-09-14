@@ -13,6 +13,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { classifyTopic, pickIcon, pickIllustration, TOPICS } from './topics.mjs';
+import { realLifeFor, deepDiveFor } from './real-life.mjs';
+import { applyCorrection, CORRECTIONS } from './corrections.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC_JSON = path.join(ROOT, 'data-source', 'questions.raw.json');
@@ -108,7 +110,8 @@ async function main() {
   fs.mkdirSync(OUT_DATA, { recursive: true });
 
   const usedImages = new Set();
-  const questions = raw.map((q) => {
+  const questions = raw.map((source) => {
+    const q = applyCorrection(source);
     const state = fixState(q);
     const topic = classifyTopic(q);
     const en = q.translations?.en ?? {};
@@ -136,6 +139,8 @@ async function main() {
       de: { text: q.text, options: q.options },
       en: { text: en.text ?? null, options: en.options ?? null },
       context: en.context ?? null,
+      realLife: realLifeFor(q),
+      deepDive: deepDiveFor(q),
       answer: q.correctAnswer,
     };
   });
@@ -175,6 +180,7 @@ async function main() {
 
   const dist = {};
   for (const q of general) dist[q.topic] = (dist[q.topic] ?? 0) + 1;
+  console.log(`  corrections applied: ${Object.keys(CORRECTIONS).length}`);
   console.log(`Wrote ${questions.length} questions (${general.length} general + ${questions.length - general.length} state).`);
   console.log('  general topic split:', dist);
   console.log('  illustrations:', new Set(questions.map((q) => q.illustration).filter(Boolean)).size, 'distinct scenes');

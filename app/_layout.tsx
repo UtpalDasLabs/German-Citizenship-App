@@ -1,9 +1,10 @@
 import { Stack } from 'expo-router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 
+import { registerServiceWorker } from '@/lib/durability';
 import { ProgressProvider } from '@/store/ProgressProvider';
 import { SettingsProvider } from '@/store/SettingsProvider';
 import { ThemeProvider, useTheme } from '@/theme/ThemeProvider';
@@ -23,6 +24,8 @@ function Navigator() {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="study" options={{ presentation: 'card' }} />
         <Stack.Screen name="practice" />
+        <Stack.Screen name="plan" />
+        <Stack.Screen name="learn" />
         <Stack.Screen name="exam-session" />
       </Stack>
     </>
@@ -30,6 +33,10 @@ function Navigator() {
 }
 
 export default function RootLayout() {
+  useEffect(() => {
+    registerServiceWorker();
+  }, []);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>

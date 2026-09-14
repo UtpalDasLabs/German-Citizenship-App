@@ -43,7 +43,7 @@ export default function ExamIntroScreen() {
         <Txt variant="display">{t('examIntro')}</Txt>
 
         <Card level={2} style={{ alignItems: 'center', gap: space.md, paddingVertical: space.xl }}>
-          <Illustration name="topic-institutions" color={colors.accentText} size={110} />
+          <Illustration name="topic-institutions" color={colors.accent} size={110} />
           <Txt variant="body" tone="muted" style={{ textAlign: 'center' }}>
             {t('examRules')}
           </Txt>

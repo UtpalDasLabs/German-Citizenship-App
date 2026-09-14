@@ -8,6 +8,10 @@ const DEFAULTS: Settings = {
   state: null,
   appearance: 'system',
   haptics: true,
+  goal: 'regular',
+  examDate: null,
+  storageNoticeSeen: false,
+  storagePersisted: false,
 };
 
 type Ctx = {
