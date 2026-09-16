@@ -99,7 +99,7 @@ export default function OnboardingScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={{ alignItems: 'center' }}>
-          <Mascot mood={MOODS[step]} size={148} />
+          <Mascot mood={MOODS[step]} size={step === 'install' ? 104 : 148} />
         </View>
 
         <Txt variant="title" style={{ textAlign: 'center' }}>
