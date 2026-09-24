@@ -101,13 +101,22 @@ export default function YouScreen() {
         <Card level={2} style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
           <ProgressRing value={f.score} size={92} stroke={12} color={colors.info}>
             <Txt variant="heading">{Math.round(f.score * 100)}%</Txt>
+            <Txt variant="caption" tone="muted">
+              {t('masteryLabel').toLowerCase()}
+            </Txt>
           </ProgressRing>
           <View style={{ flex: 1, gap: 2 }}>
-            <Txt variant="heading">
-              {f.started} / {f.total}
+            <Txt variant="small" tone="muted">
+              <Txt variant="bodyStrong">
+                {f.started} / {f.total}
+              </Txt>{' '}
+              {t('seenOnce')}
             </Txt>
             <Txt variant="small" tone="muted">
-              {t('cardsStarted')}
+              <Txt variant="bodyStrong">
+                {f.ready} / {f.total}
+              </Txt>{' '}
+              {t('readyCards')}
             </Txt>
             <Txt variant="small" tone="muted">
               🔥 {progress.streak} {t('dayStreak')} · ⚡ {progress.xp} {t('xp')}

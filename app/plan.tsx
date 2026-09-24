@@ -6,7 +6,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { MascotSays } from '@/components/Mascot';
-import { Button, Card, Chip, Divider, ProgressBar, Screen, Txt } from '@/components/ui';
+import { MasteryStats } from '@/components/MasteryStats';
+import { Button, Card, Chip, Divider, Screen, Txt } from '@/components/ui';
 import { forecast, formatDate, planFor } from '@/lib/forecast';
 import { GOALS, GOAL_ORDER } from '@/lib/goals';
 import { EXAM_FACTS, OFFICIAL, pruefstellenUrl } from '@/lib/official';
@@ -49,6 +50,14 @@ export default function PlanScreen() {
     () => (settings.examDate ? planFor(f, settings.examDate, settings.goal) : null),
     [f, settings.examDate, settings.goal],
   );
+
+  /**
+   * True when the forecast finish date falls after the booked exam. Compared
+   * as day numbers, not timestamps, so a forecast landing on the exam day
+   * itself does not trip the warning.
+   */
+  const lateForExam =
+    plan != null && plan.daysLeft > 0 && f.reviewsLeft > 0 && f.days > plan.daysLeft;
 
   const stateInfo = meta.states.find((s) => s.name === settings.state);
 
@@ -103,25 +112,27 @@ export default function PlanScreen() {
           </Txt>
         </MascotSays>
 
-        {/* readiness */}
-        <Card style={{ gap: space.sm }}>
-          <Txt variant="heading">{t('readyLabel')}</Txt>
-          <ProgressBar value={f.score} color={colors.info} />
-          <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: space.sm }}>
-            <Txt variant="title" tone="info">
-              {Math.round(f.score * 100)}%
-            </Txt>
-            <Txt variant="small" tone="muted" style={{ flex: 1 }}>
-              {f.started} / {f.total} {t('cardsStarted')}
-            </Txt>
-          </View>
-          <Txt variant="caption" tone="faint">
-            {f.ready} {t('readyCards')}
-          </Txt>
+        {/* mastery */}
+        <Card style={{ gap: space.md }}>
+          <Txt variant="heading">{t('masteryLabel')}</Txt>
+          <MasteryStats f={f} />
           {f.reviewsLeft > 0 ? (
-            <Txt variant="small" tone="muted">
-              {t('readyBy')} <Txt variant="bodyStrong">{formatDate(f.readyDate, locale)}</Txt>
-            </Txt>
+            <View style={{ gap: space.xs }}>
+              <Txt variant="small" tone="muted">
+                {t('readyBy')} <Txt variant="bodyStrong">{formatDate(f.readyDate, locale)}</Txt>
+              </Txt>
+              {/* The forecast landing after the exam is the single most
+                  important thing on this screen, so it is stated here rather
+                  than left to be inferred from two dates in separate cards. */}
+              {lateForExam ? (
+                <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: space.sm }}>
+                  <Ionicons name="warning" size={16} color={colors.danger} />
+                  <Txt variant="small" tone="danger" style={{ flex: 1 }}>
+                    {t('readyAfterExam')}
+                  </Txt>
+                </View>
+              ) : null}
+            </View>
           ) : null}
         </Card>
 

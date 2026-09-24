@@ -2,30 +2,51 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 import Animated, { interpolate, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
+import { AnswerOption } from '@/components/AnswerOption';
 import { OptionImage, QuestionVisual } from '@/components/QuestionVisual';
 import { Txt } from '@/components/ui';
 import { meta } from '@/lib/questions';
-import type { Language, Question } from '@/lib/types';
+import type { Language, OptionKey, Question } from '@/lib/types';
 import { useTheme } from '@/theme/ThemeProvider';
 
+const KEYS: OptionKey[] = ['a', 'b', 'c', 'd'];
+
 /**
- * A two-sided card. The front asks; the back gives the answer, why it is right,
- * and what it means in everyday life. Flipping is a 3D Y-rotation with each
- * face hidden past 90 degrees so they never bleed through one another.
+ * A two-sided card. The front asks and offers the four official choices; the
+ * back says whether the pick was right, gives the answer, why it is right, and
+ * what it means in everyday life. Flipping is a 3D Y-rotation with each face
+ * hidden past 90 degrees so they never bleed through one another.
+ *
+ * Picking is what turns the card: the exam is multiple choice, so answering
+ * one is a better rehearsal than deciding for yourself whether you knew it -
+ * and it grades honestly, which self-assessment does not.
  */
 export function Flashcard({
   question,
-  flipped,
+  picked,
+  onPick,
   language,
   labels,
 }: {
   question: Question;
-  flipped: boolean;
+  /** The option the learner tapped, or null while the card is still a question. */
+  picked: OptionKey | null;
+  onPick: (key: OptionKey) => void;
   language: Language;
-  labels: { tapToFlip: string; answer: string; why: string; realLife: string };
+  labels: {
+    answer: string;
+    why: string;
+    realLife: string;
+    correct: string;
+    wrong: string;
+    youPicked: string;
+  };
 }) {
   const { colors, radius, space } = useTheme();
   const topic = meta.topics[question.topic];
+
+  const flipped = picked != null;
+  const right = picked === question.answer;
 
   const spin = useDerivedValue(() => withTiming(flipped ? 1 : 0, { duration: 380 }), [flipped]);
 
@@ -52,47 +73,86 @@ export function Flashcard({
     overflow: 'hidden' as const,
   };
 
+  const pictureOptions = question.imageMode === 'options';
   const showDe = language !== 'en';
   const showEn = language !== 'de' && question.en.text != null;
 
   return (
     <View style={{ flex: 1 }}>
-      <Animated.View style={[face, frontStyle]}>
+      {/* Both faces stay mounted and stacked, and opacity 0 does not stop a
+          web browser from routing taps to the hidden one - so the face that is
+          turned away is explicitly taken out of hit testing. Without this the
+          invisible back swallows every tap aimed at an answer option. */}
+      <Animated.View style={[face, frontStyle]} pointerEvents={flipped ? 'none' : 'auto'}>
         <Badge label={topic.label[language === 'de' ? 'de' : 'en']} color={topic.color} icon={question.icon} />
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', gap: space.lg, paddingVertical: space.md }}
+          contentContainerStyle={{ gap: space.md, paddingVertical: space.md }}
           showsVerticalScrollIndicator={false}
         >
-          <View style={{ alignItems: 'center' }}>
-            <QuestionVisual question={question} color={topic.color} size={118} />
-          </View>
+          {/* Picture-choice questions carry their image on each option, so a
+              visual up here would just be one of the four answers. */}
+          {pictureOptions ? null : (
+            <View style={{ alignItems: 'center' }}>
+              <QuestionVisual question={question} color={topic.color} size={92} />
+            </View>
+          )}
           {showDe ? (
-            <Txt variant="heading" style={{ textAlign: 'center' }}>
+            <Txt variant="bodyStrong" style={{ textAlign: 'center' }}>
               {question.de.text}
             </Txt>
           ) : null}
           {showEn ? (
             <Txt
-              variant={showDe ? 'body' : 'heading'}
+              variant={showDe ? 'small' : 'bodyStrong'}
               tone={showDe ? 'muted' : 'default'}
               style={{ textAlign: 'center' }}
             >
               {question.en.text}
             </Txt>
           ) : null}
+
+          <View style={{ gap: space.sm, marginTop: space.xs }}>
+            {KEYS.map((key) => (
+              <AnswerOption
+                key={key}
+                optionKey={key}
+                de={question.de.options[key]}
+                en={question.en.options?.[key]}
+                language={language}
+                state="idle"
+                imageKey={pictureOptions ? question.images[KEYS.indexOf(key)] : undefined}
+                onPress={() => onPick(key)}
+              />
+            ))}
+          </View>
         </ScrollView>
-        <Txt variant="caption" tone="faint" style={{ textAlign: 'center' }}>
-          {labels.tapToFlip}
-        </Txt>
       </Animated.View>
 
-      <Animated.View style={[face, backStyle, { backgroundColor: colors.bgElevated }]}>
-        <Badge label={labels.answer} color={colors.success} icon="✅" />
+      <Animated.View
+        style={[face, backStyle, { backgroundColor: colors.bgElevated }]}
+        pointerEvents={flipped ? 'auto' : 'none'}
+      >
+        <Badge
+          label={right ? labels.correct : labels.wrong}
+          color={right ? colors.success : colors.danger}
+          icon={right ? '✅' : '❌'}
+        />
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', gap: space.md, paddingVertical: space.md }}
           showsVerticalScrollIndicator={false}
         >
           <AnswerBlock question={question} language={language} color={colors.success} />
+
+          {/* Only shown after a miss: naming the wrong pick is what stops the
+              same confusion repeating next time the card comes round. */}
+          {!right && picked != null ? (
+            <View style={{ alignItems: 'center' }}>
+              <Txt variant="small" tone="danger" style={{ textAlign: 'center' }}>
+                {labels.youPicked}: {picked.toUpperCase()} ·{' '}
+                {language === 'en' ? (question.en.options?.[picked] ?? question.de.options[picked]) : question.de.options[picked]}
+              </Txt>
+            </View>
+          ) : null}
 
           {question.context ? (
             <Note label={labels.why} tint={colors.info} bg={colors.infoBg}>

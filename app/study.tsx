@@ -7,12 +7,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Flashcard } from '@/components/Flashcard';
 import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { Mascot } from '@/components/Mascot';
-import { SwipeDeck, SwipeStamp, type SwipeDirection } from '@/components/SwipeDeck';
+import { SwipeDeck, SwipeStamp } from '@/components/SwipeDeck';
 import { Button, ProgressBar, Screen, Txt } from '@/components/ui';
 import { GOALS } from '@/lib/goals';
 import { makeHaptics } from '@/lib/haptics';
 import { deckFor, filterDeck, orderForStudy } from '@/lib/questions';
-import type { TopicKey } from '@/lib/types';
+import type { OptionKey, TopicKey } from '@/lib/types';
 import { useT } from '@/lib/useT';
 import { useProgress } from '@/store/ProgressProvider';
 import { useSettings } from '@/store/SettingsProvider';
@@ -43,45 +43,63 @@ export default function StudyScreen() {
   }, [seed, settings.state, params.mode, params.topic]);
 
   const [index, setIndex] = useState(0);
-  const [flipped, setFlipped] = useState(false);
+  /** The option tapped on this card, or null while it is still a question. */
+  const [picked, setPicked] = useState<OptionKey | null>(null);
   const [correct, setCorrect] = useState(0);
 
   const question = queue[index];
   const goalXp = GOALS[settings.goal].xp;
+  const answered = picked != null;
 
-  const decide = useCallback(
-    (knewIt: boolean) => {
-      if (!question) return;
-      knewIt ? haptics.success() : haptics.error();
-      grade(question.id, knewIt, goalXp);
-      if (knewIt) setCorrect((n) => n + 1);
-      setFlipped(false);
-      setIndex((i) => i + 1);
+  /**
+   * Answering is what grades the card. The exam is multiple choice, so the tap
+   * is both the rehearsal and an honest result - better data for the scheduler
+   * than asking someone to rate themselves after seeing the answer.
+   */
+  const pick = useCallback(
+    (key: OptionKey) => {
+      if (!question || picked != null) return;
+      const right = key === question.answer;
+      right ? haptics.success() : haptics.error();
+      grade(question.id, right, goalXp);
+      if (right) setCorrect((n) => n + 1);
+      setPicked(key);
     },
-    [question, grade, haptics, goalXp],
+    [question, picked, grade, haptics, goalXp],
   );
 
-  const onSwipe = useCallback((dir: SwipeDirection) => decide(dir === 'right'), [decide]);
+  /** Moves to the next card. Carries no judgement - the pick already did. */
+  const advance = useCallback(() => {
+    setPicked(null);
+    setIndex((i) => i + 1);
+  }, []);
 
   /**
    * Keyboard support. Swiping is a touch gesture, so without this the deck
-   * would be unusable with a keyboard once the grading buttons went away.
+   * would be unusable with a keyboard: a-d (or 1-4) answers, and any of
+   * Enter, space or an arrow key moves on.
    */
   useEffect(() => {
     if (Platform.OS !== 'web' || typeof window === 'undefined') return undefined;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        setFlipped((f) => !f);
+      if (!answered) {
+        const byLetter = ['a', 'b', 'c', 'd'].indexOf(e.key.toLowerCase());
+        const byNumber = ['1', '2', '3', '4'].indexOf(e.key);
+        const slot = byLetter >= 0 ? byLetter : byNumber;
+        if (slot >= 0) {
+          e.preventDefault();
+          pick((['a', 'b', 'c', 'd'] as OptionKey[])[slot]);
+        }
         return;
       }
-      if (!flipped) return;
-      if (e.key === 'ArrowRight') decide(true);
-      if (e.key === 'ArrowLeft') decide(false);
+      if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        advance();
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [flipped, decide]);
+  }, [answered, pick, advance]);
 
   const appReady = useAppReady();
   if (!appReady) return <LoadingScreen />;
@@ -147,91 +165,59 @@ export default function StudyScreen() {
         {/* Learn more lives up here, well away from the card: on the card it
             sat inside the swipe area and was easy to open by accident. */}
         <LearnMoreButton
-          dive={flipped ? question.deepDive : null}
+          dive={answered ? question.deepDive : null}
           label={t('deepDiveLabel')}
           onPress={(d) => router.push(`/learn?dive=${d}`)}
         />
       </View>
 
       <View style={{ flex: 1, paddingHorizontal: space.lg, paddingBottom: space.md }}>
+        {/* Once answered, the whole card is the "next" control - which keeps
+            the deck gesture-first without stranding anyone who cannot swipe.
+            Before that it has no onPress, so taps reach the answer options. */}
         <Pressable
-          onPress={() => {
-            haptics.tap();
-            setFlipped((f) => !f);
-          }}
-          accessibilityRole="button"
-          accessibilityLabel={flipped ? t('answer') : t('tapToFlip')}
-          // Screen readers cannot swipe, so grading is exposed as rotor actions.
-          accessibilityActions={
-            flipped
-              ? [
-                  { name: 'knewIt', label: t('knewIt') },
-                  { name: 'reviewAgain', label: t('reviewAgain') },
-                ]
-              : undefined
-          }
-          onAccessibilityAction={(e) => {
-            if (e.nativeEvent.actionName === 'knewIt') decide(true);
-            if (e.nativeEvent.actionName === 'reviewAgain') decide(false);
-          }}
+          onPress={answered ? advance : undefined}
+          accessibilityRole={answered ? 'button' : undefined}
+          accessibilityLabel={answered ? t('nextCard') : undefined}
           style={{ flex: 1 }}
         >
           <SwipeDeck
             cardKey={question.id}
-            onSwipe={onSwipe}
-            swipeEnabled={flipped}
+            onSwipe={advance}
+            swipeEnabled={answered}
             behind={[shell, shell]}
-            overlayRight={<SwipeStamp label={t('knewIt')} color={colors.success} rotate={-12} />}
-            overlayLeft={<SwipeStamp label={t('reviewAgain')} color={colors.danger} rotate={12} />}
+            overlayRight={<SwipeStamp label={t('nextCard')} color={colors.info} rotate={-12} />}
+            overlayLeft={<SwipeStamp label={t('nextCard')} color={colors.info} rotate={12} />}
           >
             <Flashcard
               question={question}
-              flipped={flipped}
+              picked={picked}
+              onPick={pick}
               language={settings.language}
               labels={{
-                tapToFlip: t('tapToFlip'),
                 answer: t('answer'),
                 why: t('whyLabel'),
                 realLife: t('realLifeLabel'),
+                correct: t('correctTitle'),
+                wrong: t('wrongTitle'),
+                youPicked: t('youPicked'),
               }}
             />
           </SwipeDeck>
         </Pressable>
       </View>
 
-      {/* No grading buttons: the card is the control. Swipe on touch, drag
-          with a mouse, arrow keys on a keyboard, rotor actions with a screen
-          reader. This is a directional hint, not a control - which is why the
-          two halves are plain text rather than anything tappable. */}
+      {/* No grading buttons: answering the question is the grade. This strip
+          is a hint about how to move on, not a control. */}
       <View
         style={{
           paddingHorizontal: space.lg,
           paddingBottom: insets.bottom + space.lg,
-          gap: space.xs,
           alignItems: 'center',
-          opacity: flipped ? 1 : 0.45,
         }}
       >
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <Ionicons name="arrow-back" size={16} color={colors.danger} />
-            <Txt variant="caption" tone="danger">
-              {t('reviewAgain')}
-            </Txt>
-          </View>
-          <Txt variant="caption" tone="faint">
-            ·
-          </Txt>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <Txt variant="caption" tone="success">
-              {t('knewIt')}
-            </Txt>
-            <Ionicons name="arrow-forward" size={16} color={colors.success} />
-          </View>
-        </View>
-
         <Txt variant="caption" tone="faint" style={{ textAlign: 'center' }}>
-          {flipped ? t('swipeHint') : t('tapToFlip')}
+          {answered ? t('nextHint') : t('pickAnswer')}
         </Txt>
       </View>
 
