@@ -12,6 +12,7 @@ import { makeHaptics } from '@/lib/haptics';
 import { GOALS } from '@/lib/goals';
 import {
   buildExam,
+  catalogueRef,
   EXAM_PASS,
   EXAM_SECONDS,
   EXAM_TOTAL,
@@ -228,6 +229,9 @@ export default function ExamScreen() {
               The translation appears below once the answer is in. */}
           <Txt variant="heading" style={{ textAlign: 'center' }}>
             {question.de.text}
+          </Txt>
+          <Txt variant="caption" tone="faint">
+            {catalogueRef(question)}
           </Txt>
         </Card>
 

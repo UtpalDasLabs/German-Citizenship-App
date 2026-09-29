@@ -20,7 +20,7 @@ import { useTheme } from '@/theme/ThemeProvider';
 
 export default function StudyScreen() {
   const { colors, space, radius } = useTheme();
-  const { t } = useT();
+  const { t, locale } = useT();
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { settings } = useSettings();
@@ -194,6 +194,7 @@ export default function StudyScreen() {
               picked={picked}
               onPick={pick}
               language={settings.language}
+              helpLocale={locale}
               labels={{
                 answer: t('answer'),
                 why: t('whyLabel'),
@@ -201,6 +202,7 @@ export default function StudyScreen() {
                 correct: t('correctTitle'),
                 wrong: t('wrongTitle'),
                 youPicked: t('youPicked'),
+                inEnglish: t('translationLabel'),
               }}
             />
           </SwipeDeck>

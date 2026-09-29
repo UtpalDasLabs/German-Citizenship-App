@@ -100,7 +100,9 @@ const strings = {
     examHistory: 'Mock exam history',
     noExamsYet: 'No mock exams yet.',
     settings: 'Settings',
-    language: 'Question language',
+    questionLanguage: 'Question language',
+    questionLanguageHint: 'The real exam is German only. Study in German and the English appears after you answer.',
+    interfaceLanguage: 'App language',
     langDe: 'German',
     langEn: 'English',
     langBoth: 'Both',
@@ -338,7 +340,9 @@ const strings = {
     examHistory: 'Probetests',
     noExamsYet: 'Noch keine Probetests.',
     settings: 'Einstellungen',
-    language: 'Sprache der Fragen',
+    questionLanguage: 'Sprache der Fragen',
+    questionLanguageHint: 'Die echte Pr\u00fcfung ist nur auf Deutsch. Lerne auf Deutsch \u2013 das Englische erscheint nach deiner Antwort.',
+    interfaceLanguage: 'Sprache der App',
     langDe: 'Deutsch',
     langEn: 'Englisch',
     langBoth: 'Beides',
@@ -481,12 +485,12 @@ const strings = {
 
 export type StringKey = keyof typeof strings.en;
 
-/** `both` reads as an English interface with bilingual question text. */
-export function uiLocale(language: Language): 'de' | 'en' {
-  return language === 'de' ? 'de' : 'en';
+/** The interface language, which is its own setting - see Settings.uiGerman. */
+export function uiLocale(uiGerman: boolean): 'de' | 'en' {
+  return uiGerman ? 'de' : 'en';
 }
 
-export function translator(language: Language) {
-  const table = strings[uiLocale(language)];
+export function translator(uiGerman: boolean) {
+  const table = strings[uiLocale(uiGerman)];
   return (key: StringKey) => table[key];
 }

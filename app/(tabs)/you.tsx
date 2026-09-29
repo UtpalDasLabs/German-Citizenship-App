@@ -263,9 +263,11 @@ export default function YouScreen() {
         <Card style={{ gap: space.lg }}>
           <Txt variant="heading">{t('settings')}</Txt>
 
+          {/* Two separate choices. Picking German questions is a decision to
+              rehearse the exam; it is not a claim to read German menus. */}
           <View style={{ gap: space.sm }}>
             <Txt variant="small" tone="muted">
-              {t('language')}
+              {t('questionLanguage')}
             </Txt>
             <View style={{ flexDirection: 'row', gap: space.sm }}>
               {(
@@ -277,6 +279,19 @@ export default function YouScreen() {
               ).map(([value, label]) => (
                 <Chip key={value} label={label} active={settings.language === value} onPress={() => update({ language: value })} />
               ))}
+            </View>
+            <Txt variant="caption" tone="faint">
+              {t('questionLanguageHint')}
+            </Txt>
+          </View>
+
+          <View style={{ gap: space.sm }}>
+            <Txt variant="small" tone="muted">
+              {t('interfaceLanguage')}
+            </Txt>
+            <View style={{ flexDirection: 'row', gap: space.sm }}>
+              <Chip label="English" active={!settings.uiGerman} onPress={() => update({ uiGerman: false })} />
+              <Chip label="Deutsch" active={settings.uiGerman} onPress={() => update({ uiGerman: true })} />
             </View>
           </View>
 

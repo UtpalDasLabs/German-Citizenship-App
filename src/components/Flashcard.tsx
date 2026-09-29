@@ -6,7 +6,7 @@ import { AnswerOption } from '@/components/AnswerOption';
 import { KeyTermsTip } from '@/components/KeyTermsTip';
 import { OptionImage, QuestionVisual } from '@/components/QuestionVisual';
 import { Txt } from '@/components/ui';
-import { meta } from '@/lib/questions';
+import { catalogueRef, meta } from '@/lib/questions';
 import type { Language, OptionKey, Question } from '@/lib/types';
 import { useTheme } from '@/theme/ThemeProvider';
 
@@ -27,13 +27,21 @@ export function Flashcard({
   picked,
   onPick,
   language,
+  helpLocale,
   labels,
 }: {
   question: Question;
   /** The option the learner tapped, or null while the card is still a question. */
   picked: OptionKey | null;
   onPick: (key: OptionKey) => void;
+  /** How the question and its options are shown - the exam content. */
   language: Language;
+  /**
+   * How the explanations around it are shown. Follows the app language, not
+   * the question language: someone drilling German questions is doing it
+   * because their German is weak, so the help has to stay readable.
+   */
+  helpLocale: 'de' | 'en';
   labels: {
     answer: string;
     why: string;
@@ -41,6 +49,7 @@ export function Flashcard({
     correct: string;
     wrong: string;
     youPicked: string;
+    inEnglish: string;
   };
 }) {
   const { colors, radius, space } = useTheme();
@@ -85,7 +94,14 @@ export function Flashcard({
           turned away is explicitly taken out of hit testing. Without this the
           invisible back swallows every tap aimed at an answer option. */}
       <Animated.View style={[face, frontStyle]} pointerEvents={flipped ? 'none' : 'auto'}>
-        <Badge label={topic.label[language === 'de' ? 'de' : 'en']} color={topic.color} icon={question.icon} />
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
+          <Badge label={topic.label[language === 'de' ? 'de' : 'en']} color={topic.color} icon={question.icon} />
+          {/* The official catalogue number, so a question can be looked up in
+              the BAMF PDF or any other practice site. */}
+          <Txt variant="caption" tone="faint">
+            {catalogueRef(question)}
+          </Txt>
+        </View>
         <ScrollView
           contentContainerStyle={{ gap: space.md, paddingVertical: space.md }}
           showsVerticalScrollIndicator={false}
@@ -155,6 +171,17 @@ export function Flashcard({
             </View>
           ) : null}
 
+          {/* Studying in German only means the answer arrives in German too, so
+              the translation is given here - after the pick, never before it.
+              At the other language settings the card already reads in English
+              and a second copy would just be noise. */}
+          {language === 'de' && question.en.text ? (
+            <Note label={labels.inEnglish} tint={colors.info} bg={colors.infoBg}>
+              {question.en.text}
+              {question.en.options?.[question.answer] ? `\n\n${question.en.options[question.answer]}` : ''}
+            </Note>
+          ) : null}
+
           <KeyTermsTip questionId={question.id} />
 
           {question.context ? (
@@ -164,7 +191,7 @@ export function Flashcard({
           ) : null}
           {question.realLife ? (
             <Note label={labels.realLife} tint={colors.streak} bg={colors.surfaceAlt}>
-              {question.realLife[language === 'de' ? 'de' : 'en']}
+              {question.realLife[helpLocale]}
             </Note>
           ) : null}
 

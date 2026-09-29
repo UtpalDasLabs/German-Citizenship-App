@@ -5,6 +5,7 @@ import type { Settings } from '@/lib/types';
 
 const DEFAULTS: Settings = {
   language: 'both',
+  uiGerman: false,
   state: null,
   appearance: 'system',
   haptics: true,
@@ -27,7 +28,14 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     loadJSON('settings', DEFAULTS).then((s) => {
-      setSettings(s);
+      // `uiGerman` used to be implied by `language`, so anyone already set to
+      // German questions had a German interface and should keep it. New users
+      // get an English interface whatever they pick for the questions.
+      const migrated: Settings =
+        (s as Partial<Settings>).uiGerman === undefined
+          ? { ...s, uiGerman: s.language === 'de' }
+          : s;
+      setSettings(migrated);
       setReady(true);
     });
   }, []);
