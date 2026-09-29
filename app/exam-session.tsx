@@ -1,10 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Platform, Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AnswerOption, type OptionState } from '@/components/AnswerOption';
+import { KeyTermsTip } from '@/components/KeyTermsTip';
 import { QuestionVisual } from '@/components/QuestionVisual';
 import { Button, Card, ProgressBar, Screen, Txt } from '@/components/ui';
 import { makeHaptics } from '@/lib/haptics';
@@ -37,6 +38,15 @@ export default function ExamScreen() {
   const insets = useSafeAreaInsets();
   const { settings } = useSettings();
   const { grade, recordExam } = useProgress();
+
+  const params = useLocalSearchParams<{ coach?: string }>();
+  /**
+   * Coached runs mark each answer as it is given and show the German words to
+   * remember; a rehearsal stays silent until submission, like the real exam.
+   * Both are German-only - an exam you sit in German is not rehearsed in
+   * English, however you study the cards.
+   */
+  const coach = params.coach !== '0';
 
   const haptics = useMemo(() => makeHaptics(settings.haptics), [settings.haptics]);
   const goalXp = GOALS[settings.goal].xp;
@@ -140,8 +150,11 @@ export default function ExamScreen() {
   const picked = answers[question.id];
   const isPictureOptions = question.imageMode === 'options';
 
+  /** Marked as soon as it is answered when coaching, otherwise only in review. */
+  const marked = reviewing || (coach && picked != null);
+
   function stateFor(key: OptionKey): OptionState {
-    if (!reviewing) return picked === key ? 'selected' : 'idle';
+    if (!marked) return picked === key ? 'selected' : 'idle';
     if (key === question.answer) return 'correct';
     if (key === picked) return 'wrong';
     return 'muted';
@@ -210,20 +223,12 @@ export default function ExamScreen() {
       >
         <Card level={2} style={{ alignItems: 'center', gap: space.md, paddingVertical: space.xl }}>
           {isPictureOptions ? null : <QuestionVisual question={question} color={topic.color} size={96} />}
-          {settings.language !== 'en' ? (
-            <Txt variant="heading" style={{ textAlign: 'center' }}>
-              {question.de.text}
-            </Txt>
-          ) : null}
-          {settings.language !== 'de' && question.en.text ? (
-            <Txt
-              variant={settings.language === 'en' ? 'heading' : 'body'}
-              tone={settings.language === 'en' ? 'default' : 'muted'}
-              style={{ textAlign: 'center' }}
-            >
-              {question.en.text}
-            </Txt>
-          ) : null}
+          {/* German only, whatever the study setting says: the real paper has
+              no English on it, and a rehearsal that does is not a rehearsal.
+              The translation appears below once the answer is in. */}
+          <Txt variant="heading" style={{ textAlign: 'center' }}>
+            {question.de.text}
+          </Txt>
         </Card>
 
         <View style={{ gap: space.sm }}>
@@ -232,15 +237,19 @@ export default function ExamScreen() {
               key={key}
               optionKey={key}
               de={question.de.options[key]}
-              en={question.en.options?.[key]}
-              language={settings.language}
+              language="de"
               state={stateFor(key)}
               imageKey={isPictureOptions ? question.images[i] : undefined}
               onPress={
-                reviewing
+                marked
                   ? undefined
                   : () => {
-                      haptics.tap();
+                      // Coached runs give the verdict in the haptic too.
+                      if (coach) {
+                        key === question.answer ? haptics.success() : haptics.error();
+                      } else {
+                        haptics.tap();
+                      }
                       setAnswers((a) => ({ ...a, [question.id]: key }));
                     }
               }
@@ -248,14 +257,38 @@ export default function ExamScreen() {
           ))}
         </View>
 
-        {reviewing && question.context ? (
-          <View style={{ backgroundColor: colors.surfaceAlt, borderRadius: radius.md, padding: space.lg, gap: space.xs }}>
-            <Txt variant="overline" tone="faint">
-              {t('whyLabel').toUpperCase()}
-            </Txt>
-            <Txt variant="small" tone="muted">
-              {question.context}
-            </Txt>
+        {marked ? (
+          <View style={{ gap: space.md }}>
+            <KeyTermsTip questionId={question.id} />
+
+            {/* The English arrives only after the answer, so the German had to
+                carry the question first - which is the skill being trained. */}
+            {question.en.text ? (
+              <View style={{ backgroundColor: colors.surfaceAlt, borderRadius: radius.md, padding: space.md, gap: space.xs }}>
+                <Txt variant="overline" tone="faint">
+                  {t('translationLabel').toUpperCase()}
+                </Txt>
+                <Txt variant="small" tone="muted">
+                  {question.en.text}
+                </Txt>
+                {question.en.options?.[question.answer] ? (
+                  <Txt variant="small" tone="success">
+                    {question.en.options[question.answer]}
+                  </Txt>
+                ) : null}
+              </View>
+            ) : null}
+
+            {question.context ? (
+              <View style={{ backgroundColor: colors.surfaceAlt, borderRadius: radius.md, padding: space.md, gap: space.xs }}>
+                <Txt variant="overline" tone="faint">
+                  {t('whyLabel').toUpperCase()}
+                </Txt>
+                <Txt variant="small" tone="muted">
+                  {question.context}
+                </Txt>
+              </View>
+            ) : null}
           </View>
         ) : null}
       </ScrollView>

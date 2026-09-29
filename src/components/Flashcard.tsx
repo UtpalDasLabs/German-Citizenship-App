@@ -3,6 +3,7 @@ import { ScrollView, View } from 'react-native';
 import Animated, { interpolate, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 
 import { AnswerOption } from '@/components/AnswerOption';
+import { KeyTermsTip } from '@/components/KeyTermsTip';
 import { OptionImage, QuestionVisual } from '@/components/QuestionVisual';
 import { Txt } from '@/components/ui';
 import { meta } from '@/lib/questions';
@@ -153,6 +154,8 @@ export function Flashcard({
               </Txt>
             </View>
           ) : null}
+
+          <KeyTermsTip questionId={question.id} />
 
           {question.context ? (
             <Note label={labels.why} tint={colors.info} bg={colors.infoBg}>

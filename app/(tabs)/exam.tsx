@@ -57,29 +57,54 @@ export default function ExamIntroScreen() {
         {settings.state == null ? (
           <Card
             style={{
-              flexDirection: 'row',
               gap: space.md,
-              alignItems: 'center',
               borderWidth: 1,
               borderColor: colors.borderStrong,
               borderStyle: 'dashed',
             }}
           >
-            <Ionicons name="information-circle" size={22} color={colors.textMuted} />
-            <Txt variant="small" tone="muted" style={{ flex: 1 }}>
-              {t('pickStateSub')}
-            </Txt>
-            <Button title={t('pickState')} variant="secondary" onPress={() => router.push('/(tabs)/you')} />
+            <View style={{ flexDirection: 'row', gap: space.md, alignItems: 'center' }}>
+              <Ionicons name="information-circle" size={22} color={colors.textMuted} />
+              <Txt variant="small" tone="muted" style={{ flex: 1 }}>
+                {t('pickStateSub')}
+              </Txt>
+            </View>
+            <Button title={t('pickState')} variant="secondary" full onPress={() => router.push('/(tabs)/you')} />
           </Card>
         ) : null}
 
-        <Button
-          title={t('startExam')}
-          size="lg"
-          full
-          icon={<Ionicons name="play" size={18} color={colors.onAccent} />}
-          onPress={() => router.push('/exam-session')}
-        />
+        {/* Two ways in, because one screen has to serve both jobs: learning the
+            German and finding out whether you would pass today. */}
+        <View style={{ gap: space.sm }}>
+          <Button
+            title={t('examCoachTitle')}
+            size="lg"
+            full
+            icon={<Ionicons name="play" size={18} color={colors.onAccent} />}
+            onPress={() => router.push('/exam-session?coach=1')}
+          />
+          <Txt variant="caption" tone="faint" style={{ textAlign: 'center' }}>
+            {t('examCoachBody')}
+          </Txt>
+
+          <Button
+            title={t('examRealTitle')}
+            variant="secondary"
+            full
+            icon={<Ionicons name="timer-outline" size={18} color={colors.text} />}
+            onPress={() => router.push('/exam-session?coach=0')}
+          />
+          <Txt variant="caption" tone="faint" style={{ textAlign: 'center' }}>
+            {t('examRealBody')}
+          </Txt>
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs, justifyContent: 'center' }}>
+            <Ionicons name="language" size={14} color={colors.info} />
+            <Txt variant="caption" tone="info">
+              {t('examAlwaysGerman')}
+            </Txt>
+          </View>
+        </View>
 
         <Card style={{ gap: space.md }}>
           <Txt variant="heading">{t('examHistory')}</Txt>

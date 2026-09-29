@@ -10,9 +10,13 @@ import { useTheme } from '@/theme/ThemeProvider';
 export type OptionState = 'idle' | 'selected' | 'correct' | 'wrong' | 'muted';
 
 /**
- * One answer choice. Before checking, the tapped option is merely `selected`;
- * afterwards the correct one turns green and a wrong pick turns red, so the
- * feedback is unambiguous without needing colour alone (icons back it up).
+ * One answer choice.
+ *
+ * Three states carry meaning and each has to be legible at a glance in both
+ * themes: `selected` is blue (your pick, verdict withheld), `correct` green,
+ * `wrong` red. Colour is never the only signal - correct and wrong carry an
+ * icon too, and the letter badge changes shape - because roughly one man in
+ * twelve cannot separate the green from the red.
  */
 export function AnswerOption({
   optionKey,
@@ -35,13 +39,20 @@ export function AnswerOption({
 
   const style = {
     idle: { bg: colors.surface, border: colors.border, fg: colors.text },
-    selected: { bg: colors.surfaceAlt, border: colors.borderStrong, fg: colors.text },
+    selected: { bg: colors.infoBg, border: colors.info, fg: colors.info },
     correct: { bg: colors.successBg, border: colors.success, fg: colors.success },
     wrong: { bg: colors.dangerBg, border: colors.danger, fg: colors.danger },
     muted: { bg: colors.surface, border: colors.border, fg: colors.textFaint },
   }[state];
 
-  const icon = state === 'correct' ? 'checkmark-circle' : state === 'wrong' ? 'close-circle' : null;
+  const icon =
+    state === 'correct'
+      ? 'checkmark-circle'
+      : state === 'wrong'
+        ? 'close-circle'
+        : state === 'selected'
+          ? 'radio-button-on'
+          : null;
 
   return (
     <Pressable
