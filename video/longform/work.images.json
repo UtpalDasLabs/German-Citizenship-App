@@ -1,0 +1,30 @@
+{
+  "topic": "work",
+  "note": "Every picture in the video, where it came from and under what licence. Licence fields are filled in by `npm run images -- work`; do not edit them by hand.",
+  "images": [
+    {
+      "id": "erhard",
+      "file": "Bondskanselier Ludwig Erhard in Holland, prof dr Erhard, Bestanddeelnr 916-1260.jpg",
+      "scene": "A market with a safety net — Ludwig Erhard",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Eric Koch for Anefo",
+      "date": "1964-03-02",
+      "source": "https://commons.wikimedia.org/wiki/File:Bondskanselier_Ludwig_Erhard_in_Holland,_prof_dr_Erhard,_Bestanddeelnr_916-1260.jpg",
+      "size": "2558x2628",
+      "sha1": "d2b72cc6cef3324731b7244f3d84eeb06aeda7d3"
+    },
+    {
+      "id": "bismarck",
+      "file": "Franz von Lenbach - Otto von Bismarck (1890).jpg",
+      "scene": "Five insurances — Bismarck, who started social insurance",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Franz von Lenbach",
+      "date": "1890",
+      "source": "https://commons.wikimedia.org/wiki/File:Franz_von_Lenbach_-_Otto_von_Bismarck_(1890).jpg",
+      "size": "3567x4437",
+      "sha1": "36119c47954a9fa59176ad524deb0cb5bb9c42c3"
+    }
+  ]
+}

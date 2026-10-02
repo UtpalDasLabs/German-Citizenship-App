@@ -710,6 +710,7 @@ const LETTERS = ['a', 'b', 'c', 'd'] as const;
 export const norm = (t: string) =>
   t
     .toLowerCase()
+    .replace(/\u00ad/g, '')
     .replace(/[.…?!„“"]+/g, '')
     .replace(/\s+/g, ' ')
     .trim();

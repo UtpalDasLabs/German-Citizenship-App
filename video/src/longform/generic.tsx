@@ -80,11 +80,15 @@ export function Term() {
 export function List() {
   const frame = useCurrentFrame();
   const lines = useLines();
-  const width = lines.length > 3 ? 400 : 520;
+  const width = lines.length >= 5 ? 330 : lines.length === 4 ? 410 : 520;
+  // Long German compounds must fit on one line of the card: size the type to
+  // the longest word (soft hyphens mark where a word may break instead).
+  const longestWord = Math.max(...lines.flatMap(({ fields: [big] }) => big.split(/[\s\u00ad]+/).map((w) => w.length)));
+  const bigSize = Math.min(60, Math.floor((width - 84) / (longestWord * 0.56)));
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
       <Glow strength={0.05} />
-      <div style={{ display: 'flex', gap: 40, alignItems: 'stretch', transform: `scale(${useDrift()})` }}>
+      <div style={{ display: 'flex', gap: lines.length >= 5 ? 24 : 40, alignItems: 'stretch', transform: `scale(${useDrift()})` }}>
         {lines.map(({ fields: [big, small], at }, i) => {
           const o = rise(frame, at, 16);
           return (
@@ -106,7 +110,7 @@ export function List() {
               }}
             >
               <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 24, letterSpacing: 3, color: C.textFaint }}>{i + 1}</div>
-              <div style={{ fontFamily: SERIF, fontWeight: 600, fontSize: big.length > 24 ? 46 : 60, lineHeight: 1.15, color: C.text }}>{big}</div>
+              <div style={{ fontFamily: SERIF, fontWeight: 600, fontSize: bigSize, lineHeight: 1.15, color: C.text }}>{big}</div>
               {small ? <div style={{ fontFamily: FONT, fontWeight: 500, fontSize: 32, lineHeight: 1.3, color: C.textMuted }}>{small}</div> : null}
             </div>
           );
