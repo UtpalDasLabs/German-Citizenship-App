@@ -30,6 +30,10 @@ node scripts/render.mjs 147 --safe     # shade what the platforms' UI covers
 npm run narration -- 147           # write the voice script for one question
 npm run narration -- all           # every question, plus character totals
 
+npm run voice -- 147               # narrate with ElevenLabs, one file per beat
+npm run voice -- 147 --segments    # German and English voiced separately, then joined
+npm run voice -- 147 --only hook   # one beat, as a cheap check
+
 npm run studio                     # preview and scrub in the browser
 npm run typecheck
 ```
@@ -53,6 +57,21 @@ German inside a hand-written English line is marked `[[like this]]`.
 Each beat in the SSML opens with a `<mark>`. Voice services that report mark
 timings return where every beat starts in the audio; those durations go into
 the composition as `beatSeconds`, and the picture stretches to fit the voice.
+
+## Narration with ElevenLabs
+
+`scripts/voice-elevenlabs.mjs` reads the key from `ELEVENLABS_API_KEY` and the
+voice from `ELEVENLABS_VOICE_ID` (default: Rowan). Audio is cached per beat, so
+a rerun spends no credits. It writes `timing.json` with each beat's spoken
+length, which is what the video is stretched to fit.
+
+Library voices such as Rowan can only be used through the API on a paid plan;
+on the free plan the API answers 402 and nothing is charged. Default voices
+work on the free plan.
+
+`npm run voice` sets `NODE_USE_ENV_PROXY=1`: Node's built-in `fetch` otherwise
+ignores `HTTPS_PROXY`, and in a sandbox that only lets traffic out through its
+proxy the request is refused.
 
 ## Design rules
 

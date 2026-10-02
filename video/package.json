@@ -8,7 +8,8 @@
     "render:prototype": "node scripts/render.mjs 147 32 226",
     "render": "node scripts/render.mjs",
     "narration": "node scripts/narration.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "voice": "NODE_USE_ENV_PROXY=1 node scripts/voice-elevenlabs.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
