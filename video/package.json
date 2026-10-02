@@ -1,0 +1,26 @@
+{
+  "name": "lid-test-video",
+  "private": true,
+  "description": "Short teaching videos rendered from the app's own question data.",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:prototype": "node scripts/render.mjs 147 32 226",
+    "render": "node scripts/render.mjs",
+    "narration": "node scripts/narration.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@remotion/bundler": "4.0.532",
+    "@remotion/cli": "4.0.532",
+    "@remotion/renderer": "4.0.532",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "typescript": "~6.0.3"
+  }
+}
