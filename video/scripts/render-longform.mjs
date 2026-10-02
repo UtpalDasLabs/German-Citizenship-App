@@ -211,7 +211,7 @@ function describe() {
     '',
     `Questions in this video (catalogue numbers): ${asked.map((id) => `#${id}`).join(', ')}`,
     '',
-    "Narrated with an AI version of the creator's own voice (ElevenLabs). Every fact was checked against the official question catalogue and the Grundgesetz. This channel is independent and not affiliated with the BAMF or any government body.",
+    "Narrated with an AI version of the creator's own voice (ElevenLabs). Every fact was checked against the official question catalogue and its legal sources. This channel is independent and not affiliated with the BAMF or any government body.",
     '',
     existsSync(credits) ? readFileSync(credits, 'utf8').trim() : 'Pictures: none',
     ...(usesMap
@@ -219,6 +219,7 @@ function describe() {
           '• Map of Germany: @svg-maps/germany, based on MapSVG (mapsvg.com), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)',
         ]
       : []),
+    ...(LIVELY ? ['', elSound ? 'Music and sound effects: made with ElevenLabs.' : 'Music and sound effects: made for this channel.'] : []),
     '',
   ].join('\n');
 }
