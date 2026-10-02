@@ -1,8 +1,13 @@
-# Video shorts
+# Videos
 
-Vertical (9:16) teaching shorts for YouTube Shorts, TikTok and Reels, one per
-catalogue question, rendered from the app's own data with
-[Remotion](https://www.remotion.dev/).
+Two formats, both rendered with [Remotion](https://www.remotion.dev/):
+
+- **Long-form lessons** (16:9), one per topic, written as scripts in
+  `longform/` and narrated with the creator's cloned voice. See
+  [Long-form lessons](#long-form-lessons).
+- **Shorts** (9:16) for YouTube Shorts, TikTok and Reels, one per catalogue
+  question, generated from the app's own data. The rest of this file up to
+  "Pictures" is about these.
 
 Nothing here is written by hand per video. Each short is generated from:
 
@@ -72,6 +77,39 @@ work on the free plan.
 `npm run voice` sets `NODE_USE_ENV_PROXY=1`: Node's built-in `fetch` otherwise
 ignores `HTTPS_PROXY`, and in a sandbox that only lets traffic out through its
 proxy the request is refused.
+
+## Long-form lessons
+
+```sh
+npm run images -- basic-rights                          # the archival pictures
+npm run voice:longform -- basic-rights --chapters 0-1 --dry   # cost, in characters
+npm run voice:longform -- basic-rights --chapters 0-1   # narrate (cached per paragraph)
+npm run render:longform -- basic-rights --chapters 0-1 --stills   # one PNG per shot
+npm run render:longform -- basic-rights --chapters 0-1  # out/lesson-basic-rights-ch0-1.mp4
+npm run render:longform -- basic-rights --silent        # whole cut, no voice, as an animatic
+```
+
+The script format is described at the top of `longform/basic-rights.md`. In
+short: `## Chapter`, `> SCENE (key): what is on screen`, `{Q6}` before the shot
+that answers question 6, `[[Deutsch]]` for German, `[curious]` for delivery.
+
+- **One paragraph = one voice request.** The voice comes back with the time
+  of every character (`/with-timestamps`), so German phrases appear on screen
+  as they are said, typed quotes keep pace with the voice, and the right
+  answer lights up on the word that names it. Nothing is timed by hand.
+- **Editing is cheap.** Audio is cached by voice, model and exact paragraph
+  text, so changing one sentence re-voices one paragraph.
+- **Scenes are code**, in `src/longform/shots.tsx`, chosen by the key in the
+  script. A scene without a key renders as a storyboard card with the
+  director's note, so the whole video can be watched (and timed) before
+  every scene is built.
+- **Voice:** `ELEVENLABS_VOICE_ID` (default: the creator's clone) and
+  `ELEVENLABS_MODEL` (default `eleven_v4`, which treats `[direction]` tags
+  as directions: in its timestamps they take under 0.3s, too short to be
+  spoken).
+- **Every video discloses the AI voice** in its outro and description.
+- The 1949 map is drawn from [@svg-maps/germany](https://www.npmjs.com/package/@svg-maps/germany)
+  (MapSVG, CC BY 4.0): credit it in the description alongside `credits.txt`.
 
 ## Pictures
 

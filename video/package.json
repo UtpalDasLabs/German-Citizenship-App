@@ -10,13 +10,17 @@
     "narration": "node scripts/narration.mjs",
     "typecheck": "tsc --noEmit",
     "voice": "NODE_USE_ENV_PROXY=1 node scripts/voice-elevenlabs.mjs",
-    "images": "NODE_USE_ENV_PROXY=1 node scripts/images.mjs"
+    "images": "NODE_USE_ENV_PROXY=1 node scripts/images.mjs",
+    "voice:longform": "NODE_USE_ENV_PROXY=1 node scripts/voice-longform.mjs",
+    "render:longform": "node scripts/render-longform.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
+    "@fontsource/source-serif-4": "^5.3.0",
     "@remotion/bundler": "4.0.532",
     "@remotion/cli": "4.0.532",
     "@remotion/renderer": "4.0.532",
+    "@svg-maps/germany": "^2.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.532"
