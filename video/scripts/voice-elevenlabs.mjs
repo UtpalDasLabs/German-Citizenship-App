@@ -15,7 +15,7 @@
  *                runs on, then joined. The model never has to guess the
  *                language, at the risk of faint seams.
  *
- * Writes out/audio/<id>/<mode>/NN-<beat>.mp3 and timing.json with each beat's
+ * Writes out/audio/<id>/<voice>-<model>/<mode>/NN-<beat>.mp3 and timing.json with each beat's
  * spoken length - which is what the video is then stretched to fit.
  *
  * The API key comes from ELEVENLABS_API_KEY and is only ever sent in the
@@ -52,7 +52,7 @@ if (!KEY) {
 }
 
 const mode = segments ? 'segments' : 'beats';
-const dir = join(VIDEO, 'out', 'audio', String(id), mode);
+const dir = join(VIDEO, 'out', 'audio', String(id), `${VOICE}-${MODEL}`, mode);
 mkdirSync(dir, { recursive: true });
 
 let spent = 0;
