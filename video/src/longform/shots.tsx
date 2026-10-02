@@ -13,7 +13,6 @@ import { charFrame, cue, findCue, paraStart, useShot, type Shot } from './plan';
 
 export const img = (topic: string, id: string, ext = 'jpg') => `images/${topic}/${id}.${ext}`;
 
-
 // ─── Cold open ──────────────────────────────────────────────────────────────
 
 function Ruins({ topic }: { topic: string }) {
@@ -82,8 +81,6 @@ function Bonn({ topic }: { topic: string }) {
     </AbsoluteFill>
   );
 }
-
-
 
 function Article1({ topic, questions }: { topic: string; questions: number[] }) {
   const shot = useShot();
@@ -723,15 +720,17 @@ const breakable = (t: string) => t.replace(/\//g, '/\u200b');
 function WithNegation({ text }: { text: string }) {
   return (
     <>
-      {breakable(text).split(/(\bnicht\b|\bkein\w*)/i).map((part, i) =>
-        i % 2 ? (
-          <span key={i} style={{ color: C.danger }}>
-            {part}
-          </span>
-        ) : (
-          part
-        ),
-      )}
+      {breakable(text)
+        .split(/(\bnicht\b|\bkein\w*)/i)
+        .map((part, i) =>
+          i % 2 ? (
+            <span key={i} style={{ color: C.danger }}>
+              {part}
+            </span>
+          ) : (
+            part
+          ),
+        )}
     </>
   );
 }
@@ -763,6 +762,59 @@ export function questionTiming(shot: Shot, fps: number) {
   return { id, q, answer, spoken, answerAt, ruledOut };
 }
 
+/** Three, two, one: a ring that empties while the viewer guesses. */
+function Countdown({ from, frames }: { from: number; frames: number }) {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame - from;
+  if (t < 0 || t > frames) return null;
+  const left = Math.max(1, Math.ceil((frames - t) / fps));
+  const o = Math.min(
+    interpolate(t, [0, 6], [0, 1], { extrapolateRight: 'clamp' }),
+    interpolate(t, [frames - 6, frames], [1, 0], { extrapolateLeft: 'clamp' }),
+  );
+  const r = 70;
+  const progress = 1 - t / frames;
+  const beat = (t % fps) / fps;
+  return (
+    <div style={{ position: 'absolute', right: 110, top: 80, opacity: o, display: 'flex', alignItems: 'center', gap: 24 }}>
+      <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 3, color: GOLD }}>YOUR GUESS?</div>
+      <div style={{ position: 'relative', width: 2 * r + 20, height: 2 * r + 20 }}>
+        <svg width={2 * r + 20} height={2 * r + 20} style={{ position: 'absolute', transform: 'rotate(-90deg)' }}>
+          <circle cx={r + 10} cy={r + 10} r={r} fill="none" stroke={C.track} strokeWidth={12} />
+          <circle
+            cx={r + 10}
+            cy={r + 10}
+            r={r}
+            fill="none"
+            stroke={GOLD}
+            strokeWidth={12}
+            strokeLinecap="round"
+            strokeDasharray={2 * Math.PI * r}
+            strokeDashoffset={2 * Math.PI * r * (1 - progress)}
+          />
+        </svg>
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: FONT,
+            fontWeight: 800,
+            fontSize: 76,
+            color: C.text,
+            transform: `scale(${1.15 - 0.15 * Math.min(1, beat * 4)})`,
+          }}
+        >
+          {left}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /**
  * An exam question exactly as worded in the catalogue. The right answer lights
  * up when the narrator says it; wrong answers dim as the narrator rules them out.
@@ -772,6 +824,7 @@ function Question() {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const { id, q, answer, spoken, answerAt } = questionTiming(shot, fps);
+  const guess = shot.paras.find((p) => p.countdown);
   // Some catalogue questions are whole stories; keep them on one screen.
   const qSize = q.de.text.length > 150 ? 44 : q.de.text.length > 90 ? 54 : 64;
   const longest = Math.max(...LETTERS.map((l) => q.de.options[l].length));
@@ -833,7 +886,15 @@ function Question() {
         {LETTERS.map((l, i) => {
           if (q.imageMode === 'options') {
             const state: CardState = frame >= answerAt ? (l === answer ? 'correct' : 'dim') : 'idle';
-            return <PictureTile key={l} letter={l.toUpperCase()} imageKey={q.images[i]} state={state} enter={rise(frame, 10 + i * 4, 14)} />;
+            return (
+              <PictureTile
+                key={l}
+                letter={l.toUpperCase()}
+                imageKey={q.images[i]}
+                state={state}
+                enter={rise(frame, 10 + i * 4, 14)}
+              />
+            );
           }
           const ruledOut = l !== answer && spoken[l] != null && frame >= spoken[l]!;
           const state: CardState = frame >= answerAt ? (l === answer ? 'correct' : 'dim') : ruledOut ? 'dim' : 'idle';
@@ -852,6 +913,7 @@ function Question() {
           );
         })}
       </div>
+      {guess ? <Countdown from={guess.from - 3 * fps} frames={3 * fps} /> : null}
     </AbsoluteFill>
   );
 }
@@ -883,7 +945,12 @@ function ExamPicture({ imageKey, credit }: { imageKey: string; credit: string | 
       </div>
     );
   }
-  return <Img src={staticFile(`questions/${imageKey}.webp`)} style={{ height: 240, alignSelf: 'flex-start', borderRadius: 14, opacity: o }} />;
+  return (
+    <Img
+      src={staticFile(`questions/${imageKey}.webp`)}
+      style={{ height: 240, alignSelf: 'flex-start', borderRadius: 14, opacity: o }}
+    />
+  );
 }
 
 /** Scenes that already put all their German on screen themselves. */

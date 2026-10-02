@@ -2,7 +2,7 @@ import React from 'react';
 import { AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame } from 'remotion';
 
 import { C } from '../lib/brand';
-import { Punches, Soundtrack, usePunchScale } from './lively';
+import { Soundtrack, usePunchScale } from './lively';
 import { ChapterLabel, GermanCaption, Storyboard } from './look';
 import { ShotContext, type Plan, type Shot } from './plan';
 import { shownGerman, SHOWS_GERMAN, shotFor } from './shots';
@@ -25,7 +25,6 @@ function ShotView({ shot, plan, first }: { shot: Shot; plan: Plan; first: boolea
         <AbsoluteFill style={{ transform: plan.lively ? `scale(${scale})` : undefined }}>
           {shotFor(shot.key, plan.topic, plan.title, plan.questions) ?? <Storyboard />}
         </AbsoluteFill>
-        {plan.lively ? <Punches shot={shot} /> : null}
         {shot.key && SHOWS_GERMAN.has(shot.key) ? null : (
           <GermanCaption
             exclude={shownGerman(shot.questions, shot.screen, shot.key)}

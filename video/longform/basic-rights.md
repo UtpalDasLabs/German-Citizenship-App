@@ -53,31 +53,33 @@ And that sentence is where we start. Stick with me, and you'll get the rules tha
 
 > SCENE (book): A thick book on a desk. Its cover reads "Grundgesetz". A second label slides in and is crossed out: "Verfassung".
 
-[curious] Okay, here's something **weird**. Germany has a constitution. But it isn't called a constitution!
+[excited] Quick quiz! What's the German constitution called? [short pause] Hold that thought. Because here's the **weird** part. Germany has a constitution... [laughs] but it isn't called a constitution!
 
-It's called the [[Grundgesetz]]. Literally: the **basic law**.
+[curious] It's called the [[Grundgesetz]]. Literally? The **basic law**.
 
 > SCENE (map1949): A map of Germany in 1949, split in two. The western part lights up; the eastern part stays grey.
 
-Why? Because in 1949, Germany was **divided**. And the people writing it didn't want to set that split in stone. A real constitution, they said, should wait until *all* Germans could decide together. So this one got a humbler name: a basic law. A temporary arrangement.
+[dramatic] Why so modest? Because in 1949, Germany was **divided**. East and West. And the people writing it didn't want to set that split in stone. A real constitution, they said, should wait until *all* Germans could decide together. So this one got a humbler title: a basic law. A temporary arrangement.
 
-[dry amusement] So temporary... that it's **still here**.
+[whispers] Temporary. [laughs] It's **still here**.
 
 > SCENE (reunify): The two halves of the map join. "1990" appears.
 
-In 1990, Germany **reunited**, and the basic law simply became the constitution for the whole country. And the name stayed.
+[excited] Then, 1990! Germany **reunited**... and instead of writing something new, the whole country simply took over the basic law. The name stayed.
 
 {Q6}
 
-> SCENE (question): Question card #6, all four options. Option D highlights.
+> SCENE (question): Question card #6, all four options. Three seconds to guess, then option D highlights.
 
-So when the exam asks [[Wie heißt die deutsche Verfassung?]] — what's the German constitution called? — you say: [[Grundgesetz]]. Not [[Bundesgesetz]]. Not [[Volksgesetz]]. They sound believable, and that's exactly the trap.
+[excited] So! Exam time. [[Wie heißt die deutsche Verfassung?]] Four options, one is right. [playful] You've got three seconds.
+
+[countdown] [excited] [[Grundgesetz]]! Did you get it? [[Bundesgesetz]] and [[Volksgesetz]] sound totally believable... and that's exactly the trap.
 
 {Q11}
 
-> SCENE (question): Question card #11. Option A highlights.
+> SCENE (question): Question card #11. The wrong options are ruled out one by one, then option A highlights.
 
-And the same question comes back in a **disguise**: [[Wie wird die Verfassung der Bundesrepublik Deutschland genannt?]] Same answer: [[Grundgesetz]]. See [[Verfassung]] in a question? Think [[Grundgesetz]].
+[playful] And watch out, it comes back in **disguise**: [[Wie wird die Verfassung der Bundesrepublik Deutschland genannt?]] [short pause] Not [[Bundesverfassung]]. Not [[Verfassungsvertrag]]. [excited] It's [[Grundgesetz]]! Again! See [[Verfassung]] in a question? Think [[Grundgesetz]].
 
 ## Article 1: dignity comes first
 

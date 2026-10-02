@@ -19,6 +19,8 @@ export type Para = {
   de: { text: string; start: number; end: number }[];
   /** Words to punch on screen (`**…**` in the script), as ranges of `tts`. */
   punch: { text: string; start: number; end: number }[];
+  /** Three silent seconds to guess come right before this paragraph. */
+  countdown: boolean;
 };
 
 export type Shot = {
@@ -46,6 +48,8 @@ export type Plan = {
   shots: Shot[];
   /** Music, sound effects and punch-ins on (the lively cut) or off. */
   lively: boolean;
+  /** Music under the lively cut (off with --no-music). */
+  music: boolean;
 };
 
 export const ShotContext = createContext<Shot | null>(null);

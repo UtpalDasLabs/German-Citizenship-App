@@ -22,7 +22,6 @@ export function punchFrames(shot: Shot, fps: number): number[] {
 function shotEvents(shot: Shot, fps: number, first: boolean): Event[] {
   const events: Event[] = [];
   if (!first) events.push({ at: 0, sound: 'whoosh', volume: 0.32 });
-  for (const at of punchFrames(shot, fps)) events.push({ at, sound: 'pop', volume: 0.45 });
 
   const lines = shot.key && ['term', 'list', 'stat', 'fact', 'quote'].includes(shot.key) ? screenLines(shot, fps) : [];
   if (shot.key === 'term' && lines[0]) {
@@ -37,6 +36,9 @@ function shotEvents(shot: Shot, fps: number, first: boolean): Event[] {
   if (shot.key === 'question') {
     const { answerAt, ruledOut } = questionTiming(shot, fps);
     for (const at of ruledOut) events.push({ at, sound: 'tick', volume: 0.5 });
+    // A tick for each second of the guessing countdown.
+    const guess = shot.paras.find((p) => p.countdown);
+    if (guess) for (let k = 3; k >= 1; k--) events.push({ at: guess.from - k * fps, sound: 'tick', volume: 0.6 });
     events.push({ at: answerAt, sound: 'ding', volume: 0.42 });
   }
   if (shot.key === 'title') events.push({ at: 6, sound: 'thud', volume: 0.6 });
@@ -79,18 +81,20 @@ export function Soundtrack({ plan }: { plan: Plan }) {
 
   return (
     <>
-      <Audio
-        src={staticFile('sound/music.wav')}
-        loop
-        volume={(f) => {
-          const duck = 0.2 - 0.13 * (level[f] ?? 0);
-          const fade = Math.min(
-            interpolate(f, [0, 45], [0, 1], { extrapolateRight: 'clamp' }),
-            interpolate(f, [plan.total - 90, plan.total], [1, 0], { extrapolateLeft: 'clamp' }),
-          );
-          return duck * fade;
-        }}
-      />
+      {plan.music ? (
+        <Audio
+          src={staticFile('sound/music.wav')}
+          loop
+          volume={(f) => {
+            const duck = 0.2 - 0.13 * (level[f] ?? 0);
+            const fade = Math.min(
+              interpolate(f, [0, 45], [0, 1], { extrapolateRight: 'clamp' }),
+              interpolate(f, [plan.total - 90, plan.total], [1, 0], { extrapolateLeft: 'clamp' }),
+            );
+            return duck * fade;
+          }}
+        />
+      ) : null}
       {plan.shots.flatMap((shot, i) =>
         shotEvents(shot, fps, i === 0).map((e, j) => (
           <Sequence key={`${i}-${j}`} from={shot.from + e.at} durationInFrames={Math.round(fps * 1.2)} name={e.sound}>

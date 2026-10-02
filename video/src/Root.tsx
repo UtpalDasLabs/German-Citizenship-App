@@ -21,6 +21,7 @@ const EMPTY_PLAN: LongFormProps['plan'] = {
   total: FPS,
   shots: [],
   lively: false,
+  music: false,
 };
 
 export function Root() {

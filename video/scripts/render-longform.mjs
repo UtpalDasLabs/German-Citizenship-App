@@ -24,7 +24,7 @@ import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
 
 import { parseLongform, pickChapters } from './longform.mjs';
-import { audioDir, MODEL, paraHash, spokenText, VOICE } from './voice-longform.mjs';
+import { audioDir, MODEL, paraHash, PROFILE, spokenText, VOICE } from './voice-longform.mjs';
 
 const VIDEO = join(import.meta.dirname, '..');
 const ROOT = join(VIDEO, '..');
@@ -55,7 +55,7 @@ const flags = new Set(args.filter((a) => a.startsWith('--')));
 const spec = args.includes('--chapters') ? args[args.indexOf('--chapters') + 1] : undefined;
 const topic = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--chapters');
 if (!topic) {
-  console.error('usage: npm run render:longform -- <topic> [--chapters 0-1] [--stills] [--silent]');
+  console.error('usage: npm run render:longform -- <topic> [--chapters 0-1] [--lively] [--expressive] [--stills] [--silent]');
   process.exit(1);
 }
 const silent = flags.has('--silent');
@@ -123,6 +123,9 @@ for (const c of chapters) {
     const paras = s.paras.map((p, j) => {
       if (j > 0) t += frames(BETWEEN);
       if (p.tags.includes('pause')) t += frames(PAUSE);
+      // [countdown]: three silent seconds to guess before the answer.
+      const countdown = p.tags.includes('countdown');
+      if (countdown) t += frames(3);
       const { seconds, starts, src } = timing(p);
       const para = {
         from: t,
@@ -132,6 +135,7 @@ for (const c of chapters) {
         starts,
         de: deRanges(p),
         punch: punchRanges(p),
+        countdown,
       };
       t += para.frames;
       return para;
@@ -160,6 +164,7 @@ const plan = {
   total: cursor,
   shots,
   lively: LIVELY,
+  music: LIVELY && !args0.includes('--no-music'),
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
@@ -238,7 +243,7 @@ const composition = await selectComposition({
   inputProps,
   browserExecutable,
 });
-const label = `${topic}${spec ? `-ch${spec}` : ''}${LIVELY ? '-lively' : ''}`;
+const label = `${topic}${spec ? `-ch${spec}` : ''}${LIVELY ? '-lively' : ''}${PROFILE === 'expressive' ? '-expressive' : ''}`;
 
 if (flags.has('--stills')) {
   for (const [i, s] of shots.entries()) {

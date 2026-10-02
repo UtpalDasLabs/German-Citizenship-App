@@ -37,23 +37,34 @@ export const CLONE_VERSION = process.env.ELEVENLABS_CLONE_VERSION ?? '2026-10-02
  * 2026) as the one that sounds most like the creator; `style` gives back some
  * of the energy the v4 model had. v2 does not take [direction] tags.
  */
-export const MODEL = process.env.ELEVENLABS_MODEL ?? 'eleven_multilingual_v2';
+const ARGS = process.argv.slice(2);
+/**
+ * --expressive: Eleven v4, which performs the [excited], [laughs], [whispers]
+ * directions in the script. More energy, a little less likeness.
+ */
+const EXPRESSIVE = ARGS.includes('--expressive');
+export const MODEL = process.env.ELEVENLABS_MODEL ?? (EXPRESSIVE ? 'eleven_v4' : 'eleven_multilingual_v2');
 /**
  * Two deliveries. "natural" (default) is the closest to the creator's own
  * voice. "lively" (--lively, used with the lively cut) trades a little
  * likeness for energy: less stable, more style, 8 % faster.
  */
-export const PROFILE = process.argv.includes('--lively') ? 'lively' : 'natural';
+export const PROFILE = EXPRESSIVE ? 'expressive' : ARGS.includes('--lively') ? 'lively' : 'natural';
 export const SETTINGS =
-  PROFILE === 'lively'
-    ? { stability: 0.3, similarity_boost: 0.9, style: 0.6, use_speaker_boost: true, speed: 1.08 }
-    : { stability: 0.4, similarity_boost: 0.95, style: 0.35, use_speaker_boost: true };
+  PROFILE === 'expressive'
+    ? { stability: 0.5 }
+    : PROFILE === 'lively'
+      ? { stability: 0.3, similarity_boost: 0.9, style: 0.6, use_speaker_boost: true, speed: 1.08 }
+      : { stability: 0.4, similarity_boost: 0.95, style: 0.35, use_speaker_boost: true };
 const TAKES_TAGS = /^eleven_v[34]/.test(MODEL);
 
 /** The text actually sent to the voice for a paragraph. */
-export const spokenText = (tts) => (TAKES_TAGS ? tts : tts.replace(/\[(?!\[)[a-z][a-z ,]*\]\s*/gi, '').trim());
+/** Tags the renderer acts on, never sent to the voice. */
+const STAGE = /\[(?:countdown|pause)\]\s*/gi;
+export const spokenText = (tts) =>
+  (TAKES_TAGS ? tts.replace(STAGE, '') : tts.replace(/\[(?!\[)[a-z][a-z ,]*\]\s*/gi, '')).trim();
 
-const slug = `${VOICE}-${CLONE_VERSION}-${MODEL}-s${SETTINGS.stability}-m${SETTINGS.similarity_boost}-y${SETTINGS.style}${SETTINGS.speed ? `-x${SETTINGS.speed}` : ''}`;
+const slug = `${VOICE}-${CLONE_VERSION}-${MODEL}-s${SETTINGS.stability}${SETTINGS.similarity_boost ? `-m${SETTINGS.similarity_boost}` : ''}${SETTINGS.style != null ? `-y${SETTINGS.style}` : ''}${SETTINGS.speed ? `-x${SETTINGS.speed}` : ''}`;
 export const audioDir = (topic) => path.join(root, 'out', 'audio', 'longform', topic, slug);
 export const paraHash = (text) => createHash('sha1').update(text).digest('hex').slice(0, 12);
 
