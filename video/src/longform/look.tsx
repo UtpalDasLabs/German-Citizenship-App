@@ -2,7 +2,7 @@ import React from 'react';
 import { AbsoluteFill, Easing, Img, interpolate, random, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
 import { alpha, C, FONT, GOLD } from '../lib/brand';
-import { charFrame, useShot } from './plan';
+import { charFrame, spokenCount, useShot, type Para } from './plan';
 
 export const SERIF = '"Source Serif 4", Georgia, serif';
 export const INK = '#0B0E14';
@@ -222,12 +222,20 @@ export function ChapterLabel({ number, title }: { number: number; title: string 
  * viewers see the exact words they will meet in the exam. Shots that already
  * show the German themselves turn this off.
  */
-export function GermanCaption() {
+export function GermanCaption({ exclude = [], bottom = 70 }: { exclude?: string[]; bottom?: number }) {
   const shot = useShot();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const shown = (t: string) => {
+    const n = t
+      .toLowerCase()
+      .replace(/[.…?!„“"]+/g, '')
+      .trim();
+    return exclude.some((e) => e === n || (n.length > 3 && e.includes(n)));
+  };
   for (const p of shot.paras) {
     for (const d of p.de) {
+      if (shown(d.text)) continue;
       const start = charFrame(p, d.start, fps) - 4;
       const end = Math.max(charFrame(p, d.end - 1, fps) + Math.round(1.6 * fps), start + Math.round(2.2 * fps));
       if (frame < start || frame > end) continue;
@@ -243,7 +251,7 @@ export function GermanCaption() {
             position: 'absolute',
             left: 0,
             right: 0,
-            bottom: 150,
+            bottom,
             display: 'flex',
             justifyContent: 'center',
             opacity: o,
@@ -366,6 +374,47 @@ export function FactCard({ date, de, en, at }: { date: string; de: string; en: s
       >
         {en}
       </div>
+    </div>
+  );
+}
+
+/** Archive look on top of any photo shot. */
+export function Archive({ children }: { children: React.ReactNode }) {
+  return (
+    <AbsoluteFill>
+      {children}
+      <Vignette />
+      <Grain />
+    </AbsoluteFill>
+  );
+}
+
+/** Fades its children in over the frames where the previous picture is still showing. */
+export function CrossIn({ children, frames = 12 }: { children: React.ReactNode; frames?: number }) {
+  const frame = useCurrentFrame();
+  return (
+    <AbsoluteFill
+      style={{
+        opacity: interpolate(frame, [0, frames], [0, 1], {
+          extrapolateRight: 'clamp',
+        }),
+      }}
+    >
+      {children}
+    </AbsoluteFill>
+  );
+}
+
+/** German text that writes itself exactly as fast as it is spoken. */
+export function SpokenText({ p, start, end, style }: { p: Para; start: number; end: number; style: React.CSSProperties }) {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const n = spokenCount(p, start, end, frame, fps);
+  const text = p.tts.slice(start, end);
+  return (
+    <div style={style}>
+      <span>{text.slice(0, n)}</span>
+      <span style={{ opacity: 0 }}>{text.slice(n)}</span>
     </div>
   );
 }

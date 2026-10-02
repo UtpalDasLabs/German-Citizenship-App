@@ -27,6 +27,8 @@ export type Shot = {
   /** Set on the first shot of every chapter after the cold open. */
   opensChapter: boolean;
   questions: number[];
+  /** Lines under the scene in the script: what a generic scene shows. */
+  screen: string[];
   from: number;
   frames: number;
   paras: Para[];
@@ -61,6 +63,40 @@ export function charFrame(p: Para, index: number, fps: number): number {
  * paragraphs in order; `nth` picks a later occurrence. Falls back to `fallback`
  * (a fraction of the shot) so a reworded script degrades, not crashes.
  */
+/** Frame where `phrase` is first (or `nth`) spoken in the shot, or null. */
+export function findCue(shot: Shot, phrase: string, fps: number, nth = 0): number | null {
+  const needle = phrase.toLowerCase();
+  let seen = 0;
+  for (const p of shot.paras) {
+    const hay = p.tts.toLowerCase();
+    let at = hay.indexOf(needle);
+    while (at !== -1) {
+      if (seen === nth) return charFrame(p, at, fps);
+      seen++;
+      at = hay.indexOf(needle, at + 1);
+    }
+  }
+  return null;
+}
+
+/** One `> a | b @ cue` line under a scene: its fields, and when to show it. */
+export type ScreenLine = { fields: string[]; at: number };
+
+/**
+ * The scene's on-screen lines, timed: a line with `@ phrase` appears when the
+ * voice says the phrase; the rest appear one after another from the start.
+ */
+export function screenLines(shot: Shot, fps: number): ScreenLine[] {
+  const n = shot.screen.length;
+  const step = Math.min(Math.round(fps * 1.2), Math.round((shot.frames * 0.5) / Math.max(1, n)));
+  return shot.screen.map((line, i) => {
+    const [body, phrase] = line.split(' @ ');
+    const fields = body.split(' | ').map((f) => f.trim());
+    const spoken = phrase ? findCue(shot, phrase.trim(), fps) : null;
+    return { fields, at: spoken ?? 8 + i * step };
+  });
+}
+
 export function cue(shot: Shot, phrase: string, fps: number, { nth = 0, fallback = 0.5 } = {}): number {
   const needle = phrase.toLowerCase();
   let seen = 0;

@@ -76,29 +76,16 @@
       "sha1": "feb2ceaeaf1faccad10945533c8915ac8cb3eab8"
     },
     {
-      "id": "map-1949",
-      "file": "Germany, FRG and GDR location map October 1949 - November 1950.svg",
-      "scene": "Chapter 1 — Germany split in two, 1949",
+      "id": "bverfg",
+      "file": "Bundesverfassungsgericht - Karlsruhe.JPG",
+      "scene": "Chapter 4 — the Federal Constitutional Court, the only body that can ban a party",
       "licence": "CC BY-SA 3.0",
       "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-      "author": "Germany,_Federal_Republic_of_location_map_October_1949_-_November_1950.svg: TUBS Germany,_German_Demorcratic_Republic_location_map_October_1949_-_July_1952.svg: TUBS derivative work: WikiNight2 (talk)",
-      "date": "2010-04-27 16:22",
-      "source": "https://commons.wikimedia.org/wiki/File:Germany,_FRG_and_GDR_location_map_October_1949_-_November_1950.svg",
-      "size": "1075x1273",
-      "sha1": "44b2c1fdd16dc2f4985d29fa8cf71d944d8c1b2a",
-      "note": "Placeholder: both states are drawn the same colour, so it cannot show the west lighting up. Replace with our own map drawn from public-domain boundary data."
-    },
-    {
-      "id": "wall-1989",
-      "file": "Berlin-Mauerfall-1-10-November-1989.jpg",
-      "scene": "Chapter 1 — the two halves join",
-      "licence": "CC0",
-      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "author": "Vietinghoff",
-      "date": "2025-05-12 06:48:05",
-      "source": "https://commons.wikimedia.org/wiki/File:Berlin-Mauerfall-1-10-November-1989.jpg",
-      "size": "2000x1257",
-      "sha1": "a44062fd4509cae3225b41b85e8a59088622a7cf"
+      "author": "Guido Radig at German Wikipedia",
+      "date": "2006-10-09",
+      "source": "https://commons.wikimedia.org/wiki/File:Bundesverfassungsgericht_-_Karlsruhe.JPG",
+      "size": "3008x2000",
+      "sha1": "9f97bcbbf908b880fdad3cf07b93af242004952d"
     }
   ]
 }

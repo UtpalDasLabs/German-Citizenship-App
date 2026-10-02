@@ -87,7 +87,12 @@ npm run voice:longform -- basic-rights --chapters 0-1   # narrate (cached per pa
 npm run render:longform -- basic-rights --chapters 0-1 --stills   # one PNG per shot
 npm run render:longform -- basic-rights --chapters 0-1  # out/lesson-basic-rights-ch0-1.mp4
 npm run render:longform -- basic-rights --silent        # whole cut, no voice, as an animatic
+npm run render:longform -- basic-rights --describe      # just the YouTube description
+npm run coverage                                        # is every question explained, once?
 ```
+
+The series plan and the steps for each new lesson are in
+[`longform/SERIES.md`](longform/SERIES.md).
 
 The script format is described at the top of `longform/basic-rights.md`. In
 short: `## Chapter`, `> SCENE (key): what is on screen`, `{Q6}` before the shot
@@ -99,14 +104,19 @@ that answers question 6, `[[Deutsch]]` for German, `[curious]` for delivery.
   answer lights up on the word that names it. Nothing is timed by hand.
 - **Editing is cheap.** Audio is cached by voice, model and exact paragraph
   text, so changing one sentence re-voices one paragraph.
-- **Scenes are code**, in `src/longform/shots.tsx`, chosen by the key in the
-  script. A scene without a key renders as a storyboard card with the
-  director's note, so the whole video can be watched (and timed) before
-  every scene is built.
-- **Voice:** `ELEVENLABS_VOICE_ID` (default: the creator's clone) and
-  `ELEVENLABS_MODEL` (default `eleven_v4`, which treats `[direction]` tags
-  as directions: in its timestamps they take under 0.3s, too short to be
-  spoken).
+- **Most scenes are written, not coded.** `term`, `list`, `stat`, `fact`,
+  `quote`, `photo`, `words` and `question` read the `> a | b @ cue` lines
+  under their scene in the script (`src/longform/generic.tsx`). One-off
+  scenes, like the 1949 map, are code in `src/longform/shots.tsx`. A scene
+  without a key renders as a storyboard card with the director's note.
+- **Question cards** show the catalogue wording, mark `nicht`/`kein` in red,
+  dim wrong answers as the narrator rules them out and light the right one
+  on the word that names it.
+- **Voice:** the creator's clone on Multilingual v2 with high similarity,
+  picked by ear in an A/B test because it sounds most like the creator
+  (`scripts/voice-longform.mjs`). v2 does not take `[direction]` tags, so
+  they are stripped before sending; `[pause]` still adds a gap. Bump
+  `CLONE_VERSION` whenever the clone is retrained, since its ID stays the same.
 - **Every video discloses the AI voice** in its outro and description.
 - The 1949 map is drawn from [@svg-maps/germany](https://www.npmjs.com/package/@svg-maps/germany)
   (MapSVG, CC BY 4.0): credit it in the description alongside `credits.txt`.

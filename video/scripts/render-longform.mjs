@@ -6,19 +6,24 @@
  *   npm run render:longform -- basic-rights --chapters 0-1   a cut of some chapters
  *   npm run render:longform -- basic-rights --stills         one PNG per shot, for review
  *   npm run render:longform -- basic-rights --silent         no voice: timed by word count
+ *   npm run render:longform -- basic-rights --describe       only the YouTube description
+ *
+ * Every run also writes out/lesson-<topic>-description.txt: chapters with
+ * their timestamps, the questions covered, the AI-voice disclosure and the
+ * picture credits, ready to paste into YouTube.
  *
  * Needs `npm run images -- <topic>` and `npm run voice:longform -- <topic>`
  * first. Every frame number is worked out here, from the voice's own
  * timestamps, and handed to the composition as one plan.
  */
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
 
 import { parseLongform, pickChapters } from './longform.mjs';
-import { audioDir, MODEL, paraHash, VOICE } from './voice-longform.mjs';
+import { audioDir, MODEL, paraHash, spokenText, VOICE } from './voice-longform.mjs';
 
 const VIDEO = join(import.meta.dirname, '..');
 const ROOT = join(VIDEO, '..');
@@ -45,6 +50,9 @@ if (!topic) {
 const silent = flags.has('--silent');
 
 const script = parseLongform(topic);
+// Time everything against the words actually sent to the voice (no direction
+// tags, for models that do not take them).
+for (const c of script.chapters) for (const sh of c.shots) for (const p of sh.paras) p.tts = spokenText(p.tts);
 const chapters = pickChapters(spec, script.chapters.length);
 const voiceDir = audioDir(topic);
 const frames = (s) => Math.round(s * FPS);
@@ -113,6 +121,7 @@ for (const c of chapters) {
       chapterTitle: chapter.title,
       opensChapter: i === 0 && c > 0,
       questions: s.questions,
+      screen: s.screen,
       from: cursor,
       frames: length,
       paras: silent ? paras.map((p) => ({ ...p, src: null })) : paras,
@@ -129,6 +138,48 @@ const plan = {
   shots,
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
+
+const APP_URL = 'https://utpaldaslabs.github.io/German-Citizenship-App/';
+const stamp = (frame) => {
+  const t = Math.floor(frame / FPS);
+  const h = Math.floor(t / 3600);
+  const m = Math.floor((t % 3600) / 60);
+  const sec = String(t % 60).padStart(2, '0');
+  return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`;
+};
+function describe() {
+  const chapterLines = [];
+  for (const sh of shots) {
+    if (sh.opensChapter || sh === shots[0]) {
+      chapterLines.push(`${stamp(sh.from)} ${sh === shots[0] ? 'Intro' : sh.chapterTitle}`);
+    }
+  }
+  const credits = join(OUT, 'images', topic, 'credits.txt');
+  const usesMap = shots.some((sh) => sh.key === 'map1949' || sh.key === 'reunify');
+  const asked = shots.flatMap((sh) => sh.questions);
+  return [
+    script.meta.title,
+    '',
+    `${asked.length} questions from the German citizenship test (Leben in Deutschland / Einbürgerungstest), explained in English, with the exact German you will see on the day.`,
+    '',
+    `Practise all 460 questions, free, no account: ${APP_URL}`,
+    '',
+    'Chapters',
+    ...chapterLines,
+    '',
+    `Questions in this video (catalogue numbers): ${asked.map((id) => `#${id}`).join(', ')}`,
+    '',
+    "Narrated with an AI version of the creator's own voice (ElevenLabs). Every fact was checked against the official question catalogue and the Grundgesetz. This channel is independent and not affiliated with the BAMF or any government body.",
+    '',
+    existsSync(credits) ? readFileSync(credits, 'utf8').trim() : 'Pictures: none',
+    ...(usesMap ? ['• Map of Germany: @svg-maps/germany, based on MapSVG (mapsvg.com), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)'] : []),
+    '',
+  ].join('\n');
+}
+const descriptionFile = join(OUT, `lesson-${topic}${spec ? `-ch${spec}` : ''}-description.txt`);
+writeFileSync(descriptionFile, describe());
+console.log(`Description → ${descriptionFile}`);
+if (flags.has('--describe')) process.exit(0);
 
 // The bundle's public dir: the app icon, this topic's pictures and voice.
 const pub = join(OUT, '.public-longform');

@@ -4,7 +4,10 @@ import { AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame
 import { C } from '../lib/brand';
 import { ChapterLabel, GermanCaption, Storyboard } from './look';
 import { ShotContext, type Plan, type Shot } from './plan';
-import { SHOWS_GERMAN, shotFor } from './shots';
+import { shownGerman, SHOWS_GERMAN, shotFor } from './shots';
+
+/** Scenes with a photo caption at the bottom: the German sits above it. */
+const PHOTO_SCENES = new Set(['ruins', 'bonn', 'photo']);
 
 export type LongFormProps = { plan: Plan };
 
@@ -18,7 +21,12 @@ function ShotView({ shot, plan, first }: { shot: Shot; plan: Plan; first: boolea
     <ShotContext.Provider value={shot}>
       <AbsoluteFill style={{ opacity }}>
         {shotFor(shot.key, plan.topic, plan.title, plan.questions) ?? <Storyboard />}
-        {shot.key && SHOWS_GERMAN.has(shot.key) ? null : <GermanCaption />}
+        {shot.key && SHOWS_GERMAN.has(shot.key) ? null : (
+          <GermanCaption
+            exclude={shownGerman(shot.questions, shot.screen, shot.key)}
+            bottom={PHOTO_SCENES.has(shot.key ?? '') ? 190 : 70}
+          />
+        )}
         {shot.opensChapter ? <ChapterLabel number={shot.chapter} title={shot.chapterTitle} /> : null}
       </AbsoluteFill>
     </ShotContext.Provider>

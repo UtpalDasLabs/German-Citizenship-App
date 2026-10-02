@@ -12,7 +12,8 @@
     "voice": "NODE_USE_ENV_PROXY=1 node scripts/voice-elevenlabs.mjs",
     "images": "NODE_USE_ENV_PROXY=1 node scripts/images.mjs",
     "voice:longform": "NODE_USE_ENV_PROXY=1 node scripts/voice-longform.mjs",
-    "render:longform": "node scripts/render-longform.mjs"
+    "render:longform": "node scripts/render-longform.mjs",
+    "coverage": "node scripts/coverage.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",

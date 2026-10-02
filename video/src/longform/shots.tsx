@@ -3,23 +3,14 @@ import React from 'react';
 import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
 import { OptionCard, type CardState } from '../components';
+import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './generic';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
-import { FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, Vignette } from './look';
-import { charFrame, cue, paraStart, spokenCount, useShot, type Para } from './plan';
+import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
+import { charFrame, cue, paraStart, useShot } from './plan';
 
-const img = (topic: string, id: string, ext = 'jpg') => `images/${topic}/${id}.${ext}`;
+export const img = (topic: string, id: string, ext = 'jpg') => `images/${topic}/${id}.${ext}`;
 
-/** Archive look on top of any photo shot. */
-function Archive({ children }: { children: React.ReactNode }) {
-  return (
-    <AbsoluteFill>
-      {children}
-      <Vignette />
-      <Grain />
-    </AbsoluteFill>
-  );
-}
 
 // ─── Cold open ──────────────────────────────────────────────────────────────
 
@@ -90,35 +81,7 @@ function Bonn({ topic }: { topic: string }) {
   );
 }
 
-/** Fades its children in over the frames where the previous picture is still showing. */
-function CrossIn({ children, frames = 12 }: { children: React.ReactNode; frames?: number }) {
-  const frame = useCurrentFrame();
-  return (
-    <AbsoluteFill
-      style={{
-        opacity: interpolate(frame, [0, frames], [0, 1], {
-          extrapolateRight: 'clamp',
-        }),
-      }}
-    >
-      {children}
-    </AbsoluteFill>
-  );
-}
 
-/** German text that writes itself exactly as fast as it is spoken. */
-function SpokenText({ p, start, end, style }: { p: Para; start: number; end: number; style: React.CSSProperties }) {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const n = spokenCount(p, start, end, frame, fps);
-  const text = p.tts.slice(start, end);
-  return (
-    <div style={style}>
-      <span>{text.slice(0, n)}</span>
-      <span style={{ opacity: 0 }}>{text.slice(n)}</span>
-    </div>
-  );
-}
 
 function Article1({ topic, questions }: { topic: string; questions: number[] }) {
   const shot = useShot();
@@ -740,6 +703,31 @@ function Reunify() {
 
 const LETTERS = ['a', 'b', 'c', 'd'] as const;
 
+/** For matching what was said against what is printed: no case, no end punctuation. */
+export const norm = (t: string) =>
+  t
+    .toLowerCase()
+    .replace(/[.…?!„“"]+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+/** The question with "nicht" / "kein…" in red: the words that turn it into a trap. */
+function WithNegation({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\bnicht\b|\bkein\w*)/i).map((part, i) =>
+        i % 2 ? (
+          <span key={i} style={{ color: C.danger }}>
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
 /**
  * An exam question exactly as worded in the catalogue. The right answer lights
  * up when the narrator says it; wrong answers dim as the narrator rules them out.
@@ -758,11 +746,15 @@ function Question() {
   for (const p of shot.paras) {
     for (const d of p.de) {
       for (const l of LETTERS) {
-        if (spoken[l] == null && d.text === q.de.options[l]) spoken[l] = charFrame(p, d.start, fps);
+        if (spoken[l] == null && norm(d.text) === norm(q.de.options[l])) spoken[l] = charFrame(p, d.start, fps);
       }
     }
   }
   const answerAt = spoken[answer] ?? Math.round(shot.frames * 0.6);
+  // Some catalogue questions are whole stories; keep them on one screen.
+  const qSize = q.de.text.length > 150 ? 44 : q.de.text.length > 90 ? 54 : 64;
+  const longest = Math.max(...LETTERS.map((l) => q.de.options[l].length));
+  const optSize = longest > 50 ? 34 : longest > 28 ? 40 : 48;
 
   return (
     <AbsoluteFill
@@ -789,13 +781,13 @@ function Question() {
         style={{
           fontFamily: FONT,
           fontWeight: 800,
-          fontSize: 64,
+          fontSize: qSize,
           lineHeight: 1.15,
           color: C.text,
           opacity: rise(frame, 2),
         }}
       >
-        {q.de.text}
+        <WithNegation text={q.de.text} />
       </div>
       <div
         style={{
@@ -806,7 +798,7 @@ function Question() {
           opacity: rise(frame, 8),
         }}
       >
-        {q.en.text}
+        {q.en?.text}
       </div>
       <div
         style={{
@@ -828,7 +820,7 @@ function Question() {
               enShown={1}
               state={state}
               enter={rise(frame, 10 + i * 4, 14)}
-              fontSize={48}
+              fontSize={optSize}
               marks={[]}
             />
           );
@@ -838,8 +830,21 @@ function Question() {
   );
 }
 
-/** Scenes that already put the German on screen themselves. */
-export const SHOWS_GERMAN = new Set(['article1', 'book', 'question']);
+/** Scenes that already put all their German on screen themselves. */
+export const SHOWS_GERMAN = new Set(['article1', 'book', 'outro']);
+
+/**
+ * German the scene already shows, so the spoken-German caption skips it: the
+ * question and its options, and the scene's own on-screen lines.
+ */
+export function shownGerman(questions: number[], screen: string[], key: string | null): string[] {
+  const shown = screen.flatMap((l) => l.split(' @ ')[0].split(/ \| |, /));
+  if (key === 'question' && questions[0] != null) {
+    const { q } = load(questions[0]);
+    shown.push(q.de.text, ...LETTERS.map((l) => q.de.options[l]));
+  }
+  return shown.map(norm);
+}
 
 export function shotFor(key: string | null, topic: string, title: string, questions: number[]): React.ReactNode | null {
   switch (key) {
@@ -859,6 +864,24 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <Reunify />;
     case 'question':
       return <Question />;
+    case 'term':
+      return <Term />;
+    case 'list':
+      return <List />;
+    case 'stat':
+      return <Stat />;
+    case 'fact':
+      return <Fact />;
+    case 'quote':
+      return <Quote />;
+    case 'photo':
+      return <PhotoScene topic={topic} />;
+    case 'words':
+      return <Words />;
+    case 'outro':
+      return <Outro />;
+    case 'end':
+      return <End />;
     default:
       return null;
   }

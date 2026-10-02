@@ -20,7 +20,9 @@ export const LONGFORM_DIR = path.resolve(here, '..', 'longform');
 
 const TAG = /\[(?!\[)([a-z][a-z ,]*)\](?!\])/gi;
 
-function paragraph(raw) {
+function paragraph(text) {
+  // *Emphasis* is for the reader of the script; the voice gets plain words.
+  const raw = text.replace(/\*([^*]+)\*/g, '$1');
   const tags = [...raw.matchAll(TAG)].map((m) => m[1].toLowerCase());
   const tts = raw
     .replace(/\[\[(.+?)\]\]/g, '$1')
@@ -82,10 +84,14 @@ export function parseLongform(topic) {
         key: m[1] ?? null,
         scene: m[2],
         questions: pendingQuestions,
+        screen: [],
         paras: [],
       };
       pendingQuestions = [];
       chapter.shots.push(shot);
+    } else if (t.startsWith('> ') && shot && shot.paras.length === 0 && para.length === 0) {
+      // Further quoted lines right after a scene: what the scene puts on screen.
+      shot.screen.push(t.slice(2).trim());
     } else if (/^\{Q\d+\}$/.test(t)) {
       flush();
       pendingQuestions.push(Number(t.slice(2, -1)));
