@@ -38,13 +38,22 @@ export const CLONE_VERSION = process.env.ELEVENLABS_CLONE_VERSION ?? '2026-10-02
  * of the energy the v4 model had. v2 does not take [direction] tags.
  */
 export const MODEL = process.env.ELEVENLABS_MODEL ?? 'eleven_multilingual_v2';
-export const SETTINGS = { stability: 0.4, similarity_boost: 0.95, style: 0.35, use_speaker_boost: true };
+/**
+ * Two deliveries. "natural" (default) is the closest to the creator's own
+ * voice. "lively" (--lively, used with the lively cut) trades a little
+ * likeness for energy: less stable, more style, 8 % faster.
+ */
+export const PROFILE = process.argv.includes('--lively') ? 'lively' : 'natural';
+export const SETTINGS =
+  PROFILE === 'lively'
+    ? { stability: 0.3, similarity_boost: 0.9, style: 0.6, use_speaker_boost: true, speed: 1.08 }
+    : { stability: 0.4, similarity_boost: 0.95, style: 0.35, use_speaker_boost: true };
 const TAKES_TAGS = /^eleven_v[34]/.test(MODEL);
 
 /** The text actually sent to the voice for a paragraph. */
 export const spokenText = (tts) => (TAKES_TAGS ? tts : tts.replace(/\[(?!\[)[a-z][a-z ,]*\]\s*/gi, '').trim());
 
-const slug = `${VOICE}-${CLONE_VERSION}-${MODEL}-s${SETTINGS.stability}-m${SETTINGS.similarity_boost}-y${SETTINGS.style}`;
+const slug = `${VOICE}-${CLONE_VERSION}-${MODEL}-s${SETTINGS.stability}-m${SETTINGS.similarity_boost}-y${SETTINGS.style}${SETTINGS.speed ? `-x${SETTINGS.speed}` : ''}`;
 export const audioDir = (topic) => path.join(root, 'out', 'audio', 'longform', topic, slug);
 export const paraHash = (text) => createHash('sha1').update(text).digest('hex').slice(0, 12);
 
@@ -71,7 +80,7 @@ async function main() {
     .map((p) => ({ ...p, text: spokenText(p.tts) }));
   const todo = paras.filter((p) => !fs.existsSync(path.join(dir, `${paraHash(p.text)}.json`)));
   const chars = todo.reduce((n, p) => n + p.text.length, 0);
-  console.log(`${paras.length} paragraphs, ${todo.length} not voiced yet: ${chars} characters (${VOICE}, ${MODEL})`);
+  console.log(`${paras.length} paragraphs, ${todo.length} not voiced yet: ${chars} characters (${VOICE}, ${MODEL}, ${PROFILE})`);
   if (dry) return;
 
   for (const [i, p] of todo.entries()) {

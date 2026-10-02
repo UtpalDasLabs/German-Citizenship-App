@@ -9,7 +9,7 @@ import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
-import { charFrame, cue, findCue, paraStart, useShot } from './plan';
+import { charFrame, cue, findCue, paraStart, useShot, type Shot } from './plan';
 
 export const img = (topic: string, id: string, ext = 'jpg') => `images/${topic}/${id}.${ext}`;
 
@@ -737,19 +737,16 @@ function WithNegation({ text }: { text: string }) {
 }
 
 /**
- * An exam question exactly as worded in the catalogue. The right answer lights
- * up when the narrator says it; wrong answers dim as the narrator rules them out.
+ * When a question card's answer lights up, and when each wrong option is ruled
+ * out (first spoken). Shared with the sound effects, so the ding lands on the
+ * same frame as the green.
  */
-function Question() {
-  const shot = useShot();
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+export function questionTiming(shot: Shot, fps: number) {
   const id = shot.questions[0];
   if (id == null) throw new Error(`A question shot needs a {Q<id>} anchor: ${shot.scene}`);
   const { q } = load(id);
   const answer = q.answer as (typeof LETTERS)[number];
-
-  // When each option's German text is first spoken, after the question itself.
+  // When each option's German text is first spoken.
   const spoken: Partial<Record<string, number>> = {};
   for (const p of shot.paras) {
     for (const d of p.de) {
@@ -762,6 +759,19 @@ function Question() {
   const revealCue = shot.screen.find((l) => l.startsWith('@ '));
   const revealAt = revealCue ? findCue(shot, revealCue.slice(2).trim(), fps) : null;
   const answerAt = revealAt ?? spoken[answer] ?? Math.round(shot.frames * 0.6);
+  const ruledOut = LETTERS.filter((l) => l !== answer && spoken[l] != null && spoken[l]! < answerAt).map((l) => spoken[l]!);
+  return { id, q, answer, spoken, answerAt, ruledOut };
+}
+
+/**
+ * An exam question exactly as worded in the catalogue. The right answer lights
+ * up when the narrator says it; wrong answers dim as the narrator rules them out.
+ */
+function Question() {
+  const shot = useShot();
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { id, q, answer, spoken, answerAt } = questionTiming(shot, fps);
   // Some catalogue questions are whole stories; keep them on one screen.
   const qSize = q.de.text.length > 150 ? 44 : q.de.text.length > 90 ? 54 : 64;
   const longest = Math.max(...LETTERS.map((l) => q.de.options[l].length));

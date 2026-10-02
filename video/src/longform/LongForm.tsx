@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame } from 'remotion';
 
 import { C } from '../lib/brand';
+import { Punches, Soundtrack, usePunchScale } from './lively';
 import { ChapterLabel, GermanCaption, Storyboard } from './look';
 import { ShotContext, type Plan, type Shot } from './plan';
 import { shownGerman, SHOWS_GERMAN, shotFor } from './shots';
@@ -17,10 +18,14 @@ export const OVERLAP = 12;
 function ShotView({ shot, plan, first }: { shot: Shot; plan: Plan; first: boolean }) {
   const frame = useCurrentFrame();
   const opacity = first ? 1 : interpolate(frame, [0, OVERLAP], [0, 1], { extrapolateRight: 'clamp' });
+  const scale = usePunchScale(shot);
   return (
     <ShotContext.Provider value={shot}>
       <AbsoluteFill style={{ opacity }}>
-        {shotFor(shot.key, plan.topic, plan.title, plan.questions) ?? <Storyboard />}
+        <AbsoluteFill style={{ transform: plan.lively ? `scale(${scale})` : undefined }}>
+          {shotFor(shot.key, plan.topic, plan.title, plan.questions) ?? <Storyboard />}
+        </AbsoluteFill>
+        {plan.lively ? <Punches shot={shot} /> : null}
         {shot.key && SHOWS_GERMAN.has(shot.key) ? null : (
           <GermanCaption
             exclude={shownGerman(shot.questions, shot.screen, shot.key)}
@@ -46,13 +51,16 @@ export function LongForm({ plan }: LongFormProps) {
           <ShotView shot={shot} plan={plan} first={i === 0} />
         </Sequence>
       ))}
+      {plan.lively ? <Soundtrack plan={plan} /> : null}
       {plan.shots.flatMap((shot, i) =>
         // A silent cut (--silent) has timings but no audio.
-        shot.paras.filter((p) => p.src).map((p, j) => (
-          <Sequence key={`${i}-${j}`} from={shot.from + p.from} durationInFrames={p.frames} name="voice">
-            <Audio src={staticFile(p.src!)} />
-          </Sequence>
-        )),
+        shot.paras
+          .filter((p) => p.src)
+          .map((p, j) => (
+            <Sequence key={`${i}-${j}`} from={shot.from + p.from} durationInFrames={p.frames} name="voice">
+              <Audio src={staticFile(p.src!)} />
+            </Sequence>
+          )),
       )}
     </AbsoluteFill>
   );

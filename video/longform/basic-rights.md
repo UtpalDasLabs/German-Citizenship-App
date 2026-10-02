@@ -32,19 +32,19 @@ given where the exam answer depends on them.
 
 > SCENE (ruins): Black. A single match strikes. Slowly: a ruined city skyline, 1945, smoke, grey palette.
 
-[curious] Imagine you get to write the rules for a whole country. From scratch.
+[curious] Imagine this. You get to write the rules for a **whole country**. From scratch. No pressure.
 
 > SCENE (bonn): The ruins fade to a quiet room in Bonn, 1949. Sixty-five figures around long tables. Papers everywhere.
 
-[serious] Now imagine you're doing it four years after that country destroyed itself — after a government took people's rights, then their freedom, then their lives. And much of it was done through laws, passed after a parliament voted away its own power.
+[serious] Oh, and one more thing: that country has just **destroyed itself**. Four years earlier, after a government took people's rights, then their freedom, then their lives. And it did a lot of that legally, with laws, after a parliament voted away its own power.
 
-[pause] What would you write first?
+[pause] So. What would *you* write **first**?
 
 > SCENE (article1): A blank page. One sentence types itself, in German, then fades to English beneath it.
 
-[warm] In 1949, sixty-five people in Bonn answered that question with one sentence: [[Die Würde des Menschen ist unantastbar.]] Human dignity is inviolable.
+[warm] In 1949, sixty-five people in Bonn answered with **one sentence**: [[Die Würde des Menschen ist unantastbar.]] Human dignity is inviolable.
 
-That sentence is where this video starts. By the end, you'll understand the rules that protect everyone in Germany — including you — and you'll be able to answer all twenty-three questions on basic rights in the citizenship test. In German.
+And that sentence is where we start. Stick with me, and you'll get the rules that protect everyone in Germany, **including you**. Plus all twenty-three basic-rights questions from the citizenship test. In German!
 
 > SCENE (title): Title card. "Basic Rights — The Rules Even the Government Has to Obey". The app's eagle, small, in a corner.
 > GRUNDRECHTE
@@ -53,31 +53,31 @@ That sentence is where this video starts. By the end, you'll understand the rule
 
 > SCENE (book): A thick book on a desk. Its cover reads "Grundgesetz". A second label slides in and is crossed out: "Verfassung".
 
-[curious] Here's something odd. Germany has a constitution — but it isn't called a constitution.
+[curious] Okay, here's something **weird**. Germany has a constitution. But it isn't called a constitution!
 
-It's called the [[Grundgesetz]]. Literally, the "basic law".
+It's called the [[Grundgesetz]]. Literally: the **basic law**.
 
 > SCENE (map1949): A map of Germany in 1949, split in two. The western part lights up; the eastern part stays grey.
 
-Why? Because in 1949 Germany was divided, and the people writing it didn't want to set the division in stone. A real constitution, they thought, should wait until all Germans could decide together. So they called this one a basic law — a temporary arrangement.
+Why? Because in 1949, Germany was **divided**. And the people writing it didn't want to set that split in stone. A real constitution, they said, should wait until *all* Germans could decide together. So this one got a humbler name: a basic law. A temporary arrangement.
 
-[dry amusement] It was so temporary that it's still here.
+[dry amusement] So temporary... that it's **still here**.
 
 > SCENE (reunify): The two halves of the map join. "1990" appears.
 
-In 1990, when Germany reunited, the basic law simply became the constitution for the whole country. The name stayed.
+In 1990, Germany **reunited**, and the basic law simply became the constitution for the whole country. And the name stayed.
 
 {Q6}
 
 > SCENE (question): Question card #6, all four options. Option D highlights.
 
-So when the exam asks [[Wie heißt die deutsche Verfassung?]] — what is the German constitution called? — the answer is [[Grundgesetz]]. Not [[Bundesgesetz]], not [[Volksgesetz]]. They sound plausible, but neither is the name of the constitution.
+So when the exam asks [[Wie heißt die deutsche Verfassung?]] — what's the German constitution called? — you say: [[Grundgesetz]]. Not [[Bundesgesetz]]. Not [[Volksgesetz]]. They sound believable, and that's exactly the trap.
 
 {Q11}
 
 > SCENE (question): Question card #11. Option A highlights.
 
-And the same question comes back in a second outfit: [[Wie wird die Verfassung der Bundesrepublik Deutschland genannt?]] Same answer: [[Grundgesetz]]. If you see the word [[Verfassung]] in a question, think [[Grundgesetz]].
+And the same question comes back in a **disguise**: [[Wie wird die Verfassung der Bundesrepublik Deutschland genannt?]] Same answer: [[Grundgesetz]]. See [[Verfassung]] in a question? Think [[Grundgesetz]].
 
 ## Article 1: dignity comes first
 

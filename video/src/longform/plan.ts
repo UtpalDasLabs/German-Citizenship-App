@@ -17,6 +17,8 @@ export type Para = {
   starts: number[];
   /** German spans, as character ranges of `tts`. */
   de: { text: string; start: number; end: number }[];
+  /** Words to punch on screen (`**…**` in the script), as ranges of `tts`. */
+  punch: { text: string; start: number; end: number }[];
 };
 
 export type Shot = {
@@ -42,6 +44,8 @@ export type Plan = {
   fps: number;
   total: number;
   shots: Shot[];
+  /** Music, sound effects and punch-ins on (the lively cut) or off. */
+  lively: boolean;
 };
 
 export const ShotContext = createContext<Shot | null>(null);

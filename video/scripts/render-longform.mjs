@@ -16,6 +16,7 @@
  * first. Every frame number is worked out here, from the voice's own
  * timestamps, and handed to the composition as one plan.
  */
+import { execFileSync } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -31,12 +32,22 @@ const OUT = join(VIDEO, 'out');
 const FPS = 30;
 
 /** Seconds of air around the voice. */
-const LEAD = 0.35; //         before a shot's first paragraph
-const BETWEEN = 0.45; //      between paragraphs
-const PAUSE = 0.6; //         extra, before a paragraph tagged [pause]
-const TAIL = 0.7; //          after a shot's last paragraph
-const READ = 1.4; //          extra after a question, to read the card
-const SILENT_SHOT = 4; //     a shot with no narration (title cards)
+const args0 = process.argv.slice(2);
+/**
+ * --lively: music, sound effects, punch words and a much tighter edit. The
+ * calm timings leave air for reading; the lively ones keep the voice moving,
+ * the way fast explainer channels cut.
+ */
+const LIVELY = args0.includes('--lively');
+const T = LIVELY
+  ? { lead: 0.12, between: 0.22, pause: 0.35, tail: 0.3, read: 0.5, silentShot: 2.4 }
+  : { lead: 0.35, between: 0.45, pause: 0.6, tail: 0.7, read: 1.4, silentShot: 4 };
+const LEAD = T.lead; //         before a shot's first paragraph
+const BETWEEN = T.between; //   between paragraphs
+const PAUSE = T.pause; //       extra, before a paragraph tagged [pause]
+const TAIL = T.tail; //         after a shot's last paragraph
+const READ = T.read; //         extra after a question, to read the card
+const SILENT_SHOT = T.silentShot; // a shot with no narration (title cards)
 const WORDS_PER_SECOND = 2.6; // --silent only
 
 const args = process.argv.slice(2);
@@ -81,6 +92,17 @@ function timing(p) {
   };
 }
 
+/** Punch words as ranges of the text the voice was sent. */
+function punchRanges(p) {
+  let from = 0;
+  return p.punch.map((text) => {
+    const start = p.tts.indexOf(text, from);
+    if (start === -1) throw new Error(`Punch "${text}" not found in "${p.tts}"`);
+    from = start + text.length;
+    return { text, start, end: start + text.length };
+  });
+}
+
 /** German spans as ranges of the text the voice was sent. */
 function deRanges(p) {
   let from = 0;
@@ -109,6 +131,7 @@ for (const c of chapters) {
         tts: p.tts,
         starts,
         de: deRanges(p),
+        punch: punchRanges(p),
       };
       t += para.frames;
       return para;
@@ -136,6 +159,7 @@ const plan = {
   fps: FPS,
   total: cursor,
   shots,
+  lively: LIVELY,
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
@@ -187,6 +211,10 @@ const pub = join(OUT, `.public-longform-${topic}`);
 rmSync(pub, { recursive: true, force: true });
 mkdirSync(join(pub, 'audio'), { recursive: true });
 cpSync(join(ROOT, 'assets', 'icon.png'), join(pub, 'icon.png'));
+if (LIVELY) {
+  if (!existsSync(join(OUT, 'sound', 'music.wav'))) execFileSync('node', [join(VIDEO, 'scripts', 'sound.mjs')], { stdio: 'inherit' });
+  cpSync(join(OUT, 'sound'), join(pub, 'sound'), { recursive: true });
+}
 // The catalogue's own pictures, for picture questions.
 cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: true });
 cpSync(join(OUT, 'images', topic), join(pub, 'images', topic), {
@@ -210,7 +238,7 @@ const composition = await selectComposition({
   inputProps,
   browserExecutable,
 });
-const label = `${topic}${spec ? `-ch${spec}` : ''}`;
+const label = `${topic}${spec ? `-ch${spec}` : ''}${LIVELY ? '-lively' : ''}`;
 
 if (flags.has('--stills')) {
   for (const [i, s] of shots.entries()) {
