@@ -3,49 +3,102 @@
   "note": "Every picture in the video, where it came from and under what licence. `npm run images -- basic-rights` checks the licence of each file against Wikimedia Commons, downloads it to out/images/basic-rights/ and writes the credits for the video description. Licence fields are filled in by the script; do not edit them by hand.",
   "images": [
     {
-      "id": "ruins-wesel",
-      "file": "Wesel 1945.jpg",
-      "scene": "Cold open — a ruined city, 1945"
-    },
-    {
       "id": "ruins-stuttgart",
       "file": "Stuttgart, Royal Air Force Bomber Command, 1942-1945. CL3437.jpg",
-      "scene": "Cold open — a ruined city, 1945"
+      "scene": "Cold open — a ruined city, 1945",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Royal Air Force official photographer, Clark N S (Flt Lt) and Broom R R (Fg Off)",
+      "date": "circa 1945",
+      "source": "https://commons.wikimedia.org/wiki/File:Stuttgart,_Royal_Air_Force_Bomber_Command,_1942-1945._CL3437.jpg",
+      "size": "3019x2480",
+      "sha1": "fde452b4cbf700c333761c755a31abf49a1e3922"
+    },
+    {
+      "id": "ruins-wesel",
+      "file": "Wesel 1945.jpg",
+      "scene": "Cold open — a ruined city, 1945",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "USAAF",
+      "date": "1945-03",
+      "source": "https://commons.wikimedia.org/wiki/File:Wesel_1945.jpg",
+      "size": "3000x2314",
+      "sha1": "d6eeaa7b631b8fa3917a9df5623100f573439fcd"
     },
     {
       "id": "ruins-heilbronn",
       "file": "Heilbronn 19450323.jpg",
-      "scene": "Cold open — a ruined city, 1945"
+      "scene": "Cold open — a ruined city, 1945",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "US Army",
+      "date": "Taken on 23 March 1945",
+      "source": "https://commons.wikimedia.org/wiki/File:Heilbronn_19450323.jpg",
+      "size": "3104x3992",
+      "sha1": "ad3afc1e51b93444986849c411faf77bf609d3f4"
     },
     {
       "id": "bonn-museum-koenig",
       "file": "Außenfassade des Museums Koenig in Bonn.jpg",
-      "scene": "Cold open — Bonn, where the Parliamentary Council first met"
+      "scene": "Cold open — Bonn, where the Parliamentary Council first met",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "author": "Simbel",
+      "date": "2006-01-22",
+      "source": "https://commons.wikimedia.org/wiki/File:Au%C3%9Fenfassade_des_Museums_Koenig_in_Bonn.jpg",
+      "size": "2560x1920",
+      "sha1": "117e390a5b059041b3af06947790285a45a383aa",
+      "note": "Modern photo (2006) of the building where the Parliamentary Council opened on 1 September 1948. No free photo of the Council at work is large enough; that scene is drawn."
     },
     {
-      "id": "bonn-plaque",
-      "file": "Gedenktafel Parlamentarischer Rat und Grundgesetz.jpg",
-      "scene": "Cold open — Bonn, where the Parliamentary Council first met"
-    },
-    {
-      "id": "bgbl-1949-p1",
-      "file": "Bundesgesetzblatt Nr 1 von 1949-05-23 Grundgesetz-002.jpg",
-      "scene": "Cold open / chapter 1 — the Grundgesetz as first printed, 23 May 1949"
-    },
-    {
-      "id": "bgbl-1949-p2",
+      "id": "bgbl-1949-article1",
       "file": "Bundesgesetzblatt Nr 1 von 1949-05-23 Grundgesetz-003.jpg",
-      "scene": "Cold open / chapter 1 — the Grundgesetz as first printed, 23 May 1949"
+      "scene": "Cold open — \"Die Würde des Menschen ist unantastbar\" as first printed, 23 May 1949 (front page, Article 1 top right)",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Parlamentarischer Rat",
+      "date": "2017-12-08 19:44:42",
+      "source": "https://commons.wikimedia.org/wiki/File:Bundesgesetzblatt_Nr_1_von_1949-05-23_Grundgesetz-003.jpg",
+      "size": "4818x6926",
+      "sha1": "38ce23e5f7ab1d61adcb93cc086ee914508383d5"
+    },
+    {
+      "id": "bgbl-1949-contents",
+      "file": "Bundesgesetzblatt Nr 1 von 1949-05-23 Grundgesetz-002.jpg",
+      "scene": "Chapter 1 — the Grundgesetz contents page, 1949: articles 1–19 are \"Die Grundrechte\"",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Parlamentarischer Rat",
+      "date": "2017-12-08 19:44:55",
+      "source": "https://commons.wikimedia.org/wiki/File:Bundesgesetzblatt_Nr_1_von_1949-05-23_Grundgesetz-002.jpg",
+      "size": "4818x6962",
+      "sha1": "feb2ceaeaf1faccad10945533c8915ac8cb3eab8"
     },
     {
       "id": "map-1949",
       "file": "Germany, FRG and GDR location map October 1949 - November 1950.svg",
-      "scene": "Chapter 1 — Germany split in two, 1949"
+      "scene": "Chapter 1 — Germany split in two, 1949",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Germany,_Federal_Republic_of_location_map_October_1949_-_November_1950.svg: TUBS Germany,_German_Demorcratic_Republic_location_map_October_1949_-_July_1952.svg: TUBS derivative work: WikiNight2 (talk)",
+      "date": "2010-04-27 16:22",
+      "source": "https://commons.wikimedia.org/wiki/File:Germany,_FRG_and_GDR_location_map_October_1949_-_November_1950.svg",
+      "size": "1075x1273",
+      "sha1": "44b2c1fdd16dc2f4985d29fa8cf71d944d8c1b2a",
+      "note": "Placeholder: both states are drawn the same colour, so it cannot show the west lighting up. Replace with our own map drawn from public-domain boundary data."
     },
     {
       "id": "wall-1989",
       "file": "Berlin-Mauerfall-1-10-November-1989.jpg",
-      "scene": "Chapter 1 — the two halves join"
+      "scene": "Chapter 1 — the two halves join",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Vietinghoff",
+      "date": "2025-05-12 06:48:05",
+      "source": "https://commons.wikimedia.org/wiki/File:Berlin-Mauerfall-1-10-November-1989.jpg",
+      "size": "2000x1257",
+      "sha1": "a44062fd4509cae3225b41b85e8a59088622a7cf"
     }
   ]
 }
