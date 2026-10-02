@@ -1,0 +1,52 @@
+# The series
+
+One long-form lesson per topic in the app's "study by topic" cards, plus one
+short lesson per federal state. Together they explain all 460 catalogue
+questions, each exactly once. `npm run coverage` checks that.
+
+Topics with more than about 25 questions are split into parts, so no lesson
+runs much past 20 minutes.
+
+| # | Lesson | Questions | Script | Voice | Video |
+|---|--------|-----------|--------|-------|-------|
+| 1 | Basic Rights | 23 | `basic-rights.md` | done | rendered |
+| 2 | Europe & the World | 23 | `europe.md` | done | rendering |
+| 3 | Work & Welfare | 22 | `work.md` | | |
+| 4 | State & Institutions | 26 | `institutions.md` | | |
+| 5 | Society & Daily Life, parts 1–2 | 38 | `society-1.md`, `society-2.md` | | |
+| 6 | Law & Justice, parts 1–2 | 41 | `law-1.md`, `law-2.md` | | |
+| 7 | Elections & Parties, parts 1–3 | 60 | `democracy-1.md` … `-3.md` | | |
+| 8 | History, parts 1–3 | 67 | | | |
+| 9–24 | One per federal state | 10 each | | | |
+
+That is 14 topic lessons and 16 state lessons.
+
+## Making one lesson
+
+1. **Write** `longform/<topic>.md` (format at the top of `basic-rights.md`).
+   List every question in the front matter, give each a `{Q<id>}` anchor on a
+   `question` scene, and check every claim against the catalogue answer and
+   its source (cited in a comment at the end).
+2. `npm run coverage`: no question missing, none twice.
+3. **Pictures**: list them in `longform/<topic>.images.json`, then
+   `npm run images -- <topic>`.
+4. `npm run render:longform -- <topic> --silent --stills`: one still per shot,
+   before paying for the voice.
+5. `npm run voice:longform -- <topic> --dry` for the cost, then without `--dry`.
+6. `npm run render:longform -- <topic>`: the video and its YouTube
+   description (chapters, questions, AI-voice disclosure, picture credits).
+
+## Voice budget
+
+The narration costs about 600 characters per question explained: around
+14,000 for a 23-question lesson, around 250,000 for the whole series.
+ElevenLabs Starter includes 30,000 credits a month (about two lessons);
+Creator includes 121,000 (about eight). Multilingual v2 costs one credit per
+character. Re-voicing after an edit costs only the paragraphs that changed.
+
+## Every upload
+
+- Title from the script's front matter; description from the render.
+- The AI-voice disclosure stays in the outro, the end card and the description.
+- Nothing implying official status: no federal eagle, no BAMF branding, the
+  "not affiliated" line stays in the description.

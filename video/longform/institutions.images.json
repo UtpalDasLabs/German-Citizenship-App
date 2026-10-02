@@ -1,0 +1,42 @@
+{
+  "topic": "institutions",
+  "note": "Every picture in the video, where it came from and under what licence. Licence fields are filled in by `npm run images -- institutions`; do not edit them by hand.",
+  "images": [
+    {
+      "id": "bellevue",
+      "file": "Berlin Schloss Bellevue (S07 1695).jpg",
+      "scene": "Three powers — the federal president's official seat",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Michael.F.H.Barth",
+      "date": "2020-09-20 14:27:23",
+      "source": "https://commons.wikimedia.org/wiki/File:Berlin_Schloss_Bellevue_(S07_1695).jpg",
+      "size": "6000x4000",
+      "sha1": "b0a49506fcf6650dfd919c79b661701786ab218e"
+    },
+    {
+      "id": "reichstag",
+      "file": "Berlín, Reichstag 2.jpg",
+      "scene": "Three powers — the Bundestag",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "LBM1948",
+      "date": "2015-06-19 18:40:23",
+      "source": "https://commons.wikimedia.org/wiki/File:Berl%C3%ADn,_Reichstag_2.jpg",
+      "size": "4144x2808",
+      "sha1": "03055c0fe75c8f4892db5dc2c4f91fbe0aacfc01"
+    },
+    {
+      "id": "synagogue",
+      "file": "Neue Synagoge, Oranienburger Straße, Berlin, 1603281233, ako.jpg",
+      "scene": "Jewish life in Germany — the New Synagogue, Berlin",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Ansgar Koreng",
+      "date": "2016-03-28 12:33:35",
+      "source": "https://commons.wikimedia.org/wiki/File:Neue_Synagoge,_Oranienburger_Stra%C3%9Fe,_Berlin,_1603281233,_ako.jpg",
+      "size": "3673x2449",
+      "sha1": "1698c986682ffd1045779f8578e57129408f1624"
+    }
+  ]
+}

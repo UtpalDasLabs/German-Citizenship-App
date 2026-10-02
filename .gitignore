@@ -44,3 +44,7 @@ yarn-error.*
 # Regenerate with `node scripts/fetch-source.mjs`; the app uses the optimised
 # copies in assets/questions/ which ARE committed.
 /data-source/images/
+
+# Rendered videos, stills and narration scripts. All regenerable from the
+# data with `npm run render` / `npm run narration` in video/.
+/video/out/

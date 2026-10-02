@@ -1,0 +1,42 @@
+{
+  "topic": "europe",
+  "note": "Every picture in the video, where it came from and under what licence. Licence fields are filled in by `npm run images -- europe`; do not edit them by hand.",
+  "images": [
+    {
+      "id": "verdun-cemetery",
+      "file": "National Cemetery Douaumont.jpg",
+      "scene": "Cold open — the war cemetery at Douaumont, Verdun",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Benh LIEU SONG (Flickr)",
+      "date": "2011-07-24 13:32",
+      "source": "https://commons.wikimedia.org/wiki/File:National_Cemetery_Douaumont.jpg",
+      "size": "4641x1824",
+      "sha1": "811a623fb47ede1f539a627260e73785594e3e2d"
+    },
+    {
+      "id": "ep-strasbourg",
+      "file": "European Parliament Strasbourg Hemicycle - Diliff.jpg",
+      "scene": "Who you vote for — the Parliament's chamber in Strasbourg",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Diliff",
+      "date": "2014-02-05",
+      "source": "https://commons.wikimedia.org/wiki/File:European_Parliament_Strasbourg_Hemicycle_-_Diliff.jpg",
+      "size": "6000x3389",
+      "sha1": "5964e01a991b602cc42a59ac05465ea9e6bdb656"
+    },
+    {
+      "id": "schengen",
+      "file": "Luxembourg-Schengen-Memorial free borders-01ESD.jpg",
+      "scene": "No borders — the Schengen memorial",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Rikki Mitterer",
+      "date": "2019-07-19",
+      "source": "https://commons.wikimedia.org/wiki/File:Luxembourg-Schengen-Memorial_free_borders-01ESD.jpg",
+      "size": "2322x4128",
+      "sha1": "e939cbc19bf237340af552493f481e9c0e617fae"
+    }
+  ]
+}

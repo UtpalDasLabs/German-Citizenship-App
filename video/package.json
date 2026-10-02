@@ -1,0 +1,38 @@
+{
+  "name": "lid-test-video",
+  "private": true,
+  "description": "Short teaching videos rendered from the app's own question data.",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:prototype": "node scripts/render.mjs 147 32 226",
+    "render": "node scripts/render.mjs",
+    "narration": "node scripts/narration.mjs",
+    "typecheck": "tsc --noEmit",
+    "voice": "NODE_USE_ENV_PROXY=1 node scripts/voice-elevenlabs.mjs",
+    "images": "NODE_USE_ENV_PROXY=1 node scripts/images.mjs",
+    "voice:longform": "NODE_USE_ENV_PROXY=1 node scripts/voice-longform.mjs",
+    "render:longform": "node scripts/render-longform.mjs",
+    "coverage": "node scripts/coverage.mjs"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/source-serif-4": "^5.3.0",
+    "@remotion/bundler": "4.0.532",
+    "@remotion/cli": "4.0.532",
+    "@remotion/renderer": "4.0.532",
+    "@svg-maps/germany": "^2.0.0",
+    "@types/d3-geo": "^3.1.1",
+    "@types/topojson-client": "^3.1.5",
+    "d3-geo": "^3.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.532",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "typescript": "~6.0.3"
+  }
+}
