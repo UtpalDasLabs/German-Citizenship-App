@@ -8,6 +8,17 @@
  * cannot silently bypass a fix.
  */
 export const CORRECTIONS = {
+  71: {
+    // "Wo hält sich die deutsche Bundeskanzlerin/der deutsche Bundeskanzler am
+    // häufigsten auf?" The chancellor works in the Bundeskanzleramt in Berlin,
+    // next to the Bundestag (option d). Upstream marks Schloss Meseberg (b),
+    // the government's guest house, and its explanation argues for it. The
+    // app's own real-life note already said Berlin, so learners saw both.
+    expectedAnswer: 'b',
+    answer: 'd',
+    context:
+      'The Federal Chancellor works in the Federal Chancellery (Bundeskanzleramt) in Berlin, close to the Bundestag. Schloss Meseberg is only the government guest house, used now and then for state guests and retreats.',
+  },
   5: {
     // "Wahlen in Deutschland sind frei. Was bedeutet das?" The official answer
     // is that voters may be neither influenced nor forced to vote a certain way
