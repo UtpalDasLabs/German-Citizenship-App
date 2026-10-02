@@ -7,17 +7,17 @@ questions, each exactly once. `npm run coverage` checks that.
 Topics with more than about 25 questions are split into parts, so no lesson
 runs much past 20 minutes.
 
-| # | Lesson | Questions | Parts | Script |
-|---|--------|-----------|-------|--------|
-| 1 | Basic Rights (Grundrechte) | 23 | 1 | `basic-rights.md`: voiced, rendered |
-| 2 | Europe & the World (Europa & Welt) | 23 | 1 | |
-| 3 | Work & Welfare (Arbeit & Soziales) | 22 | 1 | |
-| 4 | State & Institutions (Staat & Institutionen) | 26 | 1 | |
-| 5 | Society & Daily Life (Gesellschaft & Alltag) | 38 | 2 | |
-| 6 | Law & Justice (Recht & Justiz) | 41 | 2 | |
-| 7 | Elections & Parties (Wahlen & Parteien) | 60 | 3 | |
-| 8 | History (Geschichte) | 67 | 3 | |
-| 9–24 | One per federal state | 10 each | 1 | |
+| # | Lesson | Questions | Script | Voice | Video |
+|---|--------|-----------|--------|-------|-------|
+| 1 | Basic Rights | 23 | `basic-rights.md` | done | rendered |
+| 2 | Europe & the World | 23 | `europe.md` | done | rendering |
+| 3 | Work & Welfare | 22 | `work.md` | | |
+| 4 | State & Institutions | 26 | `institutions.md` | | |
+| 5 | Society & Daily Life, parts 1–2 | 38 | `society-1.md`, `society-2.md` | | |
+| 6 | Law & Justice, parts 1–2 | 41 | `law-1.md`, `law-2.md` | | |
+| 7 | Elections & Parties, parts 1–3 | 60 | `democracy-1.md` … `-3.md` | | |
+| 8 | History, parts 1–3 | 67 | | | |
+| 9–24 | One per federal state | 10 each | | | |
 
 That is 14 topic lessons and 16 state lessons.
 
