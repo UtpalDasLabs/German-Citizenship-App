@@ -21,6 +21,21 @@ runs much past 20 minutes.
 
 That is 14 topic lessons and 16 state lessons.
 
+## Tone
+
+A documentary storyteller, not a hype host. The model is the
+"Why so modest? Because in 1949, Germany was divided…" paragraph of Basic
+Rights, chapter 1: engaged, a little dramatic, never loud.
+
+- Voice on Eleven v4 (`--expressive`) with `[dramatic]` on every paragraph.
+- No `[laughs]`, `[whispers]` or `[excited]`. Without a face on screen they
+  sound odd.
+- No hype lines: no "Quick quiz!", "Exam time!", "You've got three seconds",
+  "Did you get it?".
+- Every exam question is a quiz moment: read the German question, then a
+  `[countdown]` paragraph that opens with the answer. The ring and the ticks
+  carry the suspense; the voice doesn't announce them.
+
 ## Making one lesson
 
 1. **Write** `longform/<topic>.md` (format at the top of `basic-rights.md`).
