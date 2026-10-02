@@ -56,7 +56,17 @@ export type Appearance = 'system' | 'light' | 'dark';
 export type GoalId = 'casual' | 'regular' | 'serious' | 'intense';
 
 export type Settings = {
+  /** Which language(s) the question text and options are shown in. */
   language: Language;
+  /**
+   * Whether the app's own buttons and labels are German.
+   *
+   * Kept apart from `language` because they are not the same choice: someone
+   * revising for a German-only exam wants German questions while their German
+   * is still weak, and needs the interface and the help around them to stay in
+   * a language they read fluently.
+   */
+  uiGerman: boolean;
   state: string | null;
   appearance: Appearance;
   haptics: boolean;

@@ -101,13 +101,22 @@ export default function YouScreen() {
         <Card level={2} style={{ flexDirection: 'row', alignItems: 'center', gap: space.lg }}>
           <ProgressRing value={f.score} size={92} stroke={12} color={colors.info}>
             <Txt variant="heading">{Math.round(f.score * 100)}%</Txt>
+            <Txt variant="caption" tone="muted">
+              {t('masteryLabel').toLowerCase()}
+            </Txt>
           </ProgressRing>
           <View style={{ flex: 1, gap: 2 }}>
-            <Txt variant="heading">
-              {f.started} / {f.total}
+            <Txt variant="small" tone="muted">
+              <Txt variant="bodyStrong">
+                {f.started} / {f.total}
+              </Txt>{' '}
+              {t('seenOnce')}
             </Txt>
             <Txt variant="small" tone="muted">
-              {t('cardsStarted')}
+              <Txt variant="bodyStrong">
+                {f.ready} / {f.total}
+              </Txt>{' '}
+              {t('readyCards')}
             </Txt>
             <Txt variant="small" tone="muted">
               🔥 {progress.streak} {t('dayStreak')} · ⚡ {progress.xp} {t('xp')}
@@ -254,9 +263,11 @@ export default function YouScreen() {
         <Card style={{ gap: space.lg }}>
           <Txt variant="heading">{t('settings')}</Txt>
 
+          {/* Two separate choices. Picking German questions is a decision to
+              rehearse the exam; it is not a claim to read German menus. */}
           <View style={{ gap: space.sm }}>
             <Txt variant="small" tone="muted">
-              {t('language')}
+              {t('questionLanguage')}
             </Txt>
             <View style={{ flexDirection: 'row', gap: space.sm }}>
               {(
@@ -268,6 +279,19 @@ export default function YouScreen() {
               ).map(([value, label]) => (
                 <Chip key={value} label={label} active={settings.language === value} onPress={() => update({ language: value })} />
               ))}
+            </View>
+            <Txt variant="caption" tone="faint">
+              {t('questionLanguageHint')}
+            </Txt>
+          </View>
+
+          <View style={{ gap: space.sm }}>
+            <Txt variant="small" tone="muted">
+              {t('interfaceLanguage')}
+            </Txt>
+            <View style={{ flexDirection: 'row', gap: space.sm }}>
+              <Chip label="English" active={!settings.uiGerman} onPress={() => update({ uiGerman: false })} />
+              <Chip label="Deutsch" active={settings.uiGerman} onPress={() => update({ uiGerman: true })} />
             </View>
           </View>
 

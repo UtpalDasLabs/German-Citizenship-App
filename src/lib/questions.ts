@@ -18,6 +18,21 @@ export function getQuestion(id: number): Question | undefined {
  * 10 belonging to their Bundesland. With no state chosen yet we only study the
  * general set, so nobody memorises the wrong state's answers.
  */
+/**
+ * The question's number in the official BAMF catalogue, for cross-referencing
+ * against the PDF or any other practice site.
+ *
+ * General questions are numbered 1-300 and our ids match them. State questions
+ * are numbered 1-10 *within each Bundesland*, while our ids run 301-460 across
+ * all sixteen - so printing the raw id there would name a question that does
+ * not exist.
+ */
+export function catalogueRef(q: Question): string {
+  if (q.kind === 'general') return `#${q.id}`;
+  const nth = ((q.id - 301) % 10) + 1;
+  return q.state ? `${q.state} #${nth}` : `#${nth}`;
+}
+
 export function deckFor(state: string | null): Question[] {
   return allQuestions.filter((q) => q.kind === 'general' || (state != null && q.state === state));
 }

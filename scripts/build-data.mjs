@@ -27,6 +27,15 @@ const OUT_IMAGES = path.join(ROOT, 'assets', 'questions');
  * Sachsen-Anhalt block. Without this fix Sachsen would have 20 questions and
  * Sachsen-Anhalt none.
  */
+/**
+ * A couple of upstream German stems arrive with their catalogue number glued
+ * on ("184. Auf welcher ..."). Harmless while the English sits beside them;
+ * wrong on screen once someone studies in German only.
+ */
+function stripNumber(text) {
+  return text.replace(/^\s*\d+\.\s+/, '');
+}
+
 function fixState(q) {
   if (q.type === 'state' && q.id >= 431 && q.id <= 440) return 'Sachsen-Anhalt';
   return q.state;
@@ -136,7 +145,7 @@ async function main() {
       images,
       imageMode,
       imageCredit: q.imageText ?? null,
-      de: { text: q.text, options: q.options },
+      de: { text: stripNumber(q.text), options: q.options },
       en: { text: en.text ?? null, options: en.options ?? null },
       context: en.context ?? null,
       realLife: realLifeFor(q),

@@ -22,7 +22,6 @@ const strings = {
     goodAfternoon: 'Good afternoon',
     goodEvening: 'Good evening',
     dueToday: 'Due today',
-    cardsMastered: 'Mastered',
     dayStreak: 'day streak',
     continueStudying: 'Continue studying',
     startStudying: 'Start studying',
@@ -36,12 +35,24 @@ const strings = {
     yourState: 'Your federal state',
     pickState: 'Pick your Bundesland',
     pickStateSub: 'Adds your 10 state questions to the deck',
-    readyLabel: 'Exam readiness',
 
     // cards
-    tapToFlip: 'Tap the card to see the answer',
-    knewIt: 'I knew it',
-    reviewAgain: 'Review again',
+    pickAnswer: 'Tap the answer you think is right',
+    correctTitle: 'Correct!',
+    keyWordsLabel: 'Words to remember',
+    inTheQuestion: 'In the question',
+    inTheAnswer: 'In the answer',
+    trapWarning: 'Watch the nicht / kein \u2014 you want the option that does NOT fit.',
+    translationLabel: 'In English',
+    examCoachTitle: 'Practice exam',
+    examCoachBody: 'Marks each answer right or wrong straight away, and shows the German words to remember.',
+    examRealTitle: 'Exam rehearsal',
+    examRealBody: 'No feedback until you submit, exactly like the real test.',
+    examAlwaysGerman: 'Both are in German only, like the real exam.',
+    wrongTitle: 'Not quite',
+    youPicked: 'You picked',
+    nextCard: 'Next question',
+    nextHint: 'Swipe either way, or press Enter, for the next question',
     noCardsDue: 'Nothing due right now',
     noCardsDueSub: 'You are up to date. Come back later, or study the full deck.',
     studyAll: 'Study the whole deck',
@@ -68,7 +79,6 @@ const strings = {
     examIntro: 'Mock exam',
     examRules:
       'The real test is 33 questions in 60 minutes: 30 general questions and 3 about your federal state. You pass with 17 correct answers.',
-    startExam: 'Start exam',
     question: 'Question',
     of: 'of',
     timeLeft: 'Time left',
@@ -90,7 +100,9 @@ const strings = {
     examHistory: 'Mock exam history',
     noExamsYet: 'No mock exams yet.',
     settings: 'Settings',
-    language: 'Question language',
+    questionLanguage: 'Question language',
+    questionLanguageHint: 'The real exam is German only. Study in German and the English appears after you answer.',
+    interfaceLanguage: 'App language',
     langDe: 'German',
     langEn: 'English',
     langBoth: 'Both',
@@ -162,7 +174,6 @@ const strings = {
     learnTitle: 'Understand Germany',
     learnBody: 'Short reads about how things actually work here, beyond the exam answers.',
     vocabLabel: 'Words worth knowing',
-    swipeHint: 'Swipe the card, or use the arrow keys',
     gotRight: 'answered right',
     realLifeLabel: 'In real life',
     deepDiveLabel: 'Learn more',
@@ -200,7 +211,12 @@ const strings = {
     examPassed: 'That date has passed',
     setGoal: 'Set your daily goal',
     readyCards: 'fully mastered',
-    cardsStarted: 'cards started',
+    masteryLabel: 'Mastery',
+    masteryToward: 'of the way to knowing all',
+    seenOnce: 'seen at least once',
+    masteryRule:
+      'A question only counts in full once you have answered it right four times, on four different days. That is why seeing a lot of cards does not move this number much at first.',
+    readyAfterExam: 'That is after your exam date. Pick a faster pace, or move the date.',
     pace: 'Pace',
 
     // booking
@@ -250,7 +266,6 @@ const strings = {
     goodAfternoon: 'Guten Tag',
     goodEvening: 'Guten Abend',
     dueToday: 'Heute fällig',
-    cardsMastered: 'Gemeistert',
     dayStreak: 'Tage in Folge',
     continueStudying: 'Weiterlernen',
     startStudying: 'Lernen starten',
@@ -264,11 +279,23 @@ const strings = {
     yourState: 'Dein Bundesland',
     pickState: 'Bundesland auswählen',
     pickStateSub: 'Fügt deine 10 Landesfragen hinzu',
-    readyLabel: 'Testreife',
 
-    tapToFlip: 'Tippe auf die Karte für die Antwort',
-    knewIt: 'Gewusst',
-    reviewAgain: 'Nochmal üben',
+    pickAnswer: 'Tippe auf die Antwort, die du für richtig hältst',
+    correctTitle: 'Richtig!',
+    keyWordsLabel: 'Wörter zum Merken',
+    inTheQuestion: 'In der Frage',
+    inTheAnswer: 'In der Antwort',
+    trapWarning: 'Achtung auf nicht / kein \u2014 gesucht ist die Antwort, die NICHT passt.',
+    translationLabel: 'Auf Englisch',
+    examCoachTitle: 'Übungstest',
+    examCoachBody: 'Zeigt sofort richtig oder falsch und die deutschen Wörter zum Merken.',
+    examRealTitle: 'Prüfungsprobe',
+    examRealBody: 'Keine Rückmeldung bis zur Abgabe, genau wie im echten Test.',
+    examAlwaysGerman: 'Beide nur auf Deutsch, wie in der echten Prüfung.',
+    wrongTitle: 'Leider nicht',
+    youPicked: 'Du hattest',
+    nextCard: 'Nächste Frage',
+    nextHint: 'Wische in eine beliebige Richtung oder drücke Enter',
     noCardsDue: 'Gerade nichts fällig',
     noCardsDueSub: 'Du bist auf dem neuesten Stand. Komm später wieder oder lerne den ganzen Stapel.',
     studyAll: 'Ganzen Stapel lernen',
@@ -293,7 +320,6 @@ const strings = {
     examIntro: 'Probetest',
     examRules:
       'Der echte Test hat 33 Fragen in 60 Minuten: 30 allgemeine Fragen und 3 zu deinem Bundesland. Bestanden ab 17 richtigen Antworten.',
-    startExam: 'Test starten',
     question: 'Frage',
     of: 'von',
     timeLeft: 'Restzeit',
@@ -314,7 +340,9 @@ const strings = {
     examHistory: 'Probetests',
     noExamsYet: 'Noch keine Probetests.',
     settings: 'Einstellungen',
-    language: 'Sprache der Fragen',
+    questionLanguage: 'Sprache der Fragen',
+    questionLanguageHint: 'Die echte Pr\u00fcfung ist nur auf Deutsch. Lerne auf Deutsch \u2013 das Englische erscheint nach deiner Antwort.',
+    interfaceLanguage: 'Sprache der App',
     langDe: 'Deutsch',
     langEn: 'Englisch',
     langBoth: 'Beides',
@@ -381,7 +409,6 @@ const strings = {
     learnTitle: 'Deutschland verstehen',
     learnBody: 'Kurze Texte darüber, wie es hier wirklich läuft – über die Testantworten hinaus.',
     vocabLabel: 'Wörter, die sich lohnen',
-    swipeHint: 'Karte wischen oder Pfeiltasten benutzen',
     gotRight: 'richtig beantwortet',
     realLifeLabel: 'Im echten Leben',
     deepDiveLabel: 'Mehr erfahren',
@@ -417,7 +444,12 @@ const strings = {
     examPassed: 'Dieses Datum ist vorbei',
     setGoal: 'Tagesziel festlegen',
     readyCards: 'ganz sicher',
-    cardsStarted: 'Karten begonnen',
+    masteryLabel: 'Gelernt',
+    masteryToward: 'des Weges zu allen',
+    seenOnce: 'mindestens einmal gesehen',
+    masteryRule:
+      'Eine Frage zählt erst voll, wenn du sie viermal an vier verschiedenen Tagen richtig beantwortet hast. Deshalb bewegt sich diese Zahl am Anfang kaum, auch wenn du viele Karten siehst.',
+    readyAfterExam: 'Das ist nach deinem Prüfungstermin. Wähle ein schnelleres Tempo oder verschiebe den Termin.',
     pace: 'Tempo',
 
     bookTitle: 'Den echten Test buchen',
@@ -453,12 +485,12 @@ const strings = {
 
 export type StringKey = keyof typeof strings.en;
 
-/** `both` reads as an English interface with bilingual question text. */
-export function uiLocale(language: Language): 'de' | 'en' {
-  return language === 'de' ? 'de' : 'en';
+/** The interface language, which is its own setting - see Settings.uiGerman. */
+export function uiLocale(uiGerman: boolean): 'de' | 'en' {
+  return uiGerman ? 'de' : 'en';
 }
 
-export function translator(language: Language) {
-  const table = strings[uiLocale(language)];
+export function translator(uiGerman: boolean) {
+  const table = strings[uiLocale(uiGerman)];
   return (key: StringKey) => table[key];
 }

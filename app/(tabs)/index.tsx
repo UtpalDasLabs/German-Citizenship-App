@@ -5,9 +5,10 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { LoadingScreen, useAppReady } from '@/components/Loading';
+import { MasteryStats } from '@/components/MasteryStats';
 import { MascotSays } from '@/components/Mascot';
 import { ProgressRing } from '@/components/ProgressRing';
-import { Button, Card, ProgressBar, Screen, StatPill, Txt } from '@/components/ui';
+import { Button, Card, Screen, StatPill, Txt } from '@/components/ui';
 import { forecast, formatDate, planFor } from '@/lib/forecast';
 import { GOALS } from '@/lib/goals';
 import { deckFor } from '@/lib/questions';
@@ -133,21 +134,12 @@ export default function HomeScreen() {
           <Card style={{ gap: space.md }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Txt variant="heading" style={{ flex: 1 }}>
-                {t('readyLabel')}
+                {t('masteryLabel')}
               </Txt>
               <Ionicons name="chevron-forward" size={20} color={colors.textFaint} />
             </View>
 
-            <ProgressBar value={f.score} color={colors.info} />
-            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: space.sm }}>
-              <Txt variant="heading" tone="info">
-                {Math.round(f.score * 100)}%
-              </Txt>
-              <Txt variant="small" tone="muted" style={{ flex: 1 }}>
-                {f.started} / {f.total} {t('cardsStarted')}
-                {f.ready > 0 ? ` · ${f.ready} ${t('cardsMastered').toLowerCase()}` : ''}
-              </Txt>
-            </View>
+            <MasteryStats f={f} compact />
 
             {plan ? (
               plan.daysLeft <= 0 ? (

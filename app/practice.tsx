@@ -19,7 +19,7 @@ import { useTheme } from '@/theme/ThemeProvider';
 
 export default function PracticeScreen() {
   const { colors, space, radius } = useTheme();
-  const { t } = useT();
+  const { t, locale } = useT();
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { settings } = useSettings();
@@ -202,7 +202,7 @@ export default function PracticeScreen() {
               {t('realLifeLabel').toUpperCase()}
             </Txt>
             <Txt variant="small" tone="muted">
-              {question.realLife[settings.language === 'de' ? 'de' : 'en']}
+              {question.realLife[locale]}
             </Txt>
           </View>
         ) : null}
