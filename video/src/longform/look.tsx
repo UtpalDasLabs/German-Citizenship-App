@@ -231,7 +231,11 @@ export function GermanCaption({ exclude = [], bottom = 70 }: { exclude?: string[
       .toLowerCase()
       .replace(/[.…?!„“"]+/g, '')
       .trim();
-    return exclude.some((e) => e === n || (n.length > 3 && e.includes(n)));
+    if (exclude.some((e) => e === n || (n.length > 3 && e.includes(n)))) return true;
+    // A reworded answer ("beim Behördenleiter" for "bei der Behördenleiterin/beim
+    // Behördenleiter") is on screen too, if most of its words are.
+    const words = n.split(/\s+/).filter((w) => w.length > 3);
+    return words.length >= 2 && exclude.some((e) => words.filter((w) => e.includes(w)).length / words.length >= 0.6);
   };
   for (const p of shot.paras) {
     for (const d of p.de) {

@@ -4,6 +4,7 @@ import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, 
 
 import { OptionCard, PictureTile, type CardState } from '../components';
 import { EuropeMap } from './europe';
+import { StatesMap } from './states';
 import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './generic';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
@@ -715,11 +716,14 @@ export const norm = (t: string) =>
     .replace(/\s+/g, ' ')
     .trim();
 
+/** Let "Arbeitgeberinnen/Arbeitgeber" break after the slash instead of overflowing. */
+const breakable = (t: string) => t.replace(/\//g, '/\u200b');
+
 /** The question with "nicht" / "kein…" in red: the words that turn it into a trap. */
 function WithNegation({ text }: { text: string }) {
   return (
     <>
-      {text.split(/(\bnicht\b|\bkein\w*)/i).map((part, i) =>
+      {breakable(text).split(/(\bnicht\b|\bkein\w*)/i).map((part, i) =>
         i % 2 ? (
           <span key={i} style={{ color: C.danger }}>
             {part}
@@ -827,7 +831,7 @@ function Question() {
             <OptionCard
               key={l}
               letter={l.toUpperCase()}
-              de={q.de.options[l]}
+              de={breakable(q.de.options[l])}
               en={q.en?.options?.[l] ?? null}
               enShown={1}
               state={state}
@@ -926,6 +930,8 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <End />;
     case 'europe':
       return <EuropeMap />;
+    case 'states':
+      return <StatesMap />;
     default:
       return null;
   }
