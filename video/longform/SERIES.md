@@ -7,10 +7,12 @@ questions, each exactly once. `npm run coverage` checks that.
 Topics with more than about 25 questions are split into parts, so no lesson
 runs much past 20 minutes.
 
+Scripts 3–7 still need the documentary-tone pass (see Tone) before voicing.
+
 | # | Lesson | Questions | Script | Voice | Video |
 |---|--------|-----------|--------|-------|-------|
-| 1 | Basic Rights | 23 | `basic-rights.md` | done | rendered |
-| 2 | Europe & the World | 23 | `europe.md` | done | rendering |
+| 1 | Basic Rights | 23 | `basic-rights.md` | done (v4, documentary) | rendered, 18:11 |
+| 2 | Europe & the World | 23 | `europe.md` | done (v4, documentary) | rendered |
 | 3 | Work & Welfare | 22 | `work.md` | | |
 | 4 | State & Institutions | 26 | `institutions.md` | | |
 | 5 | Society & Daily Life, parts 1–2 | 38 | `society-1.md`, `society-2.md` | | |
