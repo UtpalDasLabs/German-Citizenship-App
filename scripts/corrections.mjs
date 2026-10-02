@@ -8,6 +8,17 @@
  * cannot silently bypass a fix.
  */
 export const CORRECTIONS = {
+  5: {
+    // "Wahlen in Deutschland sind frei. Was bedeutet das?" The official answer
+    // is that voters may be neither influenced nor forced to vote a certain way
+    // and suffer no disadvantage from their vote (option c). Upstream marks
+    // "Nur Personen, die noch nie im Gefängnis waren, dürfen wählen" (b), which
+    // is false: being in prison does not take away the right to vote, and it
+    // has nothing to do with elections being free. The upstream explanation
+    // already describes free elections correctly, so it is kept.
+    expectedAnswer: 'b',
+    answer: 'c',
+  },
   184: {
     // Israel was founded in May 1948 on the basis of UN General Assembly
     // Resolution 181 (Nov 1947). The Federal Republic of Germany did not exist
