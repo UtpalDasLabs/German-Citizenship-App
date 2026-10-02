@@ -32,6 +32,15 @@ Rights, chapter 1: engaged, a little dramatic, never loud.
   sound odd.
 - No hype lines: no "Quick quiz!", "Exam time!", "You've got three seconds",
   "Did you get it?".
+- No punchline paragraphs ("So temporary… that it's still here", "it comes
+  back in disguise"). Short teasing lines are where the voice over-acts. Say
+  the fact plainly, or let the picture make the joke (`> hold 2.5` under a
+  scene gives an animation room without words).
+- Second model: question 11 in chapter 1. The German question, the timer,
+  then "Grundgesetz, again. See Verfassung in a question? Think Grundgesetz."
+  Plain, warm, sure of itself.
+- A good take with one bad opening sentence can be kept:
+  `npm run take:trim -- <topic> "<words to start from>" --expressive`.
 - Every exam question is a quiz moment: read the German question, then a
   `[countdown]` paragraph that opens with the answer. The ring and the ticks
   carry the suspense; the voice doesn't announce them.
