@@ -2,12 +2,13 @@ import germany from '@svg-maps/germany';
 import React from 'react';
 import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
-import { OptionCard, type CardState } from '../components';
+import { OptionCard, PictureTile, type CardState } from '../components';
+import { EuropeMap } from './europe';
 import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './generic';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
-import { charFrame, cue, paraStart, useShot } from './plan';
+import { charFrame, cue, findCue, paraStart, useShot } from './plan';
 
 export const img = (topic: string, id: string, ext = 'jpg') => `images/${topic}/${id}.${ext}`;
 
@@ -234,6 +235,8 @@ function QuestionGrid({ questions, at, label }: { questions: number[]; at: numbe
 
 function Title({ title }: { title: string }) {
   const frame = useCurrentFrame();
+  // `> OVERLINE` under the scene: the topic's German name.
+  const overline = useShot().screen[0] ?? 'GRUNDRECHTE';
   const [main, sub] = title.split(' — ');
   return (
     <AbsoluteFill
@@ -259,7 +262,7 @@ function Title({ title }: { title: string }) {
           opacity: rise(frame, 4),
         }}
       >
-        GRUNDRECHTE
+        {overline}
       </div>
       <div
         style={{
@@ -750,7 +753,10 @@ function Question() {
       }
     }
   }
-  const answerAt = spoken[answer] ?? Math.round(shot.frames * 0.6);
+  // `> @ phrase` under the scene says when to reveal, for answers never read out (pictures).
+  const revealCue = shot.screen.find((l) => l.startsWith('@ '));
+  const revealAt = revealCue ? findCue(shot, revealCue.slice(2).trim(), fps) : null;
+  const answerAt = revealAt ?? spoken[answer] ?? Math.round(shot.frames * 0.6);
   // Some catalogue questions are whole stories; keep them on one screen.
   const qSize = q.de.text.length > 150 ? 44 : q.de.text.length > 90 ? 54 : 64;
   const longest = Math.max(...LETTERS.map((l) => q.de.options[l].length));
@@ -800,15 +806,20 @@ function Question() {
       >
         {q.en?.text}
       </div>
+      {q.imageMode === 'single' ? <ExamPicture imageKey={q.images[0]} credit={q.imageCredit} /> : null}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: q.imageMode === 'options' ? 'repeat(4, 1fr)' : '1fr 1fr',
           gap: 26,
-          marginTop: 40,
+          marginTop: q.imageMode === 'single' ? 10 : 40,
         }}
       >
         {LETTERS.map((l, i) => {
+          if (q.imageMode === 'options') {
+            const state: CardState = frame >= answerAt ? (l === answer ? 'correct' : 'dim') : 'idle';
+            return <PictureTile key={l} letter={l.toUpperCase()} imageKey={q.images[i]} state={state} enter={rise(frame, 10 + i * 4, 14)} />;
+          }
           const ruledOut = l !== answer && spoken[l] != null && frame >= spoken[l]!;
           const state: CardState = frame >= answerAt ? (l === answer ? 'correct' : 'dim') : ruledOut ? 'dim' : 'idle';
           return (
@@ -828,6 +839,36 @@ function Question() {
       </div>
     </AbsoluteFill>
   );
+}
+
+/**
+ * The picture a question shows in the exam. Pictures the app drew or that are
+ * free are shown; a press photo under someone else's copyright is described
+ * instead, since these videos are published.
+ */
+function ExamPicture({ imageKey, credit }: { imageKey: string; credit: string | null }) {
+  const frame = useCurrentFrame();
+  const o = rise(frame, 6, 14);
+  if (credit) {
+    return (
+      <div
+        style={{
+          alignSelf: 'flex-start',
+          padding: '14px 26px',
+          borderRadius: 14,
+          border: `2px dashed ${C.borderStrong}`,
+          fontFamily: FONT,
+          fontWeight: 600,
+          fontSize: 28,
+          color: C.textMuted,
+          opacity: o,
+        }}
+      >
+        In the exam, this question shows a photo ({credit}).
+      </div>
+    );
+  }
+  return <Img src={staticFile(`questions/${imageKey}.webp`)} style={{ height: 240, alignSelf: 'flex-start', borderRadius: 14, opacity: o }} />;
 }
 
 /** Scenes that already put all their German on screen themselves. */
@@ -882,6 +923,8 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <Outro />;
     case 'end':
       return <End />;
+    case 'europe':
+      return <EuropeMap />;
     default:
       return null;
   }

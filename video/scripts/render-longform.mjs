@@ -182,10 +182,13 @@ console.log(`Description → ${descriptionFile}`);
 if (flags.has('--describe')) process.exit(0);
 
 // The bundle's public dir: the app icon, this topic's pictures and voice.
-const pub = join(OUT, '.public-longform');
+// One per topic, so two lessons can render at the same time.
+const pub = join(OUT, `.public-longform-${topic}`);
 rmSync(pub, { recursive: true, force: true });
 mkdirSync(join(pub, 'audio'), { recursive: true });
 cpSync(join(ROOT, 'assets', 'icon.png'), join(pub, 'icon.png'));
+// The catalogue's own pictures, for picture questions.
+cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: true });
 cpSync(join(OUT, 'images', topic), join(pub, 'images', topic), {
   recursive: true,
 });

@@ -127,7 +127,8 @@ export function Stat() {
         {lines.map(({ fields: [value, label], at }, i) => {
           const o = rise(frame, at, 14);
           const n = Number(value);
-          const shown = Number.isInteger(n) ? Math.round(n * rise(frame, at, 24)) : value;
+          // Small counts tick up; years and other big numbers just appear.
+          const shown = Number.isInteger(n) && n < 1000 ? Math.round(n * rise(frame, at, 24)) : value;
           return (
             <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, opacity: o }}>
               <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 260, lineHeight: 1, color: i === lines.length - 1 ? GOLD : C.text }}>
@@ -283,9 +284,17 @@ export function Words() {
   );
 }
 
-/** Back to Article 1, then the app. */
+/**
+ * The lesson's key line once more, then the app. `> German | English | overline`
+ * under the scene; without it, Article 1.
+ */
 export function Outro() {
   const shot = useShot();
+  const [de, en, over] = shot.screen[0]?.split(' | ').map((f) => f.trim()) ?? [
+    'Die Würde des Menschen ist unantastbar.',
+    'Human dignity is inviolable.',
+    'Grundgesetz · Artikel 1',
+  ];
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const app = findCue(shot, 'the app', fps) ?? Math.round(shot.frames * 0.55);
@@ -293,9 +302,9 @@ export function Outro() {
   return (
     <AbsoluteFill style={{ backgroundColor: INK, alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28, opacity: quoteOut * rise(frame, 6, 20) }}>
-        <Overline>Grundgesetz · Artikel 1</Overline>
-        <div style={{ fontFamily: SERIF, fontWeight: 600, fontSize: 78, color: PAPER }}>Die Würde des Menschen ist unantastbar.</div>
-        <div style={{ fontFamily: FONT, fontWeight: 500, fontSize: 42, color: '#B9B2A3' }}>Human dignity is inviolable.</div>
+        {over ? <Overline>{over}</Overline> : null}
+        <div style={{ fontFamily: SERIF, fontWeight: 600, fontSize: 78, color: PAPER }}>{de}</div>
+        {en ? <div style={{ fontFamily: FONT, fontWeight: 500, fontSize: 42, color: '#B9B2A3' }}>{en}</div> : null}
       </div>
       <div
         style={{
@@ -327,7 +336,7 @@ export function End() {
       <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 100, color: C.text, opacity: rise(frame, 6, 18) }}>Bis bald.</div>
       <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 44, color: C.textMuted, opacity: rise(frame, 14, 18) }}>See you in the next one.</div>
       <div style={{ position: 'absolute', bottom: 70, fontFamily: FONT, fontWeight: 500, fontSize: 28, color: C.textFaint, opacity: rise(frame, 4, 18) }}>
-        Narrated with an AI version of the creator's voice. Facts checked against the official catalogue and the Grundgesetz.
+        Narrated with an AI version of the creator's voice. Facts checked against the official question catalogue.
       </div>
     </AbsoluteFill>
   );

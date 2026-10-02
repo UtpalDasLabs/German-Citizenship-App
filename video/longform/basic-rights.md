@@ -47,6 +47,7 @@ given where the exam answer depends on them.
 That sentence is where this video starts. By the end, you'll understand the rules that protect everyone in Germany — including you — and you'll be able to answer all twenty-three questions on basic rights in the citizenship test. In German.
 
 > SCENE (title): Title card. "Basic Rights — The Rules Even the Government Has to Obey". The app's eagle, small, in a corner.
+> GRUNDRECHTE
 
 ## A constitution that isn't called one
 
