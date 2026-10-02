@@ -57,11 +57,10 @@ And that sentence is where we start. Stick with me, and you'll get the rules tha
 
 [dramatic] It's called the [[Grundgesetz]]. Literally: the **basic law**.
 
-> SCENE (map1949): A map of Germany in 1949, split in two. The western part lights up; the eastern part stays grey.
+> SCENE (map1949): A map of Germany in 1949, split in two. The western part lights up; the eastern part stays grey. After "temporary arrangement", the year counts up from 1949 to today, with no words over it.
+> hold 2.5
 
 [dramatic] Why so modest? Because in 1949, Germany was **divided**. East and West. And the people writing it didn't want to set that split in stone. A real constitution, they said, should wait until *all* Germans could decide together. So this one got a humbler title: a basic law. A temporary arrangement.
-
-[dramatic] So temporary... that it's **still here**.
 
 > SCENE (reunify): The two halves of the map join. "1990" appears.
 
@@ -79,7 +78,7 @@ And that sentence is where we start. Stick with me, and you'll get the rules tha
 
 > SCENE (question): Question card #11, all four options. Three seconds to guess, then option A highlights.
 
-[dramatic] And it comes back in **disguise**. [[Wie wird die Verfassung der Bundesrepublik Deutschland genannt?]]
+[dramatic] [[Wie wird die Verfassung der Bundesrepublik Deutschland genannt?]]
 
 [countdown] [dramatic] [[Grundgesetz]], again. See [[Verfassung]] in a question? Think [[Grundgesetz]].
 

@@ -150,7 +150,10 @@ for (const c of chapters) {
       t += para.frames;
       return para;
     });
-    const length = paras.length ? t + frames(TAIL + (s.key === 'question' ? READ : 0)) : frames(SILENT_SHOT);
+    // `> hold 2.5` under a scene: seconds of picture after the voice, for an
+    // animation that makes its point without words.
+    const hold = Number(s.screen.find((l) => /^hold [\d.]+$/.test(l))?.slice(5) ?? 0);
+    const length = paras.length ? t + frames(TAIL + hold + (s.key === 'question' ? READ : 0)) : frames(SILENT_SHOT);
     shots.push({
       key: s.key,
       scene: s.scene,

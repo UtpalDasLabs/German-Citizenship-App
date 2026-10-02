@@ -542,7 +542,8 @@ function Map1949() {
   const { fps } = useVideoConfig();
   const divided = cue(shot, 'divided', fps, { fallback: 0.15 });
   const temporary = cue(shot, 'temporary arrangement', fps, { fallback: 0.7 });
-  const still = paraStart(shot, 1);
+  // The year counts up on a second paragraph, or a second after the stamp.
+  const still = shot.paras[1] ? paraStart(shot, 1) : temporary + fps;
   const w = rise(frame, divided, 20);
   const stamp = rise(frame, temporary, 8);
   const year = Math.round(
