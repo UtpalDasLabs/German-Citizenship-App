@@ -38,6 +38,9 @@ export type Shot = {
   paras: Para[];
 };
 
+/** The music bed: its file, its length (null: loop it as is) and its levels. */
+export type Music = { src: string; seconds: number | null; under: number; gap: number };
+
 export type Plan = {
   topic: string;
   title: string;
@@ -48,8 +51,8 @@ export type Plan = {
   shots: Shot[];
   /** Music, sound effects and punch-ins on (the lively cut) or off. */
   lively: boolean;
-  /** Music under the lively cut (off with --no-music). */
-  music: boolean;
+  /** Music under the lively cut (null with --no-music). */
+  music: Music | null;
 };
 
 export const ShotContext = createContext<Shot | null>(null);

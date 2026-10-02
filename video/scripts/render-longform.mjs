@@ -66,6 +66,16 @@ const script = parseLongform(topic);
 for (const c of script.chapters) for (const sh of c.shots) for (const p of sh.paras) p.tts = spokenText(p.tts);
 const chapters = pickChapters(spec, script.chapters.length);
 const voiceDir = audioDir(topic);
+// Music and effects from ElevenLabs (npm run sound:elevenlabs) when they have
+// been made, else the synthesised ones (npm run sound).
+const EL_SOUND = join(OUT, 'sound-elevenlabs');
+const elSound = existsSync(join(EL_SOUND, 'sounds.json'))
+  ? JSON.parse(readFileSync(join(EL_SOUND, 'sounds.json'), 'utf8'))
+  : null;
+/** The music bed, and how loud it sits under the voice and in the gaps. */
+const MUSIC = elSound
+  ? { src: `sound/${elSound.music}`, seconds: elSound.musicSeconds, under: 0.16, gap: 0.4 }
+  : { src: 'sound/music.wav', seconds: null, under: 0.07, gap: 0.2 };
 const frames = (s) => Math.round(s * FPS);
 
 /** Timing for one paragraph: from the voice, or estimated from its length. */
@@ -164,7 +174,7 @@ const plan = {
   total: cursor,
   shots,
   lively: LIVELY,
-  music: LIVELY && !args0.includes('--no-music'),
+  music: LIVELY && !args0.includes('--no-music') ? MUSIC : null,
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
@@ -201,7 +211,11 @@ function describe() {
     "Narrated with an AI version of the creator's own voice (ElevenLabs). Every fact was checked against the official question catalogue and the Grundgesetz. This channel is independent and not affiliated with the BAMF or any government body.",
     '',
     existsSync(credits) ? readFileSync(credits, 'utf8').trim() : 'Pictures: none',
-    ...(usesMap ? ['• Map of Germany: @svg-maps/germany, based on MapSVG (mapsvg.com), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)'] : []),
+    ...(usesMap
+      ? [
+          '• Map of Germany: @svg-maps/germany, based on MapSVG (mapsvg.com), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)',
+        ]
+      : []),
     '',
   ].join('\n');
 }
@@ -217,8 +231,13 @@ rmSync(pub, { recursive: true, force: true });
 mkdirSync(join(pub, 'audio'), { recursive: true });
 cpSync(join(ROOT, 'assets', 'icon.png'), join(pub, 'icon.png'));
 if (LIVELY) {
-  if (!existsSync(join(OUT, 'sound', 'music.wav'))) execFileSync('node', [join(VIDEO, 'scripts', 'sound.mjs')], { stdio: 'inherit' });
-  cpSync(join(OUT, 'sound'), join(pub, 'sound'), { recursive: true });
+  if (elSound) {
+    cpSync(EL_SOUND, join(pub, 'sound'), { recursive: true });
+  } else {
+    if (!existsSync(join(OUT, 'sound', 'music.wav')))
+      execFileSync('node', [join(VIDEO, 'scripts', 'sound.mjs')], { stdio: 'inherit' });
+    cpSync(join(OUT, 'sound'), join(pub, 'sound'), { recursive: true });
+  }
 }
 // The catalogue's own pictures, for picture questions.
 cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: true });

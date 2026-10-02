@@ -55,10 +55,7 @@ function shotEvents(shot: Shot, fps: number, first: boolean): Event[] {
   return events.filter((e, i) => i === 0 || e.at - events[i - 1].at > 4 || e.sound === 'ding');
 }
 
-/**
- * Music under the whole lesson: quiet while the voice speaks, up a little in
- * the gaps, faded in and out. Plus every effect, placed on its frame.
- */
+/** The music bed, plus every effect placed on its frame. */
 export function Soundtrack({ plan }: { plan: Plan }) {
   const { fps } = useVideoConfig();
   const level = useMemo(() => {
@@ -81,20 +78,7 @@ export function Soundtrack({ plan }: { plan: Plan }) {
 
   return (
     <>
-      {plan.music ? (
-        <Audio
-          src={staticFile('sound/music.wav')}
-          loop
-          volume={(f) => {
-            const duck = 0.2 - 0.13 * (level[f] ?? 0);
-            const fade = Math.min(
-              interpolate(f, [0, 45], [0, 1], { extrapolateRight: 'clamp' }),
-              interpolate(f, [plan.total - 90, plan.total], [1, 0], { extrapolateLeft: 'clamp' }),
-            );
-            return duck * fade;
-          }}
-        />
-      ) : null}
+      {plan.music ? <MusicBed plan={plan} level={level} /> : null}
       {plan.shots.flatMap((shot, i) =>
         shotEvents(shot, fps, i === 0).map((e, j) => (
           <Sequence key={`${i}-${j}`} from={shot.from + e.at} durationInFrames={Math.round(fps * 1.2)} name={e.sound}>
@@ -102,6 +86,51 @@ export function Soundtrack({ plan }: { plan: Plan }) {
           </Sequence>
         )),
       )}
+    </>
+  );
+}
+
+/** Seconds two passes of the music overlap, fading one into the next. */
+const CROSSFADE = 2;
+
+/**
+ * The music under the whole lesson: quiet while the voice speaks, up a little
+ * in the gaps, faded in and out. A track of known length is laid end to end
+ * with crossfades, so there is no hard seam where it starts over.
+ */
+function MusicBed({ plan, level }: { plan: Plan; level: Float32Array }) {
+  const { fps } = useVideoConfig();
+  const music = plan.music!;
+  const volume = (f: number) => {
+    const speaking = level[f] ?? 0;
+    const duck = music.gap - (music.gap - music.under) * speaking;
+    const fade = Math.min(
+      interpolate(f, [0, 45], [0, 1], { extrapolateRight: 'clamp' }),
+      interpolate(f, [plan.total - 90, plan.total], [1, 0], { extrapolateLeft: 'clamp' }),
+    );
+    return duck * fade;
+  };
+  if (music.seconds == null) return <Audio src={staticFile(music.src)} loop volume={volume} />;
+
+  const pass = Math.round(music.seconds * fps);
+  const step = pass - CROSSFADE * fps;
+  const passes = Math.ceil(plan.total / step);
+  return (
+    <>
+      {Array.from({ length: passes }, (_, k) => (
+        <Sequence key={k} from={k * step} durationInFrames={pass} name="music">
+          <Audio
+            src={staticFile(music.src)}
+            volume={(f) => {
+              const xfade = Math.min(
+                k === 0 ? 1 : interpolate(f, [0, CROSSFADE * fps], [0, 1], { extrapolateRight: 'clamp' }),
+                interpolate(f, [step, pass], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }),
+              );
+              return volume(k * step + f) * xfade;
+            }}
+          />
+        </Sequence>
+      ))}
     </>
   );
 }
