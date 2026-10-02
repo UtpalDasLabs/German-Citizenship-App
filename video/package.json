@@ -9,7 +9,8 @@
     "render": "node scripts/render.mjs",
     "narration": "node scripts/narration.mjs",
     "typecheck": "tsc --noEmit",
-    "voice": "NODE_USE_ENV_PROXY=1 node scripts/voice-elevenlabs.mjs"
+    "voice": "NODE_USE_ENV_PROXY=1 node scripts/voice-elevenlabs.mjs",
+    "images": "NODE_USE_ENV_PROXY=1 node scripts/images.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",

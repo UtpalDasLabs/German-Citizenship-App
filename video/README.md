@@ -73,6 +73,36 @@ work on the free plan.
 ignores `HTTPS_PROXY`, and in a sandbox that only lets traffic out through its
 proxy the request is refused.
 
+## Pictures
+
+Long-form videos use real archival photos for history (an AI picture of Bonn
+in 1949 would be invented history) and motion graphics for everything else.
+Each video lists its pictures in `longform/<topic>.images.json`:
+
+```sh
+npm run images -- basic-rights            # download + write credits.txt
+npm run images -- basic-rights --thumbs   # 500px previews for choosing
+```
+
+The script only accepts licences that allow use on a monetised channel and
+editing: public domain, CC0, CC BY and CC BY-SA. Anything NC, ND, "fair use" or
+unknown fails the run. It writes each file's licence, author and source back
+into the manifest, so the committed manifest records what we used and why we
+were allowed to. `out/images/<topic>/credits.txt` is pasted into the video
+description; CC BY / BY-SA require it.
+
+- Wikimedia blocks original files from shared cloud addresses, so the script
+  fetches its standard thumbnail sizes (up to 3840px) from
+  `thumb.wikimedia.org`. The environment's network allowlist needs
+  `commons.wikimedia.org` and `thumb.wikimedia.org`.
+- Requests are slow on purpose (one every 4s, backing off on 429).
+- Bundesarchiv files on Commons are only 800px wide: too small to fill a
+  1080p frame. Use them small (inset, framed) or not at all.
+- Many 1949 photos are still under copyright: in Germany, an ordinary photo is
+  protected for 50 years after publication, and a photo counted as a creative
+  work until 70 years after the photographer's death. Trust the licence on the
+  Commons file page, not the age of the photo.
+
 ## Design rules
 
 - **Nothing reflows.** Every element has its space from the first frame and

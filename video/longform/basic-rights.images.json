@@ -1,0 +1,51 @@
+{
+  "topic": "basic-rights",
+  "note": "Every picture in the video, where it came from and under what licence. `npm run images -- basic-rights` checks the licence of each file against Wikimedia Commons, downloads it to out/images/basic-rights/ and writes the credits for the video description. Licence fields are filled in by the script; do not edit them by hand.",
+  "images": [
+    {
+      "id": "ruins-wesel",
+      "file": "Wesel 1945.jpg",
+      "scene": "Cold open — a ruined city, 1945"
+    },
+    {
+      "id": "ruins-stuttgart",
+      "file": "Stuttgart, Royal Air Force Bomber Command, 1942-1945. CL3437.jpg",
+      "scene": "Cold open — a ruined city, 1945"
+    },
+    {
+      "id": "ruins-heilbronn",
+      "file": "Heilbronn 19450323.jpg",
+      "scene": "Cold open — a ruined city, 1945"
+    },
+    {
+      "id": "bonn-museum-koenig",
+      "file": "Außenfassade des Museums Koenig in Bonn.jpg",
+      "scene": "Cold open — Bonn, where the Parliamentary Council first met"
+    },
+    {
+      "id": "bonn-plaque",
+      "file": "Gedenktafel Parlamentarischer Rat und Grundgesetz.jpg",
+      "scene": "Cold open — Bonn, where the Parliamentary Council first met"
+    },
+    {
+      "id": "bgbl-1949-p1",
+      "file": "Bundesgesetzblatt Nr 1 von 1949-05-23 Grundgesetz-002.jpg",
+      "scene": "Cold open / chapter 1 — the Grundgesetz as first printed, 23 May 1949"
+    },
+    {
+      "id": "bgbl-1949-p2",
+      "file": "Bundesgesetzblatt Nr 1 von 1949-05-23 Grundgesetz-003.jpg",
+      "scene": "Cold open / chapter 1 — the Grundgesetz as first printed, 23 May 1949"
+    },
+    {
+      "id": "map-1949",
+      "file": "Germany, FRG and GDR location map October 1949 - November 1950.svg",
+      "scene": "Chapter 1 — Germany split in two, 1949"
+    },
+    {
+      "id": "wall-1989",
+      "file": "Berlin-Mauerfall-1-10-November-1989.jpg",
+      "scene": "Chapter 1 — the two halves join"
+    }
+  ]
+}
