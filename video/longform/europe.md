@@ -3,7 +3,7 @@ title: "Europe — From Enemies to Neighbours"
 topic: europe
 questions: [235, 239, 237, 231, 173, 224, 236, 226, 232, 230, 234, 238, 44, 62, 37, 221, 240, 227, 223, 233, 222, 229, 295]
 target: about 13 minutes
-status: draft 1, for review
+status: draft 2, documentary tone (see SERIES.md)
 ---
 
 <!--
@@ -19,22 +19,20 @@ the chapter on the levels you vote at.
 > SCENE (photo): Rows of white crosses at Douaumont, near Verdun.
 > verdun-cemetery | Douaumont war cemetery, Verdun | from 0.2 0.5 1.15 to 0.8 0.5 1.15
 
-[serious] In 1916, near the French town of Verdun, German and French soldiers fought one of the longest battles of the First World War. It lasted almost ten months. Hundreds of thousands of men died, for a few kilometres of ground.
+[dramatic] In 1916, near the French town of Verdun, German and French soldiers fought one of the longest battles of the First World War. It lasted almost ten months. Hundreds of thousands of men died, for a few kilometres of ground.
 
 > SCENE (fact): Two men, hand in hand.
 > 22 SEPTEMBER 1984 | Verdun | Chancellor Helmut Kohl and President François Mitterrand remember the dead of both world wars, hand in hand.
 
-[warm] Sixty-eight years later, a German chancellor and a French president stood at that same place: Helmut Kohl and François Mitterrand. As the anthems played, Mitterrand reached for Kohl's hand. And they stood there, holding hands, in silence.
+[dramatic] Sixty-eight years later, a German chancellor and a French president stood at that same place: Helmut Kohl and François Mitterrand. As the anthems played, Mitterrand reached for Kohl's hand. And they stood there, holding hands, in silence.
 
 {Q235}
 
-> SCENE (question): Question card #235.
+> SCENE (question): Question card #235. Three seconds to guess, then the answer highlights.
 
-The exam describes that moment and asks: [[Welches Ziel der Europäischen Union wird bei diesem Treffen deutlich?]] Which goal of the European Union does this meeting show?
+[dramatic] The exam describes that moment and asks: [[Welches Ziel der Europäischen Union wird bei diesem Treffen deutlich?]] Which goal of the European Union does this meeting show?
 
-[[Frieden und Sicherheit in den Ländern der EU]] — peace and security in the EU countries.
-
-Not friendship between England and Germany: wrong countries. Not travel, not public holidays. Two old enemies, mourning together. That's the idea of the European Union in one picture.
+[countdown] [dramatic] [[Frieden und Sicherheit in den Ländern der EU]], peace and security in the EU countries. Not friendship between England and Germany: wrong countries. Not travel, not public holidays. Two old enemies, mourning together. That's the idea of the European Union in one picture.
 
 > SCENE (title): Title card.
 > EUROPA & WELT
@@ -45,53 +43,55 @@ Not friendship between England and Germany: wrong countries. Not travel, not pub
 > Deutschland
 > EWG6 | Die Römischen Verträge, 1957 @ six countries
 
-[curious] So how do you stop countries from going to war with each other? In the 1950s, a few European politicians had an unusual answer: tie their economies together so closely that war stops making sense.
+[dramatic] So how do you stop countries from going to war with each other? In the 1950s, a few European politicians had an unusual answer: tie their economies together so closely that war stops making sense.
 
-In 1957, six countries signed two treaties in Rome: West Germany, France, Italy, Belgium, the Netherlands and Luxembourg.
+[dramatic] In 1957, six countries signed two treaties in Rome: West Germany, France, Italy, Belgium, the Netherlands and Luxembourg.
 
 {Q239}
 
-> SCENE (question): Question card #239.
+> SCENE (question): Question card #239. Three seconds to guess, then the answer highlights.
 
-The exam asks: [[Durch welche Verträge schloss sich die Bundesrepublik Deutschland mit anderen Staaten zur Europäischen Wirtschaftsgemeinschaft zusammen?]] Through which treaties did Germany join the European Economic Community?
+[dramatic] The exam asks: [[Durch welche Verträge schloss sich die Bundesrepublik Deutschland mit anderen Staaten zur Europäischen Wirtschaftsgemeinschaft zusammen?]] Through which treaties did Germany join the European Economic Community?
 
-[[durch die "Römischen Verträge"]] — through the Treaties of Rome.
+[countdown] [dramatic] [[durch die "Römischen Verträge"]], through the Treaties of Rome.
 
 {Q237}
 
-> SCENE (question): Question card #237.
+> SCENE (question): Question card #237. Three seconds to guess, then the answer highlights.
 
-And its twin: [[2007 wurde das 50-jährige Jubiläum der "Römischen Verträge" gefeiert. Was war der Inhalt der Verträge?]] What did the Treaties of Rome do?
+[dramatic] And its twin: [[2007 wurde das 50-jährige Jubiläum der "Römischen Verträge" gefeiert. Was war der Inhalt der Verträge?]] What did the Treaties of Rome do?
 
-[[Gründung der Europäischen Wirtschaftsgemeinschaft (EWG)]] — they founded the European Economic Community. In German, the EWG.
+[countdown] [dramatic] [[Gründung der Europäischen Wirtschaftsgemeinschaft (EWG)]]. They founded the European Economic Community. In German, the EWG.
 
-The wrong answers are all real events from Germany's post-war history: joining NATO, paying reparations, the border with Poland. None of them was signed in Rome. Remember: Rome, 1957, EWG.
+[dramatic] The wrong answers are all real events from Germany's post-war history: joining NATO, paying reparations, the border with Poland. None of them was signed in Rome. Remember: Rome, 1957, EWG.
 
 {Q231}
 
-> SCENE (question): Question card #231.
+> SCENE (question): Question card #231. Three seconds to guess, then the answer highlights.
 
-[[Was bedeutet der Begriff "europäische Integration"?]] What does European integration mean?
+[dramatic] [[Was bedeutet der Begriff "europäische Integration"?]] What does European integration mean?
 
-[[Der Begriff meint den Zusammenschluss europäischer Staaten zur EU.]] The joining together of European states into the EU.
+[countdown] [dramatic] [[Der Begriff meint den Zusammenschluss europäischer Staaten zur EU.]] The joining together of European states into the EU.
 
-[dry amusement] The other options are about migration: Americans in Europe, Europeans in America, an immigration stop. They use the word integration the way you would in a different conversation. Here, it means countries growing together.
+[dramatic] The other options are about migration: Americans in Europe, Europeans in America, an immigration stop. They use the word integration the way you would in a different conversation. Here, it means countries growing together.
 
 {Q173}
 
-> SCENE (question): Question card #173.
+> SCENE (question): Question card #173. Three seconds to guess, then the answer highlights.
 
-[[Die Bundesrepublik Deutschland ist ein Gründungsmitglied …]] Germany is a founding member of…
+[dramatic] [[Die Bundesrepublik Deutschland ist ein Gründungsmitglied …]] Germany is a founding member of…
 
-[[der Europäischen Union (EU).]] the European Union.
+[countdown] [dramatic] [[der Europäischen Union (EU).]] The European Union.
 
-Careful here: NATO and the United Nations sound right too. But West Germany only joined NATO in 1955, years after it was founded, and the United Nations in 1973. The Warsaw Pact was the Soviet alliance; East Germany was in that one. The EU itself was founded in 1993, by twelve countries. Germany was one of them.
+[dramatic] NATO and the United Nations sound right too. But West Germany only joined NATO in 1955, years after it was founded, and the United Nations in 1973. The Warsaw Pact was the Soviet alliance; East Germany was in that one. The EU itself was founded in 1993, by twelve countries. Germany was one of them.
 
 {Q224}
 
-> SCENE (question): Question card #224.
+> SCENE (question): Question card #224. Three seconds to guess, then the answer highlights.
 
-And the easiest one: [[Was bedeutet die Abkürzung EU?]] [[Europäische Union]]. European Union. If you're watching this, that one's yours.
+[dramatic] And the easiest one of all: [[Was bedeutet die Abkürzung EU?]]
+
+[countdown] [dramatic] [[Europäische Union]]. European Union.
 
 ## Twenty-seven, under one flag
 
@@ -99,24 +99,24 @@ And the easiest one: [[Was bedeutet die Abkürzung EU?]] [[Europäische Union]].
 > Deutschland
 > EU27 | 27 Mitgliedstaaten @ twenty-seven
 
-[curious] From six countries in 1957, the union kept growing. Today it has twenty-seven members.
+[dramatic] From six countries in 1957, the union kept growing. Today it has twenty-seven members.
 
 {Q236}
 
-> SCENE (question): Question card #236.
+> SCENE (question): Question card #236. Three seconds to guess, then the answer highlights.
 
-[[Wie viele Mitgliedstaaten hat die EU heute?]] How many member states does the EU have today? [[27]].
+[dramatic] [[Wie viele Mitgliedstaaten hat die EU heute?]] How many member states does the EU have today?
 
-It was twenty-eight until 2020, when the United Kingdom left: that's Brexit. Of the wrong answers, twenty-five was true once, in 2004. Twenty-one and twenty-three never were.
+[countdown] [dramatic] [[27]]. It was twenty-eight until 2020, when the United Kingdom left: that's Brexit. Of the wrong answers, twenty-five was true once, in 2004. Twenty-one and twenty-three never were.
 
 {Q226}
 
-> SCENE (question): Question card #226. The four flags; the blue one with twelve stars lights up.
+> SCENE (question): Question card #226. The four flags. Three seconds to guess, then the blue one with twelve stars lights up.
 > @ twelve golden stars
 
-[[Welche ist die Flagge der Europäischen Union?]] Which one is the flag of the European Union?
+[dramatic] [[Welche ist die Flagge der Europäischen Union?]] Which one is the flag of the European Union?
 
-The blue one, with twelve golden stars in a circle. And here's a detail people get wrong: the twelve stars don't stand for twelve countries. Twelve is a symbol of completeness and unity. The number stays the same, however many countries join.
+[countdown] [dramatic] The blue one, with twelve golden stars in a circle. And a detail people often get wrong: the twelve stars don't stand for twelve countries. Twelve is a symbol of completeness and unity. The number stays the same, however many countries join.
 
 ## Who you vote for
 
@@ -125,97 +125,107 @@ The blue one, with twelve golden stars in a circle. And here's a detail people g
 > Bundestagswahl | Germany: the Bundestag @ for Germany
 > Landtagswahl | your state: the Landtag @ for your federal state
 
-[warm] Once you're a citizen, you vote at several levels: for Europe, for Germany, for your federal state, and for your town. The exam checks that you can tell them apart: [[Europawahl]], [[Bundestagswahl]], [[Landtagswahl]].
+[dramatic] Once you're a citizen, you vote at several levels: for Europe, for Germany, for your federal state, and for your town. The exam checks that you can tell them apart: [[Europawahl]], [[Bundestagswahl]], [[Landtagswahl]].
 
 {Q232}
 
-> SCENE (question): Question card #232.
+> SCENE (question): Question card #232. Three seconds to guess, then the answer highlights.
 
-[[Wer wird bei der Europawahl gewählt?]] Who is elected in the European elections?
+[dramatic] [[Wer wird bei der Europawahl gewählt?]] Who is elected in the European elections?
 
-[[die Abgeordneten des Europäischen Parlaments]] — the members of the European Parliament. Germany sends ninety-six of them, more than any other country.
+[countdown] [dramatic] [[die Abgeordneten des Europäischen Parlaments]], the members of the European Parliament. Germany sends ninety-six of them, more than any other country.
 
-The trap is [[die Europäische Kommission]]. The Commission runs the EU's day-to-day business, but nobody votes for it directly. Its members are nominated by the governments and approved by the Parliament.
+[dramatic] The trap is [[die Europäische Kommission]]. The Commission runs the EU's day-to-day business, but nobody votes for it directly. Its members are nominated by the governments and approved by the Parliament.
 
 {Q230}
 
-> SCENE (question): Question card #230.
+> SCENE (question): Question card #230. Three seconds to guess, then the answer highlights.
 
-[[Das Europäische Parlament wird regelmäßig gewählt, nämlich alle …]] The European Parliament is elected every… [[5 Jahre.]] Five years. The last election was in 2024; the next is due in 2029. And in Germany, you can vote in it from the age of sixteen.
+[dramatic] [[Das Europäische Parlament wird regelmäßig gewählt, nämlich alle …]] The European Parliament is elected every…
+
+[countdown] [dramatic] [[5 Jahre.]] Five years. The last election was in 2024; the next is due in 2029. And in Germany, you can vote in it from the age of sixteen.
 
 > SCENE (photo): The European Parliament's chamber in Strasbourg.
 > ep-strasbourg | The European Parliament in session, Strasbourg | color
 
-[curious] So where does this parliament meet? Trick question. The answer is: in three cities.
+[dramatic] So where does this parliament meet? Not in one city, but in three.
 
 {Q234}
 
-> SCENE (question): Question card #234.
+> SCENE (question): Question card #234. Three seconds to guess, then the answer highlights.
 
-[[Wo ist ein Sitz des Europäischen Parlaments?]] Where is one of the seats of the European Parliament? [[Straßburg]] — Strasbourg, in France. That's its official seat, where the big plenary sessions happen. Not Berlin, not Paris, not London.
+[dramatic] [[Wo ist ein Sitz des Europäischen Parlaments?]] Where is one of the seats of the European Parliament?
+
+[countdown] [dramatic] [[Straßburg]], Strasbourg, in France. That's its official seat, where the big plenary sessions happen. Not Berlin, not Paris, not London.
 
 {Q238}
 
-> SCENE (question): Question card #238.
+> SCENE (question): Question card #238. Three seconds to guess, then the answer highlights.
 
-[[An welchen Orten arbeitet das Europäische Parlament?]] In which places does it work? [[Straßburg, Luxemburg und Brüssel]]. Strasbourg for the plenary sessions, Brussels for most of the committee work, Luxembourg for the administration.
+[dramatic] [[An welchen Orten arbeitet das Europäische Parlament?]] In which places does it work?
+
+[countdown] [dramatic] [[Straßburg, Luxemburg und Brüssel]]. Strasbourg for the plenary sessions, Brussels for most of the committee work, Luxembourg for the administration.
 
 {Q44}
 
-> SCENE (question): Question card #44.
+> SCENE (question): Question card #44. Three seconds to guess, then the answer highlights.
 > @ den Bundespräsidenten
 
-[firm] Now a [[nicht]] question. [[Wen kann man als Bürger in Deutschland nicht direkt wählen?]] Whom can you not elect directly?
+[dramatic] Now a [[nicht]] question. [[Wen kann man als Bürger in Deutschland nicht direkt wählen?]] Whom can you not elect directly?
 
-You do elect the European Parliament, the Bundestag and your state parliament. You do not elect [[den Bundespräsidenten]] — the federal president. A special assembly does that: the [[Bundesversammlung]]. It's made up of all the members of the Bundestag and the same number of delegates sent by the state parliaments.
+[countdown] [dramatic] [[den Bundespräsidenten]], the federal president. A special assembly elects the president: the [[Bundesversammlung]]. It's made up of all the members of the Bundestag and the same number of delegates sent by the state parliaments. The European Parliament, the Bundestag and your state parliament, you do elect yourself.
 
 {Q62}
 
-> SCENE (question): Question card #62.
+> SCENE (question): Question card #62. Three seconds to guess, then the answer highlights.
 
-[[Wenn das Parlament eines deutschen Bundeslandes gewählt wird, nennt man das …]] When a state parliament is elected, it's called… [[Landtagswahl]]. A state election. [[Kommunalwahl]] is for your town or district, [[Bundestagswahl]] for the whole country.
+[dramatic] [[Wenn das Parlament eines deutschen Bundeslandes gewählt wird, nennt man das …]] When a state parliament is elected, it's called…
+
+[countdown] [dramatic] [[Landtagswahl]]. A state election. [[Kommunalwahl]] is for your town or district, [[Bundestagswahl]] for the whole country.
 
 {Q37}
 
-> SCENE (question): Question card #37.
+> SCENE (question): Question card #37. Three seconds to guess, then the answer highlights.
 > @ Ministerpräsident
 
-And who leads a state government? [[Wie werden die Regierungschefs der meisten Bundesländer in Deutschland genannt?]] What are the heads of most state governments called?
+[dramatic] And who leads a state government? [[Wie werden die Regierungschefs der meisten Bundesländer in Deutschland genannt?]] What are the heads of most state governments called?
 
-[[Ministerpräsident]], or [[Ministerpräsidentin]]. In English that sounds like "prime minister", and that's exactly the trap: [[Premierminister]] is not the German title. [[Senator]] is wrong too: that's what ministers are called in the city-states.
+[countdown] [dramatic] [[Ministerpräsident]], or [[Ministerpräsidentin]]. In English that sounds like "prime minister", and that's exactly the trap: [[Premierminister]] is not the German title. [[Senator]] is wrong too: that's what ministers are called in the city-states.
 
-[curious] And notice the word "most". The three city-states do it differently. Berlin has a [[Regierender Bürgermeister]], Hamburg an [[Erster Bürgermeister]], and Bremen a [[Präsident des Senats]].
+[dramatic] And notice the word "most". The three city-states do it differently. Berlin has a [[Regierender Bürgermeister]], Hamburg an [[Erster Bürgermeister]], and Bremen a [[Präsident des Senats]].
 
 ## No borders, one currency
 
 > SCENE (photo): The memorial in Schengen, on the Moselle.
 > schengen | Schengen, Luxembourg: the agreement was signed here in 1985 | color
 
-[curious] In 1985, five countries signed an agreement on a boat on the river Moselle, next to a small village in Luxembourg called Schengen. The idea: no more checks at the borders between them.
+[dramatic] In 1985, five countries signed an agreement on a boat on the river Moselle, next to a small village in Luxembourg called Schengen. The idea: no more checks at the borders between them.
 
 {Q221}
 
-> SCENE (question): Question card #221.
+> SCENE (question): Question card #221. Three seconds to guess, then the answer highlights.
 
-[[Deutschland ist Mitglied des Schengener Abkommens. Was bedeutet das?]] What does Schengen mean for you?
+[dramatic] [[Deutschland ist Mitglied des Schengener Abkommens. Was bedeutet das?]] What does Schengen mean for you?
 
-[[Deutsche können in viele Länder Europas ohne Passkontrolle reisen.]] Germans can travel to many European countries without passport checks.
+[countdown] [dramatic] [[Deutsche können in viele Länder Europas ohne Passkontrolle reisen.]] Germans can travel to many European countries without passport checks.
 
-Read the wrong answers closely. Not every country in the world. Not everyone entering Germany without checks: the outer borders of the Schengen area are still checked. And not paying in euros everywhere: that's a different thing entirely.
+[dramatic] Read the wrong answers closely. Not every country in the world. Not everyone entering Germany without checks: the outer borders of the Schengen area are still checked. And not paying in euros everywhere: that's a different thing entirely.
 
-[serious] One honest detail: countries can bring back border checks for a while, and Germany has done that at its land borders in recent years. So carry your ID anyway.
+[dramatic] One honest detail: countries can bring back border checks for a while, and Germany has done that at its land borders in recent years. So carry your ID anyway.
 
 > SCENE (stat): The euro, in two steps.
 > 1999 | the euro starts, for banks and accounts @ 1999
 > 2002 | notes and coins arrive @ January 2002
 
-[warm] The euro came in two steps. In 1999, it started as a currency for banks and accounts. Notes and coins followed on the first of January 2002, and the Deutsche Mark was gone.
+[dramatic] The euro came in two steps. In 1999, it started as a currency for banks and accounts. Notes and coins followed on the first of January 2002, and the Deutsche Mark was gone.
 
 {Q240}
 
-> SCENE (question): Question card #240.
+> SCENE (question): Question card #240. Three seconds to guess, then the answer highlights.
 
-[[Seit wann bezahlt man in Deutschland mit dem Euro in bar?]] Since when do people in Germany pay cash in euros? [[2002]]. Remember: cash, 2002.
+[dramatic] [[Seit wann bezahlt man in Deutschland mit dem Euro in bar?]] Since when do people in Germany pay cash in euros?
+
+[countdown] [dramatic] [[2002]]. Remember: cash, 2002.
 
 ## Nine neighbours
 
@@ -223,49 +233,61 @@ Read the wrong answers closely. Not every country in the world. Not everyone ent
 > Deutschland
 > Dänemark, Polen, Tschechien, Österreich, Schweiz, Frankreich, Luxemburg, Belgien, Niederlande
 
-[curious] Germany sits in the middle of Europe, and that gives it a lot of neighbours. Nine, in fact. Let's go round clockwise, starting at the top. [[Dänemark]]. [[Polen]]. [[Tschechien]]. [[Österreich]]. [[Schweiz]]. [[Frankreich]]. [[Luxemburg]]. [[Belgien]]. [[Niederlande]].
+[dramatic] Germany sits in the middle of Europe, and that gives it a lot of neighbours. Nine, in fact. Let's go round clockwise, starting at the top. [[Dänemark]]. [[Polen]]. [[Tschechien]]. [[Österreich]]. [[Schweiz]]. [[Frankreich]]. [[Luxemburg]]. [[Belgien]]. [[Niederlande]].
 
 {Q227}
 
-> SCENE (question): Question card #227.
+> SCENE (question): Question card #227. Three seconds to guess, then the answer highlights.
 
-[[Welches Land ist ein Nachbarland von Deutschland?]] This question comes in five versions, and the trick is always the same. Here: Finland, Norway, Sweden. All in the north, but none of them touches Germany. [[Dänemark]] does.
+[dramatic] [[Welches Land ist ein Nachbarland von Deutschland?]] This question comes in five versions, and the trick is always the same. Here is version one.
+
+[countdown] [dramatic] [[Dänemark]]. Finland, Norway and Sweden are all in the north, but none of them touches Germany.
 
 {Q223}
 
-> SCENE (question): Question card #223.
+> SCENE (question): Question card #223. Three seconds to guess, then the answer highlights.
 
-Version two: Romania, Bulgaria, Greece. All far away in the south-east. [[Polen]] is right next door.
+[dramatic] Version two, with four new options.
+
+[countdown] [dramatic] [[Polen]], right next door. Romania, Bulgaria and Greece are all far away in the south-east.
 
 {Q233}
 
-> SCENE (question): Question card #233.
+> SCENE (question): Question card #233. Three seconds to guess, then the answer highlights.
 
-Version three: Bulgaria, Greece, Portugal. The neighbour is [[Tschechien]], the Czech Republic.
+[dramatic] Version three.
+
+[countdown] [dramatic] [[Tschechien]], the Czech Republic. Not Bulgaria, Greece or Portugal.
 
 {Q222}
 
-> SCENE (question): Question card #222.
+> SCENE (question): Question card #222. Three seconds to guess, then the answer highlights.
 
-Version four: Hungary, Portugal, Spain. The neighbour: [[Schweiz]], Switzerland.
+[dramatic] Version four.
+
+[countdown] [dramatic] [[Schweiz]], Switzerland. Not Hungary, Portugal or Spain.
 
 {Q229}
 
-> SCENE (question): Question card #229.
+> SCENE (question): Question card #229. Three seconds to guess, then the answer highlights.
 
-And version five: Spain, Bulgaria, Norway. The neighbour: [[Luxemburg]].
+[dramatic] And version five.
 
-[warm] So if you can't remember all nine, use this rule: pick the country you could drive to without crossing another one. Spain, Portugal, Greece, Bulgaria, Sweden, Norway, Finland: always wrong.
+[countdown] [dramatic] [[Luxemburg]]. Not Spain, Bulgaria or Norway.
+
+[dramatic] So if you can't remember all nine, use this rule: pick the country you could drive to without crossing another one. Spain, Portugal, Greece, Bulgaria, Sweden, Norway, Finland: always wrong.
 
 ## A shared heritage
 
 {Q295}
 
-> SCENE (question): Question card #295.
+> SCENE (question): Question card #295. Three seconds to guess, then the answer highlights.
 
-[[Welche Religion hat die europäische und deutsche Kultur geprägt?]] Which religion shaped European and German culture? [[das Christentum]] — Christianity.
+[dramatic] [[Welche Religion hat die europäische und deutsche Kultur geprägt?]] Which religion shaped European and German culture?
 
-[warm] You can see it everywhere: a church in almost every town, and public holidays like Christmas, Easter and Pentecost. Even Sunday as a day of rest is protected in the constitution. That's history and culture. It doesn't mean you have to be Christian: as the Basic Rights lesson showed, in Germany you can believe anything, or nothing at all.
+[countdown] [dramatic] [[das Christentum]], Christianity. You can see it everywhere: a church in almost every town, and public holidays like Christmas, Easter and Pentecost. Even Sunday as a day of rest is protected in the constitution.
+
+[dramatic] That's history and culture. It doesn't mean you have to be Christian: as the Basic Rights lesson showed, in Germany you can believe anything, or nothing at all.
 
 ## What to remember for the exam
 
@@ -274,31 +296,29 @@ And version five: Spain, Bulgaria, Norway. The neighbour: [[Luxemburg]].
 > 27 · 12 stars · 5 years | → the EU in numbers @ Two.
 > Nachbarländer | → the one right next door @ Three.
 
-[warm] Three things to take away. One: Rome, 1957. Six countries, the EWG. That's where it started.
+[dramatic] Three things to take away. One. Rome, 1957. Six countries, the EWG. That's where it started.
 
-Two: the numbers. Twenty-seven members. Twelve stars. A parliament elected every five years, working in Strasbourg, Brussels and Luxembourg.
+[dramatic] Two. The numbers. Twenty-seven members. Twelve stars. A parliament elected every five years, working in Strasbourg, Brussels and Luxembourg.
 
-Three: the neighbours. Nine of them, and the right answer is always the one right next door.
+[dramatic] Three. The neighbours. Nine of them, and the right answer is always the one right next door.
 
 > SCENE (words): The words appear one by one, then settle into a grid.
 > Römische Verträge, EWG, Euro, Europawahl, Straßburg, Schengen, Landtagswahl, Ministerpräsident
 
-And the words to recognise on the day: [[Römische Verträge]]. [[EWG]]. [[Euro]]. [[Europawahl]]. [[Straßburg]]. [[Schengen]]. [[Landtagswahl]]. [[Ministerpräsident]].
+[dramatic] And the words to recognise on the day: [[Römische Verträge]]. [[EWG]]. [[Euro]]. [[Europawahl]]. [[Straßburg]]. [[Schengen]]. [[Landtagswahl]]. [[Ministerpräsident]].
 
 ## Outro
 
 > SCENE (outro): Back to Verdun: the goal of the EU. Then the app.
 > Frieden und Sicherheit | Peace and security | Das Ziel der EU
 
-[warm] Two men holding hands where their countries' soldiers once killed each other. That's what Europe was built for. And today, for most people, crossing from Germany into France is as easy as crossing a bridge.
+[dramatic] Two men holding hands where their countries' soldiers once killed each other. That's what Europe was built for. And today, for most people, crossing from Germany into France is as easy as crossing a bridge.
 
-If you want to practise all four hundred and sixty questions — free, no account — the app is linked in the description.
+[dramatic] If you want to practise all four hundred and sixty questions, free and with no account, the app is linked in the description.
 
 > SCENE (end): End card with the AI-voice disclosure.
 
-This video is narrated with an AI version of my own voice. Every fact in the script was checked against the official question catalogue.
-
-[pause] See you in the next one.
+[dramatic] This video is narrated with an AI version of my own voice. Every fact in the script was checked against the official question catalogue. See you in the next one.
 
 <!--
 SOURCES FOR REVIEW

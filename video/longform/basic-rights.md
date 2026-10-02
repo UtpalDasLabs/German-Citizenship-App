@@ -3,7 +3,7 @@ title: "Basic Rights — The Rules Even the Government Has to Obey"
 topic: constitution
 questions: [6, 11, 18, 161, 15, 8, 1, 16, 30, 12, 43, 48, 17, 281, 277, 278, 289, 7, 292, 19, 274, 68, 9]
 target: about 17 minutes
-status: draft 1, for review
+status: draft 2, documentary tone (see SERIES.md)
 ---
 
 <!--
@@ -20,7 +20,11 @@ HOW TO READ THIS SCRIPT
   {Q147}            a question starts here: its timestamp becomes the
                     "Watch this explained" jump in the app
   [[Deutsch]]       German: spoken with native German pronunciation
-  [curious]         delivery direction for the voice (Eleven v4); never spoken
+  [dramatic]        delivery direction for the voice (Eleven v4); never spoken.
+                    The series uses [dramatic] only: see "Tone" in SERIES.md
+  [countdown]       three silent seconds to guess before this paragraph
+  [pause]           a little extra air before this paragraph
+  > hold 2.5        under a scene: seconds of picture after the voice
   plain text        English narration
 
 Every fact was checked against the official catalogue answer, the article of
@@ -32,19 +36,19 @@ given where the exam answer depends on them.
 
 > SCENE (ruins): Black. A single match strikes. Slowly: a ruined city skyline, 1945, smoke, grey palette.
 
-[curious] Imagine this. You get to write the rules for a **whole country**. From scratch. No pressure.
+[dramatic] Imagine this. You get to write the rules for a **whole country**, from scratch.
 
 > SCENE (bonn): The ruins fade to a quiet room in Bonn, 1949. Sixty-five figures around long tables. Papers everywhere.
 
-[serious] Oh, and one more thing: that country has just **destroyed itself**. Four years earlier, after a government took people's rights, then their freedom, then their lives. And it did a lot of that legally, with laws, after a parliament voted away its own power.
+[dramatic] And that country has just **destroyed itself**. Four years earlier, after a government took people's rights, then their freedom, then their lives. And it did a lot of that legally, with laws, after a parliament voted away its own power.
 
-[pause] So. What would *you* write **first**?
+[pause] [dramatic] So if you were in that room, what would you write **first**?
 
 > SCENE (article1): A blank page. One sentence types itself, in German, then fades to English beneath it.
 
-[warm] In 1949, sixty-five people in Bonn answered with **one sentence**: [[Die Würde des Menschen ist unantastbar.]] Human dignity is inviolable.
+[dramatic] In 1949, sixty-five people in Bonn answered with **one sentence**: [[Die Würde des Menschen ist unantastbar.]] Human dignity is inviolable.
 
-And that sentence is where we start. Stick with me, and you'll get the rules that protect everyone in Germany, **including you**. Plus all twenty-three basic-rights questions from the citizenship test. In German!
+[dramatic] That sentence is where we start. In this video: the rules that protect everyone who lives here, including you, and all twenty-three basic-rights questions from the citizenship test. In German.
 
 > SCENE (title): Title card. "Basic Rights — The Rules Even the Government Has to Obey". The app's eagle, small, in a corner.
 > GRUNDRECHTE
@@ -87,143 +91,129 @@ And that sentence is where we start. Stick with me, and you'll get the rules tha
 > SCENE (photo): The Grundgesetz opens. Articles 1 to 19 fan out like cards, labelled "Grundrechte".
 > bgbl-1949-contents | The Grundgesetz, 1949: articles 1 to 19 are "Die Grundrechte" | paper to 0.5 0.3 1.5
 
-The first nineteen articles are the [[Grundrechte]] — the basic rights. They don't just describe nice ideals. They bind the state directly. If a law breaks one of them, the Federal Constitutional Court, the [[Bundesverfassungsgericht]], can strike that law down.
+[dramatic] The first nineteen articles are the [[Grundrechte]], the basic rights. They don't just describe nice ideals. They bind the state directly. If a law breaks one of them, the Federal Constitutional Court, the [[Bundesverfassungsgericht]], can strike that law down.
 
-[pause] And at the very top, before democracy, before elections, before the state itself, sits Article 1.
+[pause] [dramatic] And at the very top, before democracy, before elections, before the state itself, sits Article 1.
 
 {Q18}
 
-> SCENE (question): Question card #18. Option A highlights. Article 1's sentence appears beneath, in German.
+> SCENE (question): Question card #18. Three seconds to guess, then option A highlights.
 
-The exam asks: [[Welches Grundrecht ist in Artikel 1 des Grundgesetzes der Bundesrepublik Deutschland garantiert?]] Which basic right does Article 1 guarantee?
+[dramatic] The exam asks: [[Welches Grundrecht ist in Artikel 1 des Grundgesetzes der Bundesrepublik Deutschland garantiert?]] Which basic right does Article 1 guarantee?
 
-The answer: [[die Unantastbarkeit der Menschenwürde]] — the inviolability of human dignity.
-
-[curious] Why put dignity first? Because of what came before.
+[countdown] [dramatic] [[die Unantastbarkeit der Menschenwürde]], the inviolability of human dignity. Why put dignity first? Because of what came before.
 
 {Q161}
 
-> SCENE (question): Grey archival tones. Question card #161. Option A highlights.
+> SCENE (question): Grey archival tones. Question card #161. Three seconds to guess, then option A highlights.
 
-[serious] The exam asks about that too: [[Was kennzeichnete den NS-Staat?]] What characterised the Nazi state? The answer: [[eine Politik des staatlichen Rassismus]] — a policy of state racism.
+[dramatic] The exam asks about that too. [[Was kennzeichnete den NS-Staat? Eine Politik …]] What characterised the Nazi state? A policy of…
 
-Racism wasn't a side effect of that state. It was the organising idea — and it led directly to the Holocaust. Article 1 is the answer to it. It says the state exists for people, never the other way round.
+[countdown] [dramatic] [[des staatlichen Rassismus]], of state racism. Racism wasn't a side effect of that state. It was the organising idea, and it led directly to the Holocaust. Article 1 is the answer to it. It says the state exists for people, never the other way round.
 
 {Q15}
 
-> SCENE (question): Question card #15. Option B highlights. A broken chain icon.
+> SCENE (question): Question card #15. Three seconds to guess, then option B highlights.
 
-Another answer to that history: [[Was verbietet das deutsche Grundgesetz?]] What does the Basic Law forbid? [[Zwangsarbeit]] — forced labour.
+[dramatic] Another answer to that history. [[Was verbietet das deutsche Grundgesetz?]] What does the Basic Law forbid?
 
-The Nazi state forced millions of people to work. The Basic Law, in Article 12, rules that out. Nobody can be forced into a particular job.
+[countdown] [dramatic] [[Zwangsarbeit]], forced labour. The Nazi state forced millions of people to work. The Basic Law, in Article 12, rules that out. Nobody can be forced into a particular job.
 
-[pause] Notice the other options here: military service, free choice of career, working abroad. None of those are forbidden. Free choice of career is actually a basic right itself.
+[dramatic] The other options here, military service, free choice of career and working abroad, are not forbidden. Free choice of career is actually a basic right itself.
 
 {Q8}
 
-> SCENE (question): Question card #8. A red "NICHT" stamp lands on the question. Option B highlights.
+> SCENE (question): Question card #8. Three seconds to guess, then option B highlights.
 
-[firm] Now, careful. This next one is a trap. [[Was steht nicht im Grundgesetz von Deutschland?]] What is *not* in the Basic Law?
+[dramatic] This next one is a trap. [[Was steht nicht im Grundgesetz von Deutschland?]] What is *not* in the Basic Law?
 
-Three of the options are real: [[Die Würde des Menschen ist unantastbar]] — that's Article 1. [[Alle sind vor dem Gesetz gleich]] — everyone is equal before the law — that's Article 3. [[Jeder Mensch darf seine Meinung sagen]] — that's Article 5.
+[countdown] [dramatic] [[Alle sollen gleich viel Geld haben]], everyone should have the same amount of money. The Basic Law promises equal rights, not equal incomes.
 
-The one that isn't there: [[Alle sollen gleich viel Geld haben]] — everyone should have the same amount of money.
+[dramatic] The other three are real. [[Die Würde des Menschen ist unantastbar]] is Article 1. [[Alle sind vor dem Gesetz gleich]], everyone is equal before the law, is Article 3. [[Jeder Mensch darf seine Meinung sagen]] is Article 5.
 
-[dry amusement] The Basic Law promises equal rights. Not equal bank balances.
-
-Whenever you see [[nicht]] or [[kein]] in a question, slow down. You're looking for the one that does *not* fit.
+[dramatic] Whenever you see [[nicht]] or [[kein]] in a question, slow down. You're looking for the one that does *not* fit.
 
 ## Say what you think
 
 > SCENE (term): A café. Two people at a table, one gesturing at a newspaper headline about the government.
 > Meinungsfreiheit | freedom of opinion | Artikel 5
 
-[warm] Picture a café in Berlin. Someone reads the news and says, loudly: "This government has no idea what it's doing."
+[dramatic] Picture a café in Berlin. Someone reads the news and says, out loud, that the government has no idea what it's doing. Nothing happens. Nobody comes to arrest them. The waiter brings another coffee.
 
-Nothing happens. Nobody comes to arrest them. The waiter brings another coffee.
-
-[serious] In a lot of the world, that sentence could get you arrested. In Germany, it's protected.
+[dramatic] In a lot of the world, that could get you arrested. In Germany, it's protected.
 
 {Q1}
 
-> SCENE (question): Question card #1. Option D highlights.
+> SCENE (question): Question card #1. Three seconds to guess, then option D highlights.
 
-[[In Deutschland dürfen Menschen offen etwas gegen die Regierung sagen, weil …]] — people in Germany may openly criticise the government because… [[hier Meinungsfreiheit gilt]]. Freedom of expression applies here. That's Article 5.
+[dramatic] [[In Deutschland dürfen Menschen offen etwas gegen die Regierung sagen, weil …]] People in Germany may openly criticise the government because…
 
-The wrong answers are tempting because they're also true things — people do pay taxes, people do have the right to vote. But neither is the *reason* you may criticise the government. The reason is [[Meinungsfreiheit]].
+[countdown] [dramatic] [[hier Meinungsfreiheit gilt]]. Freedom of expression applies here. That's Article 5.
+
+[dramatic] The wrong answers are tempting because they're also true. People do pay taxes, and people do have the right to vote. But neither is the *reason* you may criticise the government. The reason is [[Meinungsfreiheit]].
 
 {Q16}
 
-> SCENE (question): Question card #16. Option A highlights. A line is drawn between "opinion" and "false claim about a person".
+> SCENE (question): Question card #16. Three seconds to guess, then option A highlights.
 
-[curious] So is everything allowed? Not quite. [[Wann ist die Meinungsfreiheit in Deutschland eingeschränkt?]] When is freedom of expression limited?
+[dramatic] So is everything allowed? Not quite. [[Wann ist die Meinungsfreiheit in Deutschland eingeschränkt?]] When is freedom of expression limited?
 
-[[bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen]] — when you publicly spread false claims about individual people.
+[countdown] [dramatic] [[bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen]], when you publicly spread false claims about individual people.
 
-Here's the line: you can say a policy is terrible. You can't invent a crime and pin it on your neighbour. Your freedom ends where you damage someone else with lies.
-
-And look at the wrong answers: criticising the government, discussing religion, criticising the state. All allowed. The exam is checking whether you know that.
+[dramatic] Here's the line. You can say a policy is terrible. You can't invent a crime and pin it on your neighbour. Your freedom ends where you damage someone else with lies. And the wrong answers, criticising the government, discussing religion, criticising the state, are all allowed.
 
 {Q30}
 
-> SCENE (question): Question card #30. A newspaper with a black censor bar; the bar shatters. Option B highlights.
+> SCENE (question): Question card #30. Three seconds to guess, then option B highlights.
 
-[firm] Another [[kein]] question: [[Was ist kein Merkmal unserer Demokratie?]] What is *not* a feature of German democracy?
+[dramatic] Another [[kein]] question. [[Was ist kein Merkmal unserer Demokratie?]] What is *not* a feature of German democracy?
 
-Regular elections — yes. Freedom of expression — yes. Several parties — yes. And [[Pressezensur]], press censorship — no.
-
-Article 5 says it in five words: [[Eine Zensur findet nicht statt.]] There is no censorship.
+[countdown] [dramatic] [[Pressezensur]], press censorship. Regular elections, freedom of expression, several parties: all yes. Article 5 says it in five words: [[Eine Zensur findet nicht statt.]] There is no censorship.
 
 ## Rights you can't vote away
 
 > SCENE (term): A parliament chamber. A hand raises a sign: "Abolish press freedom?" A crowd of hands goes up.
 > Pressefreiheit | freedom of the press | Artikel 5
 
-[curious] Here's a question that sounds like a maths problem.
+[dramatic] Freedom of the press is in Article 5 as well. And the exam asks whether a parliament could take it away.
 
 {Q12}
 
-> SCENE (question): Question card #12. Options A and B flicker: "50%", "two-thirds". Option C highlights.
+> SCENE (question): Question card #12. Three seconds to guess, then option C highlights.
 
-[[Eine Partei im Deutschen Bundestag will die Pressefreiheit abschaffen. Ist das möglich?]] A party in the Bundestag wants to abolish press freedom. Is that possible?
+[dramatic] [[Eine Partei im Deutschen Bundestag will die Pressefreiheit abschaffen. Ist das möglich?]] A party in the Bundestag wants to abolish press freedom. Is that possible? Two of the options sound clever: yes, with more than half the votes, or yes, with two-thirds.
 
-Two of the options sound clever: yes, with more than half the votes. Yes, with two-thirds.
+[countdown] [dramatic] [[Nein, denn die Pressefreiheit ist ein Grundrecht. Sie kann nicht abgeschafft werden.]] No. Press freedom is a basic right. It can't be abolished.
 
-The answer is: [[Nein, denn die Pressefreiheit ist ein Grundrecht. Sie kann nicht abgeschafft werden.]] No — press freedom is a basic right. It can't be abolished.
+[dramatic] Why not, if enough people vote for it? Because Article 19 says the core of a basic right may never be touched. And the eternity clause, Article 79, protects human dignity and democracy itself from any change, even a unanimous one.
 
-[serious] Why not, if enough people vote for it? Because Article 19 says the core of a basic right may never be touched. And the eternity clause, Article 79, protects human dignity and democracy itself from any change — even a unanimous one.
-
-The people who wrote this had watched a democracy vote itself out of existence in 1933. They made sure it couldn't happen twice.
+[dramatic] The people who wrote this had watched a democracy vote itself out of existence in 1933. They made sure it couldn't happen twice.
 
 > SCENE (term): The idea, named.
 > wehrhafte Demokratie | a democracy that can defend itself
 
-That idea has a name: [[wehrhafte Demokratie]] — a democracy that can defend itself. And it goes one step further.
+[dramatic] That idea has a name: [[wehrhafte Demokratie]], a democracy that can defend itself. And it goes one step further.
 
 {Q43}
 
-> SCENE (question): Question card #43. Option C highlights.
+> SCENE (question): Question card #43. Three seconds to guess, then option C highlights.
 
-[[Wann kann in Deutschland eine Partei verboten werden?]] When can a party be banned?
+[dramatic] [[Wann kann in Deutschland eine Partei verboten werden?]] When can a party be banned?
 
-[[wenn sie gegen die Verfassung kämpft]] — when it fights against the constitution.
-
-Not because its campaign is expensive. Not because it criticises the president. Not because it wants something new. Only if it works to destroy the democratic order itself.
+[countdown] [dramatic] [[wenn sie gegen die Verfassung kämpft]], when it fights against the constitution. Not because its campaign is expensive. Not because it criticises the president. Not because it wants something new. Only if it works to destroy the democratic order itself.
 
 > SCENE (photo): The Bundesverfassungsgericht building in Karlsruhe. Two dates appear: 1952, 1956.
 > bverfg | Bundesverfassungsgericht, Karlsruhe. Party bans: 1952 and 1956 | color
 
-And only one institution can decide that: the [[Bundesverfassungsgericht]]. Never the government — otherwise a government could simply ban its opponents. So far, it has happened only twice: in 1952 and 1956.
+[dramatic] And only one institution can decide that: the [[Bundesverfassungsgericht]]. Never the government, otherwise a government could simply ban its opponents. So far, it has happened only twice: in 1952 and 1956.
 
 {Q48}
 
-> SCENE (question): Question card #48. Five building icons light up, labelled. A sixth, "Bürgerversammlung", stays grey. Option C highlights.
+> SCENE (question): Question card #48. Three seconds to guess, then option C highlights.
 
-[firm] One more [[nicht]]: [[Welches Organ gehört nicht zu den Verfassungsorganen Deutschlands?]] Which of these is *not* a constitutional body?
+[dramatic] One more [[nicht]]. [[Welches Organ gehört nicht zu den Verfassungsorganen Deutschlands?]] Which of these is *not* a constitutional body?
 
-The main ones: the [[Bundestag]], the [[Bundesrat]], the government, the federal president, and the constitutional court.
-
-The odd one out: [[die Bürgerversammlung]] — a citizens' assembly. It sounds democratic. But it has no place in the constitution.
+[countdown] [dramatic] [[die Bürgerversammlung]], a citizens' assembly. It sounds democratic, but it has no place in the constitution. The real ones are the [[Bundestag]], the [[Bundesrat]], the government, the federal president and the constitutional court.
 
 ## Equal — for real
 
@@ -231,151 +221,149 @@ The odd one out: [[die Bürgerversammlung]] — a citizens' assembly. It sounds 
 > 65 | people wrote the Basic Law @ sixty-five
 > 4 | of them were women @ four were women
 
-[warm] Back to that room in 1949. Of the sixty-five people writing the Basic Law, four were women.
+[dramatic] Back to that room in 1949. Of the sixty-five people writing the Basic Law, four were women.
 
 > SCENE (quote): Elisabeth Selbert's sentence. The proposal is rejected — a red stamp, twice. Then letters start falling from above, hundreds of them, piling up.
 > Männer und Frauen sind gleichberechtigt. | Men and women have equal rights. | Grundgesetz, Artikel 3
 
-One of them, a lawyer named Elisabeth Selbert, wanted one short sentence added: [[Männer und Frauen sind gleichberechtigt.]] Men and women have equal rights.
+[dramatic] One of them, a lawyer named Elisabeth Selbert, wanted one short sentence added: [[Männer und Frauen sind gleichberechtigt.]] Men and women have equal rights.
 
-[curious] The other members said no. Twice. So she went public. Letters and petitions poured in from women across the country — until the council gave in and voted for it. That sentence is in Article 3 today.
+[dramatic] The other members said no. Twice. So she went public. Letters and petitions poured in from women across the country, until the council gave in and voted for it. That sentence is in Article 3 today.
 
-Article 3 also says: [[Alle Menschen sind vor dem Gesetz gleich.]] All people are equal before the law.
+[dramatic] Article 3 also says: [[Alle Menschen sind vor dem Gesetz gleich.]] All people are equal before the law.
 
 {Q17}
 
-> SCENE (question): Question card #17. Option D highlights.
+> SCENE (question): Question card #17. Three seconds to guess, then option D highlights.
 
-So the exam asks: [[Die deutschen Gesetze verbieten …]] German laws forbid…
+[dramatic] So the exam asks: [[Die deutschen Gesetze verbieten …]] German laws forbid…
 
-[[Ungleichbehandlung der Bürgerinnen und Bürger durch den Staat]] — unequal treatment of citizens by the state.
-
-The other options are rights, not things that are banned: freedom of expression, petitions, freedom of assembly. If an answer takes away a freedom, it's almost never right.
+[countdown] [dramatic] [[Ungleichbehandlung der Bürgerinnen und Bürger durch den Staat]], unequal treatment of citizens by the state. The other options are rights, not things that are banned: freedom of expression, petitions, freedom of assembly. If an answer takes away a freedom, it's almost never right.
 
 {Q281}
 
-> SCENE (question): A public swimming pool entrance. Two friends are stopped at the turnstile. Question card #281.
+> SCENE (question): A public swimming pool entrance. Two friends are stopped at the turnstile. Question card #281. Three seconds to guess.
 
-Now the exam turns this into stories. Four of them. [[Zwei Freunde wollen in ein öffentliches Schwimmbad in Deutschland. Beide haben eine dunkle Hautfarbe und werden deshalb nicht hineingelassen. Welches Recht wird in dieser Situation verletzt?]] Two friends with dark skin are refused entry to a public swimming pool. Which right is violated?
+[dramatic] Now the exam turns this into stories. Four of them. [[Zwei Freunde wollen in ein öffentliches Schwimmbad in Deutschland. Beide haben eine dunkle Hautfarbe und werden deshalb nicht hineingelassen. Welches Recht wird in dieser Situation verletzt? Das Recht auf …]] Two friends with dark skin are refused entry to a public swimming pool. Which right is violated? The right to…
 
-[[Das Recht auf Gleichbehandlung]] — the right to equal treatment.
+[countdown] [dramatic] [[Gleichbehandlung]], equal treatment.
 
 > SCENE (list): Three job-application cards slide in side by side: a mother with a toddler, a man in a wheelchair, a man with dark skin.
 > Mutter | a mother with a two-year-old
 > Rollstuhl | an accountant who uses a wheelchair
 > dunkle Haut | a waiter with dark skin
 
-[curious] The other three stories all have the same shape. Someone applies for a job and — [[bekommt die Stelle nur deshalb nicht, weil …]] — doesn't get it *only* because…
-
-Here's the trick that solves all three: [pause] find the reason that has nothing to do with the job.
+[dramatic] The other three stories all have the same shape. Someone applies for a job and [[bekommt die Stelle nur deshalb nicht, weil …]], doesn't get it *only* because… What solves all three: find the reason that has nothing to do with the job.
 
 {Q277}
 
-> SCENE (question): Card 1 expands: question card #277. "Mutter ist." highlights.
+> SCENE (question): Card 1 expands: question card #277. Three seconds to guess, then "Mutter ist." highlights.
 
-A woman with a two-year-old child. Not hired because she [[Mutter ist]] — because she's a mother. Not speaking English, wanting a high salary, lacking experience — those can be fair reasons. Being a mother never is. German anti-discrimination law even spells it out: treating a woman worse because of pregnancy or motherhood counts as discrimination because of sex.
+[dramatic] First story: a woman with a two-year-old child applies for a job, and doesn't get it.
+
+[countdown] [dramatic] Because she [[Mutter ist]], because she's a mother. Not speaking English, wanting a high salary, lacking experience: those can be fair reasons. Being a mother never is. German anti-discrimination law even spells it out: treating a woman worse because of pregnancy or motherhood counts as discrimination because of sex.
 
 {Q278}
 
-> SCENE (question): Card 2 expands: question card #278. "im Rollstuhl sitzt." highlights.
+> SCENE (question): Card 2 expands: question card #278. Three seconds to guess, then "im Rollstuhl sitzt." highlights.
 
-A man applying to be an accountant. Not hired because he [[im Rollstuhl sitzt]] — because he uses a wheelchair. [dry amusement] Bookkeeping happens at a desk. The wheelchair is irrelevant.
+[dramatic] Second story: a man applies to be an accountant, and doesn't get the job.
+
+[countdown] [dramatic] Because he [[im Rollstuhl sitzt]], because he uses a wheelchair. Bookkeeping happens at a desk. The wheelchair has nothing to do with the job.
 
 {Q289}
 
-> SCENE (question): Card 3 expands: question card #289. "er eine dunkle Haut hat." highlights.
+> SCENE (question): Card 3 expands: question card #289. Three seconds to guess, then "er eine dunkle Haut hat." highlights.
 
-A man applying to be a waiter. Not hired because [[er eine dunkle Haut hat]] — because he has dark skin. Whatever a customer might prefer, that's never a lawful reason.
+[dramatic] Third story: a man applies to be a waiter, and doesn't get the job.
 
-[warm] Three stories, one rule. The law that enforces it in everyday life — at work, when renting a flat, at the door of a club — is called the [[Allgemeines Gleichbehandlungsgesetz]]. Most people just say the [[AGG]].
+[countdown] [dramatic] Because [[er eine dunkle Haut hat]], because he has dark skin. Whatever a customer might prefer, that's never a lawful reason.
+
+[dramatic] Three stories, one rule. The law that enforces it in everyday life, at work, when renting a flat, at the door of a club, is called the [[Allgemeines Gleichbehandlungsgesetz]]. Most people just say the [[AGG]].
 
 ## Believe anything — or nothing
 
 > SCENE (term): A street with a church, a mosque and a synagogue side by side; a person walks past all three, reading a book.
 > Glaubensfreiheit | freedom of faith | Artikel 4
 
-[curious] Here's a question with a sneaky wrong answer.
+[dramatic] Article 4 protects what you believe. And the next question hides a tempting wrong answer.
 
 {Q7}
 
-> SCENE (question): Question card #7. Option C, "Arbeit", wobbles. Option A highlights.
+> SCENE (question): Question card #7. Three seconds to guess, then option A highlights.
 
-[[Welches Recht gehört zu den Grundrechten, die nach der deutschen Verfassung garantiert werden? Das Recht auf …]] Which right is one of the basic rights?
+[dramatic] [[Welches Recht gehört zu den Grundrechten, die nach der deutschen Verfassung garantiert werden? Das Recht auf …]] Which right is one of the basic rights?
 
-[[Glaubens- und Gewissensfreiheit]] — freedom of faith and conscience. That's Article 4.
+[countdown] [dramatic] [[Glaubens- und Gewissensfreiheit]], freedom of faith and conscience. That's Article 4.
 
-[dry amusement] The trap is [[Arbeit]] — work. It feels like it should be a right. But the Basic Law guarantees free *choice* of work, not a right to a job. Entertainment and housing aren't basic rights either.
+[dramatic] The tempting one is [[Arbeit]], work. It feels like it should be a right. But the Basic Law guarantees free *choice* of work, not a right to a job. Entertainment and housing aren't basic rights either.
 
 {Q292}
 
-> SCENE (question): Question card #292. Option C highlights.
+> SCENE (question): Question card #292. Three seconds to guess, then option C highlights.
 
-[[Die Menschen in Deutschland leben nach dem Grundsatz der religiösen Toleranz. Was bedeutet das?]] What does religious tolerance mean?
+[dramatic] [[Die Menschen in Deutschland leben nach dem Grundsatz der religiösen Toleranz. Was bedeutet das?]] What does religious tolerance mean?
 
-[[Jeder kann glauben, was er möchte.]] Everyone can believe what they want.
+[countdown] [dramatic] [[Jeder kann glauben, was er möchte.]] Everyone can believe what they want.
 
-[warm] And that includes changing your belief, or believing nothing at all. There's no state church, and the state can't require a religion from you. The wrong answers all have the state deciding something about your faith. That's your signal they're wrong.
+[dramatic] That includes changing your belief, or believing nothing at all. There's no state church, and the state can't require a religion from you. The wrong answers all have the state deciding something about your faith. That's your signal they're wrong.
 
 ## Small freedoms, every day
 
 > SCENE (term): A moving van driving across a map of Germany, from one city to another.
 > Freizügigkeit | freedom of movement | Artikel 11
 
-Some basic rights show up in completely ordinary moments.
+[dramatic] Some basic rights show up in completely ordinary moments.
 
 {Q19}
 
-> SCENE (question): Question card #19. Option A highlights. The word "Freizügigkeit" floats above the van.
+> SCENE (question): Question card #19. Three seconds to guess, then option A highlights.
 
-[[Was versteht man unter dem Recht der „Freizügigkeit" in Deutschland?]] What is [[Freizügigkeit]]?
+[dramatic] [[Was versteht man unter dem Recht der „Freizügigkeit" in Deutschland?]] What is [[Freizügigkeit]]?
 
-[[Man darf sich seinen Wohnort selbst aussuchen.]] You may choose where you live.
+[countdown] [dramatic] [[Man darf sich seinen Wohnort selbst aussuchen.]] You may choose where you live. It's the reason you can take a job in Hamburg and move there without asking anyone's permission. The only formality is registering your new address within two weeks.
 
-It's the reason you can take a job in Hamburg and move there without asking anyone's permission. The only formality is registering your new address within two weeks.
-
-[curious] One honest detail: Article 11 actually says [[Alle Deutschen]] — all Germans. Some residence permits come with rules about where you have to live. Citizenship removes them. That's one of the quieter things you're working towards.
+[dramatic] One honest detail: Article 11 actually says [[Alle Deutschen]], all Germans. Some residence permits come with rules about where you have to live. Citizenship removes them. That's one of the quieter things you're working towards.
 
 {Q274}
 
-> SCENE (question): A hand reaches for an envelope addressed to someone else. A wax seal glows. Question card #274. Option B highlights.
+> SCENE (question): A hand reaches for an envelope addressed to someone else. Question card #274. Three seconds to guess, then option B highlights.
 
-[[Sie haben in Deutschland absichtlich einen Brief geöffnet, der an eine andere Person adressiert ist. Was haben Sie nicht beachtet?]] You deliberately opened a letter addressed to someone else. What did you ignore?
+[dramatic] [[Sie haben in Deutschland absichtlich einen Brief geöffnet, der an eine andere Person adressiert ist. Was haben Sie nicht beachtet?]] You deliberately opened a letter addressed to someone else. What did you ignore?
 
-[[das Briefgeheimnis]] — the secrecy of correspondence. Article 10.
-
-It's not just rude. Opening someone else's post on purpose is a crime. The near-miss answer here is [[die Schweigepflicht]] — that's the duty of confidentiality doctors and lawyers have. Different thing.
+[countdown] [dramatic] [[das Briefgeheimnis]], the secrecy of correspondence. Article 10. It's not just rude: opening someone else's post on purpose is a crime. The near-miss answer here is [[die Schweigepflicht]]. That's the duty of confidentiality doctors and lawyers have. A different thing.
 
 {Q68}
 
-> SCENE (question): A school building; a magnifying glass labelled "Staat" hovers over it — and over a private school next door. Question card #68.
+> SCENE (question): A school building; a magnifying glass labelled "Staat" hovers over it — and over a private school next door. Question card #68. Three seconds to guess.
 
-[[Warum kontrolliert der Staat in Deutschland das Schulwesen?]] Why does the state oversee schools?
+[dramatic] [[Warum kontrolliert der Staat in Deutschland das Schulwesen?]] Why does the state oversee schools?
 
-[[weil es nach dem Grundgesetz seine Aufgabe ist]] — because the Basic Law makes it the state's job. Article 7: the entire school system is under state supervision. Private schools too.
+[countdown] [dramatic] [[weil es nach dem Grundgesetz seine Aufgabe ist]], because the Basic Law makes it the state's job. Article 7: the entire school system is under state supervision. Private schools too.
 
-[curious] It goes together with compulsory schooling: in Germany every child has to go to school, and homeschooling generally isn't allowed. The idea is that every child gets a real education — and no child gets cut off from everyone else.
+[dramatic] It goes together with compulsory schooling. In Germany every child has to go to school, and homeschooling generally isn't allowed. The idea is that every child gets a real education, and no child gets cut off from everyone else.
 
 ## The right written for someone else
 
 > SCENE (term): The room in Bonn again. Night. One lamp. A few people still working.
 > Asyl | asylum | Artikel 16a
 
-[warm] One last question. And it's a bit different.
+[dramatic] One last question, and it's a little different from the others.
 
 {Q9}
 
-> SCENE (question): Question card #9. Option C highlights.
+> SCENE (question): Question card #9. Three seconds to guess, then option C highlights.
 
-[[Welches Grundrecht gilt in Deutschland nur für Ausländerinnen oder Ausländer? Das Grundrecht auf …]] Which basic right applies only to foreigners?
+[dramatic] [[Welches Grundrecht gilt in Deutschland nur für Ausländerinnen oder Ausländer? Das Grundrecht auf …]] Which basic right applies only to foreigners?
 
-[[Asyl]] — asylum. Article 16a: [[Politisch Verfolgte genießen Asylrecht.]] People persecuted for political reasons have the right to asylum.
+[countdown] [dramatic] [[Asyl]], asylum. Article 16a: [[Politisch Verfolgte genießen Asylrecht.]] People persecuted for political reasons have the right to asylum.
 
 > SCENE (fact): A border crossing in the 1930s. A line of people turned back. Slowly it fades back to the room in Bonn.
 > JULY 1938 | Konferenz von Évian | 32 countries meet about refugees from Nazi Germany. Almost none agree to take in more.
 
-[serious] It's the only basic right written for people who aren't German. The people who wrote it remembered the 1930s — when many who fled the Nazis were turned away at other countries' borders.
+[dramatic] It's the only basic right written for people who aren't German. The people who wrote it remembered the 1930s, when many who fled the Nazis were turned away at other countries' borders.
 
-[pause] So they wrote a promise into the foundation of the new state: that it would not do the same.
+[pause] [dramatic] So they wrote a promise into the foundation of the new state: that it would not do the same.
 
 ## What to remember for the exam
 
@@ -384,32 +372,30 @@ It's not just rude. Opening someone else's post on purpose is a crime. The near-
 > Discrimination | → the reason that has nothing to do with the job @ Two.
 > nicht / kein | → find the one that doesn't belong @ Three.
 
-[warm] Let's pull it together. Three patterns cover almost every basic-rights question.
+[dramatic] Let's pull it together. Three patterns cover almost every basic-rights question.
 
-One. If an answer gives the state power over what you say, what you believe or what the press prints — it's wrong. [[Pressezensur]], a state that picks your god: always wrong.
+[dramatic] One. If an answer gives the state power over what you say, what you believe or what the press prints, it's wrong. [[Pressezensur]], a state that picks your god: always wrong.
 
-Two. In the discrimination stories, pick the reason that has nothing to do with the situation. [[Mutter]], [[Rollstuhl]], [[dunkle Haut]].
+[dramatic] Two. In the discrimination stories, pick the reason that has nothing to do with the situation. [[Mutter]], [[Rollstuhl]], [[dunkle Haut]].
 
-Three. When you see [[nicht]] or [[kein]], you're hunting for the one that doesn't belong.
+[dramatic] Three. When you see [[nicht]] or [[kein]], you're looking for the one that doesn't belong.
 
 > SCENE (words): The words appear one by one, then settle into a grid.
 > Grundgesetz, Menschenwürde, Meinungsfreiheit, Pressezensur, Gleichbehandlung, Freizügigkeit, Briefgeheimnis, Asyl
 
-And the words to recognise on the day: [[Grundgesetz]]. [[Menschenwürde]]. [[Meinungsfreiheit]]. [[Pressezensur]]. [[Gleichbehandlung]]. [[Freizügigkeit]]. [[Briefgeheimnis]]. [[Asyl]].
+[dramatic] And the words to recognise on the day: [[Grundgesetz]]. [[Menschenwürde]]. [[Meinungsfreiheit]]. [[Pressezensur]]. [[Gleichbehandlung]]. [[Freizügigkeit]]. [[Briefgeheimnis]]. [[Asyl]].
 
 ## Outro
 
 > SCENE (outro): Back to the opening: the blank page, the single sentence. Then the app.
 
-[warm] In 1949, a group of people in a damaged country wrote down what a state owes the people in it. Those rules are now yours too.
+[dramatic] In 1949, a group of people in a damaged country wrote down what a state owes the people in it. Those rules are now yours too.
 
-If you want to practise all four hundred and sixty questions — free, no account — the app is linked in the description.
+[dramatic] If you want to practise all four hundred and sixty questions, free and with no account, the app is linked in the description.
 
 > SCENE (end): Small text, bottom of screen: "Narrated with an AI version of the creator's voice."
 
-This video is narrated with an AI version of my own voice. Every fact in the script was checked against the official question catalogue and the Basic Law.
-
-[pause] See you in the next one.
+[dramatic] This video is narrated with an AI version of my own voice. Every fact in the script was checked against the official question catalogue and the Basic Law. See you in the next one.
 
 <!--
 SOURCES FOR REVIEW
