@@ -47,9 +47,10 @@ export function LongForm({ plan }: LongFormProps) {
         </Sequence>
       ))}
       {plan.shots.flatMap((shot, i) =>
-        shot.paras.map((p, j) => (
+        // A silent cut (--silent) has timings but no audio.
+        shot.paras.filter((p) => p.src).map((p, j) => (
           <Sequence key={`${i}-${j}`} from={shot.from + p.from} durationInFrames={p.frames} name="voice">
-            <Audio src={staticFile(p.src)} />
+            <Audio src={staticFile(p.src!)} />
           </Sequence>
         )),
       )}

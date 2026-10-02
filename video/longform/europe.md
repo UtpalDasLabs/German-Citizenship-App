@@ -121,9 +121,9 @@ The blue one, with twelve golden stars in a circle. And here's a detail people g
 ## Who you vote for
 
 > SCENE (list): Three levels of elections.
-> Europawahl | Europe: the European Parliament @ Europawahl
-> Bundestagswahl | Germany: the Bundestag @ Bundestagswahl
-> Landtagswahl | your state: the Landtag @ Landtagswahl
+> Europawahl | Europe: the European Parliament @ for Europe
+> Bundestagswahl | Germany: the Bundestag @ for Germany
+> Landtagswahl | your state: the Landtag @ for your federal state
 
 [warm] Once you're a citizen, you vote at several levels: for Europe, for Germany, for your federal state, and for your town. The exam checks that you can tell them apart: [[Europawahl]], [[Bundestagswahl]], [[Landtagswahl]].
 

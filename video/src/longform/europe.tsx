@@ -158,12 +158,6 @@ export function EuropeMap() {
           );
         })}
       </svg>
-      {c ? (
-        <div style={{ position: 'absolute', left: 110, top: 380, width: 440, opacity: rise(frame, c.at, 16) }}>
-          <div style={{ fontFamily: SERIF, fontWeight: 600, fontSize: 64, lineHeight: 1.1, color: C.text }}>{c.text}</div>
-          <div style={{ width: 120 * rise(frame, c.at + 8, 14), height: 4, backgroundColor: GOLD, marginTop: 24 }} />
-        </div>
-      ) : null}
       <AbsoluteFill
         style={{
           background: `linear-gradient(90deg, #0E1830 0%, ${alpha('#0E1830', 0)} 30%)`,
@@ -171,6 +165,12 @@ export function EuropeMap() {
           pointerEvents: 'none',
         }}
       />
+      {c ? (
+        <div style={{ position: 'absolute', left: 110, top: 380, width: 440, opacity: rise(frame, c.at, 16) }}>
+          <div style={{ fontFamily: SERIF, fontWeight: 600, fontSize: 64, lineHeight: 1.1, color: C.text }}>{c.text}</div>
+          <div style={{ width: 120 * rise(frame, c.at + 8, 14), height: 4, backgroundColor: GOLD, marginTop: 24 }} />
+        </div>
+      ) : null}
     </AbsoluteFill>
   );
 }

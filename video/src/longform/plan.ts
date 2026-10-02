@@ -9,8 +9,8 @@ export type Para = {
   /** Frame within the shot where this paragraph's audio starts. */
   from: number;
   frames: number;
-  /** Audio file, relative to the public dir. */
-  src: string;
+  /** Audio file, relative to the public dir; null in a silent cut. */
+  src: string | null;
   /** Exactly what the voice was sent, tags included. */
   tts: string;
   /** When each character of `tts` is spoken, in seconds from `from`. */
