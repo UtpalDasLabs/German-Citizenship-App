@@ -8,6 +8,19 @@
  * cannot silently bypass a fix.
  */
 export const CORRECTIONS = {
+  14: {
+    // "Meinungsfreiheit in Deutschland heißt, dass ich …" Two options arrive
+    // with their words glued together ("imInternetäußern",
+    // "öffentlichtragen"), so the app and the videos showed them that way.
+    // Text only; the answer (b) is right.
+    options: {
+      b: ['meine Meinung imInternetäußern kann.', 'meine Meinung im Internet äußern kann.'],
+      c: [
+        'Nazi-, Hamas- oder Islamischer Staat-Symbole öffentlichtragen darf.',
+        'Nazi-, Hamas- oder Islamischer Staat-Symbole öffentlich tragen darf.',
+      ],
+    },
+  },
   71: {
     // "Wo hält sich die deutsche Bundeskanzlerin/der deutsche Bundeskanzler am
     // häufigsten auf?" The chancellor works in the Bundeskanzleramt in Berlin,
@@ -53,7 +66,19 @@ export function applyCorrection(q) {
         `expected "${fix.expectedAnswer}". Re-check the source and update scripts/corrections.mjs.`,
     );
   }
-  const out = { ...q, correctAnswer: fix.answer };
+  const out = { ...q, correctAnswer: fix.answer ?? q.correctAnswer };
+  if (fix.options) {
+    out.options = { ...q.options };
+    for (const [letter, [expected, value]] of Object.entries(fix.options)) {
+      if (q.options?.[letter] !== expected) {
+        throw new Error(
+          `Correction for question ${q.id} option ${letter} is stale: upstream text is now "${q.options?.[letter]}". ` +
+            'Re-check the source and update scripts/corrections.mjs.',
+        );
+      }
+      out.options[letter] = value;
+    }
+  }
   if (fix.context) {
     out.translations = {
       ...q.translations,
