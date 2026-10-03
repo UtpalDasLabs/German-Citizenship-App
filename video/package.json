@@ -16,6 +16,7 @@
     "coverage": "node scripts/coverage.mjs",
     "check:quiz": "node scripts/check-quiz.mjs",
     "state-lessons": "node scripts/state-lessons.mjs",
+    "thumbnails": "node scripts/thumbnails.mjs",
     "sound": "node scripts/sound.mjs",
     "take:trim": "node scripts/trim-take.mjs",
     "sound:elevenlabs": "NODE_USE_ENV_PROXY=1 node scripts/sound-elevenlabs.mjs"
