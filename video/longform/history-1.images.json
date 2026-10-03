@@ -1,0 +1,30 @@
+{
+  "topic": "history-1",
+  "note": "Every picture in the video, where it came from and under what licence. Licence fields are filled in by `npm run images -- history-1`; do not edit them by hand.",
+  "images": [
+    {
+      "id": "pogrom-magdeburg",
+      "file": "Bundesarchiv Bild 146-1970-061-65, Magdeburg, zerstörtes jüdisches Geschäft.jpg",
+      "scene": "The night the synagogues burned — a destroyed Jewish shop, Magdeburg, November 1938",
+      "licence": "CC BY-SA 3.0 de",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "author": "Unknown authorUnknown author",
+      "date": "November 1938",
+      "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1970-061-65,_Magdeburg,_zerst%C3%B6rtes_j%C3%BCdisches_Gesch%C3%A4ft.jpg",
+      "size": "800x539",
+      "sha1": "79c1eaef25a2daf79b41b25c123c25de668e2cd6"
+    },
+    {
+      "id": "stolpersteine",
+      "file": "Stolpersteine Handjerystraße 37 Berlin-Friedenau 01.jpg",
+      "scene": "How Germany remembers — Stolpersteine in Berlin",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Leonhard Lenz",
+      "date": "2026-04-04 19:16:25",
+      "source": "https://commons.wikimedia.org/wiki/File:Stolpersteine_Handjerystra%C3%9Fe_37_Berlin-Friedenau_01.jpg",
+      "size": "8144x5424",
+      "sha1": "0f40ef133e206f88afc520c694bd6e504df9a7de"
+    }
+  ]
+}
