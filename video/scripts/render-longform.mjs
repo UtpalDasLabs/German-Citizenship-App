@@ -245,9 +245,10 @@ if (LIVELY) {
 }
 // The catalogue's own pictures, for picture questions.
 cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: true });
-cpSync(join(OUT, 'images', topic), join(pub, 'images', topic), {
-  recursive: true,
-});
+// This lesson's own pictures, if it has any.
+if (existsSync(join(OUT, 'images', topic))) {
+  cpSync(join(OUT, 'images', topic), join(pub, 'images', topic), { recursive: true });
+}
 if (!silent)
   for (const s of shots) for (const p of s.paras) cpSync(join(voiceDir, p.src.slice('audio/'.length)), join(pub, p.src));
 
