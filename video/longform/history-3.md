@@ -36,7 +36,7 @@ status: draft 2, documentary tone (see SERIES.md)
 
 [dramatic] The emblem on its own comes up too. [[Welches war das Wappen der Deutschen Demokratischen Republik?]] Which was the coat of arms of the DDR? Look for the hammer and compass.
 
-[countdown] [dramatic] [[Bild 4]], picture four. The others show eagles. An eagle means the Federal Republic, or older German states. Hammer and compass mean the DDR.
+[countdown] [dramatic] [[Bild 4]], picture four. Picture one, the eagle, is the Federal Republic. Two is an old Christian symbol, and three is the cross of the Bundeswehr, the German army. Hammer and compass mean the DDR.
 
 > SCENE (term): The ministry everyone feared.
 > Stasi | Ministerium für Staatssicherheit | DDR, 1950 – 1990
@@ -92,8 +92,8 @@ status: draft 2, documentary tone (see SERIES.md)
 
 ## Autumn 1989
 
-> SCENE (stat): Leipzig, one Monday in October.
-> 70000 | people march in Leipzig, 9 October 1989 @ seventy thousand
+> SCENE (photo): A crowd with banners fills a Leipzig street on a Monday evening.
+> leipzig-1989 | Leipzig, October 1989: a Monday demonstration | paper
 
 [dramatic] By 1989, change was sweeping Eastern Europe. In the DDR, people began meeting every Monday after prayers at a church in Leipzig, then walking through the city. On the ninth of October, seventy thousand of them marched, peacefully, past armed police. Nobody fired.
 
