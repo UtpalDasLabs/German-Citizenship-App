@@ -62,7 +62,7 @@ const STATES = {
     intro:
       "in the south-east, is Germany's largest state by area. Officially it's a Freistaat, a free state, which simply means a republic. It borders Austria and the Czech Republic, and its capital is Munich.",
     where: 'the south-east, the biggest state on the map',
-    arms: 'lions, and the white and blue diamonds in the middle',
+    arms: 'the white and blue diamonds, under a crown',
     flag: 'White and blue, often as a pattern of diamonds.',
   },
   Berlin: {

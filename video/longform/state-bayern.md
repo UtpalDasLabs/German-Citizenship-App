@@ -58,7 +58,7 @@ status: draft 2, documentary tone (see SERIES.md)
 
 [dramatic] The exam shows four coats of arms. [[Welches Wappen gehört zum Freistaat Bayern?]] Which coat of arms belongs to the Free State of Bavaria?
 
-[countdown] [dramatic] [[Bild 2]], picture two: lions, and the white and blue diamonds in the middle.
+[countdown] [dramatic] [[Bild 2]], picture two: the white and blue diamonds, under a crown.
 
 
 ## How it's run
