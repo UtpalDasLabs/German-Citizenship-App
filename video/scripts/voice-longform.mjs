@@ -89,6 +89,22 @@ async function main() {
   const paras = pickChapters(spec, script.chapters.length)
     .flatMap((c) => script.chapters[c].shots.flatMap((s) => s.paras))
     .map((p) => ({ ...p, text: spokenText(p.tts) }));
+  // A paragraph already voiced word for word for another lesson (an outro,
+  // a stock explanation in the state lessons) is copied, not bought again.
+  const lessons = path.join(root, 'out', 'audio', 'longform');
+  let reused = 0;
+  for (const p of paras) {
+    const id = paraHash(p.text);
+    if (fs.existsSync(path.join(dir, `${id}.json`))) continue;
+    for (const other of fs.readdirSync(lessons)) {
+      const from = path.join(lessons, other, slug);
+      if (other === topic || !fs.existsSync(path.join(from, `${id}.json`))) continue;
+      for (const ext of ['json', 'mp3']) fs.copyFileSync(path.join(from, `${id}.${ext}`), path.join(dir, `${id}.${ext}`));
+      reused++;
+      break;
+    }
+  }
+  if (reused) console.log(`${reused} paragraph(s) copied from other lessons, already voiced word for word.`);
   const todo = paras.filter((p) => !fs.existsSync(path.join(dir, `${paraHash(p.text)}.json`)));
   const chars = todo.reduce((n, p) => n + p.text.length, 0);
   console.log(`${paras.length} paragraphs, ${todo.length} not voiced yet: ${chars} characters (${VOICE}, ${MODEL}, ${PROFILE})`);
