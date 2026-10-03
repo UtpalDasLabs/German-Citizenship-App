@@ -48,6 +48,10 @@ if (!topic) {
   process.exit(1);
 }
 const manifestPath = path.join(root, 'longform', `${topic}.images.json`);
+if (!fs.existsSync(manifestPath)) {
+  console.log(`${topic}: no pictures listed (longform/${topic}.images.json); nothing to fetch.`);
+  process.exit(0);
+}
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const outDir = path.join(root, 'out', 'images', topic, thumbs ? 'thumbs' : '');
 fs.mkdirSync(outDir, { recursive: true });
