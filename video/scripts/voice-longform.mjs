@@ -29,7 +29,10 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
 const FFPROBE = path.join(root, 'node_modules/@remotion/compositor-linux-x64-gnu/ffprobe');
 
-export const VOICE = process.env.ELEVENLABS_VOICE_ID ?? 'vFeVIow1bgkn4mgnqNwD';
+// The creator's Professional Voice Clone, for everything voiced from October 2026
+// on. Lessons narrated earlier with the instant clone vFeVIow1bgkn4mgnqNwD keep
+// that narration: render-longform falls back to it.
+export const VOICE = process.env.ELEVENLABS_VOICE_ID ?? 'Rr3HT8xllxaRdjMZxGBa';
 /** Bump when the clone is retrained: ElevenLabs keeps the same voice ID. */
 export const CLONE_VERSION = process.env.ELEVENLABS_CLONE_VERSION ?? '2026-10-02';
 /**

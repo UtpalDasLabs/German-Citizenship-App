@@ -32,8 +32,8 @@ const VIDEO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const FFMPEG = join(VIDEO, 'node_modules/@remotion/compositor-linux-x64-gnu/ffmpeg');
 const FFPROBE = join(VIDEO, 'node_modules/@remotion/compositor-linux-x64-gnu/ffprobe');
 
-/** Rowan - the voice chosen for the first test. */
-const VOICE = process.env.ELEVENLABS_VOICE_ID ?? 'kLhAstPcnnPxqzk6gS5i';
+/** The creator's Professional Voice Clone, the voice of everything from October 2026 on. */
+const VOICE = process.env.ELEVENLABS_VOICE_ID ?? 'Rr3HT8xllxaRdjMZxGBa';
 /** The established multilingual model; German is one of its native languages. */
 const MODEL = process.env.ELEVENLABS_MODEL ?? 'eleven_multilingual_v2';
 
