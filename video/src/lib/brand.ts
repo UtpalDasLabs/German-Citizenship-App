@@ -5,7 +5,7 @@ export const HEIGHT = 1920;
 export const FPS = 30;
 
 /** Channel handle shown on screen. The one place to change it. */
-export const CHANNEL = 'Einburgerung test';
+export const CHANNEL = 'Living in Deutschland';
 export const APP_NAME = 'LID-test';
 
 /**

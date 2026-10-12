@@ -26,6 +26,9 @@ export const SILENT_SECONDS = {
   trap: 3.0,
   option: 2.6,
   optionsPicture: 4.0,
+  /** Options are shown, not read out: long enough to read a German option and its English. */
+  silentOption: 1.8,
+  silentPicture: 3.0,
   countdown: 3.0,
   reveal: 3.0,
   why: 5.5,
@@ -112,7 +115,6 @@ export function buildScript(q, terms, whyLine) {
   const picture = q.imageMode === 'options';
   const answerIndex = LETTERS.indexOf(q.answer);
   const answerDe = q.de.options[q.answer];
-  const answerEn = q.en.options?.[q.answer] ?? null;
   const ref = catalogueRef(q);
   const trap = Boolean(terms?.trap);
   const why = whyLine ?? firstSentence(q.context);
@@ -121,7 +123,14 @@ export function buildScript(q, terms, whyLine) {
   const beat = (name, say, extra = {}) =>
     beats.push({ name, seconds: SILENT_SECONDS[extra.timing ?? name], say, ...extra });
 
-  beat('hook', [en(`Question ${ref.spoken}, from the `), de('Einbürgerungstest'), en('.')]);
+  // Short-form viewers decide in the first second: the question is on screen
+  // from frame one, and the opening line is the challenge. State questions
+  // speak to the people who will actually be asked them.
+  beat(
+    'hook',
+    [en(q.kind === 'state' ? `Living in ${q.state}? This one is in your citizenship test.` : 'A real question from the German citizenship test. Would you get it?')],
+    { tag: '[curious]' },
+  );
 
   beat('question', [de(speakableGerman(q.de.text))]);
 
@@ -137,28 +146,24 @@ export function buildScript(q, terms, whyLine) {
     ]);
   }
 
+  // The options are on screen in German and English, so they are not read
+  // out: that took fifteen seconds, and a short under a minute keeps viewers.
   if (picture) {
-    beat('optionsPicture', [en('Here are the four options: A, B, C and D.')], { timing: 'optionsPicture' });
+    beat('optionsPicture', [], { timing: 'silentPicture', silent: true });
   } else {
     LETTERS.forEach((letter, i) => {
-      const say = [en(`${letter.toUpperCase()}: `), de(speakableGerman(q.de.options[letter]))];
-      const meaning = q.en.options?.[letter];
-      if (meaning) say.push(en(`, ${meaning}.`));
-      beat(`option${letter.toUpperCase()}`, say, { timing: 'option', optionIndex: i });
+      beat(`option${letter.toUpperCase()}`, [], { timing: 'silentOption', optionIndex: i, silent: true });
     });
   }
 
-  beat('countdown', [en('Which one is right?')]);
+  // Comments before the reveal are what the platforms reward most. Calm, not loud.
+  beat('countdown', [en('Have a guess, and leave it in the comments.')], { tag: '[warm]' });
 
   beat(
     'reveal',
     picture
       ? [en(`The answer is ${q.answer.toUpperCase()}.`)]
-      : [
-          en(`The answer is ${q.answer.toUpperCase()}: `),
-          de(speakableGerman(answerDe)),
-          ...(answerEn ? [en(`, ${answerEn}.`)] : [en('.')]),
-        ],
+      : [en(`The answer is ${q.answer.toUpperCase()}: `), de(speakableGerman(answerDe))],
     { answerIndex },
   );
 
@@ -167,15 +172,16 @@ export function buildScript(q, terms, whyLine) {
   // English accent. `marked` lets the narration builder count those.
   if (why) beat('why', parseMarked(why), { marked: Boolean(whyLine) });
 
+  // Highlighted on screen at the reveal; no longer read out as a list.
   const ask = asPhrases(terms?.ask ?? [], q.de.text);
   const ans = asPhrases(terms?.answer ?? [], answerDe);
-  const words = [...ask, ...ans];
-  if (words.length) {
-    beat('keywords', [en('Words to remember: '), de(words.join(', ')), en('.')], { ask, answer: ans });
-  }
 
   // "LID" is spelled out: read as a word it comes out as "lid".
-  beat('end', [en('Practise all four hundred and sixty questions free, in the L.I.D. test app. The link is in the description.')]);
+  beat(
+    'end',
+    [en('Follow for more. All four hundred and sixty questions are free in the L.I.D. test app, link in my profile.')],
+    { tag: '[warm]' },
+  );
 
-  return { ref, trap, picture, answerIndex, beats };
+  return { ref, trap, picture, answerIndex, ask, answer: ans, beats };
 }

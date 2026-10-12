@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
-import { Chip, Countdown, Highlighted, type Mark, OptionCard, Overline, PictureTile, type CardState } from './components';
+import { Countdown, Highlighted, type Mark, OptionCard, Overline, PictureTile, type CardState } from './components';
 import { alpha, APP_NAME, C, CHANNEL, FONT, GOLD, SAFE } from './lib/brand';
 import { load } from './lib/data';
 import { NEGATION } from './lib/script.mjs';
@@ -42,15 +42,14 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
   // "law" question glow red, and in a quiz red reads as "wrong".
   const accent = GOLD;
   const revealed = reached('reveal');
-  const keywordsOn = enter('keywords');
-  const keywordBeat = script.beats.find((b) => b.name === 'keywords');
+  // The words to remember light up where they occur, once the answer is out.
+  const termsOn = enter('reveal', Math.round(fps * 0.6));
 
-  // Words to remember are highlighted where they occur, as well as listed.
   const questionMarks: Mark[] = [
-    ...(keywordBeat?.ask ?? []).map((term) => ({ term, color: C.info, strength: keywordsOn })),
+    ...script.ask.map((term) => ({ term, color: C.info, strength: termsOn })),
     ...(script.trap ? [{ term: q.de.text.match(NEGATION)?.[0] ?? '', color: C.danger, strength: enter('trap') }] : []),
   ];
-  const answerMarks: Mark[] = (keywordBeat?.answer ?? []).map((term) => ({ term, color: C.success, strength: keywordsOn }));
+  const answerMarks: Mark[] = script.answer.map((term) => ({ term, color: C.success, strength: termsOn }));
 
   const stateOf = (i: number): CardState => (!revealed ? 'idle' : i === script.answerIndex ? 'correct' : 'dim');
 
@@ -58,8 +57,10 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
   const questionSize = q.de.text.length > 110 ? 48 : q.de.text.length > 70 ? 54 : 60;
   const optionSize = longestOption > 40 ? 36 : 44;
 
+  // The challenge sits over the empty options area for the opening line.
   const hookOut = 1 - enter('question');
   const endIn = enter('end');
+  const pill = 'A, B, C or D? Comment 👇';
 
   return (
     <AbsoluteFill
@@ -99,7 +100,7 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
         </div>
 
         {/* question */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, opacity: enter('question') }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ fontWeight: 800, fontSize: questionSize, lineHeight: 1.22, color: C.text }}>
             <Highlighted text={q.de.text} marks={questionMarks} />
           </div>
@@ -132,8 +133,8 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
                   letter={letter}
                   de={q.de.options[key]}
                   en={q.en.options?.[key] ?? null}
-                  // The English lands as the narrator gets to it, not with the card.
-                  enShown={enter(beat, Math.round(fps * 1.0))}
+                  // Not read out: the English follows the German a moment later.
+                  enShown={enter(beat, Math.round(fps * 0.4))}
                   state={stateOf(i)}
                   enter={enter(beat)}
                   fontSize={optionSize}
@@ -154,29 +155,42 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
             script={script}
             negation={q.de.text.match(NEGATION)?.[0] ?? null}
             enter={enter}
+            pill={pill}
           />
         </div>
       </div>
 
-      {/* opening card */}
+      {/* hook banner: the challenge, from frame one, over the still empty options */}
       {hookOut > 0.01 ? (
-        <AbsoluteFill
+        <div
           style={{
-            backgroundColor: C.bg,
-            opacity: hookOut,
-            alignItems: 'center',
+            position: 'absolute',
+            top: 860,
+            left: SAFE.side,
+            right: SAFE.side,
+            display: 'flex',
             justifyContent: 'center',
-            gap: 26,
-            transform: `scale(${interpolate(enter('hook'), [0, 1], [0.96, 1])})`,
+            opacity: hookOut,
+            transform: `scale(${interpolate(enter('hook'), [0, 1], [0.9, 1])})`,
           }}
         >
-          <Img src={staticFile('icon.png')} style={{ width: 170, height: 170, borderRadius: 40 }} />
-          <Overline color={GOLD}>Einbürgerungstest</Overline>
-          <div style={{ fontWeight: 800, fontSize: 104, color: C.text }}>
-            {q.kind === 'general' ? `Frage ${script.ref.label}` : script.ref.label}
+          <div
+            style={{
+              padding: '24px 40px',
+              borderRadius: 30,
+              backgroundColor: GOLD,
+              color: '#111',
+              fontWeight: 900,
+              fontSize: 64,
+              lineHeight: 1.05,
+              textAlign: 'center',
+              boxShadow: '0 18px 50px rgba(0,0,0,0.5)',
+            }}
+          >
+            {q.kind === 'state' ? `${q.state} question` : 'Einbürgerungstest'}
+            <div style={{ fontSize: 48, fontWeight: 800, marginTop: 8 }}>Would you pass?</div>
           </div>
-          <div style={{ fontWeight: 600, fontSize: 44, color: C.textMuted }}>Do you know this one?</div>
-        </AbsoluteFill>
+        </div>
       ) : null}
 
       {/* closing card */}
@@ -189,7 +203,7 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
           <div style={{ fontWeight: 600, fontSize: 42, color: C.textMuted, textAlign: 'center', lineHeight: 1.35 }}>
             All 460 official questions
             <br />
-            Free · no account
+            Free · no account · in English too
           </div>
           <div
             style={{
@@ -202,9 +216,14 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
               fontSize: 40,
             }}
           >
-            Link in description
+            Link in profile
           </div>
-          <div style={{ marginTop: 30, fontWeight: 700, fontSize: 30, color: C.textFaint }}>{CHANNEL}</div>
+          <div style={{ marginTop: 30, fontWeight: 700, fontSize: 32, color: C.textMuted, textAlign: 'center', lineHeight: 1.4 }}>
+            Full lessons on YouTube
+            <br />
+            <span style={{ color: C.text }}>{CHANNEL}</span>
+          </div>
+          <div style={{ marginTop: 10, fontWeight: 800, fontSize: 40, color: GOLD }}>Follow for more</div>
         </AbsoluteFill>
       ) : null}
 
@@ -221,6 +240,7 @@ function Panel({
   script,
   negation,
   enter,
+  pill,
 }: {
   beat: string;
   frame: number;
@@ -229,6 +249,7 @@ function Panel({
   script: ReturnType<typeof load>['script'];
   negation: string | null;
   enter: (name: string, delay?: number) => number;
+  pill: string;
 }) {
   if (beat === 'trap') {
     return (
@@ -258,7 +279,7 @@ function Panel({
     return (
       <>
         <Countdown progress={Math.min(1, frame / frames)} secondsLeft={Math.min(3, left)} />
-        <div style={{ fontWeight: 700, fontSize: 36, color: C.textMuted }}>Which one is right?</div>
+        <CommentPill text={pill} enter={enter('countdown')} />
       </>
     );
   }
@@ -301,25 +322,28 @@ function Panel({
     );
   }
 
-  if (beat === 'keywords') {
-    const b = script.beats.find((x) => x.name === 'keywords');
-    const chips = [
-      ...(b?.ask ?? []).map((t) => ({ t, color: C.info })),
-      ...(b?.answer ?? []).map((t) => ({ t, color: C.success })),
-    ];
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignSelf: 'stretch' }}>
-        <Overline color={GOLD}>Words to remember</Overline>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
-          {chips.map((c, i) => (
-            <Chip key={c.t} text={c.t} color={c.color} enter={enter('keywords', i * 5)} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   return null;
+}
+
+/** "A, B, C or D? Comment 👇" during the countdown: comments are what the platforms reward. */
+function CommentPill({ text, enter }: { text: string; enter: number }) {
+  return (
+    <div
+      style={{
+        padding: '18px 34px',
+        borderRadius: 999,
+        backgroundColor: GOLD,
+        color: '#111',
+        fontWeight: 900,
+        fontSize: 46,
+        boxShadow: '0 14px 40px rgba(0,0,0,0.5)',
+        opacity: enter,
+        transform: `scale(${0.9 + 0.1 * enter})`,
+      }}
+    >
+      {text}
+    </div>
+  );
 }
 
 /** Shades what the platforms' own interface covers. Never in a real render. */

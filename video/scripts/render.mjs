@@ -8,6 +8,10 @@
  *   node scripts/render.mjs 147 --safe        shade the platform UI areas
  *   node scripts/render.mjs 147 --audio <dir>  narrated: time every beat to the
  *                                             voice in <dir> (from voice-elevenlabs)
+ *   node scripts/render.mjs all --audio 'narration/{id}' --name '{n}-{id}'
+ *                                             many narrated shorts, each from its
+ *                                             own folder, named in posting order
+ *                                             (out/shorts/order.txt)
  *
  * Output goes to video/out/. The browser comes from REMOTION_BROWSER if set,
  * then from a preinstalled headless Chromium if one exists, and otherwise
@@ -27,15 +31,18 @@ const ROOT = join(VIDEO, '..');
 const OUT = join(VIDEO, 'out');
 
 const args = process.argv.slice(2);
-const audioDir = args.includes('--audio') ? args[args.indexOf('--audio') + 1] : null;
+const valueOf = (flag) => (args.includes(flag) ? args[args.indexOf(flag) + 1] : null);
+const audioPattern = valueOf('--audio');
+const namePattern = valueOf('--name');
 const flags = new Set(args.filter((a) => a.startsWith('--')));
-let ids = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--audio');
-if (ids.includes('all')) {
-  ids = JSON.parse(readFileSync(join(ROOT, 'src/data/questions.json'), 'utf8')).map((q) => q.id);
-}
-ids = ids.map(Number);
-if (ids.length === 0 || ids.some(Number.isNaN)) {
-  console.error('Usage: node scripts/render.mjs <id ...|all> [--stills] [--safe]');
+const beatsModule = await import('./beats.mjs');
+const ids = beatsModule.resolveIds(args.filter((a, i) => !a.startsWith('--') && !['--audio', '--name'].includes(args[i - 1])));
+const postingNumber = namePattern?.includes('{n}')
+  ? Object.fromEntries(readFileSync(join(OUT, 'shorts', 'order.txt'), 'utf8').trim().split('\n').map((l) => l.split(' ').reverse()))
+  : {};
+let audioDir = null;
+if (ids.length === 0 || ids.some((id) => !beatsModule.QUESTIONS.some((q) => q.id === id))) {
+  console.error('Usage: node scripts/render.mjs <id ...|all> [--stills] [--safe] [--audio <dir>] [--name <pattern>]');
   process.exit(1);
 }
 
@@ -52,8 +59,8 @@ const FFMPEG = join(VIDEO, 'node_modules/@remotion/compositor-linux-x64-gnu/ffmp
  * sentence starts. The countdown keeps its three silent seconds to guess in.
  */
 const AFTER_SPEECH = {
-  hook: 0.4, question: 1.0, questionEn: 0.6, trap: 0.6, option: 0.5, optionsPicture: 1.0,
-  countdown: 3.0, reveal: 0.6, why: 0.8, keywords: 0.8, end: 0.6,
+  hook: 0.4, question: 1.0, questionEn: 0.6, trap: 0.6,
+  countdown: 3.0, reveal: 1.2, why: 0.8, end: 0.6,
 };
 
 function narratedSeconds(id) {
@@ -61,6 +68,10 @@ function narratedSeconds(id) {
   const { scriptFor } = beatsModule;
   const out = {};
   for (const b of scriptFor(id).beats) {
+    if (b.silent) {
+      out[b.name] = b.seconds;
+      continue;
+    }
     if (timing[b.name] == null) throw new Error(`No narration for beat "${b.name}" in ${audioDir}`);
     out[b.name] = timing[b.name] + (AFTER_SPEECH[b.timing ?? b.name] ?? 0.5);
   }
@@ -75,11 +86,17 @@ function narratedSeconds(id) {
 function buildTrack(id, fps, beatSeconds, workDir) {
   const { scriptFor } = beatsModule;
   const files = readdirSync(audioDir).filter((f) => /^\d\d-.+\.mp3$/.test(f) && !/\.\d+\.mp3$/.test(f));
+  // timing.json names each beat's take (newer narration caches takes by text).
+  const named = JSON.parse(readFileSync(join(audioDir, 'timing.json'), 'utf8')).files ?? {};
   const padded = scriptFor(id).beats.map((b, i) => {
-    const src = files.find((f) => f === `${String(i).padStart(2, '0')}-${b.name}.mp3`);
-    if (!src) throw new Error(`Missing audio for beat ${i} "${b.name}"`);
     const secs = Math.round(beatSeconds[b.name] * fps) / fps;
     const wav = join(workDir, `${String(i).padStart(2, '0')}.wav`);
+    if (b.silent) {
+      execFileSync(FFMPEG, ['-v', 'error', '-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=mono', '-t', String(secs), '-y', wav]);
+      return wav;
+    }
+    const src = named[b.name] ?? files.find((f) => f === `${String(i).padStart(2, '0')}-${b.name}.mp3`);
+    if (!src) throw new Error(`Missing audio for beat ${i} "${b.name}"`);
     execFileSync(FFMPEG, ['-v', 'error', '-i', join(audioDir, src), '-af', `apad,atrim=0:${secs}`, '-ar', '44100', '-ac', '1', '-y', wav]);
     return wav;
   });
@@ -90,8 +107,6 @@ function buildTrack(id, fps, beatSeconds, workDir) {
   return track;
 }
 
-const beatsModule = await import('./beats.mjs');
-
 console.log('Bundling…');
 const serveUrl = await bundle({
   entryPoint: join(VIDEO, 'src/index.ts'),
@@ -99,6 +114,7 @@ const serveUrl = await bundle({
 });
 
 for (const id of ids) {
+  audioDir = audioPattern ? audioPattern.replaceAll('{id}', id) : null;
   const beatSeconds = audioDir ? narratedSeconds(id) : undefined;
   const inputProps = { id, showSafeArea: flags.has('--safe'), ...(beatSeconds ? { beatSeconds } : {}) };
   const composition = await selectComposition({ serveUrl, id: 'QuestionShort', inputProps, browserExecutable });
@@ -117,7 +133,10 @@ for (const id of ids) {
   }
 
   const label = audioDir ? `-${basename(dirname(audioDir)).split('-')[0].slice(0, 6)}-${basename(audioDir)}` : '';
-  const file = join(OUT, `short-${id}${label}${inputProps.showSafeArea ? '-safe' : ''}.mp4`);
+  const file = namePattern
+    ? join(OUT, `${namePattern.replaceAll('{id}', id).replaceAll('{n}', postingNumber[String(id)] ?? 'xxx')}.mp4`)
+    : join(OUT, `short-${id}${label}${inputProps.showSafeArea ? '-safe' : ''}.mp4`);
+  mkdirSync(dirname(file), { recursive: true });
   const started = Date.now();
   await renderMedia({
     composition,
