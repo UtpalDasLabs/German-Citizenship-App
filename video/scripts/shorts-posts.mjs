@@ -33,7 +33,7 @@ const VIDEO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(VIDEO, 'out', 'shorts');
 const META = JSON.parse(readFileSync(join(VIDEO, '..', 'src/data/meta.json'), 'utf8'));
 
-const APP = 'https://utpaldaslabs.github.io/German-Citizenship-App/';
+const APP = 'https://lid.utpaldas.com/';
 const CHANNEL = 'Living in Deutschland';
 const SERIES = ' | Einbürgerungstest';
 

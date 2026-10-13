@@ -192,7 +192,7 @@ const plan = {
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
-const APP_URL = 'https://utpaldaslabs.github.io/German-Citizenship-App/';
+const APP_URL = 'https://lid.utpaldas.com/';
 const stamp = (frame) => {
   const t = Math.floor(frame / FPS);
   const h = Math.floor(t / 3600);
