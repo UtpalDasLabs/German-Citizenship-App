@@ -8,6 +8,7 @@ import { InstallGuide } from '@/components/InstallGuide';
 import { LoadingScreen, useAppReady } from '@/components/Loading';
 import { Mascot, type MascotMood } from '@/components/Mascot';
 import { Button, Chip, ProgressBar, Screen, Txt } from '@/components/ui';
+import { track } from '@/lib/analytics';
 import { GOALS, GOAL_ORDER } from '@/lib/goals';
 import { isEmbeddedArtifact } from '@/lib/install';
 import { meta } from '@/lib/questions';
@@ -58,8 +59,14 @@ export default function OnboardingScreen() {
 
   const finish = useCallback(() => {
     update({ onboarded: true });
+    track('onboarding_complete', {
+      app_language: settings.uiGerman ? 'de' : 'en',
+      question_language: settings.language,
+      state: settings.state ?? 'none',
+      goal: settings.goal,
+    });
     router.replace('/(tabs)');
-  }, [update, router]);
+  }, [update, router, settings.uiGerman, settings.language, settings.state, settings.goal]);
 
   const appReady = useAppReady();
   if (!appReady) return <LoadingScreen />;
