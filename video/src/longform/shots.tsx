@@ -999,9 +999,9 @@ export function shotFor(key: string | null, topic: string, title: string, questi
     case 'term':
       return <Term />;
     case 'list':
-      return <List />;
+      return <List topic={topic} />;
     case 'stat':
-      return <Stat />;
+      return <Stat topic={topic} />;
     case 'fact':
       return <Fact />;
     case 'quote':

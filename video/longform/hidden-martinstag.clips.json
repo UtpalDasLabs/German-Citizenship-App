@@ -1,0 +1,138 @@
+{
+  "topic": "hidden-martinstag",
+  "note": "Video clips: Google Veo renders made by Utpal (files in the private repo clips/veo/) and Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "lantern-walk",
+      "source": "file",
+      "file": "veo/lantern-walk.mp4",
+      "credit": "Lantern procession: made with Google Veo",
+      "scene": "Cold open, lanterns, takeaway"
+    },
+    {
+      "id": "lantern-walk-b",
+      "source": "file",
+      "file": "veo/lantern-walk.mp4",
+      "start": 5,
+      "scene": "Lanterns"
+    },
+    {
+      "id": "cloak-a",
+      "source": "file",
+      "file": "veo/martin-cloak.mp4",
+      "seconds": 5.5,
+      "credit": "Martin and the beggar: made with Google Veo",
+      "scene": "The soldier and the beggar"
+    },
+    {
+      "id": "cloak-b",
+      "source": "file",
+      "file": "veo/martin-cloak.mp4",
+      "start": 5,
+      "scene": "The cloak"
+    },
+    {
+      "id": "geese-barn",
+      "source": "file",
+      "file": "veo/geese-barn.mp4",
+      "credit": "Martin among the geese: made with Google Veo",
+      "scene": "The goose"
+    },
+    {
+      "id": "lantern",
+      "source": "pixabay",
+      "pixabayId": 117192,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-117192/"
+    },
+    {
+      "id": "platform",
+      "source": "pixabay",
+      "pixabayId": 7502,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Train_Video from Pixabay: https://pixabay.com/videos/id-7502/"
+    },
+    {
+      "id": "swabia",
+      "source": "pixabay",
+      "pixabayId": 279849,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Blackbird2810 from Pixabay: https://pixabay.com/videos/id-279849/"
+    },
+    {
+      "id": "munich",
+      "source": "pixabay",
+      "pixabayId": 119185,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by RomanDiesel from Pixabay: https://pixabay.com/videos/id-119185/"
+    },
+    {
+      "id": "berlin",
+      "source": "pixabay",
+      "pixabayId": 46727,
+      "start": 10,
+      "seconds": 8,
+      "credit": "Video by limeunsun1 from Pixabay: https://pixabay.com/videos/id-46727/"
+    },
+    {
+      "id": "candles",
+      "source": "pixabay",
+      "pixabayId": 216832,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by conte_public from Pixabay: https://pixabay.com/videos/id-216832/"
+    },
+    {
+      "id": "bonfire",
+      "source": "pixabay",
+      "pixabayId": 257593,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by JoshuaWoroniecki from Pixabay: https://pixabay.com/videos/id-257593/"
+    },
+    {
+      "id": "rain-night",
+      "source": "pixabay",
+      "pixabayId": 11722,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Iconikmg from Pixabay: https://pixabay.com/videos/id-11722/"
+    },
+    {
+      "id": "geese-field",
+      "source": "pixabay",
+      "pixabayId": 372799,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Alexas_Fotos from Pixabay: https://pixabay.com/videos/id-372799/"
+    },
+    {
+      "id": "confetti",
+      "source": "pixabay",
+      "pixabayId": 356319,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by livewallpaperdownload from Pixabay: https://pixabay.com/videos/id-356319/"
+    },
+    {
+      "id": "dough",
+      "source": "pixabay",
+      "pixabayId": 42040,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by BreakDownPictures from Pixabay: https://pixabay.com/videos/id-42040/"
+    },
+    {
+      "id": "fire2",
+      "source": "pixabay",
+      "pixabayId": 17176,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Citor3 from Pixabay: https://pixabay.com/videos/id-17176/"
+    }
+  ]
+}

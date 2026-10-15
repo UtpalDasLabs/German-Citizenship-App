@@ -26,7 +26,7 @@ import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
 
 import { parseLongform, pickChapters } from './longform.mjs';
-import { audioDir, MODEL, paraHash, PROFILE, spokenText, voiceFor } from './voice-longform.mjs';
+import { audioDir, MODEL, paraHash, PROFILE, settingsFor, spokenText, voiceFor } from './voice-longform.mjs';
 
 const VIDEO = join(import.meta.dirname, '..');
 const ROOT = join(VIDEO, '..');
@@ -68,7 +68,7 @@ const script = parseLongform(topic);
 for (const c of script.chapters) for (const sh of c.shots) for (const p of sh.paras) p.tts = spokenText(p.tts);
 const chapters = pickChapters(spec, script.chapters.length);
 const VOICE = voiceFor(script.meta);
-const voiceDir = audioDir(topic, VOICE);
+const voiceDir = audioDir(topic, VOICE, settingsFor(script.meta));
 /** A series video (Logic to Live By, Hidden Deutschland), or null for a lesson. */
 const SERIES_KEY = script.meta.series ?? null;
 const SERIES = SERIES_KEY ? JSON.parse(readFileSync(join(VIDEO, 'longform', 'series.json'), 'utf8'))[SERIES_KEY] : null;

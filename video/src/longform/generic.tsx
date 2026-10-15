@@ -20,6 +20,25 @@ function useLines(): ScreenLine[] {
   return lines;
 }
 
+
+/**
+ * `bg | clip-or-photo-id` as a line under a card scene (list, stat): the
+ * footage runs dimmed behind the cards, so the frame keeps moving.
+ */
+function useBackdrop(topic?: string): { lines: ScreenLine[]; backdrop: React.ReactNode } {
+  const all = useLines();
+  const bg = all.find((l) => l.fields[0] === 'bg');
+  const lines = all.filter((l) => l !== bg);
+  const backdrop =
+    bg && topic ? (
+      <AbsoluteFill>
+        <Photo src={`images/${topic}/${bg.fields[1]}.jpg`} color />
+        <AbsoluteFill style={{ backgroundColor: alpha(C.bg, 0.72) }} />
+      </AbsoluteFill>
+    ) : null;
+  return { lines, backdrop };
+}
+
 /** Slow drift so a still layout never looks frozen. */
 function useDrift(): number {
   const frame = useCurrentFrame();
@@ -82,10 +101,10 @@ export function Term() {
 }
 
 /** One card per line, `big | small`, side by side. */
-export function List() {
+export function List({ topic }: { topic?: string }) {
   const GOLD = useAccent();
   const frame = useCurrentFrame();
-  const lines = useLines();
+  const { lines, backdrop } = useBackdrop(topic);
   const width = lines.length >= 5 ? 330 : lines.length === 4 ? 410 : 520;
   // Long German compounds must fit on one line of the card: size the type to
   // the longest word (soft hyphens mark where a word may break instead).
@@ -93,6 +112,7 @@ export function List() {
   const bigSize = Math.min(60, Math.floor((width - 84) / (longestWord * 0.56)));
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <Glow strength={0.05} />
       <div style={{ display: 'flex', gap: lines.length >= 5 ? 24 : 40, alignItems: 'stretch', transform: `scale(${useDrift()})` }}>
         {lines.map(({ fields: [big, small], at }, i) => {
@@ -127,12 +147,13 @@ export function List() {
 }
 
 /** `number | label` per line, side by side. Whole numbers count up. */
-export function Stat() {
+export function Stat({ topic }: { topic?: string }) {
   const GOLD = useAccent();
   const frame = useCurrentFrame();
-  const lines = useLines();
+  const { lines, backdrop } = useBackdrop(topic);
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <Glow />
       <div style={{ display: 'flex', gap: 180, transform: `scale(${useDrift()})` }}>
         {lines.map(({ fields: [value, label], at }, i) => {

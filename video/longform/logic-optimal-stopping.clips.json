@@ -19,22 +19,6 @@
       "credit": "Video by Kmeel_com from Pixabay: https://pixabay.com/videos/id-114254/"
     },
     {
-      "id": "signing",
-      "source": "pixabay",
-      "pixabayId": 198890,
-      "start": 1,
-      "seconds": 10,
-      "credit": "Video by Roque_dg from Pixabay: https://pixabay.com/videos/id-198890/"
-    },
-    {
-      "id": "thinking",
-      "source": "pixabay",
-      "pixabayId": 122389,
-      "start": 1,
-      "seconds": 10,
-      "credit": "Video by u_n92ynpt32e from Pixabay: https://pixabay.com/videos/id-122389/"
-    },
-    {
       "id": "chalkboard",
       "source": "pixabay",
       "pixabayId": 159050,
@@ -107,28 +91,12 @@
       "credit": "Video by ChristianBodhi from Pixabay: https://pixabay.com/videos/id-72720/"
     },
     {
-      "id": "thinker-outdoor",
-      "source": "pixabay",
-      "pixabayId": 126557,
-      "start": 0,
-      "seconds": 10,
-      "credit": "Video by SoyKhaler from Pixabay: https://pixabay.com/videos/id-126557/"
-    },
-    {
       "id": "stars-town",
       "source": "pixabay",
       "pixabayId": 144597,
       "start": 2,
       "seconds": 10,
       "credit": "Video by Bernhard_Schuermann from Pixabay: https://pixabay.com/videos/id-144597/"
-    },
-    {
-      "id": "stars",
-      "source": "pixabay",
-      "pixabayId": 31569,
-      "start": 0,
-      "seconds": 10,
-      "credit": "Video by Relaxing_Guru from Pixabay: https://pixabay.com/videos/id-31569/"
     },
     {
       "id": "crowd",
@@ -155,14 +123,6 @@
       "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-287/"
     },
     {
-      "id": "office",
-      "source": "pixabay",
-      "pixabayId": 87593,
-      "start": 4,
-      "seconds": 10,
-      "credit": "Video by oybekostanov from Pixabay: https://pixabay.com/videos/id-87593/"
-    },
-    {
       "id": "boxes2",
       "source": "pixabay",
       "pixabayId": 169000,
@@ -185,6 +145,141 @@
       "start": 4,
       "seconds": 10,
       "credit": "Video by jeremy888 from Pixabay: https://pixabay.com/videos/id-58580/"
+    },
+    {
+      "id": "pen-form",
+      "source": "pixabay",
+      "pixabayId": 13477,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by andrepazleal from Pixabay: https://pixabay.com/videos/id-13477/"
+    },
+    {
+      "id": "coin",
+      "source": "pixabay",
+      "pixabayId": 12564,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by ARTXROOM from Pixabay: https://pixabay.com/videos/id-12564/"
+    },
+    {
+      "id": "couple-hands",
+      "source": "pixabay",
+      "pixabayId": 152798,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by ghasoub from Pixabay: https://pixabay.com/videos/id-152798/"
+    },
+    {
+      "id": "family-drawing",
+      "source": "pixabay",
+      "pixabayId": 11283,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by GreenCardShow from Pixabay: https://pixabay.com/videos/id-11283/"
+    },
+    {
+      "id": "sketch",
+      "source": "pixabay",
+      "pixabayId": 10824,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10824/"
+    },
+    {
+      "id": "lego",
+      "source": "pixabay",
+      "pixabayId": 131159,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Dx21 from Pixabay: https://pixabay.com/videos/id-131159/"
+    },
+    {
+      "id": "fog",
+      "source": "pixabay",
+      "pixabayId": 67031,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-67031/"
+    },
+    {
+      "id": "swing",
+      "source": "pixabay",
+      "pixabayId": 37417,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Josh_Malic from Pixabay: https://pixabay.com/videos/id-37417/"
+    },
+    {
+      "id": "calendar",
+      "source": "pixabay",
+      "pixabayId": 197974,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by EnchantedStudios from Pixabay: https://pixabay.com/videos/id-197974/"
+    },
+    {
+      "id": "walking-past",
+      "source": "pixabay",
+      "pixabayId": 7713,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-7713/"
+    },
+    {
+      "id": "dice",
+      "source": "pixabay",
+      "pixabayId": 141507,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by To3dGraphics from Pixabay: https://pixabay.com/videos/id-141507/"
+    },
+    {
+      "id": "road",
+      "source": "pixabay",
+      "pixabayId": 53358,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by mariancroitoru from Pixabay: https://pixabay.com/videos/id-53358/"
+    },
+    {
+      "id": "quill",
+      "source": "pixabay",
+      "pixabayId": 107189,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Placidplace from Pixabay: https://pixabay.com/videos/id-107189/"
+    },
+    {
+      "id": "typing",
+      "source": "pixabay",
+      "pixabayId": 232538,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/"
+    },
+    {
+      "id": "kepler-anim",
+      "source": "file",
+      "file": "kling/kepler-loop.mp4",
+      "credit": "Kepler portrait animated with Kling AI from the public-domain painting (Uffizi copy)",
+      "scene": "A famous search"
+    },
+    {
+      "id": "book",
+      "source": "pixabay",
+      "pixabayId": 185096,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by stefaniejockschat from Pixabay: https://pixabay.com/videos/id-185096/"
+    },
+    {
+      "id": "platform",
+      "source": "pixabay",
+      "pixabayId": 7502,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by Train_Video from Pixabay: https://pixabay.com/videos/id-7502/"
     }
   ]
 }

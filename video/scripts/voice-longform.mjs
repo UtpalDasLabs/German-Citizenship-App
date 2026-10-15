@@ -74,8 +74,15 @@ const STAGE = /\[(?:countdown|pause)\]\s*/gi;
 export const spokenText = (tts) =>
   (TAKES_TAGS ? tts.replace(STAGE, '') : tts.replace(/\[(?!\[)[a-z][a-z ,]*\]\s*/gi, '')).trim();
 
-const slugFor = (voice) => `${voice}-${cloneVersion(voice)}-${MODEL}-s${SETTINGS.stability}${SETTINGS.similarity_boost ? `-m${SETTINGS.similarity_boost}` : ''}${SETTINGS.style != null ? `-y${SETTINGS.style}` : ''}${SETTINGS.speed ? `-x${SETTINGS.speed}` : ''}`;
-export const audioDir = (topic, voice = VOICE) => path.join(root, 'out', 'audio', 'longform', topic, slugFor(voice));
+/**
+ * A script can hold the voice steadier on Eleven v4 with `stability: 1.0` in
+ * its front matter (the series: calm and even, never dramatic).
+ */
+export const settingsFor = (meta) =>
+  PROFILE === 'expressive' && meta?.stability != null ? { ...SETTINGS, stability: Number(meta.stability) } : SETTINGS;
+const slugFor = (voice, st = SETTINGS) =>
+  `${voice}-${cloneVersion(voice)}-${MODEL}-s${st.stability}${st.similarity_boost ? `-m${st.similarity_boost}` : ''}${st.style != null ? `-y${st.style}` : ''}${st.speed ? `-x${st.speed}` : ''}`;
+export const audioDir = (topic, voice = VOICE, st = SETTINGS) => path.join(root, 'out', 'audio', 'longform', topic, slugFor(voice, st));
 export const paraHash = (text) => createHash('sha1').update(text).digest('hex').slice(0, 12);
 
 async function main() {
@@ -95,8 +102,9 @@ async function main() {
 
   const script = parseLongform(topic);
   const voice = voiceFor(script.meta);
-  const slug = slugFor(voice);
-  const dir = audioDir(topic, voice);
+  const settings = settingsFor(script.meta);
+  const slug = slugFor(voice, settings);
+  const dir = audioDir(topic, voice, settings);
   fs.mkdirSync(dir, { recursive: true });
   const paras = pickChapters(spec, script.chapters.length)
     .flatMap((c) => script.chapters[c].shots.flatMap((s) => s.paras))
@@ -119,14 +127,14 @@ async function main() {
   if (reused) console.log(`${reused} paragraph(s) copied from other lessons, already voiced word for word.`);
   const todo = paras.filter((p) => !fs.existsSync(path.join(dir, `${paraHash(p.text)}.json`)));
   const chars = todo.reduce((n, p) => n + p.text.length, 0);
-  console.log(`${paras.length} paragraphs, ${todo.length} not voiced yet: ${chars} characters (${voice}, ${MODEL}, ${PROFILE})`);
+  console.log(`${paras.length} paragraphs, ${todo.length} not voiced yet: ${chars} characters (${voice}, ${MODEL}, ${PROFILE}, stability ${settings.stability})`);
   if (dry) return;
 
   for (const [i, p] of todo.entries()) {
     const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}/with-timestamps?output_format=mp3_44100_128`, {
       method: 'POST',
       headers: { 'xi-api-key': key, 'content-type': 'application/json' },
-      body: JSON.stringify({ text: p.text, model_id: MODEL, voice_settings: SETTINGS }),
+      body: JSON.stringify({ text: p.text, model_id: MODEL, voice_settings: settings }),
     });
     if (!res.ok) throw new Error(`${res.status} from ElevenLabs: ${(await res.text()).slice(0, 300)}`);
     const json = await res.json();
