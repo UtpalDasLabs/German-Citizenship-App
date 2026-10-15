@@ -17,6 +17,7 @@
  *   { "id": "flat-walk", "source": "pixabay", "pixabayId": 123456, "start": 2, "seconds": 8, "scene": "…" }
  *   { "id": "cloak", "source": "file", "file": "kling/cloak.mp4", "credit": "Made with Kling AI", "scene": "…" }
  *     (file: relative to the private repo's clips/ folder, or an absolute path)
+ *   "speed": 0.8 on any entry plays it slower, to cover a longer line without looping
  */
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -63,14 +64,14 @@ const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const out = path.join(VIDEO, 'out', 'clips', topic);
 fs.mkdirSync(out, { recursive: true });
 
-/** Cut, scale and crop to 1920×1080/30 fps, no sound. */
-function cut(src, dst, start = 0, seconds) {
+/** Cut, scale and crop to 1920×1080/30 fps, no sound; `speed` below 1 slows the clip down. */
+function cut(src, dst, start = 0, seconds, speed = 1) {
   execFileSync(FFMPEG, [
     '-y', '-loglevel', 'error',
     ...(start ? ['-ss', String(start)] : []),
     '-i', src,
     ...(seconds ? ['-t', String(seconds)] : []),
-    '-vf', 'scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,fps=30,format=yuv420p',
+    '-vf', `${speed !== 1 ? `setpts=PTS/${speed},` : ''}scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,fps=30,format=yuv420p`,
     '-an', '-c:v', 'libx264', '-crf', '19', '-preset', 'medium', '-movflags', '+faststart',
     dst,
   ]);
@@ -91,11 +92,11 @@ for (const c of manifest.clips) {
       const raw = path.join(out, `${c.id}.raw.mp4`);
       const v = hit.videos.large.url ? hit.videos.large : hit.videos.medium;
       fs.writeFileSync(raw, Buffer.from(await (await fetch(v.url)).arrayBuffer()));
-      cut(raw, dst, c.start, c.seconds);
+      cut(raw, dst, c.start, c.seconds, c.speed);
       fs.rmSync(raw);
       c.credit = `Video by ${hit.user} from Pixabay: ${hit.pageURL}`;
     } else if (c.source === 'file') {
-      cut(path.isAbsolute(c.file) ? c.file : path.join(CLIP_ROOT, c.file), dst, c.start, c.seconds);
+      cut(path.isAbsolute(c.file) ? c.file : path.join(CLIP_ROOT, c.file), dst, c.start, c.seconds, c.speed);
     } else {
       throw new Error(`${c.id}: unknown source "${c.source}"`);
     }

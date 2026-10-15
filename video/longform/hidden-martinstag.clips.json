@@ -1,42 +1,69 @@
 {
   "topic": "hidden-martinstag",
-  "note": "Video clips: Google Veo renders made by Utpal (files in the private repo clips/veo/) and Pixabay stock (Content License).",
+  "note": "Video clips: Google Veo renders made by Utpal (private repo clips/veo/), a Wikimedia Commons film of a real procession (clips/commons/), Pixabay stock (Content License).",
   "clips": [
     {
       "id": "lantern-walk",
       "source": "file",
       "file": "veo/lantern-walk.mp4",
-      "credit": "Lantern procession: made with Google Veo",
-      "scene": "Cold open, lanterns, takeaway"
+      "credit": "Lantern procession: made with Google Veo"
     },
     {
       "id": "lantern-walk-b",
       "source": "file",
       "file": "veo/lantern-walk.mp4",
-      "start": 5,
-      "scene": "Lanterns"
+      "start": 5
     },
     {
       "id": "cloak-a",
       "source": "file",
       "file": "veo/martin-cloak.mp4",
       "seconds": 5.5,
-      "credit": "Martin and the beggar: made with Google Veo",
-      "scene": "The soldier and the beggar"
+      "credit": "Martin and the beggar: made with Google Veo"
     },
     {
       "id": "cloak-b",
       "source": "file",
       "file": "veo/martin-cloak.mp4",
-      "start": 5,
-      "scene": "The cloak"
+      "start": 5
     },
     {
       "id": "geese-barn",
       "source": "file",
       "file": "veo/geese-barn.mp4",
       "credit": "Martin among the geese: made with Google Veo",
-      "scene": "The goose"
+      "speed": 0.8
+    },
+    {
+      "id": "konz-wide",
+      "source": "file",
+      "file": "commons/konz-wide.mp4",
+      "credit": "Saint Martin procession and Martinsfeuer, Konz 2016: Helge Klaus Rieder, CC BY-SA 3.0, via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Martinszug_und_Martinsfeuer_Konz_2016.webm"
+    },
+    {
+      "id": "konz-rider",
+      "source": "file",
+      "file": "commons/konz-rider.mp4"
+    },
+    {
+      "id": "konz-rider2",
+      "source": "file",
+      "file": "commons/konz-rider2.mp4"
+    },
+    {
+      "id": "konz-crowd",
+      "source": "file",
+      "file": "commons/konz-crowd.mp4"
+    },
+    {
+      "id": "konz-fire",
+      "source": "file",
+      "file": "commons/konz-fire.mp4"
+    },
+    {
+      "id": "konz-firecrowd",
+      "source": "file",
+      "file": "commons/konz-firecrowd.mp4"
     },
     {
       "id": "lantern",
@@ -45,6 +72,14 @@
       "start": 2,
       "seconds": 8,
       "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-117192/"
+    },
+    {
+      "id": "lantern2",
+      "source": "pixabay",
+      "pixabayId": 11186,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-11186/"
     },
     {
       "id": "platform",
@@ -87,6 +122,14 @@
       "credit": "Video by conte_public from Pixabay: https://pixabay.com/videos/id-216832/"
     },
     {
+      "id": "candle-match",
+      "source": "pixabay",
+      "pixabayId": 143419,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-143419/"
+    },
+    {
       "id": "bonfire",
       "source": "pixabay",
       "pixabayId": 257593,
@@ -95,12 +138,68 @@
       "credit": "Video by JoshuaWoroniecki from Pixabay: https://pixabay.com/videos/id-257593/"
     },
     {
-      "id": "rain-night",
+      "id": "fire2",
       "source": "pixabay",
-      "pixabayId": 11722,
+      "pixabayId": 17176,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Citor3 from Pixabay: https://pixabay.com/videos/id-17176/"
+    },
+    {
+      "id": "canal-dusk",
+      "source": "pixabay",
+      "pixabayId": 330502,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Solarselle77 from Pixabay: https://pixabay.com/videos/id-330502/"
+    },
+    {
+      "id": "snow-forest",
+      "source": "pixabay",
+      "pixabayId": 142579,
       "start": 2,
       "seconds": 8,
-      "credit": "Video by Iconikmg from Pixabay: https://pixabay.com/videos/id-11722/"
+      "credit": "Video by RuslanSikunov from Pixabay: https://pixabay.com/videos/id-142579/"
+    },
+    {
+      "id": "snow-walk",
+      "source": "pixabay",
+      "pixabayId": 329674,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by 32215527 from Pixabay: https://pixabay.com/videos/id-329674/"
+    },
+    {
+      "id": "vault",
+      "source": "pixabay",
+      "pixabayId": 85976,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Ambient_Nature_Atmosphere from Pixabay: https://pixabay.com/videos/id-85976/"
+    },
+    {
+      "id": "church-light",
+      "source": "pixabay",
+      "pixabayId": 326795,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by LiskaRed from Pixabay: https://pixabay.com/videos/id-326795/"
+    },
+    {
+      "id": "church-pews",
+      "source": "pixabay",
+      "pixabayId": 82375,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-82375/"
+    },
+    {
+      "id": "stained",
+      "source": "pixabay",
+      "pixabayId": 36992,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by caelan from Pixabay: https://pixabay.com/videos/id-36992/"
     },
     {
       "id": "geese-field",
@@ -111,12 +210,44 @@
       "credit": "Video by Alexas_Fotos from Pixabay: https://pixabay.com/videos/id-372799/"
     },
     {
-      "id": "confetti",
+      "id": "geese-water",
       "source": "pixabay",
-      "pixabayId": 356319,
+      "pixabayId": 201777,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-201777/"
+    },
+    {
+      "id": "wheat",
+      "source": "pixabay",
+      "pixabayId": 296971,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-296971/"
+    },
+    {
+      "id": "coins",
+      "source": "pixabay",
+      "pixabayId": 12564,
       "start": 0,
       "seconds": 8,
-      "credit": "Video by livewallpaperdownload from Pixabay: https://pixabay.com/videos/id-356319/"
+      "credit": "Video by ARTXROOM from Pixabay: https://pixabay.com/videos/id-12564/"
+    },
+    {
+      "id": "wine",
+      "source": "pixabay",
+      "pixabayId": 56914,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by leovenezian from Pixabay: https://pixabay.com/videos/id-56914/"
+    },
+    {
+      "id": "bread-oven",
+      "source": "pixabay",
+      "pixabayId": 373536,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Openly from Pixabay: https://pixabay.com/videos/id-373536/"
     },
     {
       "id": "dough",
@@ -127,12 +258,52 @@
       "credit": "Video by BreakDownPictures from Pixabay: https://pixabay.com/videos/id-42040/"
     },
     {
-      "id": "fire2",
+      "id": "confetti",
       "source": "pixabay",
-      "pixabayId": 17176,
+      "pixabayId": 356319,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by livewallpaperdownload from Pixabay: https://pixabay.com/videos/id-356319/"
+    },
+    {
+      "id": "clock",
+      "source": "pixabay",
+      "pixabayId": 7549,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by PIRO4D from Pixabay: https://pixabay.com/videos/id-7549/"
+    },
+    {
+      "id": "cologne",
+      "source": "pixabay",
+      "pixabayId": 15413,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by KlausHausmann from Pixabay: https://pixabay.com/videos/id-15413/"
+    },
+    {
+      "id": "cologne2",
+      "source": "pixabay",
+      "pixabayId": 8778,
       "start": 1,
       "seconds": 8,
-      "credit": "Video by Citor3 from Pixabay: https://pixabay.com/videos/id-17176/"
+      "credit": "Video by KlausHausmann from Pixabay: https://pixabay.com/videos/id-8778/"
+    },
+    {
+      "id": "oldtown",
+      "source": "pixabay",
+      "pixabayId": 225461,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by useche360 from Pixabay: https://pixabay.com/videos/id-225461/"
+    },
+    {
+      "id": "combine",
+      "source": "pixabay",
+      "pixabayId": 232561,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Ivan267 from Pixabay: https://pixabay.com/videos/id-232561/"
     }
   ]
 }
