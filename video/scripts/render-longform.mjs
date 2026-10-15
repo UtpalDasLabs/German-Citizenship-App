@@ -71,6 +71,9 @@ const VOICE = voiceFor(script.meta);
 const voiceDir = audioDir(topic, VOICE, settingsFor(script.meta));
 /** A series video (Logic to Live By, Hidden Deutschland), or null for a lesson. */
 const SERIES_KEY = script.meta.series ?? null;
+/** --short: a vertical short; its pictures and clips are the long video's (`media:`). */
+const SHORT = process.argv.includes('--short');
+const MEDIA = script.meta.media ?? topic;
 const SERIES = SERIES_KEY ? JSON.parse(readFileSync(join(VIDEO, 'longform', 'series.json'), 'utf8'))[SERIES_KEY] : null;
 if (SERIES_KEY && !SERIES) throw new Error(`Unknown series "${SERIES_KEY}" (longform/series.json)`);
 // Music and effects from ElevenLabs (npm run sound:elevenlabs) when they have
@@ -182,7 +185,7 @@ for (const c of chapters) {
   });
 }
 const plan = {
-  topic,
+  topic: MEDIA,
   title: script.meta.title,
   questions: script.meta.questions,
   fps: FPS,
@@ -192,7 +195,8 @@ const plan = {
   music: LIVELY && !args0.includes('--no-music') ? MUSIC : null,
   series: SERIES_KEY,
   // Video clips fetched by npm run clips -- <topic> (id → seconds).
-  clips: existsSync(join(OUT, 'clips', topic, 'clips.json')) ? JSON.parse(readFileSync(join(OUT, 'clips', topic, 'clips.json'), 'utf8')) : {},
+  clips: existsSync(join(OUT, 'clips', MEDIA, 'clips.json')) ? JSON.parse(readFileSync(join(OUT, 'clips', MEDIA, 'clips.json'), 'utf8')) : {},
+  short: SHORT ? { hook: script.meta.hook ?? script.meta.title, parent: script.meta.parent ?? '' } : null,
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
@@ -328,8 +332,10 @@ function describe() {
   ].join('\n');
 }
 const descriptionFile = join(OUT, `lesson-${topic}${spec ? `-ch${spec}` : ''}-description.txt`);
-writeFileSync(descriptionFile, describe());
-console.log(`Description → ${descriptionFile}`);
+if (!SHORT) {
+  writeFileSync(descriptionFile, describe());
+  console.log(`Description → ${descriptionFile}`);
+}
 if (flags.has('--describe')) process.exit(0);
 
 // The bundle's public dir: the app icon, this topic's pictures and voice.
@@ -350,12 +356,12 @@ if (LIVELY) {
 // The catalogue's own pictures, for picture questions.
 cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: true });
 // This video's clips, if it has any.
-if (existsSync(join(OUT, 'clips', topic))) {
-  cpSync(join(OUT, 'clips', topic), join(pub, 'clips', topic), { recursive: true });
+if (existsSync(join(OUT, 'clips', MEDIA))) {
+  cpSync(join(OUT, 'clips', MEDIA), join(pub, 'clips', MEDIA), { recursive: true });
 }
 // This lesson's own pictures, if it has any.
-if (existsSync(join(OUT, 'images', topic))) {
-  cpSync(join(OUT, 'images', topic), join(pub, 'images', topic), { recursive: true });
+if (existsSync(join(OUT, 'images', MEDIA))) {
+  cpSync(join(OUT, 'images', MEDIA), join(pub, 'images', MEDIA), { recursive: true });
 }
 if (!silent)
   for (const s of shots) for (const p of s.paras) cpSync(join(voiceDir, p.src.slice('audio/'.length)), join(pub, p.src));
@@ -371,7 +377,7 @@ const serveUrl = await bundle({
 const inputProps = { plan };
 const composition = await selectComposition({
   serveUrl,
-  id: 'LongForm',
+  id: SHORT ? 'SeriesShort' : 'LongForm',
   inputProps,
   browserExecutable,
 });
@@ -392,7 +398,7 @@ if (flags.has('--stills')) {
     console.log(`  ${file}`);
   }
 } else {
-  const file = join(OUT, `lesson-${label}${silent ? '-silent' : ''}.mp4`);
+  const file = join(OUT, SHORT ? `short-${topic}.mp4` : `lesson-${label}${silent ? '-silent' : ''}.mp4`);
   const started = Date.now();
   await renderMedia({
     composition,

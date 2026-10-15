@@ -57,6 +57,8 @@ export type Plan = {
   series?: string | null;
   /** Video clips for this topic (id → seconds); a clip replaces the photo with the same id. */
   clips?: Record<string, number>;
+  /** A vertical short cut from a series video: its on-screen hook and the long video's title. */
+  short?: { hook: string; parent: string } | null;
 };
 
 export const ShotContext = createContext<Shot | null>(null);

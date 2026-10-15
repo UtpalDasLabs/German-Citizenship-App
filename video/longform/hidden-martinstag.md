@@ -1,5 +1,5 @@
 ---
-title: "Why German Kids Walk With Lanterns on 11 November — Martinstag Explained"
+title: "Why Kids in Germany Walk With Lanterns on 11 November — Martinstag Explained"
 series: hidden
 voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0

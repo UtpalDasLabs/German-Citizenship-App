@@ -1,4 +1,4 @@
-# Credits: Why German Kids Walk With Lanterns on 11 November — Martinstag Explained
+# Credits: Why Kids in Germany Walk With Lanterns on 11 November — Martinstag Explained
 
 ## Pictures (Wikimedia Commons)
 
