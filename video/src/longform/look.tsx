@@ -3,6 +3,7 @@ import { AbsoluteFill, Easing, Img, interpolate, random, staticFile, useCurrentF
 
 import { alpha, C, FONT, GOLD } from '../lib/brand';
 import { charFrame, spokenCount, useShot, type Para } from './plan';
+import { useAccent } from './series';
 
 export const SERIF = '"Source Serif 4", Georgia, serif';
 export const INK = '#0B0E14';
@@ -124,6 +125,7 @@ export function Fade({
 
 /** Small documentary caption: where and when a photo was taken. */
 export function PhotoCaption({ text, at = 10 }: { text: string; at?: number }) {
+  const GOLD = useAccent();
   const frame = useCurrentFrame();
   const o = rise(frame, at, 20);
   return (

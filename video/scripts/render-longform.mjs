@@ -24,7 +24,7 @@ import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
 
 import { parseLongform, pickChapters } from './longform.mjs';
-import { audioDir, MODEL, paraHash, PROFILE, spokenText, VOICE } from './voice-longform.mjs';
+import { audioDir, MODEL, paraHash, PROFILE, spokenText, voiceFor } from './voice-longform.mjs';
 
 const VIDEO = join(import.meta.dirname, '..');
 const ROOT = join(VIDEO, '..');
@@ -65,7 +65,12 @@ const script = parseLongform(topic);
 // tags, for models that do not take them).
 for (const c of script.chapters) for (const sh of c.shots) for (const p of sh.paras) p.tts = spokenText(p.tts);
 const chapters = pickChapters(spec, script.chapters.length);
-const voiceDir = audioDir(topic);
+const VOICE = voiceFor(script.meta);
+const voiceDir = audioDir(topic, VOICE);
+/** A series video (Logic to Live By, Hidden Deutschland), or null for a lesson. */
+const SERIES_KEY = script.meta.series ?? null;
+const SERIES = SERIES_KEY ? JSON.parse(readFileSync(join(VIDEO, 'longform', 'series.json'), 'utf8'))[SERIES_KEY] : null;
+if (SERIES_KEY && !SERIES) throw new Error(`Unknown series "${SERIES_KEY}" (longform/series.json)`);
 // Music and effects from ElevenLabs (npm run sound:elevenlabs) when they have
 // been made, else the synthesised ones (npm run sound).
 const EL_SOUND = join(OUT, 'sound-elevenlabs');
@@ -73,9 +78,14 @@ const elSound = existsSync(join(EL_SOUND, 'sounds.json'))
   ? JSON.parse(readFileSync(join(EL_SOUND, 'sounds.json'), 'utf8'))
   : null;
 /** The music bed, and how loud it sits under the voice and in the gaps. */
-const MUSIC = elSound
-  ? { src: `sound/${elSound.music}`, seconds: elSound.musicSeconds, under: 0.16, gap: 0.4 }
-  : { src: 'sound/music.wav', seconds: null, under: 0.07, gap: 0.2 };
+const seriesBed = SERIES_KEY ? elSound?.series?.[SERIES_KEY] : null;
+const MUSIC = seriesBed
+  ? // The series' own calmer bed, about 20 dB under the voice like the
+    // reference videos, rising a little in the gaps.
+    { src: `sound/${seriesBed.music}`, seconds: seriesBed.musicSeconds, under: 0.1, gap: 0.32 }
+  : elSound
+    ? { src: `sound/${elSound.music}`, seconds: elSound.musicSeconds, under: 0.16, gap: 0.4 }
+    : { src: 'sound/music.wav', seconds: null, under: 0.07, gap: 0.2 };
 const frames = (s) => Math.round(s * FPS);
 
 /** Timing for one paragraph: from the voice, or estimated from its length. */
@@ -178,6 +188,7 @@ const plan = {
   shots,
   lively: LIVELY,
   music: LIVELY && !args0.includes('--no-music') ? MUSIC : null,
+  series: SERIES_KEY,
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
@@ -189,6 +200,32 @@ const stamp = (frame) => {
   const sec = String(t % 60).padStart(2, '0');
   return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`;
 };
+/** The YouTube description of a series video: no exam questions, its sources instead. */
+function describeSeries(chapterLines, credits) {
+  const sources = script.meta.sources ?? [];
+  return [
+    script.meta.title,
+    '',
+    ...(script.meta.summary ? [script.meta.summary, ''] : []),
+    'Chapters',
+    ...chapterLines,
+    '',
+    `${SERIES.name}: ${SERIES.tagline.toLowerCase()}. A series from Living in Deutschland.`,
+    SERIES.credit,
+    ...(sources.length ? ['', 'Sources', ...sources.map((u) => `• ${u}`)] : []),
+    '',
+    "Narrated with an AI version of the creator's own voice (ElevenLabs).",
+    '',
+    'Free apps from this channel, no account needed:',
+    '• German citizenship test (all 460 questions): https://lid.utpaldas.com',
+    '• German driving theory test: https://fuehrerschein.utpaldas.com',
+    '',
+    ...(existsSync(credits) ? ['Pictures', readFileSync(credits, 'utf8').trim()] : []),
+    ...(LIVELY ? ['', elSound ? 'Music: made with ElevenLabs.' : 'Music: made for this channel.'] : []),
+    '',
+  ].join('\n');
+}
+
 function describe() {
   const chapterLines = [];
   for (const sh of shots) {
@@ -197,6 +234,7 @@ function describe() {
     }
   }
   const credits = join(OUT, 'images', topic, 'credits.txt');
+  if (SERIES) return describeSeries(chapterLines, credits);
   const usesMap = shots.some((sh) => sh.key === 'map1949' || sh.key === 'reunify');
   const asked = shots.flatMap((sh) => sh.questions);
   return [

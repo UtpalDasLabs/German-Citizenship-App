@@ -5,6 +5,8 @@ import { C } from '../lib/brand';
 import { Soundtrack, usePunchScale } from './lively';
 import { ChapterLabel, GermanCaption, Storyboard } from './look';
 import { ShotContext, type Plan, type Shot } from './plan';
+import { SeriesContext } from './series';
+import { SeriesPill } from './series-shots';
 import { shownGerman, SHOWS_GERMAN, shotFor } from './shots';
 
 /** Scenes with a photo caption at the bottom: the German sits above it. */
@@ -31,14 +33,27 @@ function ShotView({ shot, plan, first }: { shot: Shot; plan: Plan; first: boolea
             bottom={PHOTO_SCENES.has(shot.key ?? '') ? 190 : 70}
           />
         )}
-        {shot.opensChapter ? <ChapterLabel number={shot.chapter} title={shot.chapterTitle} /> : null}
+        {shot.opensChapter && !plan.series ? <ChapterLabel number={shot.chapter} title={shot.chapterTitle} /> : null}
       </AbsoluteFill>
     </ShotContext.Provider>
   );
 }
 
+/** Series videos: one chapter pill per chapter, up from its first shot to its last (not on the end card). */
+function pills(plan: Plan) {
+  const spans = new Map<number, { title: string; from: number; to: number }>();
+  for (const s of plan.shots) {
+    if (s.chapter === 0 || s.key === 'end' || s.key === 'title') continue;
+    const span = spans.get(s.chapter) ?? { title: s.chapterTitle, from: s.from, to: s.from };
+    span.to = s.from + s.frames;
+    spans.set(s.chapter, span);
+  }
+  return [...spans.values()];
+}
+
 export function LongForm({ plan }: LongFormProps) {
   return (
+    <SeriesContext.Provider value={plan.series ?? null}>
     <AbsoluteFill style={{ backgroundColor: C.bg }}>
       {plan.shots.map((shot, i) => (
         <Sequence
@@ -50,6 +65,13 @@ export function LongForm({ plan }: LongFormProps) {
           <ShotView shot={shot} plan={plan} first={i === 0} />
         </Sequence>
       ))}
+      {plan.series
+        ? pills(plan).map((p) => (
+            <Sequence key={`pill-${p.from}`} from={p.from} durationInFrames={p.to - p.from} name="chapter pill">
+              <SeriesPill title={p.title} />
+            </Sequence>
+          ))
+        : null}
       {plan.lively ? <Soundtrack plan={plan} /> : null}
       {plan.shots.flatMap((shot, i) =>
         // A silent cut (--silent) has timings but no audio.
@@ -62,5 +84,6 @@ export function LongForm({ plan }: LongFormProps) {
           )),
       )}
     </AbsoluteFill>
+    </SeriesContext.Provider>
   );
 }

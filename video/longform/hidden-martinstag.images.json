@@ -1,0 +1,126 @@
+{
+  "topic": "hidden-martinstag",
+  "note": "Every picture in the video, where it came from and under what licence. `npm run images -- hidden-martinstag` checks each file's licence on Wikimedia Commons, downloads it and writes the credits for the description. Licence fields are filled in by the script; do not edit them by hand.",
+  "images": [
+    {
+      "id": "lantern",
+      "file": "Lampion an Martinslaterne.jpg",
+      "scene": "Cold open, takeaway",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "XDAS123",
+      "date": "2024-11-15 18:22:01",
+      "source": "https://commons.wikimedia.org/wiki/File:Lampion_an_Martinslaterne.jpg",
+      "size": "4032x3024",
+      "sha1": "65fa427173e3ac8ea35a1db1ab206ed2ee04e136"
+    },
+    {
+      "id": "goose",
+      "file": "Martinigans 4192.JPG",
+      "scene": "Cold open; the goose",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Karl Gruber",
+      "date": "2020-10",
+      "source": "https://commons.wikimedia.org/wiki/File:Martinigans_4192.JPG",
+      "size": "4536x3024",
+      "sha1": "16e4ea0bcbf181205e482d68ae84ac51e98f45b1"
+    },
+    {
+      "id": "carnival",
+      "file": "Hoppeditz Erwachen, Düsseldorf, 11. November 2024 (7).jpg",
+      "scene": "Cold open; Karneval",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Kürschner (talk) 12:29, 11 November 2024 (UTC)",
+      "date": "2024-11-11",
+      "source": "https://commons.wikimedia.org/wiki/File:Hoppeditz_Erwachen,_D%C3%BCsseldorf,_11._November_2024_(7).jpg",
+      "size": "3833x2568",
+      "sha1": "b33b2e6b10d11bb91b63885475cad6ee209bf824"
+    },
+    {
+      "id": "elgreco",
+      "file": "El Greco (Domenikos Theotokopoulos), Saint Martin and the Beggar, 1597-1599, NGA 1164.jpg",
+      "scene": "The soldier and the beggar",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "El Greco (Domenikos Theotokopoulos)",
+      "date": "1597/1599",
+      "source": "https://commons.wikimedia.org/wiki/File:El_Greco_(Domenikos_Theotokopoulos),_Saint_Martin_and_the_Beggar,_1597-1599,_NGA_1164.jpg",
+      "size": "2159x4000",
+      "sha1": "970481ded23caaa7f8750544d8ec70fea756956a"
+    },
+    {
+      "id": "tours",
+      "file": "Tours - Basilique Saint-Martin - 05.jpg",
+      "scene": "Martin's tomb in Tours",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Benjamin Smith",
+      "date": "2025-03-23",
+      "source": "https://commons.wikimedia.org/wiki/File:Tours_-_Basilique_Saint-Martin_-_05.jpg",
+      "size": "6500x4400",
+      "sha1": "c4b7f3cf83d19fac85c02bd8f6c5d56397436e92"
+    },
+    {
+      "id": "procession",
+      "file": "03-max-Martinsumzug-Wesendorf-11-11.jpg",
+      "scene": "The lanterns; how to join",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Thomas Frankewitsch",
+      "date": "2023-02-21",
+      "source": "https://commons.wikimedia.org/wiki/File:03-max-Martinsumzug-Wesendorf-11-11.jpg",
+      "size": "2000x1333",
+      "sha1": "18ffa5e9966e3a72b5e759a36f10641c58cd6f59"
+    },
+    {
+      "id": "martin-horse",
+      "file": "Sankt Martin mit Schimmel, Düsseldorf-Altstadt, Oktober 2019.jpg",
+      "scene": "The rider",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Kürschner (talk) 17:10, 5 November 2019 (UTC)",
+      "date": "Taken on 5 November 2019",
+      "source": "https://commons.wikimedia.org/wiki/File:Sankt_Martin_mit_Schimmel,_D%C3%BCsseldorf-Altstadt,_Oktober_2019.jpg",
+      "size": "4821x3121",
+      "sha1": "d925ad82e7a40aa4dffae38aabba98d038815da2"
+    },
+    {
+      "id": "fire",
+      "file": "2024-11-08-Martinsfeuer Ehrenfeld - 0340.jpg",
+      "scene": "The Martinsfeuer",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Superbass",
+      "date": "2024-11-08",
+      "source": "https://commons.wikimedia.org/wiki/File:2024-11-08-Martinsfeuer_Ehrenfeld_-_0340.jpg",
+      "size": "6720x3780",
+      "sha1": "4eac730ffe307e05e277ff7655d943554b53a2ea"
+    },
+    {
+      "id": "geese",
+      "file": "Flock of geese at Cwm Celyn Farm - geograph.org.uk - 7641062.jpg",
+      "scene": "The geese legend",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "author": "Eirian Evans",
+      "date": "2022-09-23",
+      "source": "https://commons.wikimedia.org/wiki/File:Flock_of_geese_at_Cwm_Celyn_Farm_-_geograph.org.uk_-_7641062.jpg",
+      "size": "3839x2880",
+      "sha1": "1b8b39def8e6713a462b29a23cbdb69ac3012b9f"
+    },
+    {
+      "id": "weckmann",
+      "file": "Weckmann2021.jpg",
+      "scene": "Sweet bread men",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Opzwartbeek",
+      "date": "2021-11-13 11:57:04",
+      "source": "https://commons.wikimedia.org/wiki/File:Weckmann2021.jpg",
+      "size": "4808x3168",
+      "sha1": "4643867323679966945e5b0ec8e86b2783afac3c"
+    }
+  ]
+}

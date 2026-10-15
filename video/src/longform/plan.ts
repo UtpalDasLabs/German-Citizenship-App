@@ -53,6 +53,8 @@ export type Plan = {
   lively: boolean;
   /** Music under the lively cut (null with --no-music). */
   music: Music | null;
+  /** A series video (`series:` in the script), or null for a lesson. */
+  series?: string | null;
 };
 
 export const ShotContext = createContext<Shot | null>(null);
@@ -102,7 +104,8 @@ export function screenLines(shot: Shot, fps: number): ScreenLine[] {
   const step = Math.min(Math.round(fps * 1.2), Math.round((shot.frames * 0.5) / Math.max(1, n)));
   return shot.screen.map((line, i) => {
     const [body, phrase] = line.split(' @ ');
-    const fields = body.split(' | ').map((f) => f.trim());
+    // `a | | b` leaves the middle field empty (a photo with no caption).
+    const fields = body.split(/ ?\| ?/).map((f) => f.trim());
     const spoken = phrase ? findCue(shot, phrase.trim(), fps) : null;
     return { fields, at: spoken ?? 8 + i * step };
   });
