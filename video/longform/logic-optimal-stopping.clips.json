@@ -1,0 +1,190 @@
+{
+  "topic": "logic-optimal-stopping",
+  "note": "Video clips: Pixabay stock (Content License: free for commercial use). npm run clips -- logic-optimal-stopping fetches, trims and credits them.",
+  "clips": [
+    {
+      "id": "phone-scroll",
+      "source": "pixabay",
+      "pixabayId": 64594,
+      "start": 1,
+      "seconds": 10,
+      "credit": "Video by Josh_Malic from Pixabay: https://pixabay.com/videos/id-64594/"
+    },
+    {
+      "id": "door-handle",
+      "source": "pixabay",
+      "pixabayId": 114254,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by Kmeel_com from Pixabay: https://pixabay.com/videos/id-114254/"
+    },
+    {
+      "id": "signing",
+      "source": "pixabay",
+      "pixabayId": 198890,
+      "start": 1,
+      "seconds": 10,
+      "credit": "Video by Roque_dg from Pixabay: https://pixabay.com/videos/id-198890/"
+    },
+    {
+      "id": "thinking",
+      "source": "pixabay",
+      "pixabayId": 122389,
+      "start": 1,
+      "seconds": 10,
+      "credit": "Video by u_n92ynpt32e from Pixabay: https://pixabay.com/videos/id-122389/"
+    },
+    {
+      "id": "chalkboard",
+      "source": "pixabay",
+      "pixabayId": 159050,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by UniverseUnique from Pixabay: https://pixabay.com/videos/id-159050/"
+    },
+    {
+      "id": "door-light",
+      "source": "pixabay",
+      "pixabayId": 6714,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by tv84 from Pixabay: https://pixabay.com/videos/id-6714/"
+    },
+    {
+      "id": "walking",
+      "source": "pixabay",
+      "pixabayId": 3171,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3171/"
+    },
+    {
+      "id": "phone-scroll2",
+      "source": "pixabay",
+      "pixabayId": 736,
+      "start": 1,
+      "seconds": 10,
+      "credit": "Video by elchao from Pixabay: https://pixabay.com/videos/id-736/"
+    },
+    {
+      "id": "boxes",
+      "source": "pixabay",
+      "pixabayId": 169000,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by Naaimkn from Pixabay: https://pixabay.com/videos/id-169000/"
+    },
+    {
+      "id": "alarm",
+      "source": "pixabay",
+      "pixabayId": 7998,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by Felix-Mittermeier from Pixabay: https://pixabay.com/videos/id-7998/"
+    },
+    {
+      "id": "watch",
+      "source": "pixabay",
+      "pixabayId": 15615,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-15615/"
+    },
+    {
+      "id": "interview-hands",
+      "source": "pixabay",
+      "pixabayId": 59686,
+      "start": 3,
+      "seconds": 10,
+      "credit": "Video by Curious_Collectibles from Pixabay: https://pixabay.com/videos/id-59686/"
+    },
+    {
+      "id": "question",
+      "source": "pixabay",
+      "pixabayId": 72720,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by ChristianBodhi from Pixabay: https://pixabay.com/videos/id-72720/"
+    },
+    {
+      "id": "thinker-outdoor",
+      "source": "pixabay",
+      "pixabayId": 126557,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by SoyKhaler from Pixabay: https://pixabay.com/videos/id-126557/"
+    },
+    {
+      "id": "stars-town",
+      "source": "pixabay",
+      "pixabayId": 144597,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by Bernhard_Schuermann from Pixabay: https://pixabay.com/videos/id-144597/"
+    },
+    {
+      "id": "stars",
+      "source": "pixabay",
+      "pixabayId": 31569,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by Relaxing_Guru from Pixabay: https://pixabay.com/videos/id-31569/"
+    },
+    {
+      "id": "crowd",
+      "source": "pixabay",
+      "pixabayId": 84973,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by alexborodai from Pixabay: https://pixabay.com/videos/id-84973/"
+    },
+    {
+      "id": "driving",
+      "source": "pixabay",
+      "pixabayId": 243,
+      "start": 8,
+      "seconds": 10,
+      "credit": "Video by Republica from Pixabay: https://pixabay.com/videos/id-243/"
+    },
+    {
+      "id": "parking",
+      "source": "pixabay",
+      "pixabayId": 287,
+      "start": 1,
+      "seconds": 10,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-287/"
+    },
+    {
+      "id": "office",
+      "source": "pixabay",
+      "pixabayId": 87593,
+      "start": 4,
+      "seconds": 10,
+      "credit": "Video by oybekostanov from Pixabay: https://pixabay.com/videos/id-87593/"
+    },
+    {
+      "id": "boxes2",
+      "source": "pixabay",
+      "pixabayId": 169000,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by Naaimkn from Pixabay: https://pixabay.com/videos/id-169000/"
+    },
+    {
+      "id": "handshake",
+      "source": "pixabay",
+      "pixabayId": 62216,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by drgbzt from Pixabay: https://pixabay.com/videos/id-62216/"
+    },
+    {
+      "id": "city-sunrise",
+      "source": "pixabay",
+      "pixabayId": 58580,
+      "start": 4,
+      "seconds": 10,
+      "credit": "Video by jeremy888 from Pixabay: https://pixabay.com/videos/id-58580/"
+    }
+  ]
+}

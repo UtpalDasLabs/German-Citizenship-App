@@ -218,7 +218,7 @@ function describeSeries(chapterLines, credits) {
     SERIES.credit,
     ...(sources.length ? ['', 'Sources', ...sources.map((u) => `• ${u}`)] : []),
     '',
-    "Narrated with an AI version of the creator's own voice (ElevenLabs).",
+    'Narrated by Utpal, using a voice model trained on his own recordings.',
     '',
     'Free apps from this channel, no account needed:',
     '• German citizenship test (all 460 questions): https://lid.utpaldas.com',

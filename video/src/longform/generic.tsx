@@ -8,6 +8,7 @@ import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, 
 
 import { alpha, APP_NAME, C, FONT } from '../lib/brand';
 import { useAccent, useSeries } from './series';
+import { KeyLine } from './series-shots';
 import { Archive, CrossIn, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
 import { findCue, screenLines, useShot, type ScreenLine } from './plan';
 
@@ -218,7 +219,8 @@ export function Quote() {
 
 /**
  * `image-id | caption | options` per line; several lines cut from one photo to
- * the next. Options: `color` (modern photo), `paper` (a document), and
+ * the next. Options: `color` (modern photo), `paper` (a document), `key` (the
+ * caption is the series' big key line, not a small label), and
  * `from x y scale` / `to x y scale` for the camera move.
  */
 export function PhotoScene({ topic }: { topic: string }) {
@@ -244,7 +246,7 @@ export function PhotoScene({ topic }: { topic: string }) {
                   from={framing('from', { x: 0.5, y: 0.5, scale: 1.0 })}
                   to={framing('to', { x: 0.5, y: 0.5, scale: 1.12 })}
                 />
-                {caption ? <PhotoCaption text={caption} /> : null}
+                {caption ? /\bkey\b/.test(options) ? <KeyLine text={caption} /> : <PhotoCaption text={caption} /> : null}
               </Archive>
             </CrossIn>
           </Sequence>
@@ -352,7 +354,7 @@ export function End() {
       <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 44, color: C.textMuted, opacity: rise(frame, 14, 18) }}>See you in the next one.</div>
       <div style={{ position: 'absolute', bottom: 70, fontFamily: FONT, fontWeight: 500, fontSize: 28, color: C.textFaint, opacity: rise(frame, 4, 18) }}>
         {series
-          ? `${series.name} · Narrated with an AI version of the creator's voice. Sources in the description.`
+          ? `${series.name} · Narrated by Utpal · Sources in the description.`
           : "Narrated with an AI version of the creator's voice. Facts checked against the official question catalogue."}
       </div>
     </AbsoluteFill>

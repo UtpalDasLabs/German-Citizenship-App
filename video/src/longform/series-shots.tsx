@@ -93,6 +93,22 @@ export function Line({ topic }: { topic: string }) {
   );
 }
 
+/** The key sentence, low on the frame over a picture or clip, in the series colour. */
+export function KeyLine({ text, at = 8 }: { text: string; at?: number }) {
+  const frame = useCurrentFrame();
+  const accent = useAccent();
+  const o = rise(frame, at, 16);
+  return (
+    <>
+      <AbsoluteFill style={{ background: 'linear-gradient(0deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.35) 32%, rgba(0,0,0,0) 55%)', opacity: o }} />
+      <div style={{ position: 'absolute', left: 120, right: 120, bottom: 110, display: 'flex', gap: 28, alignItems: 'stretch', opacity: o, transform: `translateY(${(1 - o) * 14}px)` }}>
+        <div style={{ width: 6, borderRadius: 3, backgroundColor: accent }} />
+        <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 60, lineHeight: 1.18, color: '#FFFFFF', textShadow: '0 2px 24px rgba(0,0,0,0.5)' }}>{text}</div>
+      </div>
+    </>
+  );
+}
+
 /** `image-id | PLACE, REGION | a short note`: a location card over a picture. */
 export function Place({ topic }: { topic: string }) {
   const frame = useCurrentFrame();
