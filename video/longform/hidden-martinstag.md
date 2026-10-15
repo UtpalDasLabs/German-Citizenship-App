@@ -107,8 +107,11 @@ The real reason is more practical. [[Martini]], the eleventh of November, was an
 
 [calm] So the eleventh of November was the last big feast before weeks of going without. Eat the goose. Finish the meat. Celebrate.
 
-> SCENE (place): Düsseldorf on 11 November.
-> carnival | COLOGNE · DÜSSELDORF · MAINZ | 11 November, 11:11
+> SCENE (photo): Düsseldorf on 11 November; confetti; the old feast; candles.
+> carnival | Cologne · Düsseldorf · Mainz: 11.11 at 11:11 | color key
+> confetti |  | color @ eleven minutes past eleven
+> fire2 |  | color @ old feast day
+> candles |  | color @ Ten Commandments
 
 [calm] A last party before the fast. That's exactly what Karneval is. So when Cologne, Düsseldorf and Mainz open the carnival season on the eleventh of the eleventh, at eleven minutes past eleven, they're building on that old feast day. And the eleven? It's the fool's number. One more than the Ten Commandments, one less than the twelve apostles.
 
@@ -122,9 +125,10 @@ Around the same time, bakeries sell little men made of sweet bread. In the Rhine
 
 ## How to join
 
-> SCENE (photo): A lantern; the procession.
-> lantern | Search your town for "Martinsumzug" or "Laternenumzug". | color key
-> lantern-walk-b |  | color @ Bring a lantern
+> SCENE (photo): The procession; a lantern.
+> lantern-walk-b |  | color
+> lantern | Search your town for "Martinsumzug" or "Laternenumzug". | color key @ Look on your town's website
+> lantern-walk |  | color @ Bring a lantern
 
 You don't need to be religious, German, or a child to take part. Kindergartens, schools and churches organise most processions, and many are open to everyone. Look on your town's website for [[Martinsumzug]] or [[Laternenumzug]]. Bring a lantern. Learn the first line of [[Laterne, Laterne]]. That's all.
 
