@@ -13,15 +13,14 @@ questions: []
 
 ## Short
 
-> SCENE (list): From 11 November to Christmas: a time of fasting.
-> bg | church-light
-> 11 November | Saint Martin's Day
-> Until Christmas | weeks of fasting @ time of fasting
-> The day itself | one last feast @ Saint Martin's Lent
+> SCENE (photo): Wine; a goose dinner; confetti.
+> wine |  | color
+> goose |  | color @ Eat the goose
+> confetti |  | color @ Celebrate
 
 [calm] Why does Karneval start at eleven minutes past eleven, on the eleventh of November?
 
-[warmly] Here's the part almost nobody knows. In the Middle Ages, the weeks from Saint Martin's Day to Christmas were a time of fasting, a bit like Lent before Easter. It was even called Saint Martin's Lent.
+[calm] So the eleventh of November was the last big feast before weeks of going without. Eat the goose. Finish the meat. Celebrate.
 
 > SCENE (photo): Düsseldorf on 11.11; Cologne; a clock; a fire; stained glass.
 > carnival | Cologne · Düsseldorf · Mainz: 11.11 at 11:11 | color key

@@ -13,11 +13,13 @@ questions: []
 
 ## Short
 
-> SCENE (stopping): Twenty doors. The first 37% are only looked at; then the first one better than all of them is taken.
+> SCENE (curve): The chance of ending with the very best, for every length of the look phase. Peaks at 37%.
 
 [calm] Picking the best of a hundred options at random? A one percent chance. With this rule? Thirty-seven.
 
-[calm] Here's the answer. Use the first thirty-seven percent of your search only to look. Don't commit to anything, however good it seems. You're not choosing yet. You're learning what good looks like.
+[calm] Now work out the chance of ending with the very best option for each length. The curve rises, then falls. It peaks at about thirty-seven percent: one divided by e, the number from maths class, two point seven one eight.
+
+[warmly] And here's the strange part. At that peak, your chance of getting the very best option is also about thirty-seven percent.
 
 > SCENE (stat): One percent at random, thirty-seven with the rule.
 > bg | dice
