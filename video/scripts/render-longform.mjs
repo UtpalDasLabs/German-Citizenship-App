@@ -191,6 +191,8 @@ const plan = {
   lively: LIVELY,
   music: LIVELY && !args0.includes('--no-music') ? MUSIC : null,
   series: SERIES_KEY,
+  // Video clips fetched by npm run clips -- <topic> (id → seconds).
+  clips: existsSync(join(OUT, 'clips', topic, 'clips.json')) ? JSON.parse(readFileSync(join(OUT, 'clips', topic, 'clips.json'), 'utf8')) : {},
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
@@ -223,6 +225,7 @@ function describeSeries(chapterLines, credits) {
     '• German driving theory test: https://fuehrerschein.utpaldas.com',
     '',
     ...(existsSync(credits) ? [readFileSync(credits, 'utf8').trim()] : []),
+    ...(existsSync(join(OUT, 'clips', topic, 'credits.txt')) ? ['', readFileSync(join(OUT, 'clips', topic, 'credits.txt'), 'utf8').trim()] : []),
     ...(LIVELY ? ['', elSound ? 'Music: made with ElevenLabs.' : 'Music: made for this channel.'] : []),
     '',
   ].join('\n');
@@ -285,6 +288,10 @@ if (LIVELY) {
 }
 // The catalogue's own pictures, for picture questions.
 cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: true });
+// This video's clips, if it has any.
+if (existsSync(join(OUT, 'clips', topic))) {
+  cpSync(join(OUT, 'clips', topic), join(pub, 'clips', topic), { recursive: true });
+}
 // This lesson's own pictures, if it has any.
 if (existsSync(join(OUT, 'images', topic))) {
   cpSync(join(OUT, 'images', topic), join(pub, 'images', topic), { recursive: true });

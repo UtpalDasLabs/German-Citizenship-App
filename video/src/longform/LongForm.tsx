@@ -5,7 +5,7 @@ import { C } from '../lib/brand';
 import { Soundtrack, usePunchScale } from './lively';
 import { ChapterLabel, GermanCaption, Storyboard } from './look';
 import { ShotContext, type Plan, type Shot } from './plan';
-import { SeriesContext } from './series';
+import { ClipContext, SeriesContext } from './series';
 import { SeriesPill } from './series-shots';
 import { shownGerman, SHOWS_GERMAN, shotFor } from './shots';
 
@@ -54,6 +54,7 @@ function pills(plan: Plan) {
 export function LongForm({ plan }: LongFormProps) {
   return (
     <SeriesContext.Provider value={plan.series ?? null}>
+    <ClipContext.Provider value={plan.clips ?? {}}>
     <AbsoluteFill style={{ backgroundColor: C.bg }}>
       {plan.shots.map((shot, i) => (
         <Sequence
@@ -84,6 +85,7 @@ export function LongForm({ plan }: LongFormProps) {
           )),
       )}
     </AbsoluteFill>
+    </ClipContext.Provider>
     </SeriesContext.Provider>
   );
 }

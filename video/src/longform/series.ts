@@ -22,3 +22,6 @@ export function useSeries(): Series | null {
 export function useAccent(): string {
   return useSeries()?.accent ?? GOLD;
 }
+
+/** Video clips available for this video: id → length in seconds. */
+export const ClipContext = createContext<Record<string, number>>({});

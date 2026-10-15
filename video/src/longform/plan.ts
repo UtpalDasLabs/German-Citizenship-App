@@ -55,6 +55,8 @@ export type Plan = {
   music: Music | null;
   /** A series video (`series:` in the script), or null for a lesson. */
   series?: string | null;
+  /** Video clips for this topic (id → seconds); a clip replaces the photo with the same id. */
+  clips?: Record<string, number>;
 };
 
 export const ShotContext = createContext<Shot | null>(null);

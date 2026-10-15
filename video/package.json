@@ -20,7 +20,8 @@
     "sound": "node scripts/sound.mjs",
     "take:trim": "node scripts/trim-take.mjs",
     "sound:elevenlabs": "NODE_USE_ENV_PROXY=1 node scripts/sound-elevenlabs.mjs",
-    "thumbnails:series": "node scripts/series-thumbnails.mjs"
+    "thumbnails:series": "node scripts/series-thumbnails.mjs",
+    "clips": "NODE_USE_ENV_PROXY=1 node scripts/clips.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
