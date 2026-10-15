@@ -30,7 +30,7 @@ function ShotView({ shot, plan, first }: { shot: Shot; plan: Plan; first: boolea
         {shot.key && SHOWS_GERMAN.has(shot.key) ? null : (
           <GermanCaption
             exclude={shownGerman(shot.questions, shot.screen, shot.key)}
-            bottom={PHOTO_SCENES.has(shot.key ?? '') ? 190 : 70}
+            bottom={shot.key === 'line' || shot.key === 'place' ? 300 : PHOTO_SCENES.has(shot.key ?? '') ? 190 : 70}
           />
         )}
         {shot.opensChapter && !plan.series ? <ChapterLabel number={shot.chapter} title={shot.chapterTitle} /> : null}

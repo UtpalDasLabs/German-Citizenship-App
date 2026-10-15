@@ -16,9 +16,11 @@
  * first. Every frame number is worked out here, from the voice's own
  * timestamps, and handed to the composition as one plan.
  */
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+
+import { ffbin } from './ffbin.mjs';
 
 import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
@@ -210,7 +212,7 @@ function describeSeries(chapterLines, credits) {
     'Chapters',
     ...chapterLines,
     '',
-    `${SERIES.name}: ${SERIES.tagline.toLowerCase()}. A series from Living in Deutschland.`,
+    `${SERIES.name}: ${SERIES.tagline}. A series from Living in Deutschland.`,
     SERIES.credit,
     ...(sources.length ? ['', 'Sources', ...sources.map((u) => `• ${u}`)] : []),
     '',
@@ -220,7 +222,7 @@ function describeSeries(chapterLines, credits) {
     '• German citizenship test (all 460 questions): https://lid.utpaldas.com',
     '• German driving theory test: https://fuehrerschein.utpaldas.com',
     '',
-    ...(existsSync(credits) ? ['Pictures', readFileSync(credits, 'utf8').trim()] : []),
+    ...(existsSync(credits) ? [readFileSync(credits, 'utf8').trim()] : []),
     ...(LIVELY ? ['', elSound ? 'Music: made with ElevenLabs.' : 'Music: made for this channel.'] : []),
     '',
   ].join('\n');
@@ -337,4 +339,30 @@ if (flags.has('--stills')) {
     onProgress: ({ progress }) => process.stdout.write(`\r  ${Math.round(progress * 100)}%`),
   });
   console.log(`\r  → ${file}  (${(cursor / FPS).toFixed(1)}s, rendered in ${((Date.now() - started) / 1000).toFixed(0)}s)`);
+  if (SERIES && !silent) loudnorm(file);
+}
+
+/**
+ * Series videos: bring the mix to -14 LUFS, where YouTube plays everything.
+ * YouTube turns loud videos down but never turns quiet ones up, and the raw
+ * mix sits near -23. Two passes (measure, then correct linearly); the
+ * picture is copied untouched. Keeps the raw mix if no ffmpeg can do it.
+ */
+function loudnorm(file) {
+  const target = 'I=-14:TP=-1.5:LRA=11';
+  const out = file.replace(/\.mp4$/, '.norm.mp4');
+  for (const bin of new Set([ffbin('ffmpeg'), 'ffmpeg'])) {
+    const measure = spawnSync(bin, ['-hide_banner', '-nostats', '-i', file, '-af', `loudnorm=${target}:print_format=json`, '-f', 'null', '-'], { encoding: 'utf8' });
+    const report = measure.status === 0 ? measure.stderr.match(/\{[^{}]*"input_i"[^{}]*\}/) : null;
+    if (!report) continue;
+    const m = JSON.parse(report[0]);
+    const filter = `loudnorm=${target}:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`;
+    const fix = spawnSync(bin, ['-y', '-hide_banner', '-loglevel', 'error', '-i', file, '-c:v', 'copy', '-af', filter, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', out]);
+    if (fix.status !== 0) continue;
+    cpSync(out, file);
+    rmSync(out);
+    console.log(`  loudness: ${m.input_i} → -14 LUFS`);
+    return;
+  }
+  console.warn('  loudness: no ffmpeg could normalise it; the file keeps its raw mix');
 }

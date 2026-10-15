@@ -74,9 +74,9 @@ The real reason is more practical. [[Martini]], the eleventh of November, was an
 ## Why Karneval starts on 11.11
 
 > SCENE (list): From 11 November to Christmas: a time of fasting.
-> 11 November | the last big feast
-> Until Christmas | weeks of fasting @ fasting
-> 11.11 at 11:11 | Karneval begins @ eleven minutes past eleven
+> 11 November | Saint Martin's Day
+> Until Christmas | weeks of fasting @ time of fasting
+> The day itself | one last feast @ last big feast
 
 [dramatic] Here's the part almost nobody knows. In the Middle Ages, the weeks from Saint Martin's Day to Christmas were a time of fasting, a bit like Lent before Easter. It was even called Saint Martin's Lent.
 

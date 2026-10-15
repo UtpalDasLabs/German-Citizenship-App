@@ -115,6 +115,9 @@ Three. **You know the real score.** If you can measure every option on a fixed s
 
 [dramatic] In 1611, the astronomer Johannes Kepler lost his first wife. Over the next two years, he considered eleven possible matches, one after another.
 
+> SCENE (line): Eleven candidates; he went back to the fifth.
+> kepler | Eleven candidates. He went back to number five.
+
 [dramatic] He hesitated. He kept looking. He went back and forth. And in the end, he went back to the fifth. Her name was Susanna Reuttinger. Luckily for Kepler, she said yes, and they married in 1613.
 
 > SCENE (line): Most of us don't get that second chance.
