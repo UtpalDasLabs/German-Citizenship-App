@@ -204,10 +204,68 @@ const stamp = (frame) => {
   const sec = String(t % 60).padStart(2, '0');
   return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`;
 };
+/** Picture and clip ids the cut actually shows (a clip hides the photo with the same id). */
+function shownMedia() {
+  const ids = new Set();
+  for (const sh of shots) {
+    if (!['photo', 'line', 'place', 'list', 'stat'].includes(sh.key)) continue;
+    for (const l of sh.screen) {
+      const f = l.split(' @ ')[0].split(/ ?\| ?/).map((x) => x.trim());
+      ids.add(f[0] === 'bg' ? f[1] : f[0]);
+    }
+  }
+  const clipIds = new Set(Object.keys(plan.clips ?? {}));
+  const readJson = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null);
+  const images = (readJson(join(VIDEO, 'longform', `${topic}.images.json`))?.images ?? []).filter(
+    (im) => ids.has(im.id) && !clipIds.has(im.id),
+  );
+  const clips = (readJson(join(VIDEO, 'longform', `${topic}.clips.json`))?.clips ?? []).filter((c) => ids.has(c.id));
+  return { images, clips };
+}
+
+const CREDITS_URL = `https://github.com/UtpalDasLabs/German-Citizenship-App/blob/claude/series-logic-hidden/video/credits/${topic}.md`;
+
+/**
+ * Credits for a series video: short lines for the description (YouTube
+ * allows 5,000 characters), and a full page with every link, kept in this
+ * public repository at video/credits/<topic>.md and linked from the
+ * description. CC BY / BY-SA allow attribution through such a page.
+ */
+function seriesCredits() {
+  const { images, clips } = shownMedia();
+  const plain = (f) => f.replace(/\.[a-z0-9]+$/i, '');
+  const pixabay = clips.filter((c) => c.source === 'pixabay');
+  const users = [...new Set(pixabay.map((c) => (c.credit ?? '').match(/^Video by (.+?) from Pixabay/)?.[1]).filter(Boolean))];
+  const made = [...new Set(clips.filter((c) => /made with|Kling|Veo/i.test(c.credit ?? '')).map((c) => (/Veo/i.test(c.credit) ? 'Google Veo' : 'Kling AI')))];
+  const ccClips = clips.filter((c) => c.source === 'file' && /CC BY/.test(c.credit ?? ''));
+  const short = [
+    'Pictures and video',
+    ...images.map((im) => `• ${plain(im.file)}: ${im.author.replace(/\s*\(talk\).*$/, '')}, ${im.licence}`),
+    ...ccClips.map((c) => `• ${c.credit.split(': http')[0]}`),
+    ...(users.length ? [`• Stock video from Pixabay (Content License): ${users.join(', ')}`] : []),
+    ...(made.length ? [`• Some scenes made with ${made.join(' and ')}`] : []),
+    `Full credits with links: ${CREDITS_URL}`,
+  ];
+  const full = [
+    `# Credits: ${script.meta.title}`,
+    '',
+    ...(images.length ? ['## Pictures (Wikimedia Commons)', '', ...images.map((im) => `- [${plain(im.file)}](${im.source}): ${im.author.replace(/\s*\(talk\).*$/, '')}, ${im.licence}${im.licenceUrl ? ` ([licence](${im.licenceUrl}))` : ''}`), ''] : []),
+    ...(clips.length ? ['## Video', '', ...clips.filter((c) => c.credit).map((c) => `- ${c.credit}`), ''] : []),
+    '## Voice and music',
+    '',
+    "- Narrated by Utpal, using a voice model trained on his own recordings (ElevenLabs).",
+    '- Music: made with ElevenLabs.',
+    '',
+  ];
+  mkdirSync(join(VIDEO, 'credits'), { recursive: true });
+  writeFileSync(join(VIDEO, 'credits', `${topic}.md`), full.join('\n'));
+  return short;
+}
+
 /** The YouTube description of a series video: no exam questions, its sources instead. */
-function describeSeries(chapterLines, credits) {
+function describeSeries(chapterLines) {
   const sources = script.meta.sources ?? [];
-  return [
+  const text = [
     script.meta.title,
     '',
     ...(script.meta.summary ? [script.meta.summary, ''] : []),
@@ -224,11 +282,14 @@ function describeSeries(chapterLines, credits) {
     '• German citizenship test (all 460 questions): https://lid.utpaldas.com',
     '• German driving theory test: https://fuehrerschein.utpaldas.com',
     '',
-    ...(existsSync(credits) ? [readFileSync(credits, 'utf8').trim()] : []),
-    ...(existsSync(join(OUT, 'clips', topic, 'credits.txt')) ? ['', readFileSync(join(OUT, 'clips', topic, 'credits.txt'), 'utf8').trim()] : []),
-    ...(LIVELY ? ['', elSound ? 'Music: made with ElevenLabs.' : 'Music: made for this channel.'] : []),
+    ...seriesCredits(),
+    ...(LIVELY ? [elSound ? 'Music: made with ElevenLabs.' : 'Music: made for this channel.'] : []),
     '',
-  ].join('\n');
+  ].join('\n').replace(/[<>]/g, '');
+  // YouTube refuses descriptions over 5,000 characters (and any < or >).
+  if (text.length > 5000) console.warn(`  description: ${text.length} characters, over YouTube's 5,000 — shorten it`);
+  else console.log(`  description: ${text.length} characters`);
+  return text;
 }
 
 function describe() {
@@ -239,7 +300,7 @@ function describe() {
     }
   }
   const credits = join(OUT, 'images', topic, 'credits.txt');
-  if (SERIES) return describeSeries(chapterLines, credits);
+  if (SERIES) return describeSeries(chapterLines);
   const usesMap = shots.some((sh) => sh.key === 'map1949' || sh.key === 'reunify');
   const asked = shots.flatMap((sh) => sh.questions);
   return [
