@@ -1,0 +1,46 @@
+{
+  "topic": "hidden-busstag",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "classroom",
+      "source": "pixabay",
+      "pixabayId": 366698,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Openly from Pixabay: https://pixabay.com/videos/id-366698/"
+    },
+    {
+      "id": "office",
+      "source": "pixabay",
+      "pixabayId": 373945,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by astroprajna from Pixabay: https://pixabay.com/videos/id-373945/"
+    },
+    {
+      "id": "church",
+      "source": "pixabay",
+      "pixabayId": 82375,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-82375/"
+    },
+    {
+      "id": "dresden",
+      "source": "pixabay",
+      "pixabayId": 8124,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8124/"
+    },
+    {
+      "id": "coins",
+      "source": "pixabay",
+      "pixabayId": 133361,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by zillurrahman1 from Pixabay: https://pixabay.com/videos/id-133361/"
+    }
+  ]
+}

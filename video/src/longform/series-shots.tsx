@@ -367,3 +367,119 @@ export function Curve() {
     </AbsoluteFill>
   );
 }
+
+/**
+ * The Berlin Wall on a timeline: built 1961, Gott's visit in 1969, his
+ * even-odds range (2⅔ to 24 more years) and the fall in 1989, each when the
+ * voice gets to it.
+ */
+export function WallTimeline() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const Y0 = 1958;
+  const Y1 = 1996;
+  const L = 200;
+  const W = 1520;
+  const x = (y: number) => L + ((y - Y0) / (Y1 - Y0)) * W;
+  const axisY = 620;
+  const built = rise(frame, 6, 14);
+  const visitAt = cue(shot, '1969', fps, { fallback: 0.1 });
+  const grow = interpolate(frame, [visitAt - 20, visitAt + 10], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const visit = rise(frame, visitAt, 14);
+  const rangeO = rise(frame, cue(shot, 'even chance', fps, { fallback: 0.5 }), 18);
+  const fallO = rise(frame, cue(shot, '1989', fps, { nth: 0, fallback: 2 }), 14);
+  const label = { fontFamily: FONT, fontWeight: 700, fontSize: 46, fill: '#E9EDF5' } as const;
+  const small = { fontFamily: FONT, fontWeight: 600, fontSize: 34, fill: '#9AA3B5' } as const;
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <svg width={1920} height={1080}>
+        <line x1={L} y1={axisY} x2={L + W} y2={axisY} stroke="#4A5468" strokeWidth={3} />
+        {[1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995].map((y) => (
+          <g key={y}>
+            <line x1={x(y)} y1={axisY - 10} x2={x(y)} y2={axisY + 10} stroke="#4A5468" strokeWidth={3} />
+            <text x={x(y)} y={axisY + 52} textAnchor="middle" {...small}>{y}</text>
+          </g>
+        ))}
+        {/* The wall's life so far */}
+        <rect x={x(1961.6)} y={axisY - 34} width={(x(1969) - x(1961.6)) * grow} height={24} rx={6} fill="#C6CCD8" opacity={built} />
+        <text x={x(1961.6)} y={axisY - 60} {...label} opacity={built}>Built 1961</text>
+        {/* Gott's visit */}
+        <g opacity={visit}>
+          <line x1={x(1969)} y1={axisY - 150} x2={x(1969)} y2={axisY + 10} stroke="#FFFFFF" strokeWidth={4} />
+          <text x={x(1969)} y={axisY - 170} textAnchor="middle" {...label}>Gott visits, 1969</text>
+        </g>
+        {/* His even-odds range */}
+        <g opacity={rangeO}>
+          <rect x={x(1971.67)} y={axisY + 90} width={x(1993) - x(1971.67)} height={60} rx={10} fill={alpha(accent, 0.35)} stroke={accent} strokeWidth={3} />
+          <text x={(x(1971.67) + x(1993)) / 2} y={axisY + 210} textAnchor="middle" {...label} fill={accent}>Even chance: 2⅔ to 24 more years</text>
+        </g>
+        {/* The fall */}
+        <g opacity={fallO}>
+          <line x1={x(1989.86)} y1={axisY - 150} x2={x(1989.86)} y2={axisY + 140} stroke={accent} strokeWidth={5} />
+          <circle cx={x(1989.86)} cy={axisY} r={14} fill={accent} />
+          <text x={x(1989.86)} y={axisY - 170} textAnchor="middle" {...label} fill={accent}>The wall falls, 1989</text>
+        </g>
+      </svg>
+    </AbsoluteFill>
+  );
+}
+
+/**
+ * Three kinds of waiting, side by side, each lighting up when it is named:
+ * clustered around an average, a long tail, and at random.
+ */
+export function Waits() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const panels = [
+    { title: 'Around an average', rule: 'Predict the average', cueAt: 'cluster around an average', kind: 'normal' },
+    { title: 'A long tail', rule: 'The longer it lasts, the longer it lasts', cueAt: 'long tail', kind: 'tail' },
+    { title: 'At random', rule: 'The wait ahead stays the same', cueAt: 'happen at random', kind: 'random' },
+  ] as const;
+  const PW = 500;
+  const PH = 300;
+  const path = (kind: string) => {
+    const pts: string[] = [];
+    for (let i = 0; i <= 100; i++) {
+      const t = i / 100;
+      const y =
+        kind === 'normal' ? Math.exp(-((t - 0.5) ** 2) / 0.02) : kind === 'tail' ? 1 / (1 + 14 * t) ** 1.4 : 0;
+      pts.push(`${(t * PW).toFixed(1)},${(PH - y * (PH - 20)).toFixed(1)}`);
+    }
+    return `M ${pts.join(' L ')}`;
+  };
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', gap: 60 }}>
+        {panels.map((p, i) => {
+          const at = cue(shot, p.cueAt, fps, { fallback: 0.1 + 0.3 * i });
+          const o = rise(frame, at - 6, 14);
+          const lit = frame >= at - 6;
+          return (
+            <div key={p.kind} style={{ width: PW, opacity: 0.25 + 0.75 * o, display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 44, color: lit ? '#FFFFFF' : '#8A93A6' }}>{p.title}</div>
+              <svg width={PW} height={PH} style={{ background: '#1A2130', borderRadius: 18 }}>
+                {p.kind === 'random' ? (
+                  [0.07, 0.19, 0.24, 0.41, 0.48, 0.66, 0.71, 0.88].map((t, k) => (
+                    <g key={k}>
+                      <line x1={t * PW} y1={PH - 40} x2={t * PW} y2={60} stroke={lit ? accent : '#5E6779'} strokeWidth={4} opacity={rise(frame, at + k * 4, 6)} />
+                      <circle cx={t * PW} cy={60} r={9} fill={lit ? accent : '#5E6779'} opacity={rise(frame, at + k * 4, 6)} />
+                    </g>
+                  ))
+                ) : (
+                  <path d={path(p.kind)} fill="none" stroke={lit ? accent : '#5E6779'} strokeWidth={6} pathLength={1} strokeDasharray={1} strokeDashoffset={1 - rise(frame, at, 24)} />
+                )}
+                <line x1={0} y1={PH - 2} x2={PW} y2={PH - 2} stroke="#4A5468" strokeWidth={3} />
+              </svg>
+              <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 32, lineHeight: 1.25, color: lit ? accent : '#8A93A6' }}>{p.rule}</div>
+            </div>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+}

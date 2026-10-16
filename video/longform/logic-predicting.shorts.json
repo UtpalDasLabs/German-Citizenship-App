@@ -1,0 +1,24 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "In 1969, a physicist guessed how long the Berlin Wall would stand. He was right.",
+      "spoken": "In 1969, a physicist guessed how long the Berlin Wall would stand. Twenty years later, he was proved right.",
+      "paragraphs": [
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "Your train is 40 minutes late. Expect more.",
+      "spoken": "Your train is forty minutes late, and the board says ten more. Should you believe it?",
+      "paragraphs": [
+        15,
+        16,
+        17
+      ]
+    }
+  ]
+}
