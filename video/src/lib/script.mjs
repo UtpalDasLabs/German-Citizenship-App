@@ -27,9 +27,9 @@ export const SILENT_SECONDS = {
   option: 2.6,
   optionsPicture: 4.0,
   /** Options are shown, not read out: long enough to read a German option and its English. */
-  silentOption: 1.8,
-  silentPicture: 3.0,
-  countdown: 3.0,
+  silentOption: 0.75,
+  silentPicture: 2.0,
+  countdown: 2.0,
   reveal: 3.0,
   why: 5.5,
   keywords: 5.0,
@@ -126,11 +126,9 @@ export function buildScript(q, terms, whyLine) {
   // Short-form viewers decide in the first second: the question is on screen
   // from frame one, and the opening line is the challenge. State questions
   // speak to the people who will actually be asked them.
-  beat(
-    'hook',
-    [en(q.kind === 'state' ? `Living in ${q.state}? This one is in your citizenship test.` : 'A real question from the German citizenship test. Would you get it?')],
-    { tag: '[curious]' },
-  );
+  // No spoken opener any more (Oct 2026): only about 23% of viewers stayed
+  // past the first seconds while it played. The question is heard first and
+  // everything it needs is on screen from frame one.
 
   beat('question', [de(speakableGerman(q.de.text))]);
 
