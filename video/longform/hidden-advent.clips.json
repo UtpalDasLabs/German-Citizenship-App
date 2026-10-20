@@ -71,14 +71,18 @@
       "id": "oil-a",
       "source": "file",
       "file": "veo/bitter-oil.mp4",
-      "seconds": 5,
-      "credit": "Stollen before butter: made with Google Veo"
+      "seconds": 3,
+      "credit": "Stollen before butter: made with Google Veo",
+      "start": 0,
+      "speed": 0.6
     },
     {
       "id": "oil-b",
       "source": "file",
       "file": "veo/bitter-oil.mp4",
-      "start": 5
+      "start": 3,
+      "seconds": 2.4,
+      "speed": 0.55
     },
     {
       "id": "letter-a",
