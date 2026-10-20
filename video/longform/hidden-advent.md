@@ -64,7 +64,7 @@ The biscuit clip's card has its numbers out of order: keep it short.
 ## From wheel to wreath
 
 > SCENE (photo): Fir branches; a wreath on a table.
-> fir2 |  | color
+> snow-forest |  | color
 > wreath2 | Fir branches: around 1860 | color key @ around 1860
 > wreath4 |  | color @ only the four big ones
 
@@ -93,7 +93,7 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 [warmly] Now the calendar. In the eighteen-eighties, a boy called Gerhard Lang grew up in Swabia. Before Christmas, his mother put twenty-four little biscuits on a piece of cardboard. One a day. That was it.
 
 > SCENE (photo): Munich; a printing press; a calendar.
-> munich | Munich | color key
+> snow-church | Munich | color key
 > press |  | color @ printed the first Advent calendars
 > calendar | Printed calendars: 1903 to 1908 | color key @ exact year
 
@@ -152,7 +152,7 @@ Today almost every German town has one, from late November to Christmas. Two tip
 
 > SCENE (photo): The wheel; snowfall; a wreath.
 > wheel | A wagon wheel. A box of biscuits. A meat market. | color key
-> snow-forest |  | color @ biscuits
+> snow-street |  | color @ biscuits
 > wreath | | color @ the way it does
 
 [calm] A wagon wheel. Twenty-four biscuits. A meat market in Dresden. That's how Advent came to look the way it does.
