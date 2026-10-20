@@ -13,8 +13,9 @@ questions: []
 
 ## Short
 
-> SCENE (photo): The biscuits on the cardboard.
-> biscuits | Twenty-four biscuits, one a day. | color key
+> SCENE (photo): A snowy window; the biscuits on the cardboard.
+> snow-window | Swabia, the 1880s | color key
+> biscuits-a | Twenty-four biscuits, one a day. | color key @ his mother
 > cookies |  | color @ One a day
 
 [calm] The Advent calendar started with twenty-four biscuits.

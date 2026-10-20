@@ -3,39 +3,33 @@
   "note": "Video clips: Google Veo renders made by Utpal (private repo clips/veo/) and Pixabay stock (Content License).",
   "clips": [
     {
-      "id": "wheel",
+      "id": "wheel-a",
       "source": "file",
       "file": "veo/wichern-wheel.mp4",
-      "seconds": 5.5,
+      "seconds": 5,
       "credit": "Wichern's Advent wheel, 1839: made with Google Veo"
     },
     {
       "id": "wheel-b",
       "source": "file",
       "file": "veo/wichern-wheel.mp4",
-      "start": 4.5
+      "start": 5
     },
     {
-      "id": "wheel-c",
-      "source": "file",
-      "file": "veo/wichern-wheel.mp4",
-      "speed": 0.8
-    },
-    {
-      "id": "market",
+      "id": "market-a",
       "source": "file",
       "file": "veo/medieval-market.mp4",
-      "seconds": 5.5,
+      "seconds": 5,
       "credit": "A Christmas market in the 1400s: made with Google Veo"
     },
     {
       "id": "market-b",
       "source": "file",
       "file": "veo/medieval-market.mp4",
-      "start": 4.5
+      "start": 5
     },
     {
-      "id": "biscuits",
+      "id": "biscuits-a",
       "source": "file",
       "file": "veo/advent-biscuits.mp4",
       "seconds": 5,
@@ -48,19 +42,89 @@
       "start": 5
     },
     {
-      "id": "wreath",
-      "source": "pixabay",
-      "pixabayId": 137718,
-      "start": 2,
-      "seconds": 8,
-      "credit": "Video by JuliusH from Pixabay: https://pixabay.com/videos/id-137718/"
+      "id": "morph-a",
+      "source": "file",
+      "file": "veo/wheel-to-wreath.mp4",
+      "seconds": 5,
+      "credit": "From wheel to wreath: made with Google Veo"
+    },
+    {
+      "id": "morph-b",
+      "source": "file",
+      "file": "veo/wheel-to-wreath.mp4",
+      "start": 5
+    },
+    {
+      "id": "kids-a",
+      "source": "file",
+      "file": "veo/children-window.mp4",
+      "seconds": 5,
+      "credit": "Children counting the days, 1839: made with Google Veo"
+    },
+    {
+      "id": "kids-b",
+      "source": "file",
+      "file": "veo/children-window.mp4",
+      "start": 5
+    },
+    {
+      "id": "oil-a",
+      "source": "file",
+      "file": "veo/bitter-oil.mp4",
+      "seconds": 5,
+      "credit": "Stollen before butter: made with Google Veo"
+    },
+    {
+      "id": "oil-b",
+      "source": "file",
+      "file": "veo/bitter-oil.mp4",
+      "start": 5
+    },
+    {
+      "id": "letter-a",
+      "source": "file",
+      "file": "veo/butter-letter.mp4",
+      "seconds": 5,
+      "credit": "The butter letter, 1491: made with Google Veo"
+    },
+    {
+      "id": "letter-b",
+      "source": "file",
+      "file": "veo/butter-letter.mp4",
+      "start": 5
+    },
+    {
+      "id": "giant-a",
+      "source": "file",
+      "file": "veo/giant-stollen.mp4",
+      "seconds": 5,
+      "credit": "The giant Stollen, 1730: made with Google Veo"
+    },
+    {
+      "id": "giant-b",
+      "source": "file",
+      "file": "veo/giant-stollen.mp4",
+      "start": 5
+    },
+    {
+      "id": "tankard-a",
+      "source": "file",
+      "file": "veo/silver-tankard.mp4",
+      "seconds": 5,
+      "credit": "The oldest Glühwein cup: made with Google Veo"
+    },
+    {
+      "id": "tankard-b",
+      "source": "file",
+      "file": "veo/silver-tankard.mp4",
+      "start": 5
     },
     {
       "id": "wreath2",
       "source": "pixabay",
       "pixabayId": 60321,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Bernhard1960 from Pixabay: https://pixabay.com/videos/id-60321/"
     },
     {
@@ -68,7 +132,7 @@
       "source": "pixabay",
       "pixabayId": 6568,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Dieter_G from Pixabay: https://pixabay.com/videos/id-6568/"
     },
     {
@@ -76,7 +140,7 @@
       "source": "pixabay",
       "pixabayId": 143969,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by New1one from Pixabay: https://pixabay.com/videos/id-143969/"
     },
     {
@@ -84,7 +148,7 @@
       "source": "pixabay",
       "pixabayId": 143419,
       "start": 0,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-143419/"
     },
     {
@@ -92,7 +156,7 @@
       "source": "pixabay",
       "pixabayId": 141824,
       "start": 1,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-141824/"
     },
     {
@@ -100,7 +164,7 @@
       "source": "pixabay",
       "pixabayId": 93480,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by jrydertr from Pixabay: https://pixabay.com/videos/id-93480/"
     },
     {
@@ -108,7 +172,7 @@
       "source": "pixabay",
       "pixabayId": 8124,
       "start": 1,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8124/"
     },
     {
@@ -116,7 +180,7 @@
       "source": "pixabay",
       "pixabayId": 8123,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8123/"
     },
     {
@@ -124,7 +188,7 @@
       "source": "pixabay",
       "pixabayId": 8128,
       "start": 4,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8128/"
     },
     {
@@ -132,7 +196,7 @@
       "source": "pixabay",
       "pixabayId": 8129,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8129/"
     },
     {
@@ -140,7 +204,7 @@
       "source": "pixabay",
       "pixabayId": 8119,
       "start": 1,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8119/"
     },
     {
@@ -148,7 +212,7 @@
       "source": "pixabay",
       "pixabayId": 143319,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Nightwolfone from Pixabay: https://pixabay.com/videos/id-143319/"
     },
     {
@@ -156,7 +220,7 @@
       "source": "pixabay",
       "pixabayId": 143324,
       "start": 0,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Nightwolfone from Pixabay: https://pixabay.com/videos/id-143324/"
     },
     {
@@ -164,7 +228,7 @@
       "source": "pixabay",
       "pixabayId": 100314,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-100314/"
     },
     {
@@ -172,7 +236,7 @@
       "source": "pixabay",
       "pixabayId": 218405,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by 43485955 from Pixabay: https://pixabay.com/videos/id-218405/"
     },
     {
@@ -180,7 +244,7 @@
       "source": "pixabay",
       "pixabayId": 209560,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by 43485955 from Pixabay: https://pixabay.com/videos/id-209560/"
     },
     {
@@ -188,7 +252,7 @@
       "source": "pixabay",
       "pixabayId": 63970,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-63970/"
     },
     {
@@ -196,7 +260,7 @@
       "source": "pixabay",
       "pixabayId": 63977,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-63977/"
     },
     {
@@ -204,7 +268,7 @@
       "source": "pixabay",
       "pixabayId": 102364,
       "start": 5,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-102364/"
     },
     {
@@ -212,23 +276,15 @@
       "source": "pixabay",
       "pixabayId": 6310,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by knoxi from Pixabay: https://pixabay.com/videos/id-6310/"
-    },
-    {
-      "id": "fir",
-      "source": "pixabay",
-      "pixabayId": 187628,
-      "start": 2,
-      "seconds": 8,
-      "credit": "Video by KiFoKu from Pixabay: https://pixabay.com/videos/id-187628/"
     },
     {
       "id": "fir2",
       "source": "pixabay",
       "pixabayId": 13025,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by Dieter_G from Pixabay: https://pixabay.com/videos/id-13025/"
     },
     {
@@ -236,7 +292,7 @@
       "source": "pixabay",
       "pixabayId": 100315,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-100315/"
     },
     {
@@ -244,7 +300,7 @@
       "source": "pixabay",
       "pixabayId": 245490,
       "start": 1,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245490/"
     },
     {
@@ -252,39 +308,23 @@
       "source": "pixabay",
       "pixabayId": 245639,
       "start": 1,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245639/"
-    },
-    {
-      "id": "press",
-      "source": "pixabay",
-      "pixabayId": 152728,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by commlab from Pixabay: https://pixabay.com/videos/id-152728/"
     },
     {
       "id": "calendar",
       "source": "pixabay",
       "pixabayId": 190230,
       "start": 1,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by AG-Pics from Pixabay: https://pixabay.com/videos/id-190230/"
-    },
-    {
-      "id": "munich",
-      "source": "pixabay",
-      "pixabayId": 183582,
-      "start": 2,
-      "seconds": 8,
-      "credit": "Video by Matias_Luge from Pixabay: https://pixabay.com/videos/id-183582/"
     },
     {
       "id": "chocolate",
       "source": "pixabay",
       "pixabayId": 98283,
       "start": 1,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by bellergy from Pixabay: https://pixabay.com/videos/id-98283/"
     },
     {
@@ -292,7 +332,7 @@
       "source": "pixabay",
       "pixabayId": 143498,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by L30nxx from Pixabay: https://pixabay.com/videos/id-143498/"
     },
     {
@@ -300,8 +340,208 @@
       "source": "pixabay",
       "pixabayId": 143314,
       "start": 2,
-      "seconds": 8,
+      "seconds": 9,
       "credit": "Video by sandrahm from Pixabay: https://pixabay.com/videos/id-143314/"
+    },
+    {
+      "id": "dough",
+      "source": "pixabay",
+      "pixabayId": 43653,
+      "start": 1,
+      "seconds": 9,
+      "credit": "Video by aghyadnajjar from Pixabay: https://pixabay.com/videos/id-43653/"
+    },
+    {
+      "id": "flour",
+      "source": "pixabay",
+      "pixabayId": 61956,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by krzys16 from Pixabay: https://pixabay.com/videos/id-61956/"
+    },
+    {
+      "id": "oven-fire",
+      "source": "pixabay",
+      "pixabayId": 2336,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-2336/"
+    },
+    {
+      "id": "butter-pan",
+      "source": "pixabay",
+      "pixabayId": 72930,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by Engin_Akyurt from Pixabay: https://pixabay.com/videos/id-72930/"
+    },
+    {
+      "id": "sugar",
+      "source": "pixabay",
+      "pixabayId": 208754,
+      "start": 1,
+      "seconds": 9,
+      "credit": "Video by Kaffeesüchtig from Pixabay: https://pixabay.com/videos/id-208754/"
+    },
+    {
+      "id": "rhine-castle",
+      "source": "pixabay",
+      "pixabayId": 42175,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by denfran from Pixabay: https://pixabay.com/videos/id-42175/"
+    },
+    {
+      "id": "cinnamon-cup",
+      "source": "pixabay",
+      "pixabayId": 93866,
+      "start": 4,
+      "seconds": 9,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-93866/"
+    },
+    {
+      "id": "steam-cup",
+      "source": "pixabay",
+      "pixabayId": 3158,
+      "start": 3,
+      "seconds": 9,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3158/"
+    },
+    {
+      "id": "dresden-steamer",
+      "source": "pixabay",
+      "pixabayId": 8168,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8168/"
+    },
+    {
+      "id": "blue-wonder",
+      "source": "pixabay",
+      "pixabayId": 8170,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8170/"
+    },
+    {
+      "id": "snow-window",
+      "source": "pixabay",
+      "pixabayId": 172145,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by briroseee from Pixabay: https://pixabay.com/videos/id-172145/"
+    },
+    {
+      "id": "snow-window2",
+      "source": "pixabay",
+      "pixabayId": 12416,
+      "start": 1,
+      "seconds": 9,
+      "credit": "Video by MixailMixail from Pixabay: https://pixabay.com/videos/id-12416/"
+    },
+    {
+      "id": "desk-window",
+      "source": "pixabay",
+      "pixabayId": 130878,
+      "start": 4,
+      "seconds": 9,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-130878/"
+    },
+    {
+      "id": "rooftops",
+      "source": "pixabay",
+      "pixabayId": 3154,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3154/"
+    },
+    {
+      "id": "carousel",
+      "source": "pixabay",
+      "pixabayId": 142245,
+      "start": 4,
+      "seconds": 9,
+      "credit": "Video by New1one from Pixabay: https://pixabay.com/videos/id-142245/"
+    },
+    {
+      "id": "carousel2",
+      "source": "pixabay",
+      "pixabayId": 142244,
+      "start": 10,
+      "seconds": 9,
+      "credit": "Video by New1one from Pixabay: https://pixabay.com/videos/id-142244/"
+    },
+    {
+      "id": "toy-train",
+      "source": "pixabay",
+      "pixabayId": 141768,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by fotoblend from Pixabay: https://pixabay.com/videos/id-141768/"
+    },
+    {
+      "id": "forest-lights",
+      "source": "pixabay",
+      "pixabayId": 142872,
+      "start": 1,
+      "seconds": 9,
+      "credit": "Video by u_t71agjuavm from Pixabay: https://pixabay.com/videos/id-142872/"
+    },
+    {
+      "id": "red-candle",
+      "source": "pixabay",
+      "pixabayId": 98895,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-98895/"
+    },
+    {
+      "id": "red-candle2",
+      "source": "pixabay",
+      "pixabayId": 19621,
+      "start": 3,
+      "seconds": 9,
+      "credit": "Video by ElenLackner from Pixabay: https://pixabay.com/videos/id-19621/"
+    },
+    {
+      "id": "candle-snow",
+      "source": "pixabay",
+      "pixabayId": 56504,
+      "start": 3,
+      "seconds": 9,
+      "credit": "Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-56504/"
+    },
+    {
+      "id": "frost",
+      "source": "pixabay",
+      "pixabayId": 7090,
+      "start": 1,
+      "seconds": 9,
+      "credit": "Video by Hans from Pixabay: https://pixabay.com/videos/id-7090/"
+    },
+    {
+      "id": "oldtown-roofs",
+      "source": "pixabay",
+      "pixabayId": 167088,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by WN79 from Pixabay: https://pixabay.com/videos/id-167088/"
+    },
+    {
+      "id": "teddy-carousel",
+      "source": "pixabay",
+      "pixabayId": 182,
+      "start": 3,
+      "seconds": 9,
+      "credit": "Video by Republica from Pixabay: https://pixabay.com/videos/id-182/"
+    },
+    {
+      "id": "candle-desk",
+      "source": "pixabay",
+      "pixabayId": 8389,
+      "start": 5,
+      "seconds": 9,
+      "credit": "Video by RobVanDerMeijden from Pixabay: https://pixabay.com/videos/id-8389/"
     }
   ]
 }

@@ -2,6 +2,9 @@
   "shorts": [
     { "id": "1", "hook": "The Advent wreath was a wagon wheel.", "spoken": "The Advent wreath started as a wagon wheel, in Hamburg, in 1839.", "paragraphs": [4, 5, 6] },
     { "id": "2", "hook": "The Advent calendar started with 24 biscuits.", "spoken": "The Advent calendar started with twenty-four biscuits.", "paragraphs": [10, 12, 13] },
-    { "id": "3", "hook": "Germany's oldest Christmas market? Two towns disagree.", "spoken": "Which town has Germany's oldest Christmas market? Two of them say they do.", "paragraphs": [14, 16] }
+    { "id": "3", "hook": "Germany's oldest Christmas market? Two towns disagree.", "spoken": "Which town has Germany's oldest Christmas market? Two of them say they do.", "paragraphs": [14, 16] },
+    { "id": "4", "hook": "Stollen needed the Pope's permission.", "spoken": "German Christmas Stollen once needed a letter from the Pope.", "paragraphs": [17, 18, 19] },
+    { "id": "5", "hook": "A Stollen seven metres long.", "spoken": "In 1730, the ruler of Saxony had a Stollen baked that was seven metres long.", "paragraphs": [20, 21] },
+    { "id": "6", "hook": "The oldest Glühwein cup in Germany.", "spoken": "The oldest Glühwein cup in Germany is six hundred years old.", "paragraphs": [22, 23] }
   ]
 }

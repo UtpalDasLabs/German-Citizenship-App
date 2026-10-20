@@ -14,8 +14,9 @@ questions: []
 ## Short
 
 > SCENE (photo): The wheel; candles.
-> wheel-c | Four white candles for the Sundays. A red one for every other day. | color key
-> candle |  | color @ all the way to the twenty-fourth
+> wheel-a | Four white candles for the Sundays. A red one for every other day. | color key
+> red-candle |  | color @ four big white candles
+> red-candle2 |  | color @ a small red candle
 
 [calm] The Advent wreath started as a wagon wheel, in Hamburg, in 1839.
 
@@ -27,7 +28,7 @@ questions: []
 
 [warmly] Each evening, the children gathered, sang, and lit one more candle. The room got brighter every day. They could see Christmas coming.
 
-> SCENE (photo): A candle.
+> SCENE (photo): Many candles.
 > candles-many | A countdown you could light. | color key
 
 [calm] A countdown you could light.
