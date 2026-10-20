@@ -1,0 +1,307 @@
+{
+  "topic": "hidden-advent",
+  "note": "Video clips: Google Veo renders made by Utpal (private repo clips/veo/) and Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "wheel",
+      "source": "file",
+      "file": "veo/wichern-wheel.mp4",
+      "seconds": 5.5,
+      "credit": "Wichern's Advent wheel, 1839: made with Google Veo"
+    },
+    {
+      "id": "wheel-b",
+      "source": "file",
+      "file": "veo/wichern-wheel.mp4",
+      "start": 4.5
+    },
+    {
+      "id": "wheel-c",
+      "source": "file",
+      "file": "veo/wichern-wheel.mp4",
+      "speed": 0.8
+    },
+    {
+      "id": "market",
+      "source": "file",
+      "file": "veo/medieval-market.mp4",
+      "seconds": 5.5,
+      "credit": "A Christmas market in the 1400s: made with Google Veo"
+    },
+    {
+      "id": "market-b",
+      "source": "file",
+      "file": "veo/medieval-market.mp4",
+      "start": 4.5
+    },
+    {
+      "id": "biscuits",
+      "source": "file",
+      "file": "veo/advent-biscuits.mp4",
+      "seconds": 5,
+      "credit": "The biscuits behind the Advent calendar: made with Google Veo"
+    },
+    {
+      "id": "biscuits-b",
+      "source": "file",
+      "file": "veo/advent-biscuits.mp4",
+      "start": 5
+    },
+    {
+      "id": "wreath",
+      "source": "pixabay",
+      "pixabayId": 137718,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by JuliusH from Pixabay: https://pixabay.com/videos/id-137718/"
+    },
+    {
+      "id": "wreath2",
+      "source": "pixabay",
+      "pixabayId": 60321,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Bernhard1960 from Pixabay: https://pixabay.com/videos/id-60321/"
+    },
+    {
+      "id": "wreath3",
+      "source": "pixabay",
+      "pixabayId": 6568,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Dieter_G from Pixabay: https://pixabay.com/videos/id-6568/"
+    },
+    {
+      "id": "wreath4",
+      "source": "pixabay",
+      "pixabayId": 143969,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by New1one from Pixabay: https://pixabay.com/videos/id-143969/"
+    },
+    {
+      "id": "candle-match",
+      "source": "pixabay",
+      "pixabayId": 143419,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-143419/"
+    },
+    {
+      "id": "candle",
+      "source": "pixabay",
+      "pixabayId": 141824,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-141824/"
+    },
+    {
+      "id": "candles-many",
+      "source": "pixabay",
+      "pixabayId": 93480,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by jrydertr from Pixabay: https://pixabay.com/videos/id-93480/"
+    },
+    {
+      "id": "striezel",
+      "source": "pixabay",
+      "pixabayId": 8124,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8124/"
+    },
+    {
+      "id": "striezel2",
+      "source": "pixabay",
+      "pixabayId": 8123,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8123/"
+    },
+    {
+      "id": "stollen-fest",
+      "source": "pixabay",
+      "pixabayId": 8128,
+      "start": 4,
+      "seconds": 8,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8128/"
+    },
+    {
+      "id": "dresden-night",
+      "source": "pixabay",
+      "pixabayId": 8129,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8129/"
+    },
+    {
+      "id": "dresden-skate",
+      "source": "pixabay",
+      "pixabayId": 8119,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8119/"
+    },
+    {
+      "id": "punch-fire",
+      "source": "pixabay",
+      "pixabayId": 143319,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Nightwolfone from Pixabay: https://pixabay.com/videos/id-143319/"
+    },
+    {
+      "id": "gingerbread",
+      "source": "pixabay",
+      "pixabayId": 143324,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Nightwolfone from Pixabay: https://pixabay.com/videos/id-143324/"
+    },
+    {
+      "id": "gluehwein",
+      "source": "pixabay",
+      "pixabayId": 100314,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-100314/"
+    },
+    {
+      "id": "hamburg",
+      "source": "pixabay",
+      "pixabayId": 218405,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by 43485955 from Pixabay: https://pixabay.com/videos/id-218405/"
+    },
+    {
+      "id": "hamburg-ship",
+      "source": "pixabay",
+      "pixabayId": 209560,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by 43485955 from Pixabay: https://pixabay.com/videos/id-209560/"
+    },
+    {
+      "id": "snow-street",
+      "source": "pixabay",
+      "pixabayId": 63970,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-63970/"
+    },
+    {
+      "id": "snow-church",
+      "source": "pixabay",
+      "pixabayId": 63977,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-63977/"
+    },
+    {
+      "id": "snow-town",
+      "source": "pixabay",
+      "pixabayId": 102364,
+      "start": 5,
+      "seconds": 8,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-102364/"
+    },
+    {
+      "id": "snowfall",
+      "source": "pixabay",
+      "pixabayId": 6310,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by knoxi from Pixabay: https://pixabay.com/videos/id-6310/"
+    },
+    {
+      "id": "fir",
+      "source": "pixabay",
+      "pixabayId": 187628,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by KiFoKu from Pixabay: https://pixabay.com/videos/id-187628/"
+    },
+    {
+      "id": "fir2",
+      "source": "pixabay",
+      "pixabayId": 13025,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Dieter_G from Pixabay: https://pixabay.com/videos/id-13025/"
+    },
+    {
+      "id": "cookies",
+      "source": "pixabay",
+      "pixabayId": 100315,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-100315/"
+    },
+    {
+      "id": "cookies2",
+      "source": "pixabay",
+      "pixabayId": 245490,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245490/"
+    },
+    {
+      "id": "anise",
+      "source": "pixabay",
+      "pixabayId": 245639,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245639/"
+    },
+    {
+      "id": "press",
+      "source": "pixabay",
+      "pixabayId": 152728,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by commlab from Pixabay: https://pixabay.com/videos/id-152728/"
+    },
+    {
+      "id": "calendar",
+      "source": "pixabay",
+      "pixabayId": 190230,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by AG-Pics from Pixabay: https://pixabay.com/videos/id-190230/"
+    },
+    {
+      "id": "munich",
+      "source": "pixabay",
+      "pixabayId": 183582,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Matias_Luge from Pixabay: https://pixabay.com/videos/id-183582/"
+    },
+    {
+      "id": "chocolate",
+      "source": "pixabay",
+      "pixabayId": 98283,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by bellergy from Pixabay: https://pixabay.com/videos/id-98283/"
+    },
+    {
+      "id": "christmas-tree",
+      "source": "pixabay",
+      "pixabayId": 143498,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by L30nxx from Pixabay: https://pixabay.com/videos/id-143498/"
+    },
+    {
+      "id": "snow-forest",
+      "source": "pixabay",
+      "pixabayId": 143314,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by sandrahm from Pixabay: https://pixabay.com/videos/id-143314/"
+    }
+  ]
+}
