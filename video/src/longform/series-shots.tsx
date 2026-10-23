@@ -483,3 +483,145 @@ export function Waits() {
     </AbsoluteFill>
   );
 }
+
+/**
+ * ALOHAnet: three islands share one radio channel. Two messages leave at
+ * once and collide over the sea; then each waits a random moment, and both
+ * get through.
+ */
+export function Collide() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const RED = '#F0605D';
+  const hit = cue(shot, 'collided', fps, { fallback: 0.3 });
+  const retry = cue(shot, 'Wait a random moment', fps, { fallback: 0.65 });
+  const hub = { x: 960, y: 250 };
+  const islands = [
+    { x: 360, y: 760, w: 300 },
+    { x: 1560, y: 760, w: 300 },
+  ];
+  // Travel time of one message, in frames.
+  const T = Math.round(fps * 1.4);
+  const pos = (from: { x: number; y: number }, start: number) => {
+    const t = Math.min(1, Math.max(0, (frame - start) / T));
+    const e = 1 - (1 - t) ** 2;
+    return { x: from.x + (hub.x - from.x) * e, y: from.y - 40 + (hub.y - from.y + 40) * e, t };
+  };
+  // First round: both leave so they meet just as "collided" is spoken.
+  const first = hit - T + 4;
+  const burst = rise(frame, first + Math.round(T * 0.85), 6) * (1 - rise(frame, first + T + 45, 20));
+  // Second round: random waits, one after the other.
+  const waits = [0, Math.round(fps * 1.1)];
+  const okA = frame >= retry + waits[0] + T;
+  const okB = frame >= retry + waits[1] + T;
+  const wave = (frame % 40) / 40;
+  return (
+    <AbsoluteFill style={{ backgroundColor: '#0E1B2B' }}>
+      <AbsoluteFill style={{ background: 'radial-gradient(ellipse at 50% 110%, #1B3A55 0%, #0E1B2B 65%)' }} />
+      <svg width={1920} height={1080} viewBox="160 100 1600 900" style={{ position: 'absolute' }}>
+        {/* sea lines */}
+        {[0, 1, 2, 3, 4].map((k) => (
+          <path key={k} d={`M 0 ${860 + k * 40} Q 480 ${845 + k * 40} 960 ${860 + k * 40} T 1920 ${860 + k * 40}`} stroke="#24476A" strokeWidth={3} fill="none" opacity={0.6} transform={`translate(${((frame * (1 + k * 0.3)) % 120) - 60} 0)`} />
+        ))}
+        {/* the hub: one central computer, a mast on a hill */}
+        <ellipse cx={hub.x} cy={hub.y + 70} rx={220} ry={50} fill="#2E5A3E" />
+        <line x1={hub.x} y1={hub.y + 60} x2={hub.x} y2={hub.y - 60} stroke="#C9D3E0" strokeWidth={8} />
+        <circle cx={hub.x} cy={hub.y - 66} r={12} fill={okB ? accent : '#C9D3E0'} />
+        {[1, 2].map((k) => (
+          <circle key={k} cx={hub.x} cy={hub.y - 66} r={30 * k + wave * 30} stroke={okA ? accent : '#C9D3E0'} strokeWidth={3} fill="none" opacity={0.5 * (1 - wave)} />
+        ))}
+        {islands.map((s, i) => (
+          <g key={i}>
+            <ellipse cx={s.x} cy={s.y + 60} rx={s.w / 2} ry={45} fill="#2E5A3E" />
+            <rect x={s.x - 50} y={s.y - 40} width={100} height={70} rx={10} fill="#C9D3E0" />
+            <rect x={s.x - 38} y={s.y - 28} width={76} height={40} rx={4} fill="#0E1B2B" />
+            <rect x={s.x - 30} y={s.y - 20} width={30 * ((frame / 15) % 2 > 1 ? 1 : 0.4)} height={6} fill={accent} />
+          </g>
+        ))}
+        {/* first round: both at once */}
+        {frame < first + T + 2 &&
+          islands.map((s, i) => {
+            const p = pos(s, first);
+            return p.t > 0 && p.t < 0.86 ? <circle key={i} cx={p.x} cy={p.y} r={22} fill={i ? '#F5B84A' : accent} /> : null;
+          })}
+        {burst > 0 &&
+          Array.from({ length: 14 }).map((_, k) => {
+            const a = (k / 14) * Math.PI * 2;
+            const r = 30 + 90 * rise(frame, first + Math.round(T * 0.85), 18);
+            return <circle key={k} cx={hub.x + Math.cos(a) * r} cy={hub.y + 20 + Math.sin(a) * r} r={12} fill={RED} opacity={burst} />;
+          })}
+        {/* second round: random waits */}
+        {islands.map((s, i) => {
+          const p = pos(s, retry + waits[i]);
+          return p.t > 0 && p.t < 1 ? <circle key={`r${i}`} cx={p.x} cy={p.y} r={22} fill={i ? '#F5B84A' : accent} /> : null;
+        })}
+      </svg>
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 540, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 80, color: RED, opacity: burst }}>
+        Collision. Both lost.
+      </div>
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 540, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 76, color: accent, opacity: rise(frame, retry + waits[1] + T, 12) }}>
+        Random wait: both get through.
+      </div>
+      {islands.map((s, i) => (
+        <div key={i} style={{ position: 'absolute', left: (s.x - 160) * 1.2 - 200, width: 400, top: (s.y + 130 - 100) * 1.2, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 44, color: '#C9D3E0', opacity: rise(frame, retry - 10, 10) }}>
+          {frame >= retry ? (i === 0 ? 'waits 0.2 s' : 'waits 1.3 s') : ''}
+        </div>
+      ))}
+    </AbsoluteFill>
+  );
+}
+
+/** Exponential backoff: tries on a timeline, each wait twice the one before. */
+export function Backoff() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const RED = '#F0605D';
+  const start = cue(shot, 'Fail once', fps, { fallback: 0.15 });
+  const count = cue(shot, 'One, two, four', fps, { fallback: 0.7 });
+  const gaps = [1, 2, 4, 8, 16];
+  const X0 = 70;
+  // Each try appears in turn: the first four while the rule is explained, the rest on the count.
+  const times = [start, start + fps * 2, start + fps * 4, count, count + fps * 0.6, count + fps * 1.2];
+  let x = X0;
+  const xs = [x];
+  for (const g of gaps) xs.push((x += 100 + g * 40));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 60%, ${alpha(accent, 0.1)} 0%, ${alpha(accent, 0)} 60%)` }} />
+      <div style={{ position: 'absolute', top: 160, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 84, color: C.text }}>
+        Each time it fails, wait <span style={{ color: accent }}>twice as long</span>.
+      </div>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        <line x1={X0 - 40} y1={620} x2={X0 + 1640} y2={620} stroke="#4A5468" strokeWidth={4} />
+        {xs.map((cx, i) => {
+          const o = rise(frame, times[i], 10);
+          const last = i === xs.length - 1;
+          const gap = i > 0 ? gaps[i - 1] : 0;
+          return (
+            <g key={i} opacity={o}>
+              {i > 0 && (
+                <>
+                  <path d={`M ${xs[i - 1] + 18} 580 Q ${(xs[i - 1] + cx) / 2} ${560 - Math.min(160, gap * 18)} ${cx - 18} 580`} stroke={accent} strokeWidth={4} fill="none" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - rise(frame, times[i] - 8, 14)} />
+                  <text x={(xs[i - 1] + cx) / 2} y={540 - Math.min(160, gap * 18)} fill={accent} fontFamily={FONT} fontWeight={800} fontSize={44} textAnchor="middle">
+                    wait {gap}
+                  </text>
+                </>
+              )}
+              <circle cx={cx} cy={620} r={28} fill={last ? accent : RED} />
+              <text x={cx} y={632} fill="#0E1420" fontFamily={FONT} fontWeight={900} fontSize={30} textAnchor="middle">
+                {last ? '✓' : '×'}
+              </text>
+              <text x={cx} y={690} fill="#8A93A6" fontFamily={FONT} fontWeight={600} fontSize={28} textAnchor="middle">
+                try {i + 1}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </AbsoluteFill>
+  );
+}

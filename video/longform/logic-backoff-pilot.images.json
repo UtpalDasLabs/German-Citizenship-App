@@ -1,0 +1,30 @@
+{
+  "topic": "logic-backoff-pilot",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "hawaii",
+      "file": "Starr-130718-2724-aerial view-Diamond Head-Honolulu-Oahu (24925125850).jpg",
+      "scene": "Oahu from the air",
+      "licence": "CC BY 3.0 us",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0/us/deed.en",
+      "author": "Forest and Kim Starr",
+      "date": "2013-07-18 18:56",
+      "source": "https://commons.wikimedia.org/wiki/File:Starr-130718-2724-aerial_view-Diamond_Head-Honolulu-Oahu_(24925125850).jpg",
+      "size": "3456x2592",
+      "sha1": "10f9add7a38a83ce5853b1d117181fb47908bde4"
+    },
+    {
+      "id": "abramson",
+      "file": "NormanAbramson.jpg",
+      "scene": "Norman Abramson",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Norman Abramson",
+      "date": null,
+      "source": "https://commons.wikimedia.org/wiki/File:NormanAbramson.jpg",
+      "size": "731x1024",
+      "sha1": "bb64d6d08c462b108ac44376866512ccb3bf35e9"
+    }
+  ]
+}
