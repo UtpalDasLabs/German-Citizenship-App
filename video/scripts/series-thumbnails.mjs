@@ -27,6 +27,7 @@ const CHROME =
 const THUMBS = [
   { topic: 'hidden-martinstag', series: 'hidden', photo: 'lantern', side: true, lines: ['Why the', 'lanterns?'], accent: 'lanterns?', tag: '11 November · Martinstag' },
   { topic: 'logic-optimal-stopping', series: 'logic', doors: true, lines: ['The 37%', 'rule'], accent: '37%', tag: 'When to stop looking' },
+  { topic: 'hidden-advent', series: 'hidden', photo: 'thumb-wheel', side: true, lines: ['It was a', 'wagon wheel'], accent: 'wheel', tag: 'The Advent wreath, explained' },
   { topic: 'logic-predicting', series: 'logic', photo: 'thumb-platform', side: true, lines: ['How long', 'will it last?'], accent: 'last?', tag: 'Predicting with almost no data' },
 ];
 
