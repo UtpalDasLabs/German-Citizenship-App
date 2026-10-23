@@ -1,0 +1,206 @@
+{
+  "topic": "logic-sorting",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "typing",
+      "source": "pixabay",
+      "pixabayId": 227133,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by kurt_BID from Pixabay: https://pixabay.com/videos/id-227133/"
+    },
+    {
+      "id": "laptop",
+      "source": "pixabay",
+      "pixabayId": 1058,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1058/"
+    },
+    {
+      "id": "sketch",
+      "source": "pixabay",
+      "pixabayId": 10824,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10824/"
+    },
+    {
+      "id": "desk",
+      "source": "pixabay",
+      "pixabayId": 232538,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/"
+    },
+    {
+      "id": "files",
+      "source": "pixabay",
+      "pixabayId": 9772,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by HazarMan from Pixabay: https://pixabay.com/videos/id-9772/"
+    },
+    {
+      "id": "papers",
+      "source": "pixabay",
+      "pixabayId": 212508,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by MaxMedyk from Pixabay: https://pixabay.com/videos/id-212508/"
+    },
+    {
+      "id": "cables",
+      "source": "pixabay",
+      "pixabayId": 14900,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/"
+    },
+    {
+      "id": "books",
+      "source": "pixabay",
+      "pixabayId": 139804,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Sang_Soi from Pixabay: https://pixabay.com/videos/id-139804/"
+    },
+    {
+      "id": "box",
+      "source": "pixabay",
+      "pixabayId": 212508,
+      "start": 8,
+      "seconds": 8,
+      "credit": "Video by MaxMedyk from Pixabay: https://pixabay.com/videos/id-212508/"
+    },
+    {
+      "id": "library",
+      "source": "pixabay",
+      "pixabayId": 846,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-846/"
+    },
+    {
+      "id": "library2",
+      "source": "pixabay",
+      "pixabayId": 818,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-818/"
+    },
+    {
+      "id": "receipts",
+      "source": "pixabay",
+      "pixabayId": 212508,
+      "start": 14,
+      "seconds": 8,
+      "credit": "Video by MaxMedyk from Pixabay: https://pixabay.com/videos/id-212508/"
+    },
+    {
+      "id": "office",
+      "source": "pixabay",
+      "pixabayId": 134112,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by zillurrahman1 from Pixabay: https://pixabay.com/videos/id-134112/"
+    },
+    {
+      "id": "laptop2",
+      "source": "pixabay",
+      "pixabayId": 215751,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by G3Remote from Pixabay: https://pixabay.com/videos/id-215751/"
+    },
+    {
+      "id": "office2",
+      "source": "pixabay",
+      "pixabayId": 39890,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-39890/"
+    },
+    {
+      "id": "typing2",
+      "source": "pixabay",
+      "pixabayId": 95968,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-95968/"
+    },
+    {
+      "id": "clock",
+      "source": "pixabay",
+      "pixabayId": 15615,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-15615/"
+    },
+    {
+      "id": "files2",
+      "source": "pixabay",
+      "pixabayId": 349087,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MuhammadAhmad10 from Pixabay: https://pixabay.com/videos/id-349087/"
+    },
+    {
+      "id": "laptop3",
+      "source": "pixabay",
+      "pixabayId": 171409,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by u_vwhnf4huq0 from Pixabay: https://pixabay.com/videos/id-171409/"
+    },
+    {
+      "id": "kitchen",
+      "source": "pixabay",
+      "pixabayId": 267,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-267/"
+    },
+    {
+      "id": "photos",
+      "source": "pixabay",
+      "pixabayId": 169445,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by magicmore from Pixabay: https://pixabay.com/videos/id-169445/"
+    },
+    {
+      "id": "desk2",
+      "source": "pixabay",
+      "pixabayId": 232538,
+      "start": 4,
+      "seconds": 8,
+      "credit": "Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/"
+    },
+    {
+      "id": "papers2",
+      "source": "pixabay",
+      "pixabayId": 13053,
+      "start": 4,
+      "seconds": 8,
+      "credit": "Video by HolgersFotografie from Pixabay: https://pixabay.com/videos/id-13053/"
+    },
+    {
+      "id": "book",
+      "source": "pixabay",
+      "pixabayId": 185096,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by stefaniejockschat from Pixabay: https://pixabay.com/videos/id-185096/"
+    },
+    {
+      "id": "clothes",
+      "source": "pixabay",
+      "pixabayId": 27727,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by RaniRamli from Pixabay: https://pixabay.com/videos/id-27727/"
+    }
+  ]
+}

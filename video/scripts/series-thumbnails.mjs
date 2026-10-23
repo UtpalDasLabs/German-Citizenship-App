@@ -29,6 +29,9 @@ const THUMBS = [
   { topic: 'logic-optimal-stopping', series: 'logic', doors: true, lines: ['The 37%', 'rule'], accent: '37%', tag: 'When to stop looking' },
   { topic: 'hidden-advent', series: 'hidden', photo: 'thumb-wheel', side: true, lines: ['It was a', 'wagon wheel'], accent: 'wheel', tag: 'The Advent wreath, explained' },
   { topic: 'logic-predicting', series: 'logic', photo: 'thumb-platform', side: true, lines: ['How long', 'will it last?'], accent: 'last?', tag: 'Predicting with almost no data' },
+  { topic: 'logic-backoff', series: 'logic', photo: 'thumb-phone', side: true, lines: ['Try again,', 'wait longer'], accent: 'longer', tag: '1 · 2 · 4 · 8: the smart way to retry' },
+  { topic: 'logic-explore', series: 'logic', photo: 'thumb-restaurant', side: true, lines: ['New, or your', 'favourite?'], accent: 'favourite?', tag: 'The maths of explore vs exploit' },
+  { topic: 'logic-sorting', series: 'logic', photo: 'thumb-desk', side: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
 ];
 
 /** Look, then leap, as ten doors: four only looked at, the leap glowing. */
