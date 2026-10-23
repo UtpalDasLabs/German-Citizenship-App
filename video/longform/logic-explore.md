@@ -68,8 +68,8 @@ Trying something new is called exploring. Sticking with what you know is called 
 
 > SCENE (stat): Moving to a city for ten years.
 > bg | city
-> 10 years | in a new city @ ten years
-> hundreds | of good evenings from one great find @ hundreds
+> 10 | years in a new city @ ten years
+> 100s | of good evenings from one great find @ hundreds
 
 [calm] Think about why. A great new discovery pays off every time you go back to it. If you just moved to a city and you'll live there for ten years, finding a great restaurant this month gives you hundreds of good evenings. So try everything.
 

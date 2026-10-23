@@ -1,0 +1,190 @@
+{
+  "topic": "logic-backoff",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "phone",
+      "source": "pixabay",
+      "pixabayId": 119507,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MabelAmber from Pixabay: https://pixabay.com/videos/id-119507/"
+    },
+    {
+      "id": "switchboard",
+      "source": "pixabay",
+      "pixabayId": 286687,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by izhar-ahamed from Pixabay: https://pixabay.com/videos/id-286687/"
+    },
+    {
+      "id": "sketch",
+      "source": "pixabay",
+      "pixabayId": 10824,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10824/"
+    },
+    {
+      "id": "cables",
+      "source": "pixabay",
+      "pixabayId": 14900,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/"
+    },
+    {
+      "id": "cables2",
+      "source": "pixabay",
+      "pixabayId": 14900,
+      "start": 7,
+      "seconds": 8,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/"
+    },
+    {
+      "id": "cables3",
+      "source": "pixabay",
+      "pixabayId": 14900,
+      "start": 14,
+      "seconds": 8,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/"
+    },
+    {
+      "id": "crowd",
+      "source": "pixabay",
+      "pixabayId": 165336,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Ri_Ya from Pixabay: https://pixabay.com/videos/id-165336/"
+    },
+    {
+      "id": "clock",
+      "source": "pixabay",
+      "pixabayId": 15615,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-15615/"
+    },
+    {
+      "id": "clock2",
+      "source": "pixabay",
+      "pixabayId": 34855,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Danil_Shostak from Pixabay: https://pixabay.com/videos/id-34855/"
+    },
+    {
+      "id": "clock3",
+      "source": "pixabay",
+      "pixabayId": 26452,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MattHrusc from Pixabay: https://pixabay.com/videos/id-26452/"
+    },
+    {
+      "id": "crowd2",
+      "source": "pixabay",
+      "pixabayId": 3627,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3627/"
+    },
+    {
+      "id": "traffic",
+      "source": "pixabay",
+      "pixabayId": 88922,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MagicTV from Pixabay: https://pixabay.com/videos/id-88922/"
+    },
+    {
+      "id": "traffic2",
+      "source": "pixabay",
+      "pixabayId": 87884,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MagicTV from Pixabay: https://pixabay.com/videos/id-87884/"
+    },
+    {
+      "id": "door",
+      "source": "pixabay",
+      "pixabayId": 6714,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by tv84 from Pixabay: https://pixabay.com/videos/id-6714/"
+    },
+    {
+      "id": "calendar",
+      "source": "pixabay",
+      "pixabayId": 197974,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by EnchantedStudios from Pixabay: https://pixabay.com/videos/id-197974/"
+    },
+    {
+      "id": "phone2",
+      "source": "pixabay",
+      "pixabayId": 174003,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-174003/"
+    },
+    {
+      "id": "letters",
+      "source": "pixabay",
+      "pixabayId": 41211,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by KIMDAEJEUNG from Pixabay: https://pixabay.com/videos/id-41211/"
+    },
+    {
+      "id": "friends",
+      "source": "pixabay",
+      "pixabayId": 1623,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-1623/"
+    },
+    {
+      "id": "cafe",
+      "source": "pixabay",
+      "pixabayId": 27230,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-27230/"
+    },
+    {
+      "id": "book",
+      "source": "pixabay",
+      "pixabayId": 185096,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by stefaniejockschat from Pixabay: https://pixabay.com/videos/id-185096/"
+    },
+    {
+      "id": "restaurant",
+      "source": "pixabay",
+      "pixabayId": 23258,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by RafterJr72 from Pixabay: https://pixabay.com/videos/id-23258/"
+    },
+    {
+      "id": "holmes-hall",
+      "source": "pixabay",
+      "pixabayId": 199377,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by LadislavBur from Pixabay: https://pixabay.com/videos/id-199377/"
+    },
+    {
+      "id": "alto",
+      "source": "pixabay",
+      "pixabayId": 232538,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/"
+    }
+  ]
+}

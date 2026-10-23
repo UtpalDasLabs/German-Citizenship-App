@@ -1,0 +1,182 @@
+{
+  "topic": "logic-explore",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "restaurant",
+      "source": "pixabay",
+      "pixabayId": 23258,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by RafterJr72 from Pixabay: https://pixabay.com/videos/id-23258/"
+    },
+    {
+      "id": "restaurant2",
+      "source": "pixabay",
+      "pixabayId": 220710,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by VikasTobria from Pixabay: https://pixabay.com/videos/id-220710/"
+    },
+    {
+      "id": "sketch",
+      "source": "pixabay",
+      "pixabayId": 10824,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10824/"
+    },
+    {
+      "id": "clock",
+      "source": "pixabay",
+      "pixabayId": 15615,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-15615/"
+    },
+    {
+      "id": "clock2",
+      "source": "pixabay",
+      "pixabayId": 34855,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Danil_Shostak from Pixabay: https://pixabay.com/videos/id-34855/"
+    },
+    {
+      "id": "clock3",
+      "source": "pixabay",
+      "pixabayId": 26452,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MattHrusc from Pixabay: https://pixabay.com/videos/id-26452/"
+    },
+    {
+      "id": "slots",
+      "source": "pixabay",
+      "pixabayId": 136685,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by olenchic from Pixabay: https://pixabay.com/videos/id-136685/"
+    },
+    {
+      "id": "slots2",
+      "source": "pixabay",
+      "pixabayId": 136685,
+      "start": 7,
+      "seconds": 8,
+      "credit": "Video by olenchic from Pixabay: https://pixabay.com/videos/id-136685/"
+    },
+    {
+      "id": "street",
+      "source": "pixabay",
+      "pixabayId": 44663,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by My_Walking_Diary from Pixabay: https://pixabay.com/videos/id-44663/"
+    },
+    {
+      "id": "city",
+      "source": "pixabay",
+      "pixabayId": 343478,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by monirulislam_bd from Pixabay: https://pixabay.com/videos/id-343478/"
+    },
+    {
+      "id": "city2",
+      "source": "pixabay",
+      "pixabayId": 165336,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Ri_Ya from Pixabay: https://pixabay.com/videos/id-165336/"
+    },
+    {
+      "id": "suitcase",
+      "source": "pixabay",
+      "pixabayId": 149980,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by julientromeur from Pixabay: https://pixabay.com/videos/id-149980/"
+    },
+    {
+      "id": "dinner",
+      "source": "pixabay",
+      "pixabayId": 11654,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by XiaosKitchen from Pixabay: https://pixabay.com/videos/id-11654/"
+    },
+    {
+      "id": "door",
+      "source": "pixabay",
+      "pixabayId": 6714,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by tv84 from Pixabay: https://pixabay.com/videos/id-6714/"
+    },
+    {
+      "id": "hospital",
+      "source": "pixabay",
+      "pixabayId": 49808,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Hassas_Arts from Pixabay: https://pixabay.com/videos/id-49808/"
+    },
+    {
+      "id": "ecmo",
+      "source": "pixabay",
+      "pixabayId": 136458,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by twawer2000 from Pixabay: https://pixabay.com/videos/id-136458/"
+    },
+    {
+      "id": "couple",
+      "source": "pixabay",
+      "pixabayId": 127943,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-127943/"
+    },
+    {
+      "id": "friends",
+      "source": "pixabay",
+      "pixabayId": 1623,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-1623/"
+    },
+    {
+      "id": "office",
+      "source": "pixabay",
+      "pixabayId": 137186,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by u_jorg73foes from Pixabay: https://pixabay.com/videos/id-137186/"
+    },
+    {
+      "id": "cafe",
+      "source": "pixabay",
+      "pixabayId": 220710,
+      "start": 5,
+      "seconds": 8,
+      "credit": "Video by VikasTobria from Pixabay: https://pixabay.com/videos/id-220710/"
+    },
+    {
+      "id": "book",
+      "source": "pixabay",
+      "pixabayId": 185096,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by stefaniejockschat from Pixabay: https://pixabay.com/videos/id-185096/"
+    },
+    {
+      "id": "desk",
+      "source": "pixabay",
+      "pixabayId": 232538,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/"
+    }
+  ]
+}

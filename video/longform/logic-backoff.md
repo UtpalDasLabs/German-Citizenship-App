@@ -66,7 +66,7 @@ Try again too fast, and you waste effort, and often make the problem worse. Wait
 
 [warmly] In June 1971, a team at the University of Hawaii, led by Norman Abramson, switched on a new kind of network. They called it ALOHAnet. Its job was to connect computer terminals on different islands to one central computer, using cheap radios instead of expensive cables.
 
-> SCENE (photo): Norman Abramson; the ALOHAnet milestone plaque.
+> SCENE (photo): Norman Abramson; a radio mast.
 > abramson | Norman Abramson | color
 > holmes-hall | One radio channel, shared by everyone. | color key @ But there was a problem
 
@@ -77,7 +77,7 @@ Try again too fast, and you waste effort, and often make the problem worse. Wait
 
 [calm] The team's answer was simple. If your message doesn't get through, don't send it again immediately. Wait a random moment, then try. Because if both senders retried at once, they would collide again. And again. Forever.
 
-> SCENE (photo): An early office computer.
+> SCENE (photo): Hands at an office keyboard.
 > alto | California: and each time, the wait doubles. | color key @ the wait doubles
 
 [calm] A few years later, engineers at Xerox in California built on that idea for a network inside the office. They called it Ethernet. And they added one more twist, the one that matters most to us. Each time a message fails, the wait doubles.
