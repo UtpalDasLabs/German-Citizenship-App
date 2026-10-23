@@ -1,0 +1,22 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "In 1986, the internet got 1,000× slower in one afternoon.",
+      "spoken": "In October 1986, the internet got a thousand times slower in one afternoon. Nobody had switched anything off.",
+      "paragraphs": [4, 5, 6]
+    },
+    {
+      "id": "2",
+      "hook": "The fix for retrying has three words: double, cap, jitter.",
+      "spoken": "The internet's fix for retrying is three words. Double, cap, jitter.",
+      "paragraphs": [9, 10, 11]
+    },
+    {
+      "id": "3",
+      "hook": "Trying again is not always persistence. Sometimes it is a slower no.",
+      "spoken": "Trying again is not always persistence. Sometimes it is just a slower no.",
+      "paragraphs": [15, 17, 18]
+    }
+  ]
+}

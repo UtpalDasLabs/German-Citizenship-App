@@ -1,0 +1,150 @@
+{
+  "topic": "logic-backoff",
+  "note": "Video clips: Pixabay stock (Content License: free for commercial use). npm run clips -- logic-backoff fetches, trims and credits them. No faces where a face would be the subject; no footage presented as a place it is not.",
+  "clips": [
+    {
+      "id": "phone-refresh",
+      "source": "pixabay",
+      "pixabayId": 44859,
+      "start": 0,
+      "seconds": 12,
+      "scene": "Cold open: refreshing for an appointment at seven",
+      "credit": "Video by FlorenceCdeM from Pixabay: https://pixabay.com/videos/id-44859/"
+    },
+    {
+      "id": "clock-morning",
+      "source": "pixabay",
+      "pixabayId": 55443,
+      "start": 2,
+      "seconds": 10,
+      "scene": "Cold open: the hour everyone chooses at once",
+      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-55443/"
+    },
+    {
+      "id": "sketch",
+      "source": "pixabay",
+      "pixabayId": 171409,
+      "start": 0,
+      "seconds": 10,
+      "scene": "Cold open: notes on a desk, the series signature",
+      "credit": "Video by u_vwhnf4huq0 from Pixabay: https://pixabay.com/videos/id-171409/"
+    },
+    {
+      "id": "server-racks",
+      "source": "pixabay",
+      "pixabayId": 377883,
+      "start": 4,
+      "seconds": 14,
+      "scene": "October 1986: the two Berkeley buildings, two hops apart",
+      "credit": "Video by mignic from Pixabay: https://pixabay.com/videos/id-377883/"
+    },
+    {
+      "id": "network-lights",
+      "source": "pixabay",
+      "pixabayId": 336239,
+      "start": 0,
+      "seconds": 10,
+      "scene": "October 1986: traffic, thirty-two kilobits a second",
+      "credit": "Video by Solarselle77 from Pixabay: https://pixabay.com/videos/id-336239/"
+    },
+    {
+      "id": "fiber-cables",
+      "source": "pixabay",
+      "pixabayId": 182597,
+      "start": 6,
+      "seconds": 12,
+      "scene": "October 1986: the link, and the number falling",
+      "credit": "Video by AdisResic from Pixabay: https://pixabay.com/videos/id-182597/"
+    },
+    {
+      "id": "hands-phones",
+      "source": "pixabay",
+      "pixabayId": 64595,
+      "start": 0,
+      "seconds": 12,
+      "scene": "October 1986: both ends send it again, immediately",
+      "credit": "Video by Josh_Malic from Pixabay: https://pixabay.com/videos/id-64595/"
+    },
+    {
+      "id": "code-screen",
+      "source": "pixabay",
+      "pixabayId": 43559,
+      "start": 0,
+      "seconds": 10,
+      "scene": "The rule: Jacobson and Karels at Berkeley",
+      "credit": "Video by PhotoDhaba from Pixabay: https://pixabay.com/videos/id-43559/"
+    },
+    {
+      "id": "notebook",
+      "source": "pixabay",
+      "pixabayId": 3145,
+      "start": 6,
+      "seconds": 12,
+      "scene": "The rule: the answer written down",
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3145/"
+    },
+    {
+      "id": "radio-mast",
+      "source": "pixabay",
+      "pixabayId": 199377,
+      "start": 0,
+      "seconds": 12,
+      "scene": "Why it works: ALOHA, Hawaii 1970",
+      "credit": "Video by LadislavBur from Pixabay: https://pixabay.com/videos/id-199377/"
+    },
+    {
+      "id": "phone-down",
+      "source": "pixabay",
+      "pixabayId": 304045,
+      "start": 0,
+      "seconds": 8,
+      "scene": "Where it breaks: say when you will follow up",
+      "credit": "Video by VirtualZero from Pixabay: https://pixabay.com/videos/id-304045/"
+    },
+    {
+      "id": "phone-call",
+      "source": "pixabay",
+      "pixabayId": 34767,
+      "start": 2,
+      "seconds": 12,
+      "scene": "Three uses: the hotline",
+      "credit": "Video by jaumeps99 from Pixabay: https://pixabay.com/videos/id-34767/"
+    },
+    {
+      "id": "call-log",
+      "source": "pixabay",
+      "pixabayId": 70953,
+      "start": 0,
+      "seconds": 10,
+      "scene": "Three uses: twenty calls in ten minutes",
+      "credit": "Video by Ademoliner from Pixabay: https://pixabay.com/videos/id-70953/"
+    },
+    {
+      "id": "laptop-apply",
+      "source": "pixabay",
+      "pixabayId": 10839,
+      "start": 0,
+      "seconds": 12,
+      "scene": "Three uses: the application follow-up",
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10839/"
+    },
+    {
+      "id": "conversation",
+      "source": "pixabay",
+      "pixabayId": 6409,
+      "start": 2,
+      "seconds": 12,
+      "scene": "Three uses: the difficult conversation",
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-6409/"
+    },
+    {
+      "id": "open-book",
+      "source": "pixabay",
+      "pixabayId": 69573,
+      "start": 0,
+      "seconds": 12,
+      "scene": "Takeaway: the book credit",
+      "credit": "Video by Kmeel_com from Pixabay: https://pixabay.com/videos/id-69573/"
+    }
+  ]
+}

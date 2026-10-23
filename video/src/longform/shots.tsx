@@ -8,6 +8,7 @@ import { StatesMap } from './states';
 import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './generic';
 import { useAccent, useSeries } from './series';
 import { Curve, Line, Place, Stopping, Waits, WallTimeline } from './series-shots';
+import { Backoff } from './series-backoff';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
@@ -1030,6 +1031,8 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <WallTimeline />;
     case 'waits':
       return <Waits />;
+    case 'backoff':
+      return <Backoff />;
     default:
       return null;
   }
