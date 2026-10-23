@@ -3,6 +3,7 @@
 ## Video
 
 - Video by FlorenceCdeM from Pixabay: https://pixabay.com/videos/id-44859/
+- Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1057/
 - Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-55443/
 - Video by u_vwhnf4huq0 from Pixabay: https://pixabay.com/videos/id-171409/
 - Video by mignic from Pixabay: https://pixabay.com/videos/id-377883/

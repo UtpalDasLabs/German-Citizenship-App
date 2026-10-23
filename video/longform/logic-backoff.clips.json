@@ -12,6 +12,15 @@
       "credit": "Video by FlorenceCdeM from Pixabay: https://pixabay.com/videos/id-44859/"
     },
     {
+      "id": "waiting-room",
+      "source": "pixabay",
+      "pixabayId": 1057,
+      "start": 2,
+      "seconds": 8,
+      "scene": "Cold open: the waiting room at seven in the morning",
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1057/"
+    },
+    {
       "id": "clock-morning",
       "source": "pixabay",
       "pixabayId": 55443,
