@@ -10,19 +10,12 @@ target: about 7 minutes
 status: draft 1
 ---
 
-<!--
-Logic to Live By, episode 3. Format: see the top of basic-rights.md.
-Delivery: calm and steady (stability 1.0), [warmly] for story peaks, no tag
-for plain practical lines. Never [dramatic].
-Phrasing: people by place, never nationality generalisations.
-Script as written: the private repo's series/logic-to-live-by/03-exponential-backoff.md.
--->
-
 ## Cold open
 
-> SCENE (photo): A phone on a desk; a hand redialling.
-> phone | Busy. Busy. Busy. | color key
+> SCENE (photo): Redialling at the kitchen table; a call centre; an old phone.
+> redial | Busy. Busy. Busy. | color key
 > switchboard |  | color @ Thousands of other people
+> crowd |  | color @ at exactly the same moment
 
 [calm] You call the hotline. Busy. You call again straight away. Busy. And again. Busy. Thousands of other people are doing exactly the same thing, at exactly the same moment. So everyone keeps hitting a wall that all of you are building together.
 
@@ -33,61 +26,40 @@ Script as written: the private repo's series/logic-to-live-by/03-exponential-bac
 
 > SCENE (photo): Network cables.
 > cables | How often should you try again? | color key @ It decides
+> phone2 |  | color @ hotlines
+> letters |  | color @ job applications
+> friends |  | color @ people who keep
 
 [calm] Today's rule comes from the way computers talk to each other. It decides how often to try again when something fails. And it works on hotlines, job applications, and even on people who keep letting you down.
 
 > SCENE (title): Title card.
 > LOGIC TO LIVE BY · EPISODE 3
 
-## Should I try again?
-
-> SCENE (photo): A crowded station hall.
-> crowd | Try again? And when? | color key
-
-[calm] Every time something fails, you face two questions. Should I try again? And when?
-
-> SCENE (list): Three ways to get it wrong.
-> bg | clock
-> Too fast | Wasted effort, and often a worse jam @ too fast
-> Too slow | You miss your chance @ Wait too long
-> Too soon to quit | The next try would have worked @ give up too early
-
-Try again too fast, and you waste effort, and often make the problem worse. Wait too long, and you miss your chance. And give up too early, and you lose something that would have worked on the next attempt.
-
-> SCENE (photo): Network cables.
-> cables2 |  | color
-
-[calm] Computers had to answer this question millions of times a second. Their answer turned out to be a good one for the rest of us too.
-
 ## Hawaii, 1971
 
-> SCENE (place): Hawaii.
-> hawaii | HAWAII, USA | 1971
+> SCENE (photo): Oahu; Norman Abramson; the ALOHAnet room in 1971.
+> hawaii | Hawaii, 1971 | color key
+> abramson | Norman Abramson | color @ led by Norman
+> aloha1971 | ALOHAnet: islands linked by radio | color key @ They called it
 
 [warmly] In June 1971, a team at the University of Hawaii, led by Norman Abramson, switched on a new kind of network. They called it ALOHAnet. Its job was to connect computer terminals on different islands to one central computer, using cheap radios instead of expensive cables.
 
-> SCENE (photo): Norman Abramson; a radio mast.
-> abramson | Norman Abramson | color
-> holmes-hall | One radio channel, shared by everyone. | color key @ But there was a problem
+> SCENE (collide): Two messages collide over the sea; then random waits, and both get through.
 
 [calm] But there was a problem. All the terminals shared one radio channel. If two of them sent a message at the same moment, the messages collided, and both were lost.
 
-> SCENE (line): Wait a random moment.
-> Wait a random moment, then try.
-
 [calm] The team's answer was simple. If your message doesn't get through, don't send it again immediately. Wait a random moment, then try. Because if both senders retried at once, they would collide again. And again. Forever.
 
-> SCENE (photo): Hands at an office keyboard.
-> alto | California: and each time, the wait doubles. | color key @ the wait doubles
+> SCENE (photo): Network cables in an office.
+> alto | California, a few years later | color key
+> cables2 | Ethernet | color key @ They called it Ethernet
+> clock | Each time it fails, the wait doubles. | color key @ Each time a message fails
 
 [calm] A few years later, engineers at Xerox in California built on that idea for a network inside the office. They called it Ethernet. And they added one more twist, the one that matters most to us. Each time a message fails, the wait doubles.
 
 ## The rule
 
-> SCENE (stat): Wait twice as long each time.
-> bg | clock2
-> 1 · 2 · 4 · 8 · 16 | wait twice as long after every failure @ One, two, four
-> Exponential backoff | the rule computers still use @ It's called
+> SCENE (backoff): Tries on a timeline; each wait twice the last.
 
 [calm] Here's the rule. It's called exponential backoff. Fail once? Wait a moment, and try again. Fail twice? Wait twice as long. Three times? Twice as long again. One, two, four, eight, sixteen.
 

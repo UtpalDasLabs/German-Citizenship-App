@@ -185,6 +185,23 @@
       "start": 1,
       "seconds": 8,
       "credit": "Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/"
+    },
+    {
+      "id": "redial",
+      "source": "file",
+      "file": "kling/redial.mp4",
+      "credit": "Made with Kling AI",
+      "start": 0,
+      "seconds": 5
+    },
+    {
+      "id": "aloha1971",
+      "source": "file",
+      "file": "kling/hawaii-1971.mp4",
+      "credit": "Made with Kling AI",
+      "start": 0,
+      "seconds": 5,
+      "speed": 0.7
     }
   ]
 }
