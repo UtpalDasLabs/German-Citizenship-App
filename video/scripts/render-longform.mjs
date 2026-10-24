@@ -227,7 +227,10 @@ function shownMedia() {
   return { images, clips };
 }
 
-const CREDITS_URL = `https://github.com/UtpalDasLabs/German-Citizenship-App/blob/claude/series-logic-hidden/video/credits/${topic}.md`;
+/** Branch that holds video/credits/<topic>.md. Set CREDITS_BRANCH when an
+ *  episode's credits live on its own branch rather than the shared one. */
+const CREDITS_BRANCH = process.env.CREDITS_BRANCH ?? 'claude/series-logic-hidden';
+const CREDITS_URL = `https://github.com/UtpalDasLabs/German-Citizenship-App/blob/${CREDITS_BRANCH}/video/credits/${topic}.md`;
 
 /**
  * Credits for a series video: short lines for the description (YouTube
