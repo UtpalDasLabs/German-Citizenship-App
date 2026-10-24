@@ -22,15 +22,14 @@ thousand, LBL to UC Berkeley, 400 yards, two IMP hops).
 
 ## Cold open
 
-> SCENE (photo): A phone refreshing at seven in the morning; a waiting room; a wall clock.
+> SCENE (photo): A phone refreshing at seven in the morning; a waiting room; the city at seven.
 > phone-refresh |  | color
 > waiting-room | 7:00 | color @ seven in the morning
-> clock-morning | Everyone at once. | color key @ everyone else
+> crowd-queue | Everyone at once. | color key @ everyone else
 
 [calm] Seven in the morning. You want an appointment at the Bürgeramt. The slots open now. You refresh. Nothing. You refresh again, faster. Nothing. And everyone else in the city is doing exactly the same thing.
 
-> SCENE (line): Retrying faster isn't trying harder.
-> Retrying faster isn't trying harder.
+> SCENE (backoff): pressure
 
 [calm] Retrying faster feels like trying harder. In a system that is already full, it is the opposite. It is adding to the problem. And in October 1986, that instinct nearly killed the internet.
 
@@ -46,26 +45,24 @@ thousand, LBL to UC Berkeley, 400 yards, two IMP hops).
 
 ## October 1986
 
-> SCENE (line): Berkeley, California, October 1986.
-> Berkeley, California · October 1986
+> SCENE (backoff): map
 
 [calm] Berkeley, California, October 1986. Two buildings, four hundred yards apart: Lawrence Berkeley Laboratory, and the University of California. On the young internet, they were two hops from each other.
 
 > SCENE (photo): Server racks; network equipment.
-> server-racks | 400 yards, two hops | color key @ four hundred yards
+> server-racks |  | color
 
 > SCENE (photo): Network lights; cables; a router.
-> network-lights |  | color
-> fiber-cables |  | color @ forty bits
+> network-lights | 32 kbit/s | color
+> fiber-cables | 40 bit/s | color @ forty bits
 
 [calm] The link between them carried thirty-two kilobits a second, about the speed of a bad phone line today. Then, over a few hours, it fell to forty bits a second.
 
-> SCENE (backoff): collapse
+> SCENE (backoff): throughput
 
 [calm] Forty bits a second. A thousand times slower. Nothing had been switched off. The network was strangling itself with its own traffic.
 
-> SCENE (photo): Hands on phones.
-> hands-phones |  | color @ send it again
+> SCENE (backoff): storm
 
 [calm] Here is how. A packet goes missing. Both ends send it again, immediately. The routers are already full, so the new copies are dropped as well. So both ends send those again. More packets, more loss, more packets. The panic was the problem.
 
@@ -74,9 +71,7 @@ thousand, LBL to UC Berkeley, 400 yards, two IMP hops).
 
 ## The rule
 
-> SCENE (photo): Code on a screen; a notebook.
-> code-screen |  | color
-> notebook | Van Jacobson, 1988 | color @ Jacobson
+> SCENE (backoff): ruleintro
 
 [calm] Two researchers at Berkeley, Van Jacobson and Michael Karels, worked out what to change. Their answer is in every phone and laptop you own, and it has three parts.
 
@@ -97,8 +92,8 @@ thousand, LBL to UC Berkeley, 400 yards, two IMP hops).
 
 ## Why it works
 
-> SCENE (photo): A radio mast against the sky.
-> radio-mast | Hawaii, 1970 | color @ Hawaii
+> SCENE (overlay): aloha — a radio mast against the sky; the shared channel, drawn.
+> radio-mast
 
 [calm] This is not only about computers. In 1970, a network in Hawaii let every radio send whenever it liked. Its ceiling was eighteen percent of capacity. The rest was lost to collisions: two senders talking over each other, then both repeating themselves.
 
@@ -106,19 +101,21 @@ thousand, LBL to UC Berkeley, 400 yards, two IMP hops).
 
 [calm] Waiting a little, and at random, is what turns that noise back into a conversation. The same is true at the Bürgeramt at seven in the morning. Everyone refreshes at the same second, the server slows down, and the spike grows.
 
+> SCENE (backoff): loop
+
 [calm] The crowd is not unlucky. The crowd is the problem. A retry that ignores everyone else is a vote for the next crash.
 
 ## Where it breaks
 
-> SCENE (line): Backoff assumes the failure is temporary.
-> Backoff assumes the failure is temporary.
+> SCENE (backoff): failure
 
 [calm] There is a catch, and it is a large one. Waiting longer only helps if the thing you are waiting for might come back.
 
+> SCENE (backoff): deadend
+
 [calm] If the number is disconnected, or the job is filled, or the person has moved on, a longer wait is just a slower no.
 
-> SCENE (line): Has anything changed since the last try?
-> Has anything changed since the last try?
+> SCENE (backoff): gate
 
 [calm] So before the next try, ask one question: has anything changed since the last one? If the answer is no, more waiting will not change it either.
 
@@ -126,33 +123,31 @@ thousand, LBL to UC Berkeley, 400 yards, two IMP hops).
 
 [calm] That gives you a stop rule. Three tries, with a growing gap between them. Then stop. Not because you gave up, but because you have learned the answer is probably no. It is the 37 percent rule's quieter cousin: know when to stop looking.
 
-> SCENE (photo): A phone face down on a table.
-> phone-down | I'll follow up next week. | color key @ follow up next week
+> SCENE (overlay): followup — a phone face down on a table; the message that names the next try.
+> phone-down
 
 [calm] And one thing for the human version. The other side cannot see your backoff. If you go quiet for a week, it looks like you lost interest. So say it out loud: I will follow up next week. Then the waiting is part of the message, not a silence.
 
 ## Three everyday uses
 
-> SCENE (photo): A phone call; a queue.
-> phone-call |  | color
-> call-log | Twenty calls in ten minutes | color key @ twenty times
+> SCENE (overlay): calls — a call centre; the calls, counted.
+> call-centre
 
 [calm] The hotline. Calling twenty times in ten minutes does not get you through faster. It adds you to the pile. Call, wait, call again later: the queue is the same queue.
 
-> SCENE (photo): A laptop with a letter.
-> laptop-apply |  | color @ follow-up
+> SCENE (overlay): apply — a laptop with a letter; the follow-up rhythm.
+> laptop-apply
 
 [calm] The application. One follow-up after a week, one more after two weeks, then stop. That rhythm is not politeness. It is the same curve the internet uses.
 
-> SCENE (photo): Two people talking, seen from a distance.
-> conversation |  | color
+> SCENE (overlay): convo — two people talking, seen from a distance; the gap that helps.
+> conversation
 
 [calm] The difficult conversation. Asking again tomorrow, and again the day after, rarely helps. Asking once more after a real gap, with something new to say, does.
 
 ## The takeaway
 
-> SCENE (line): Double. Cap. Stop at three.
-> Double. Cap. Stop at three.
+> SCENE (backoff): recap
 
 [calm] So when something fails: wait longer each time, not less. Cap the wait, so you do not disappear for a day. Spread your attempts, so you are not the whole herd. And stop at three, unless something has changed.
 
@@ -160,6 +155,9 @@ thousand, LBL to UC Berkeley, 400 yards, two IMP hops).
 > open-book | Algorithms to Live By · Brian Christian & Tom Griffiths | color @ Algorithms
 
 [calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description.
+
+> SCENE (overlay): next — the question after this one.
+> corridor
 
 [calm] Next time on Logic to Live By: why a crowd of smart people can all be wrong together.
 

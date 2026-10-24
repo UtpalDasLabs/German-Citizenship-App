@@ -155,8 +155,8 @@ export function SeriesPill({ title }: { title: string }) {
     <div
       style={{
         position: 'absolute',
-        left: 64,
-        top: 52,
+        right: 64,
+        top: 46,
         display: 'flex',
         alignItems: 'center',
         gap: 14,

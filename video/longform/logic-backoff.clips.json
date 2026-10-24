@@ -21,13 +21,31 @@
       "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1057/"
     },
     {
-      "id": "clock-morning",
+      "id": "crowd-queue",
       "source": "pixabay",
-      "pixabayId": 55443,
+      "pixabayId": 3627,
       "start": 2,
       "seconds": 10,
-      "scene": "Cold open: the hour everyone chooses at once",
-      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-55443/"
+      "scene": "Cold open: everyone else in the city, doing the same thing",
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3627/"
+    },
+    {
+      "id": "call-centre",
+      "source": "pixabay",
+      "pixabayId": 141672,
+      "start": 0,
+      "seconds": 13,
+      "scene": "Three uses: the hotline, and the calls that pile up",
+      "credit": "Video by WizArto from Pixabay: https://pixabay.com/videos/id-141672/"
+    },
+    {
+      "id": "corridor",
+      "source": "pixabay",
+      "pixabayId": 36510,
+      "start": 1,
+      "seconds": 8,
+      "scene": "Takeaway: the next question, a crowd of people",
+      "credit": "Video by Joker911 from Pixabay: https://pixabay.com/videos/id-36510/"
     },
     {
       "id": "sketch",
@@ -66,33 +84,6 @@
       "credit": "Video by AdisResic from Pixabay: https://pixabay.com/videos/id-182597/"
     },
     {
-      "id": "hands-phones",
-      "source": "pixabay",
-      "pixabayId": 64595,
-      "start": 0,
-      "seconds": 12,
-      "scene": "October 1986: both ends send it again, immediately",
-      "credit": "Video by Josh_Malic from Pixabay: https://pixabay.com/videos/id-64595/"
-    },
-    {
-      "id": "code-screen",
-      "source": "pixabay",
-      "pixabayId": 43559,
-      "start": 0,
-      "seconds": 10,
-      "scene": "The rule: Jacobson and Karels at Berkeley",
-      "credit": "Video by PhotoDhaba from Pixabay: https://pixabay.com/videos/id-43559/"
-    },
-    {
-      "id": "notebook",
-      "source": "pixabay",
-      "pixabayId": 3145,
-      "start": 6,
-      "seconds": 12,
-      "scene": "The rule: the answer written down",
-      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3145/"
-    },
-    {
       "id": "radio-mast",
       "source": "pixabay",
       "pixabayId": 199377,
@@ -109,24 +100,6 @@
       "seconds": 8,
       "scene": "Where it breaks: say when you will follow up",
       "credit": "Video by VirtualZero from Pixabay: https://pixabay.com/videos/id-304045/"
-    },
-    {
-      "id": "phone-call",
-      "source": "pixabay",
-      "pixabayId": 34767,
-      "start": 2,
-      "seconds": 12,
-      "scene": "Three uses: the hotline",
-      "credit": "Video by jaumeps99 from Pixabay: https://pixabay.com/videos/id-34767/"
-    },
-    {
-      "id": "call-log",
-      "source": "pixabay",
-      "pixabayId": 70953,
-      "start": 0,
-      "seconds": 10,
-      "scene": "Three uses: twenty calls in ten minutes",
-      "credit": "Video by Ademoliner from Pixabay: https://pixabay.com/videos/id-70953/"
     },
     {
       "id": "laptop-apply",

@@ -1,412 +1,559 @@
 /**
- * Diagrams for Logic to Live By #3 (exponential backoff): the 1986 collapse,
- * the doubling staircase, the cap, jitter, the herd and the stop rule.
+ * Diagrams for Logic to Live By #3 (exponential backoff).
  *
- * One scene key, `backoff`; the word after the colon in the script picks the
- * variant: `SCENE (backoff): double`. Everything is drawn in code, in the
- * series colour, and builds in time with the voice (`cue`).
+ * The rule diagrams live on the series' dark stage (`Double`, `Cap`, `Jitter`,
+ * `Herd`, `Loop`, `Deadend`, `Gate`, `Attempts`); the 1986 archive scenes and
+ * the verité overlays are in `backoff-archive.tsx`. One scene key, `backoff`;
+ * the word after the colon in the script picks the variant:
+ * `SCENE (backoff): double`.
  */
 import React from 'react';
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 
 import { alpha, C, FONT } from '../lib/brand';
-import { rise } from './look';
+import { rise, SERIF } from './look';
 import { cue, useShot } from './plan';
 import { useAccent } from './series';
+import { between, InkSheet, kickerStyle, P, rnd, Stamp, Tag } from './backoff-kit';
+import {
+  Aloha,
+  Apply,
+  Calls,
+  Convo,
+  Failure,
+  Followup,
+  MapScene,
+  Next,
+  Pressure,
+  RetryCard,
+  RuleIntro,
+  Storm,
+  Throughput,
+} from './backoff-archive';
 
-/** 0 → 1 between two frames, clamped, in whichever order the cues land. */
-const between = (frame: number, a: number, b: number) => {
-  const lo = Math.min(a, b);
-  const hi = Math.max(a, b) > lo ? Math.max(a, b) : lo + 1;
-  return interpolate(frame, [lo, hi], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-};
-
-/** Deterministic pseudo-random in [0, 1), so a render is always the same. */
-const rnd = (i: number) => ((Math.sin(i * 127.1 + 311.7) * 43758.5453) % 1 + 1) % 1;
-
-function Stage({ children }: { children: React.ReactNode }) {
-  const accent = useAccent();
-  return (
-    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
-      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 46%, ${alpha(accent, 0.09)} 0%, ${alpha(accent, 0)} 62%)` }} />
-      {children}
-    </AbsoluteFill>
-  );
-}
-
-const Kicker = ({ text, at = 6 }: { text: string; at?: number }) => {
-  const frame = useCurrentFrame();
-  const accent = useAccent();
-  const o = rise(frame, at, 14);
-  return (
-    <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 28, letterSpacing: 7, textTransform: 'uppercase', color: accent, opacity: o }}>
-      {text}
-    </div>
-  );
-};
-
-const Caption = ({ text, at, tone = 'muted' }: { text: string; at: number; tone?: 'muted' | 'accent' | 'light' }) => {
-  const frame = useCurrentFrame();
-  const accent = useAccent();
-  const o = rise(frame, at, 16);
-  const color = tone === 'accent' ? accent : tone === 'light' ? '#E9EDF5' : C.textMuted;
-  return (
-    <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 34, color, opacity: o, transform: `translateY(${(1 - o) * 10}px)` }}>
-      {text}
-    </div>
-  );
-};
-
-/**
- * October 1986: 32 kbit/s falls to 40 bit/s between two Berkeley buildings,
- * with the number counting down as the bar drains.
- */
-function Collapse() {
+/** The doubling staircase as a timetable: each wait starts where the last ended. */
+function Double() {
   const frame = useCurrentFrame();
   const shot = useShot();
   const { fps } = useVideoConfig();
   const accent = useAccent();
-  const a = cue(shot, 'thirty-two kilobits', fps, { fallback: 0.06 });
-  const b = cue(shot, 'forty bits', fps, { fallback: 0.42 });
-  const f = between(frame, a, b);
-  const value = 32000 * Math.pow(40 / 32000, f);
-  const label = value >= 1000 ? `${Math.round(value / 1000)} kbit/s` : `${Math.round(value)} bit/s`;
-  const slower = rise(frame, cue(shot, 'thousand times', fps, { fallback: 0.58 }), 16);
-  const W = 1240;
-  const w = Math.max(8, W * (1 - 0.993 * f));
-  return (
-    <Stage>
-      <div style={{ width: 1400, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 26 }}>
-        <Kicker text="Link throughput · October 1986" />
-        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 148, lineHeight: 1, color: '#FFFFFF', fontVariantNumeric: 'tabular-nums' }}>{label}</div>
-        <div style={{ position: 'relative', width: W, height: 74 }}>
-          {/* What the link used to carry, so the loss is visible */}
-          <div style={{ position: 'absolute', inset: 0, borderRadius: 12, border: `2px dashed ${alpha(accent, 0.35 * f)}` }} />
-          <div style={{ position: 'absolute', right: 0, top: -46, fontFamily: FONT, fontWeight: 700, fontSize: 26, color: alpha('#FFFFFF', 0.55 * f), opacity: f }}>
-            was 32 kbit/s
-          </div>
-          <div style={{ position: 'absolute', left: 0, top: 0, width: w, height: '100%', borderRadius: 12, backgroundColor: accent, boxShadow: `0 0 60px ${alpha(accent, 0.35 + 0.35 * f)}` }} />
-        </div>
-        <div style={{ width: W, display: 'flex', justifyContent: 'space-between', fontFamily: FONT, fontWeight: 600, fontSize: 26, color: '#7E889C' }}>
-          <span>LBL → UC Berkeley · 400 yards · two hops</span>
-          <span>over a few hours</span>
-        </div>
-        <div style={{ height: 96, display: 'flex', alignItems: 'center' }}>
-          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 56, color: accent, opacity: slower, transform: `scale(${0.9 + 0.1 * slower})` }}>
-            ×1,000 slower, in one afternoon
-          </div>
-        </div>
-      </div>
-    </Stage>
-  );
-}
-
-/** The doubling staircase. `capped` flattens the steps at a minute. */
-function Stairs({ capped }: { capped: boolean }) {
-  const frame = useCurrentFrame();
-  const shot = useShot();
-  const { fps } = useVideoConfig();
-  const accent = useAccent();
-  const values = capped ? [1, 2, 4, 8, 16, 32, 60, 60, 60] : [1, 2, 4, 8, 16, 32, 64];
-  const started = cue(shot, 'one second', fps, { fallback: 0.1 });
-  const per = Math.max(9, Math.round((shot.frames * 0.62) / values.length));
-  const appear = (i: number) => rise(frame, started + i * per, 10);
-  const capAt = rise(frame, cue(shot, 'cap', fps, { fallback: 0.52 }), 16);
-
-  const BASE = 800;
-  const MAXH = 470;
-  const BW = capped ? 92 : 116;
-  const GAP = capped ? 62 : 92;
-  const total = values.length * BW + (values.length - 1) * GAP;
-  const left = (1920 - total) / 2;
-  const h = (v: number) => (v / 64) * MAXH;
+  const first = cue(shot, 'one second', fps, { fallback: 0.14 });
+  const last = cue(shot, 'thirty-two', fps, { fallback: 0.86 });
+  const gaps = [1, 2, 4, 8, 16, 32];
+  const starts = gaps.map((_, i) => gaps.slice(0, i).reduce((a, b) => a + b, 0));
+  const total = gaps.reduce((a, b) => a + b, 0);
+  const X0 = 330;
+  const W = 1230;
+  const scale = W / (total + 4);
+  const per = Math.max(10, Math.round((last - first) / gaps.length));
 
   return (
-    <Stage>
-      <div style={{ position: 'absolute', top: 120, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
-        <Kicker text={capped ? 'Part two · the cap' : 'Part one · the doubling'} />
-        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 52, color: '#FFFFFF' }}>
-          {capped ? 'Stop doubling at about a minute' : 'After every failure, wait twice as long'}
-        </div>
-      </div>
-
-      {/* The ceiling, on the capped variant */}
-      {capped ? (
-        <div
-          style={{
-            position: 'absolute',
-            left: left - 40,
-            width: total + 80,
-            top: BASE - h(60) - 2,
-            borderTop: `3px dashed ${alpha(accent, 0.95)}`,
-            opacity: capAt,
-          }}
-        >
-          <div style={{ position: 'absolute', left: 0, top: -52, fontFamily: FONT, fontWeight: 800, fontSize: 34, color: accent, opacity: capAt }}>ceiling · 60 s</div>
-        </div>
-      ) : null}
-
-      {values.map((v, i) => {
-        const o = appear(i);
-        const isCap = capped && i >= 6;
-        const hh = h(v);
+    <InkSheet kicker="Part one · double" title="Wait twice as long, every time" lead="The gap is the rule." foot="RFC 6298 · doubling the retransmission timer">
+      {gaps.map((g, i) => {
+        const o = rise(frame, first + i * per, 12);
+        const grow = between(frame, first + i * per, first + i * per + 14);
+        const x = X0 + starts[i] * scale;
+        const w = g * scale * grow;
         return (
-          <React.Fragment key={i}>
-            <div
-              style={{
-                position: 'absolute',
-                left: left + i * (BW + GAP),
-                top: BASE - hh - 46,
-                width: BW,
-                textAlign: 'center',
-                fontFamily: FONT,
-                fontWeight: 800,
-                fontSize: 34,
-                color: isCap ? accent : '#DDE3EE',
-                opacity: o,
-              }}
-            >
-              {v} s
+          <React.Fragment key={g}>
+            <div style={{ position: 'absolute', left: 120, top: 310 + i * 82, width: 180, fontFamily: FONT, fontWeight: 700, fontSize: 23, color: '#8A93A6', opacity: o }}>
+              try {i + 1}
             </div>
             <div
               style={{
                 position: 'absolute',
-                left: left + i * (BW + GAP),
-                top: BASE - hh * o,
-                width: BW,
-                height: hh * o,
-                borderRadius: 10,
-                backgroundColor: isCap ? alpha(accent, 0.55) : '#2E3748',
-                border: `2px solid ${isCap ? accent : '#3B4558'}`,
-                boxShadow: isCap ? `0 0 34px ${alpha(accent, 0.4)}` : undefined,
+                left: x,
+                top: 302 + i * 82,
+                width: Math.max(3, w),
+                height: 40,
+                borderRadius: 5,
+                backgroundColor: i === 5 ? alpha(accent, 0.95) : alpha(accent, 0.22 + i * 0.08),
+                border: `1.5px solid ${alpha(accent, 0.9)}`,
               }}
             />
+            <div style={{ position: 'absolute', left: x + Math.max(3, w) + 14, top: 310 + i * 82, fontFamily: FONT, fontWeight: 800, fontSize: 26, color: i === 5 ? accent : '#DDE3EE', opacity: o }}>
+              {g} s
+            </div>
+            {i > 0 ? (
+              <div style={{ position: 'absolute', left: x - 8, top: 318 + i * 82, fontFamily: FONT, fontWeight: 900, fontSize: 20, color: '#E06A5A', opacity: o }}>×</div>
+            ) : null}
           </React.Fragment>
         );
       })}
 
-      {/* Baseline and attempt numbers */}
-      <div style={{ position: 'absolute', left: left - 40, width: total + 80, top: BASE, height: 3, backgroundColor: '#4A5468' }} />
-      {values.map((_, i) => (
-        <div
-          key={`n${i}`}
-          style={{
-            position: 'absolute',
-            left: left + i * (BW + GAP),
-            width: BW,
-            top: BASE + 16,
-            textAlign: 'center',
-            fontFamily: FONT,
-            fontWeight: 600,
-            fontSize: 24,
-            color: '#7E889C',
-          }}
-        >
-          {i + 1}
-        </div>
+      {/* elapsed-time axis */}
+      <div style={{ position: 'absolute', left: X0, top: 826, width: W, height: 2, backgroundColor: '#394356' }} />
+      {[0, 10, 20, 30, 40, 50, 60].map((s) => (
+        <React.Fragment key={s}>
+          <div style={{ position: 'absolute', left: X0 + s * scale - 1, top: 826, width: 2, height: 12, backgroundColor: '#394356' }} />
+          <div style={{ position: 'absolute', left: X0 + s * scale - 30, top: 848, width: 60, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 21, color: '#6F7B92' }}>{s}</div>
+        </React.Fragment>
       ))}
-      <div style={{ position: 'absolute', top: BASE + 78, width: '100%', textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 26, color: '#7E889C' }}>
-        attempt · the wait before it
+      <div style={{ position: 'absolute', left: X0, top: 886, ...kickerStyle('#6F7B92', 16) }}>seconds since the first failure</div>
+
+      <div style={{ position: 'absolute', right: 110, top: 300, width: 250, textAlign: 'right', opacity: rise(frame, last, 16) }}>
+        <div style={{ ...kickerStyle('#6F7B92', 15) }}>six failures later</div>
+        <div style={{ marginTop: 6, fontFamily: FONT, fontWeight: 900, fontSize: 76, color: accent, fontVariantNumeric: 'tabular-nums' }}>63 s</div>
+        <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 21, color: '#8A93A6' }}>waited in total</div>
       </div>
-    </Stage>
+    </InkSheet>
   );
 }
 
-/** Jitter: the same window, first everyone at the end of it, then spread. */
+/** The cap: the same curve, flattened at a minute, and what that costs a live service. */
+function Cap() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const at = cue(shot, 'around a minute', fps, { fallback: 0.18 });
+  const recovered = cue(shot, 'recovers in ten seconds', fps, { fallback: 0.64 });
+  const hour = cue(shot, 'wait an hour', fps, { fallback: 0.86 });
+  const capVals = [1, 2, 4, 8, 16, 32, 60, 60, 60];
+  const rawVals = [1, 2, 4, 8, 16, 32, 64, 128, 240];
+  const X0 = 300;
+  const X1 = 1280;
+  const Y0 = 300;
+  const Y1 = 660;
+  const x = (i: number) => X0 + (i / 8) * (X1 - X0);
+  const y = (v: number) => Y1 - (Math.min(v, 240) / 240) * (Y1 - Y0);
+  const draw = between(frame, 10, at + 30);
+  const panel = between(frame, recovered, recovered + 22);
+
+  return (
+    <InkSheet kicker="Part two · cap" title="Stop doubling at a minute" lead="A bad hour should not become a bad day." foot="RFC 6298 · a ceiling of at least 60 s">
+      <svg width={1920} height={1080} style={{ position: 'absolute', inset: 0 }}>
+        {[0, 60, 120, 180, 240].map((v) => (
+          <g key={v}>
+            <line x1={X0} x2={X1} y1={y(v)} y2={y(v)} stroke="#FFFFFF" strokeOpacity={v === 0 ? 0.28 : 0.1} strokeWidth={v === 0 ? 2 : 1} />
+            <text x={X0 - 16} y={y(v) + 6} textAnchor="end" fontFamily={FONT} fontSize={18} fontWeight={600} fill="#6F7B92">{v}s</text>
+          </g>
+        ))}
+        <line x1={X0} x2={X1} y1={y(60)} y2={y(60)} stroke={accent} strokeOpacity={0.55} strokeWidth={2} strokeDasharray="8 8" opacity={draw} />
+        <polyline points={rawVals.map((v, i) => `${x(i)},${y(v)}`).join(' ')} fill="none" stroke="#E06A5A" strokeWidth={4} strokeDasharray="9 8" pathLength={1} strokeDashoffset={1 - draw} />
+        <polyline points={capVals.map((v, i) => `${x(i)},${y(v)}`).join(' ')} fill="none" stroke={accent} strokeWidth={6} strokeLinejoin="round" pathLength={1} strokeDasharray="1" strokeDashoffset={1 - draw} />
+        {capVals.map((v, i) => (
+          <circle key={i} cx={x(i)} cy={y(v)} r={6} fill={i >= 6 ? accent : '#0B0E14'} stroke={accent} strokeWidth={3} opacity={draw} />
+        ))}
+      </svg>
+
+      <Tag text="with a cap" at={at} x={820} y={y(60) - 48} color={accent} />
+      <Tag text="no cap: 4 minutes, 8 minutes" at={at + 12} x={300} y={300} color="#E06A5A" align="left" />
+      <div style={{ position: 'absolute', left: X1 + 26, top: y(60) - 14, fontFamily: FONT, fontWeight: 900, fontSize: 28, color: accent, opacity: draw }}>60 s</div>
+
+      {/* what the cap costs a service that is already back */}
+      <div style={{ position: 'absolute', left: 110, top: 716, width: 1700, opacity: panel }}>
+        <div style={{ ...kickerStyle('#6F7B92', 15) }}>one client, one cap</div>
+        <div style={{ position: 'absolute', left: 0, top: 42, width: 1240, height: 64, borderRadius: 6, backgroundColor: '#1A2130', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', left: 0, top: 0, width: 1240 * (10 / 60), height: '100%', backgroundColor: alpha(P.good, 0.55) }} />
+          <div style={{ position: 'absolute', left: 1240 * (10 / 60), top: 0, width: 1240 * (50 / 60), height: '100%', backgroundColor: alpha('#FFFFFF', 0.05) }} />
+          <div style={{ position: 'absolute', left: 1240 * (10 / 60) - 1, top: 0, width: 2, height: '100%', backgroundColor: P.good }} />
+        </div>
+        <div style={{ position: 'absolute', left: 0, top: 116, fontFamily: FONT, fontWeight: 800, fontSize: 19, letterSpacing: 2, textTransform: 'uppercase', color: P.good }}>service is back · 10 s</div>
+        <div style={{ position: 'absolute', left: 430, top: 116, fontFamily: FONT, fontWeight: 800, fontSize: 19, letterSpacing: 2, textTransform: 'uppercase', color: '#8A93A6' }}>the client is still asleep</div>
+        <div style={{ position: 'absolute', left: 1240 - 8, top: 28, fontFamily: FONT, fontWeight: 900, fontSize: 26, color: accent }}>60</div>
+        <div style={{ position: 'absolute', left: 0, top: 168, fontFamily: FONT, fontWeight: 600, fontSize: 25, color: '#9AA4B8' }}>
+          It recovered in ten seconds. Everything that decided to wait an hour is still waiting.
+        </div>
+      </div>
+
+      <div style={{ position: 'absolute', right: 110, top: 520, width: 470, textAlign: 'right', opacity: rise(frame, hour, 14) }}>
+        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 34, color: '#E06A5A' }}>a bad day</div>
+        <div style={{ fontFamily: FONT, fontWeight: 500, fontSize: 22, color: '#8A93A6', marginTop: 6 }}>from one bad hour</div>
+      </div>
+    </InkSheet>
+  );
+}
+
+/** Jitter: one window, first everyone at the end, then a random moment each. */
 function Jitter() {
   const frame = useCurrentFrame();
   const shot = useShot();
   const { fps } = useVideoConfig();
   const accent = useAccent();
-  const at = cue(shot, 'randomness', fps, { fallback: 0.18 });
-  const spread = between(frame, at + 10, at + 44);
-  const N = 14;
-  const L = 320;
-  const W = 1280;
-  const Y = 540;
-  return (
-    <Stage>
-      <div style={{ position: 'absolute', top: 120, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
-        <Kicker text="Part three · jitter" />
-        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 52, color: '#FFFFFF' }}>One retry window, eight seconds long</div>
-      </div>
+  const at = cue(shot, 'randomness', fps, { fallback: 0.1 });
+  const moment = cue(shot, 'random moment', fps, { fallback: 0.44 });
+  const spreadOut = cue(shot, 'spread out', fps, { fallback: 0.62 });
+  const collide = cue(shot, 'collide again', fps, { fallback: 0.86 });
+  const spread = between(frame, moment, spreadOut) * (1 - between(frame, collide, collide + 18));
+  const N = 18;
+  const L = 330;
+  const W = 1260;
+  const Y = 420;
 
-      <div style={{ position: 'absolute', left: L, top: Y - 96, width: W, height: 192, borderRadius: 16, backgroundColor: '#1C2433', border: '2px solid #303A4D' }} />
+  // The load the server sees: one bin if in step, flat if spread.
+  const flat = [0.86, 1, 0.9, 0.97, 0.88, 0.95, 0.92, 0.99];
+  const bin = (i: number) => (i === 7 ? 1 : 0) * (1 - spread) + flat[i] * spread;
+
+  return (
+    <InkSheet kicker="Part three · jitter" title="Break the pattern" lead="Same window, different moments." foot="Each device picks a random point inside its own window">
+      <div style={{ position: 'absolute', left: L, top: 300, width: W, display: 'flex', justifyContent: 'space-between', ...kickerStyle('#6F7B92', 15) }}>
+        <span>now</span>
+        <span>one 8-second window</span>
+        <span>8 s</span>
+      </div>
+      <div style={{ position: 'absolute', left: L, top: Y - 100, width: W, height: 180, borderRadius: 14, backgroundColor: '#1A2130', border: '2px solid #2E3748' }} />
       {[0, 2, 4, 6, 8].map((s) => (
-        <div key={s} style={{ position: 'absolute', left: L + (s / 8) * W - 30, top: Y + 118, width: 60, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 24, color: '#7E889C' }}>
-          {s} s
-        </div>
+        <div key={s} style={{ position: 'absolute', left: L + (s / 8) * W - 20, top: Y + 96, width: 40, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 20, color: '#6F7B92' }}>{s}s</div>
       ))}
 
       {Array.from({ length: N }).map((_, i) => {
-        const x0 = L + W - 26 - rnd(i + 40) * 26;
-        const x1 = L + 46 + rnd(i) * (W - 92);
+        const x0 = L + W - 26 - rnd(i + 40) * 24;
+        const x1 = L + 40 + rnd(i) * (W - 80);
         const x = x0 + (x1 - x0) * spread;
-        const appear = rise(frame, 10 + i * 2, 8);
-        const collided = spread < 0.35;
+        const o = rise(frame, 10 + i * 2, 8);
         return (
           <div
             key={i}
             style={{
               position: 'absolute',
-              left: x - 13,
-              top: Y - 13 + (rnd(i + 90) - 0.5) * 34,
-              width: 26,
-              height: 26,
-              borderRadius: 13,
-              backgroundColor: collided ? '#E06A5A' : accent,
-              boxShadow: collided ? '0 0 18px rgba(224,106,90,0.45)' : `0 0 18px ${alpha(accent, 0.4)}`,
-              opacity: appear,
+              left: x - 12,
+              top: Y - 12 + (rnd(i + 90) - 0.5) * 46,
+              width: 24,
+              height: 24,
+              borderRadius: 12,
+              backgroundColor: spread < 0.4 ? '#E06A5A' : accent,
+              boxShadow: `0 0 16px ${alpha(spread < 0.4 ? '#E06A5A' : accent, 0.45)}`,
+              opacity: o,
             }}
           />
         );
       })}
 
-      <div style={{ position: 'absolute', top: Y + 190, display: 'flex', gap: 120 }}>
-        <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 36, color: '#E06A5A', opacity: 1 - spread }}>In step: they collide again</div>
-        <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 36, color: accent, opacity: spread }}>Jittered: they fit</div>
+      <div style={{ position: 'absolute', left: L, top: 550, width: W, display: 'flex', justifyContent: 'space-between', fontFamily: FONT, fontWeight: 800, fontSize: 25 }}>
+        <span style={{ color: '#E06A5A', opacity: 1 - spread }}>In step: they collide again</span>
+        <span style={{ color: accent, opacity: spread }}>Jittered: they fit</span>
       </div>
-    </Stage>
+
+      {/* what the server sees */}
+      <div style={{ position: 'absolute', left: L, top: 660, width: W }}>
+        <div style={{ ...kickerStyle('#6F7B92', 15), marginBottom: 10 }}>load on the server, second by second</div>
+        {Array.from({ length: 8 }).map((_, i) => {
+          const h = bin(i) * 120;
+          return <div key={i} style={{ position: 'absolute', left: i * (W / 8) + 4, top: 168 - h, width: W / 8 - 16, height: h, borderRadius: 4, backgroundColor: spread < 0.4 ? alpha('#E06A5A', 0.7) : alpha(accent, 0.55) }} />;
+        })}
+        <div style={{ position: 'absolute', left: 0, top: 168, width: W, height: 2, backgroundColor: '#394356' }} />
+        <div style={{ position: 'absolute', left: 0, top: 182, ...kickerStyle('#6F7B92', 14) }}>0 s</div>
+        <div style={{ position: 'absolute', right: 0, top: 182, ...kickerStyle('#6F7B92', 14) }}>8 s</div>
+      </div>
+      <div style={{ position: 'absolute', right: 110, top: 640, width: 260, textAlign: 'right', opacity: rise(frame, at, 12) }}>
+        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 22, color: '#8A93A6' }}>1,000 devices</div>
+        <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 18, color: '#6F7B92', marginTop: 4 }}>same 8 s wait</div>
+      </div>
+    </InkSheet>
   );
 }
 
-/** The herd: every retry at 7:00, then spread across the hour. */
+/** The 7 a.m. spike, and the same arrivals spread at random. */
 function Herd() {
   const frame = useCurrentFrame();
   const shot = useShot();
   const { fps } = useVideoConfig();
   const accent = useAccent();
-  const at = cue(shot, 'waiting a little', fps, { fallback: 0.3 });
-  const move = between(frame, at + 8, at + 54);
-  const N = 160;
-  const ROWS = 20;
-  const LANES = 8;
-  const LW = 142;
-  const GAP = 30;
-  const L = (1920 - (LANES * LW + (LANES - 1) * GAP)) / 2;
-  const TOP = 330;
-  const H = 360;
-  const laneX = (lane: number) => L + lane * (LW + GAP) + LW / 2;
-  const times = ['7:00', '7:10', '7:20', '7:30', '7:40', '7:50', '8:00', '8:10'];
+  const at = cue(shot, 'Bürgeramt', fps, { fallback: 0.34 });
+  const slow = cue(shot, 'server slows down', fps, { fallback: 0.62 });
+  const grow = cue(shot, 'spike grows', fps, { fallback: 0.8 });
+  const burst = 150 + 60 * between(frame, grow, grow + 20);
+
+  const panel = (x: number, title: string, values: number[], colour: string, live: number) => (
+    <div style={{ position: 'absolute', left: x, top: 292, width: 800, height: 470, borderRadius: 12, backgroundColor: '#10151F', border: `1.5px solid ${alpha(colour, 0.35 + 0.4 * live)}` }}>
+      <div style={{ position: 'absolute', left: 30, top: 24, fontFamily: FONT, fontWeight: 800, fontSize: 24, letterSpacing: 1, color: colour }}>{title}</div>
+      {values.map((v, i) => {
+        const h = (v / 210) * 300;
+        return <div key={i} style={{ position: 'absolute', left: 42 + i * 92, top: 360 - h, width: 62, height: h, borderRadius: 4, backgroundColor: alpha(colour, 0.7) }} />;
+      })}
+      <div style={{ position: 'absolute', left: 30, top: 360, width: 740, height: 2, backgroundColor: '#394356' }} />
+      <div style={{ position: 'absolute', left: 30, top: 303, width: 740, height: 2, borderTop: `2px dashed ${alpha('#FFFFFF', 0.45)}` }} />
+      <div style={{ position: 'absolute', right: 30, top: 276, ...kickerStyle('#6F7B92', 13) }}>capacity</div>
+      <div style={{ position: 'absolute', left: 30, top: 386, width: 740, display: 'flex', justifyContent: 'space-between', ...kickerStyle('#6F7B92', 13) }}>
+        <span>7:00</span><span>8:10</span>
+      </div>
+    </div>
+  );
 
   return (
-    <Stage>
-      <div style={{ position: 'absolute', top: 118, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
-        <Kicker text="Why jitter matters to people" />
-        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 50, color: '#FFFFFF' }}>
-          {move < 0.5 ? 'Everybody at 7:00' : 'Spread across the hour'}
+    <InkSheet kicker="The same second" title="The crowd is the spike" lead="Waiting a little, at random, turns noise back into a conversation." foot="A retry that ignores everyone else is a vote for the next crash">
+      {panel(100, 'Spread at random', [26, 31, 28, 33, 27, 30, 29, 32], accent, 0.2)}
+      {panel(1020, 'Everyone at 7:00', [burst, 4, 3, 4, 3, 4, 3, 3], '#E06A5A', between(frame, at, at + 12))}
+
+      <div style={{ position: 'absolute', left: 100, top: 790, width: 800, fontFamily: FONT, fontWeight: 700, fontSize: 24, color: '#8A93A6' }}>
+        load stays under capacity
+      </div>
+      <div style={{ position: 'absolute', left: 1020, top: 772, width: 800, opacity: rise(frame, slow, 14) }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: FONT, fontWeight: 800, fontSize: 19, letterSpacing: 2, textTransform: 'uppercase', color: '#E06A5A' }}>
+          <span>server load</span>
+          <span>{Math.round(120 + 100 * between(frame, slow, grow))}%</span>
+        </div>
+        <div style={{ marginTop: 8, height: 14, borderRadius: 7, backgroundColor: '#1C2433', overflow: 'hidden' }}>
+          <div style={{ width: `${Math.min(100, 100 + 80 * between(frame, slow, grow))}%`, height: '100%', backgroundColor: '#E06A5A' }} />
         </div>
       </div>
+      <div style={{ position: 'absolute', left: 100, top: 836, fontFamily: FONT, fontWeight: 600, fontSize: 22, color: '#6F7B92', opacity: rise(frame, grow, 14) }}>
+        Same number of people. Different moments.
+      </div>
+    </InkSheet>
+  );
+}
 
-      {Array.from({ length: LANES }).map((_, lane) => {
-        const load = lane === 3 ? 1 - move * (1 - 1 / LANES) : move / LANES;
+/** The feedback loop: a retry adds load, load adds timeouts, timeouts add retries. */
+function Loop() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const at = cue(shot, 'not unlucky', fps, { fallback: 0.12 });
+  const vote = cue(shot, 'vote', fps, { fallback: 0.78 });
+  const hot = between(frame, vote - 12, vote + 8);
+  const cx = 960;
+  const cy = 600;
+  const r = 250;
+  const nodes = [
+    { deg: -90, label: 'a retry', note: '+1 packet' },
+    { deg: 0, label: 'more load', note: 'the server fills' },
+    { deg: 90, label: 'slower service', note: 'timeouts rise' },
+    { deg: 180, label: 'more timeouts', note: 'so we retry' },
+  ];
+  const pos = (deg: number) => ({ x: cx + r * Math.cos((deg * Math.PI) / 180), y: cy + r * Math.sin((deg * Math.PI) / 180) });
+
+  return (
+    <InkSheet kicker="The feedback" title="A vote for the next crash" lead="Each retry adds load; load adds timeouts; timeouts add retries." foot="The crowd is not unlucky · the crowd is the problem">
+      <svg width={1920} height={1080} style={{ position: 'absolute', inset: 0 }}>
+        <circle cx={cx} cy={cy} r={r} fill="none" stroke={hot ? '#E06A5A' : '#394356'} strokeWidth={3} strokeDasharray="12 12" strokeDashoffset={-frame * (1.2 + hot * 3)} opacity={0.9} />
+        {[45, 135, 225, 315].map((deg) => {
+          const p = pos(deg);
+          const rot = deg + 90;
+          return <polygon key={deg} points="-9,-7 11,0 -9,7" fill={hot ? '#E06A5A' : accent} transform={`translate(${p.x},${p.y}) rotate(${rot})`} opacity={0.85} />;
+        })}
+        {(() => {
+          const a = ((frame * (1.6 + hot * 4)) % 360) * (Math.PI / 180);
+          return <circle cx={cx + r * Math.cos(a)} cy={cy + r * Math.sin(a)} r={10} fill={hot ? '#E06A5A' : accent} />;
+        })()}
+      </svg>
+
+      {nodes.map((n, i) => {
+        const p = pos(n.deg);
+        const o = rise(frame, at + i * 8, 12);
         return (
-          <div key={`lane${lane}`}>
-            <div style={{ position: 'absolute', left: L + lane * (LW + GAP), top: TOP, width: LW, height: H, borderRadius: 14, backgroundColor: '#1A2130', border: `2px solid ${load > 0.4 ? alpha(accent, 0.7) : '#2E3748'}` }} />
-            <div style={{ position: 'absolute', left: L + lane * (LW + GAP), top: TOP + H + 12, width: LW, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 26, color: load > 0.4 ? accent : '#7E889C' }}>
-              {times[lane]}
-            </div>
-            <div style={{ position: 'absolute', left: L + lane * (LW + GAP), top: TOP + H + 56, width: LW, height: 12, borderRadius: 6, backgroundColor: '#232B3A', overflow: 'hidden' }}>
-              <div style={{ width: `${load * 100}%`, height: '100%', backgroundColor: load > 0.4 ? accented(accent) : '#4A5468' }} />
-            </div>
+          <div key={n.label} style={{ position: 'absolute', left: p.x - 130, top: p.y - 50, width: 260, height: 100, borderRadius: 12, backgroundColor: '#10151F', border: `1.5px solid ${alpha(hot ? '#E06A5A' : accent, 0.5)}`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: o }}>
+            <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 27, color: '#FFFFFF' }}>{n.label}</div>
+            <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 17, color: '#8A93A6', marginTop: 3 }}>{n.note}</div>
           </div>
         );
       })}
 
-      {Array.from({ length: N }).map((_, i) => {
-        const lane = i % LANES;
-        const row = Math.floor(i / LANES) % ROWS;
-        const y0 = TOP + 34 + row * 16;
-        const x0 = laneX(3) + (rnd(i + 7) - 0.5) * (LW - 30);
-        const x1 = laneX(lane) + (rnd(i) - 0.5) * (LW - 34);
-        const x = x0 + (x1 - x0) * move;
-        const y = y0 + (rnd(i + 3) - 0.5) * 6 * move;
-        const o = rise(frame, 10 + (i % LANES) * 3 + Math.floor(i / LANES) * 0.6, 8);
-        return <div key={`d${i}`} style={{ position: 'absolute', left: x - 6, top: y - 6, width: 12, height: 12, borderRadius: 6, backgroundColor: accent, opacity: o * 0.9 }} />;
-      })}
-
-      <div style={{ position: 'absolute', top: TOP + H + 108, fontFamily: FONT, fontWeight: 600, fontSize: 28, color: '#7E889C' }}>
-        Retries per ten minutes, if everyone picks their own moment
+      <div style={{ position: 'absolute', left: 110, top: 250, width: 1050, fontFamily: SERIF, fontWeight: 600, fontSize: 40, lineHeight: 1.2, color: '#FFFFFF', opacity: rise(frame, at + 20, 14) }}>
+        the crowd is the problem
       </div>
-    </Stage>
+      <div style={{ position: 'absolute', left: cx - 210, top: 936, width: 420, textAlign: 'left', fontFamily: FONT, fontWeight: 700, fontSize: 21, color: hot ? '#E06A5A' : '#8A93A6', opacity: rise(frame, vote, 14), letterSpacing: 2, textTransform: 'uppercase' }}>
+        1 retry = +1 vote for the next crash
+      </div>
+    </InkSheet>
   );
 }
 
-/** The stop rule: three tries, growing gaps, then stop. */
+/** Three doors that stay shut, however long the clock runs. */
+function Deadend() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const n1 = cue(shot, 'number is disconnected', fps, { fallback: 0.14 });
+  const n2 = cue(shot, 'job is filled', fps, { fallback: 0.36 });
+  const n3 = cue(shot, 'moved on', fps, { fallback: 0.56 });
+  const slow = cue(shot, 'slower no', fps, { fallback: 0.82 });
+  const doors = [
+    { x: 190, label: 'the number', note: 'disconnected', at: n1 },
+    { x: 790, label: 'the job', note: 'filled', at: n2 },
+    { x: 1390, label: 'the person', note: 'moved on', at: n3 },
+  ];
+
+  return (
+    <InkSheet kicker="Where it breaks" title="A longer wait is just a slower no" lead="Waiting only helps if the thing might come back." foot="Backoff is a bet on recovery, not a cure for a closed door">
+      {doors.map((d) => {
+        const o = rise(frame, 10, 16);
+        const dead = rise(frame, d.at, 14);
+        return (
+          <React.Fragment key={d.label}>
+            <div style={{ position: 'absolute', left: d.x, top: 252, width: 340, textAlign: 'center', ...kickerStyle(dead > 0.5 ? '#E06A5A' : '#8A93A6', 19), opacity: o }}>{d.label}</div>
+            <div style={{ position: 'absolute', left: d.x + 20, top: 290, width: 300, height: 420, border: `3px solid ${alpha('#FFFFFF', 0.28)}`, backgroundColor: '#10151F', opacity: o }}>
+              <div style={{ position: 'absolute', left: 26, top: 26, right: 26, bottom: 26, border: `2px solid ${alpha('#FFFFFF', 0.22)}` }}>
+                <div style={{ position: 'absolute', left: 26, top: 26, right: 26, height: 110, border: `1.5px solid ${alpha('#FFFFFF', 0.14)}` }} />
+                <div style={{ position: 'absolute', left: 26, bottom: 26, right: 26, height: 96, border: `1.5px solid ${alpha('#FFFFFF', 0.14)}` }} />
+              </div>
+              <div style={{ position: 'absolute', right: 44, top: 214, width: 18, height: 18, borderRadius: 9, backgroundColor: dead > 0.5 ? '#E06A5A' : accent }} />
+              <svg width={300} height={420} style={{ position: 'absolute', inset: 0 }}>
+                <circle cx={264} cy={62} r={30} fill="none" stroke="#394356" strokeWidth={2.5} />
+                <line x1={264} y1={62} x2={264 + 22 * Math.cos((frame * 0.06) % (Math.PI * 2))} y2={62 + 22 * Math.sin((frame * 0.06) % (Math.PI * 2))} stroke={dead > 0.5 ? '#E06A5A' : accent} strokeWidth={3} strokeLinecap="round" />
+                <circle cx={264} cy={62} r={3} fill={dead > 0.5 ? '#E06A5A' : accent} />
+              </svg>
+            </div>
+            <div style={{ position: 'absolute', left: d.x, top: 730, width: 340, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 26, color: dead > 0.5 ? '#E06A5A' : '#8A93A6', opacity: o }}>{d.note}</div>
+            <div style={{ position: 'absolute', left: d.x + 238, top: 486, fontFamily: FONT, fontWeight: 900, fontSize: 64, color: '#E06A5A', opacity: dead }}>×</div>
+          </React.Fragment>
+        );
+      })}
+      <div style={{ opacity: rise(frame, slow, 12) }}>
+        <Stamp text="A slower no" at={slow} x={760} y={856} size={38} rotate={-3} color="#E06A5A" border={4} />
+      </div>
+    </InkSheet>
+  );
+}
+
+/** The question gate: yes retries, no stops. */
+function Gate() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const ask = cue(shot, 'anything changed', fps, { fallback: 0.18 });
+  const no = cue(shot, 'answer is no', fps, { fallback: 0.6 });
+  const stuck = cue(shot, 'will not change', fps, { fallback: 0.8 });
+  const branches = between(frame, ask + 6, ask + 34);
+  const dark = between(frame, stuck, stuck + 18);
+
+  return (
+    <InkSheet kicker="Before the next try" title="One question" lead="Since the last try." foot="If nothing has changed, more waiting will not change it">
+      <div style={{ position: 'absolute', left: 660, top: 286, width: 600, height: 132, borderRadius: 14, backgroundColor: '#10151F', border: `2px solid ${alpha(accent, 0.7)}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 46, color: '#FFFFFF', opacity: rise(frame, 10, 14) }}>
+        has anything changed?
+      </div>
+
+      <svg width={1920} height={1080} style={{ position: 'absolute', inset: 0 }}>
+        <path d="M 960 418 L 960 492 L 600 492 L 600 640" fill="none" stroke={accent} strokeWidth={4} strokeDasharray="1" pathLength={1} strokeDashoffset={1 - branches} opacity={0.9 * (1 - 0.65 * dark)} />
+        <polygon points="592,630 600,648 608,630" fill={accent} opacity={branches * (1 - 0.65 * dark)} />
+        <path d="M 960 418 L 960 492 L 1320 492 L 1320 640" fill="none" stroke="#E06A5A" strokeWidth={4} strokeDasharray="1" pathLength={1} strokeDashoffset={1 - branches} opacity={0.9} />
+        <polygon points="1312,630 1320,648 1328,630" fill="#E06A5A" opacity={branches} />
+      </svg>
+
+      <div style={{ position: 'absolute', left: 370, top: 668, width: 460, height: 210, borderRadius: 14, backgroundColor: '#10151F', border: `2px solid ${alpha(accent, 0.45 + 0.5 * dark)}`, opacity: rise(frame, ask + 26, 14) * (1 - 0.55 * dark), padding: '30px 34px' }}>
+        <div style={{ ...kickerStyle(accent, 16) }}>yes</div>
+        <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 44, color: '#FFFFFF', marginTop: 4 }}>Try again</div>
+        <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 22, color: '#8A93A6', marginTop: 8 }}>something is different</div>
+      </div>
+
+      <div style={{ position: 'absolute', left: 1090, top: 668, width: 460, height: 210, borderRadius: 14, backgroundColor: '#10151F', border: `2px solid ${alpha('#E06A5A', 0.5 + 0.5 * between(frame, no, no + 14))}`, opacity: rise(frame, ask + 30, 14), padding: '30px 34px' }}>
+        <div style={{ ...kickerStyle('#E06A5A', 16) }}>no</div>
+        <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 44, color: '#FFFFFF', marginTop: 4 }}>Stop</div>
+        <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 22, color: '#8A93A6', marginTop: 8 }}>nothing has changed</div>
+      </div>
+
+      {/* the barrier, across the no path */}
+      <div style={{ position: 'absolute', left: 1082, top: 632, width: 470, height: 13, borderRadius: 3, backgroundColor: '#E06A5A', transform: `rotate(${-16 + 16 * between(frame, no, no + 16)}deg)`, transformOrigin: 'left center', opacity: rise(frame, no, 8), boxShadow: '0 4px 16px rgba(0,0,0,0.4)' }} />
+      <div style={{ position: 'absolute', left: 1074, top: 620, width: 12, height: 42, backgroundColor: '#E06A5A', opacity: rise(frame, no, 8) }} />
+
+      <div style={{ position: 'absolute', left: 370, top: 908, width: 1180, fontFamily: FONT, fontWeight: 600, fontSize: 23, color: '#8A93A6', opacity: rise(frame, no + 10, 14) }}>
+        A longer wait cannot turn a closed answer into an open one.
+      </div>
+    </InkSheet>
+  );
+}
+
+/** The stop rule as a calendar: day 0, 7, 21, then stop at 49. */
 function Attempts() {
   const frame = useCurrentFrame();
   const shot = useShot();
   const { fps } = useVideoConfig();
   const accent = useAccent();
-  const first = cue(shot, 'three tries', fps, { fallback: 0.15 });
-  const stopAt = cue(shot, 'then stop', fps, { fallback: 0.45 });
-  const days = [0, 7, 21, 49];
-  const X0 = 300;
-  const W = 1320;
-  const Y = 560;
-  const x = (d: number) => X0 + (d / 49) * W;
+  const three = cue(shot, 'three tries', fps, { fallback: 0.18 });
+  const stop = cue(shot, 'then stop', fps, { fallback: 0.42 });
+  const cousin = cue(shot, '37 percent', fps, { fallback: 0.78 });
+  const X0 = 200;
+  const W = 1520;
+  const day = (d: number) => X0 + (d / 56) * W;
+  const marks = [
+    { d: 0, label: 'try 1', note: 'day 0', at: three },
+    { d: 7, label: 'try 2', note: 'day 7', at: three + 14 },
+    { d: 21, label: 'try 3', note: 'day 21', at: three + 30 },
+    { d: 49, label: 'stop', note: 'day 49', at: stop },
+  ];
 
   return (
-    <Stage>
-      <div style={{ position: 'absolute', top: 150, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
-        <Kicker text="The stop rule" />
-        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 54, color: '#FFFFFF' }}>Three tries, then the gap is the rule</div>
-      </div>
+    <InkSheet kicker="The stop rule" title="Three tries, then stop" lead="Not because you gave up: because the answer is probably no." foot="A practical cadence, not a theorem">
+      {/* the weeks */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <div key={i} style={{ position: 'absolute', left: X0 + (i / 8) * W + 4, top: 380, width: W / 8 - 8, height: 150, borderRadius: 8, backgroundColor: i >= 7 ? alpha('#E06A5A', 0.08) : '#10151F', border: `1.5px solid ${i >= 7 ? alpha('#E06A5A', 0.35) : '#2A3345'}` }}>
+          <div style={{ position: 'absolute', left: 14, top: 12, ...kickerStyle('#5F6A80', 13) }}>week {i + 1}</div>
+        </div>
+      ))}
 
-      <div style={{ position: 'absolute', left: X0, top: Y, width: W, height: 3, backgroundColor: '#4A5468' }} />
-      {days.map((d, i) => {
-        const at = first + i * Math.max(10, Math.round((shot.frames * 0.45) / 4));
-        const o = rise(frame, at, 12);
-        const stopped = i === 3;
+      <div style={{ position: 'absolute', left: X0, top: 455, width: W, height: 3, backgroundColor: '#394356' }} />
+
+      {marks.map((m, i) => {
+        const o = rise(frame, m.at, 12);
+        const dead = i === 3;
         return (
-          <div key={d}>
-            <div
-              style={{
-                position: 'absolute',
-                left: x(d) - 15,
-                top: Y - 15,
-                width: 30,
-                height: 30,
-                borderRadius: 15,
-                backgroundColor: stopped ? 'transparent' : accent,
-                border: `4px solid ${stopped ? '#6B7488' : accent}`,
-                opacity: o,
-                boxShadow: stopped ? undefined : `0 0 30px ${alpha(accent, 0.55)}`,
-              }}
-            />
-            {stopped ? (
-              <div style={{ position: 'absolute', left: x(d) - 24, top: Y - 24, width: 48, height: 3, backgroundColor: '#6B7488', transform: 'rotate(45deg)', opacity: o }} />
-            ) : null}
-            <div style={{ position: 'absolute', left: x(d) - 90, width: 180, top: Y + 40, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 34, color: stopped ? '#8A93A6' : '#FFFFFF', opacity: o }}>
-              {stopped ? 'stop' : `try ${i + 1}`}
+          <React.Fragment key={m.label}>
+            <div style={{ position: 'absolute', left: day(m.d) - 14, top: 441, width: 28, height: 28, borderRadius: 14, backgroundColor: dead ? '#E06A5A' : accent, border: `4px solid #0B0E14`, opacity: o }} />
+            <div style={{ position: 'absolute', left: day(m.d) - 100, top: 300, width: 200, textAlign: 'center', opacity: o }}>
+              <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 30, color: dead ? '#E06A5A' : '#FFFFFF' }}>{m.label}</div>
+              <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 19, letterSpacing: 2, color: '#8A93A6', marginTop: 4 }}>{m.note}</div>
             </div>
-            <div style={{ position: 'absolute', left: x(d) - 90, width: 180, top: Y - 78, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 26, color: '#7E889C', opacity: o }}>
-              day {d}
-            </div>
+          </React.Fragment>
+        );
+      })}
+
+      {/* the gaps */}
+      {[
+        { from: 0, to: 7, label: '1 week' },
+        { from: 7, to: 21, label: '2 weeks' },
+        { from: 21, to: 49, label: '4 weeks' },
+      ].map((g, i) => {
+        const o = rise(frame, three + 20 + i * 12, 12);
+        return (
+          <div key={g.label} style={{ opacity: o }}>
+            <div style={{ position: 'absolute', left: day(g.from), top: 580, width: day(g.to) - day(g.from), height: 2, backgroundColor: alpha(accent, 0.5) }} />
+            <div style={{ position: 'absolute', left: day(g.from), top: 570, width: 2, height: 22, backgroundColor: alpha(accent, 0.5) }} />
+            <div style={{ position: 'absolute', left: day(g.to), top: 570, width: 2, height: 22, backgroundColor: alpha(accent, 0.5) }} />
+            <div style={{ position: 'absolute', left: day(g.from), top: 600, width: day(g.to) - day(g.from), textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 21, color: '#8A93A6' }}>{g.label}</div>
           </div>
         );
       })}
 
-      <div style={{ position: 'absolute', top: Y + 150, display: 'flex', gap: 60 }}>
-        <Caption text="a week between the first two," at={first + 8} />
-        <Caption text="then two, then four" at={first + 18} tone="accent" />
-      </div>      <div style={{ position: 'absolute', top: 860, fontFamily: FONT, fontWeight: 600, fontSize: 30, color: '#8A93A6', opacity: rise(frame, stopAt, 16) }}>
-        Unless something has changed, the next wait buys less than it costs.
+      <div style={{ position: 'absolute', left: day(49) + 22, top: 548, width: 270, fontFamily: FONT, fontWeight: 800, fontSize: 17, lineHeight: 1.35, color: '#E06A5A', opacity: rise(frame, stop, 12) }}>
+        the answer is probably no
       </div>
-    </Stage>
+
+      <div style={{ position: 'absolute', left: X0, top: 700, width: 1180, fontFamily: FONT, fontWeight: 600, fontSize: 25, color: '#8A93A6' }}>
+        Growing gaps between three honest attempts — then let the silence do its work.
+      </div>
+      <div style={{ position: 'absolute', left: X0, top: 758, display: 'flex', alignItems: 'center', gap: 16, opacity: rise(frame, cousin, 16) }}>
+        <div style={{ width: 44, height: 3, backgroundColor: accent }} />
+        <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 22, color: accent }}>the 37 percent rule’s quieter cousin: know when to stop looking</div>
+      </div>
+    </InkSheet>
   );
 }
 
-/** The series colour, pre-mixed for a filled bar. */
-const accented = (hex: string) => alpha(hex, 0.85);
+// ─── Dispatch ──────────────────────────────────────────────────────────────
 
 export function Backoff() {
   const shot = useShot();
   const variant = shot.scene.trim().toLowerCase().split(/[\s,]+/)[0];
-  if (variant === 'collapse') return <Collapse />;
-  if (variant === 'cap') return <Stairs capped />;
+  if (variant === 'pressure') return <Pressure />;
+  if (variant === 'map') return <MapScene />;
+  if (variant === 'throughput') return <Throughput />;
+  if (variant === 'storm') return <Storm />;
+  if (variant === 'ruleintro') return <RuleIntro />;
+  if (variant === 'double') return <Double />;
+  if (variant === 'cap') return <Cap />;
   if (variant === 'jitter') return <Jitter />;
   if (variant === 'herd') return <Herd />;
+  if (variant === 'loop') return <Loop />;
+  if (variant === 'failure') return <Failure />;
+  if (variant === 'deadend') return <Deadend />;
+  if (variant === 'gate') return <Gate />;
   if (variant === 'attempts') return <Attempts />;
-  return <Stairs capped={false} />;
+  if (variant === 'recap') return <RetryCard />;
+  return <Double />;
+}
+
+export function Overlay() {
+  const shot = useShot();
+  const variant = shot.scene.trim().toLowerCase().split(/[\s,]+/)[0];
+  if (variant === 'aloha') return <Aloha />;
+  if (variant === 'calls') return <Calls />;
+  if (variant === 'apply') return <Apply />;
+  if (variant === 'convo') return <Convo />;
+  if (variant === 'followup') return <Followup />;
+  if (variant === 'next') return <Next />;
+  return <Calls />;
 }
