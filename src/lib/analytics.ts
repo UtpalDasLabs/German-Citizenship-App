@@ -15,12 +15,11 @@ import { Platform } from 'react-native';
  *  - The choice is per app and per browser, can be changed any time on the
  *    "You" tab, and is deliberately left out of the backup file.
  *
- * Same GA4 property as the portfolio at utpaldaslabs.github.io, so a visit can
- * be followed from the portfolio's "Launch" into the app. Every hit carries
- * content_group so reports split by app without any GA configuration.
+ * Same GA4 property as the portfolio at utpaldas.com. Every hit carries the
+ * same app_id as the portfolio's Labs catalogue, so reports can split by app.
  */
 const GA_ID = (process.env.EXPO_PUBLIC_GA_MEASUREMENT_ID ?? 'G-H0QB1FC8VN').trim();
-const APP = 'lid-test';
+const APP = 'german-citizenship';
 const CONSENT_KEY = 'lid.analytics-consent';
 
 const isWeb = Platform.OS === 'web' && typeof window !== 'undefined';
@@ -32,6 +31,7 @@ type Params = Record<string, string | number | boolean | null | undefined>;
 declare global {
   interface Window {
     dataLayer: unknown[];
+    clarity?: (...args: unknown[]) => void;
   }
 }
 
@@ -121,10 +121,21 @@ export function setAnalyticsContext(params: Params): void {
 }
 
 export function track(event: string, params: Params = {}): void {
-  const payload = { content_group: APP, ...context, ...params };
+  if (!isWeb) return;
+  const payload = {
+    content_group: APP,
+    app_id: APP,
+    page_path: location.pathname,
+    ...context,
+    ...params,
+  };
   if (debug) console.debug('[analytics]', event, payload);
   if (!analyticsAvailable || choice !== 'granted') return;
   gtag('event', event, payload);
+  // If Clarity is installed on this app, expose the same filters there too.
+  window.clarity?.('set', 'app_id', APP);
+  window.clarity?.('set', 'page_path', String(payload.page_path));
+  window.clarity?.('event', event);
 }
 
 export function trackPageView(): void {
