@@ -11,6 +11,10 @@
 
 ## Video
 
+- Video by Prettysleepy from Pixabay: https://pixabay.com/videos/id-51312/
+- Video by NeonButterfly from Pixabay: https://pixabay.com/videos/id-91691/
+- Video by Alexas_Fotos from Pixabay: https://pixabay.com/videos/id-375772/
+- Video by phtorxp from Pixabay: https://pixabay.com/videos/id-137522/
 - "A child in sheets with cutout for eyes like a ghost costume dancing in an autumn forest scares and terrifies. A kind little funny ghost. Halloween Party, slow motion 4k" from Vecteezy: https://www.vecteezy.com/video/13426035
 - "Chicago Illinois 17.10.2024 Halloween decorations featuring pumpkins and a ghost in a yard. A front yard decorated for Halloween with various festive elements." from Vecteezy: https://www.vecteezy.com/video/51353847
 - "Pumpkins of different colors and shapes at a market stand" from Vecteezy: https://www.vecteezy.com/video/76986772

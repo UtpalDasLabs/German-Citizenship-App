@@ -7,28 +7,32 @@
       "source": "pixabay",
       "pixabayId": 51312,
       "start": 2,
-      "seconds": 9
+      "seconds": 9,
+      "credit": "Video by Prettysleepy from Pixabay: https://pixabay.com/videos/id-51312/"
     },
     {
       "id": "doorstep",
       "source": "pixabay",
       "pixabayId": 91691,
       "start": 3,
-      "seconds": 9
+      "seconds": 9,
+      "credit": "Video by NeonButterfly from Pixabay: https://pixabay.com/videos/id-91691/"
     },
     {
       "id": "giant-pumpkins",
       "source": "pixabay",
       "pixabayId": 375772,
       "start": 2,
-      "seconds": 9
+      "seconds": 9,
+      "credit": "Video by Alexas_Fotos from Pixabay: https://pixabay.com/videos/id-375772/"
     },
     {
       "id": "grave-lights2",
       "source": "pixabay",
       "pixabayId": 137522,
       "start": 4,
-      "seconds": 9
+      "seconds": 9,
+      "credit": "Video by phtorxp from Pixabay: https://pixabay.com/videos/id-137522/"
     },
     {
       "id": "ghost-kid",
@@ -43,7 +47,8 @@
       "source": "vecteezy",
       "vecteezyId": 42680856,
       "start": 0,
-      "seconds": 6
+      "seconds": 6,
+      "credit": "\"Candles for the commemoration of the dead on an autumn day.\" from Vecteezy: https://www.vecteezy.com/video/42680856"
     },
     {
       "id": "us-house",
