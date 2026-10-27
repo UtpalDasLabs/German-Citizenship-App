@@ -383,6 +383,9 @@ cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: t
 if (existsSync(join(OUT, 'clips', MEDIA))) {
   cpSync(join(OUT, 'clips', MEDIA), join(pub, 'clips', MEDIA), { recursive: true });
 }
+// Rigged characters (licensed artwork, kept in the private repo's kit/characters/).
+const KIT_CHARS = process.env.SERIES_KIT_DIR ?? join(VIDEO, '..', '..', 'German-Citizenship-Videos', 'kit', 'characters');
+if (existsSync(KIT_CHARS)) cpSync(KIT_CHARS, join(pub, 'kit'), { recursive: true });
 // This lesson's own pictures, if it has any.
 if (existsSync(join(OUT, 'images', MEDIA))) {
   cpSync(join(OUT, 'images', MEDIA), join(pub, 'images', MEDIA), { recursive: true });
