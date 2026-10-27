@@ -1,33 +1,12 @@
 {
   "topic": "hidden-halloween",
-  "note": "Pixabay stock (Content License). Every clip used once, none from another episode.",
+  "note": "Pixabay and Vecteezy stock; every clip used once, none from another episode.",
   "clips": [
     {
       "id": "jack-night",
       "source": "pixabay",
       "pixabayId": 51312,
       "start": 2,
-      "seconds": 9
-    },
-    {
-      "id": "kids-costume",
-      "source": "pixabay",
-      "pixabayId": 136030,
-      "start": 1,
-      "seconds": 9
-    },
-    {
-      "id": "shop-halloween",
-      "source": "pixabay",
-      "pixabayId": 137368,
-      "start": 0,
-      "seconds": 9
-    },
-    {
-      "id": "grave-lights",
-      "source": "pixabay",
-      "pixabayId": 137522,
-      "start": 4,
       "seconds": 9
     },
     {
@@ -43,6 +22,68 @@
       "pixabayId": 375772,
       "start": 2,
       "seconds": 9
+    },
+    {
+      "id": "grave-lights2",
+      "source": "pixabay",
+      "pixabayId": 137522,
+      "start": 4,
+      "seconds": 9
+    },
+    {
+      "id": "ghost-kid",
+      "source": "vecteezy",
+      "vecteezyId": 13426035,
+      "start": 0,
+      "seconds": 6,
+      "credit": "\"A child in sheets with cutout for eyes like a ghost costume dancing in an autumn forest scares and terrifies. A kind little funny ghost. Halloween Party, slow motion 4k\" from Vecteezy: https://www.vecteezy.com/video/13426035"
+    },
+    {
+      "id": "grave-lights",
+      "source": "vecteezy",
+      "vecteezyId": 42680856,
+      "start": 0,
+      "seconds": 6
+    },
+    {
+      "id": "us-house",
+      "source": "vecteezy",
+      "vecteezyId": 51353847,
+      "start": 0,
+      "seconds": 7,
+      "credit": "\"Chicago Illinois 17.10.2024 Halloween decorations featuring pumpkins and a ghost in a yard. A front yard decorated for Halloween with various festive elements.\" from Vecteezy: https://www.vecteezy.com/video/51353847"
+    },
+    {
+      "id": "market",
+      "source": "vecteezy",
+      "vecteezyId": 76986772,
+      "start": 0,
+      "seconds": 7,
+      "credit": "\"Pumpkins of different colors and shapes at a market stand\" from Vecteezy: https://www.vecteezy.com/video/76986772"
+    },
+    {
+      "id": "carving",
+      "source": "vecteezy",
+      "vecteezyId": 72002442,
+      "start": 0,
+      "seconds": 7,
+      "credit": "\"Pumpkin Carving With Knife During Autumn Near Halloween\" from Vecteezy: https://www.vecteezy.com/video/72002442"
+    },
+    {
+      "id": "carving-home",
+      "source": "vecteezy",
+      "vecteezyId": 86900413,
+      "start": 0,
+      "seconds": 7,
+      "credit": "\"Halloween preparation at home carving a pumpkin for a festive party celebration and tradition with autumn leaves and candles. High quality 4k footage\" from Vecteezy: https://www.vecteezy.com/video/86900413"
+    },
+    {
+      "id": "castle-night",
+      "source": "pixabay",
+      "pixabayId": 34306,
+      "start": 5,
+      "seconds": 9,
+      "credit": "Video by Relaxing_Guru from Pixabay: https://pixabay.com/videos/id-34306/"
     }
   ]
 }

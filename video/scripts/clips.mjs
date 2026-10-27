@@ -9,6 +9,8 @@
  *   npm run clips -- --search "apartment viewing" [--min 8]  candidates, for choosing
  *
  * Pixabay needs PIXABAY_API_KEY (free: pixabay.com/api/docs, logged in).
+ *   { "id": "carving", "source": "vecteezy", "vecteezyId": 86900413, "start": 0, "seconds": 6 }
+ * Vecteezy needs VECTEEZY_API_KEY and VECTEEZY_ACCOUNT_ID; free files need the credit line.
  * Content License: free for commercial use, no attribution required; we
  * credit anyway. Every clip is cut to its useful part, scaled and cropped to
  * 1920×1080 at 30 fps, without sound.
@@ -95,6 +97,23 @@ for (const c of manifest.clips) {
       cut(raw, dst, c.start, c.seconds, c.speed);
       fs.rmSync(raw);
       c.credit = `Video by ${hit.user} from Pixabay: ${hit.pageURL}`;
+    } else if (c.source === 'vecteezy') {
+      // VECTEEZY_API_KEY and VECTEEZY_ACCOUNT_ID come from the environment (see the private repo's SOURCES.md).
+      const key = process.env.VECTEEZY_API_KEY;
+      const account = process.env.VECTEEZY_ACCOUNT_ID;
+      if (!key || !account) throw new Error('Set VECTEEZY_API_KEY and VECTEEZY_ACCOUNT_ID.');
+      const api = `https://api.vecteezy.com/v2/${account}/resources/${c.vecteezyId}`;
+      const auth = { headers: { Authorization: `Bearer ${key}` } };
+      const info = await (await fetch(api, auth)).json();
+      const types = (info.file_metadata?.available_file_types ?? []).map((t) => t.extension);
+      const type = types.includes('mp4') ? 'mp4' : types[0] ?? 'mp4';
+      const dl = await (await fetch(`${api}/download?file_type=${type}&size=medium`, auth)).json();
+      if (!dl.url) throw new Error(`${c.id}: Vecteezy ${c.vecteezyId}: ${JSON.stringify(dl).slice(0, 200)}`);
+      const raw = path.join(out, `${c.id}.raw.${type}`);
+      fs.writeFileSync(raw, Buffer.from(await (await fetch(dl.url)).arrayBuffer()));
+      cut(raw, dst, c.start, c.seconds, c.speed);
+      fs.rmSync(raw);
+      c.credit = `"${info.title ?? 'Video'}" from Vecteezy: https://www.vecteezy.com/video/${c.vecteezyId}`;
     } else if (c.source === 'file') {
       cut(path.isAbsolute(c.file) ? c.file : path.join(CLIP_ROOT, c.file), dst, c.start, c.seconds, c.speed);
     } else {

@@ -81,7 +81,7 @@ const readJsonTop = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) 
 // Override for a deliberate callback with --allow-repeat.
 if (!script.meta.media && !args.includes('--allow-repeat')) {
   const dir = join(VIDEO, 'longform');
-  const key = (c) => (c.source === 'pixabay' ? `pixabay:${c.pixabayId}` : c.file ? `file:${c.file}` : null);
+  const key = (c) => (c.source === 'pixabay' ? `pixabay:${c.pixabayId}` : c.source === 'vecteezy' ? `vecteezy:${c.vecteezyId}` : c.file ? `file:${c.file}` : null);
   const mine = readJsonTop(join(dir, `${topic}.clips.json`))?.clips ?? [];
   const seen = new Map();
   for (const c of mine) {
@@ -270,6 +270,7 @@ function seriesCredits() {
     ...images.map((im) => `• ${plain(im.file)}: ${im.author.replace(/\s*\(talk\).*$/, '')}, ${im.licence}`),
     ...ccClips.map((c) => `• ${c.credit.split(': http')[0]}`),
     ...(users.length ? [`• Stock video from Pixabay (Content License): ${users.join(', ')}`] : []),
+    ...(clips.some((c) => c.source === 'vecteezy') ? ['• Stock video from Vecteezy (www.vecteezy.com); each clip is listed below'] : []),
     ...(made.length ? [`• Some scenes made with ${made.join(' and ')}`] : []),
     `Full credits with links: ${CREDITS_URL}`,
   ];

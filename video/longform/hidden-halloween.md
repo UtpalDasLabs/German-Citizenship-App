@@ -29,9 +29,10 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [calm] It's the thirty-first of October. Noah is new in Germany, and he's ready for Halloween. Costume on, bag in hand. He rings the bell at the first house. And nobody opens.
 
-> SCENE (photo): A carved pumpkin glowing at night; children in costumes.
+> SCENE (photo): A carved pumpkin glowing at night; a child in a ghost costume; candles on graves.
 > jack-night | Halloween in Germany is different. | color key
-> kids-costume |  | color @ the same night
+> ghost-kid |  | color @ younger
+> grave-lights |  | color @ the same night
 
 [warmly] Halloween in Germany is different. It's younger than you'd think. It shares the same night with a church holiday. And the next day, in some states, parties are against the law.
 
@@ -51,18 +52,16 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [warmly] Noah's neighbour, Oma Hildegard, opens her door. "Halloween?" she says. "We barely had it here until about thirty years ago."
 
-> SCENE (kit): A quiet city: no Karneval in 1991.
-> bg | city-day
-> text | 1991: no Karneval
-> char | noah | shrug | 0.35
-> char | oma | point | 0.65 | flip @ costume makers
-> text | A second season? @ second season
-> prop | pumpkin | 0.82 | 1 @ Halloween
+> SCENE (photo): Kölner Rosenmontag; a decorated house in America.
+> karneval | Karneval: the big costume season | color key
+> karneval2 | 1991: cancelled in many towns | color key @ cancelled
+> us-house | A second season, from America | color key @ found one in America
 
 [calm] The story usually goes like this. In nineteen ninety-one, during the Gulf War, many towns cancelled [[Karneval]], the big costume season in February. The costume makers lost their best weeks of the year. So they looked for a second season, and found one in America: Halloween.
 
-> SCENE (photo): A shop window full of Halloween decorations.
-> shop-halloween | The costume trade pushed it. Children loved it. | color key
+> SCENE (photo): Pumpkins on a market stand; carving a pumpkin.
+> market | The costume trade pushed it. | color key
+> carving | Children loved it. | color key @ Children loved it
 
 [calm] Shops filled with masks and plastic pumpkins. Children loved it. And within a few years, Halloween had arrived.
 
@@ -77,12 +76,8 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [warmly] "But we had something before," Oma says, and holds up a turnip. In many villages, children hollowed out turnips in autumn and carved faces into them, with a candle inside. [[Rübengeister]]: turnip ghosts, grinning in the dark.
 
-> SCENE (kit): Children with lanterns for Saint Martin.
-> bg | night-street
-> text | 11 November: lantern walks
-> char | kid | stand | 0.4
-> prop | lantern | 0.5 | 1
-> char | noah | cheer | 0.7 | flip @ nothing new
+> SCENE (photo): A Martinszug, around 1930.
+> martinszug | Lantern walks for Saint Martin, here around 1930 | color
 
 [calm] And in November, German children already walk through the dark with lanterns, for Saint Martin. So glowing faces and children out at night are nothing new here. Only the costumes and the sweets are.
 
@@ -99,7 +94,7 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 [calm] The next day, the first of November, is [[Allerheiligen]], All Saints' Day. It's a public holiday in five other states, mostly in the south and west.
 
 > SCENE (photo): Candles on graves at dusk.
-> grave-lights | A quiet holiday | color key
+> grave-lights2 | A quiet holiday | color key
 
 [calm] And it's a quiet one. Families visit graves and light candles. In Bavaria, for example, public dance events are banned on the day. So a Halloween party there has to end when the first of November begins.
 
@@ -123,8 +118,9 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [warmly] And trick-or-treating? Children do it, mostly in towns and newer neighbourhoods. They don't say "trick or treat". They say [[Süßes oder Saures]]: sweet or sour.
 
-> SCENE (photo): A pumpkin glowing on a doorstep.
+> SCENE (photo): A pumpkin glowing on a doorstep; carving at home.
 > doorstep | A pumpkin outside means: ring the bell. | color key
+> carving-home | No pumpkin? Walk on. | color key @ No pumpkin
 
 [calm] Here's the unwritten rule. A carved pumpkin or decorations by the door mean: children welcome, ring the bell. No pumpkin? Walk on. That's why nobody opened Noah's first door.
 
@@ -138,26 +134,20 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [warmly] If you want the big version, go to a castle. Since nineteen seventy-seven, Burg Frankenstein near Darmstadt held one of Germany's oldest Halloween events, started by American soldiers stationed nearby. After twenty twenty-three, the show moved to Burg Königstein in the Taunus, where it runs until the first of November this year.
 
-> SCENE (kit): Noah and Oma at a castle at night, a ghost floating by.
-> bg | castle-night
-> char | noah | scared | 0.35
-> char | oma | cheer | 0.62 | flip
-> prop | ghost | 0.82 | 1 @ actors
-> prop | bat | 0.5 | 1
+> SCENE (photo): A castle at night.
+> castle-night | Actors, fog, dark corridors | color key
 
 [calm] Actors in make-up, fog, and dark corridors. Not for small children, but very popular.
 
-> SCENE (kit): A baroque palace garden full of pumpkins.
-> bg | garden
-> prop | pumpkin | 0.2 | 1
-> prop | giant-pumpkin | 0.5 | 0.9
-> prop | jack | 0.8 | 1.1
-> text | Ludwigsburg · 22 Aug – 1 Nov 2026
+> SCENE (place): The pumpkin exhibition in the palace garden.
+> ludwigsburg | LUDWIGSBURG | 22 August to 1 November 2026
 
 [warmly] For something friendlier, go to Ludwigsburg, near Stuttgart. In the gardens of its palace, the [[Blühendes Barock]] holds what it calls the world's largest pumpkin exhibition.
 
-> SCENE (photo): Giant pumpkins.
-> giant-pumpkins | Whole sculptures, made of pumpkins | color key
+> SCENE (photo): Pumpkin sculptures in Ludwigsburg; giant pumpkins.
+> lb-figure | Whole sculptures, made of pumpkins | color key
+> lb-seahorse |  | color @ This year's motto
+> giant-pumpkins |  | color @ giant pumpkins
 
 [calm] Every year there's a theme, and whole sculptures are built from pumpkins. This year's motto is "Let's play". There are giant pumpkins weighing hundreds of kilos, and pumpkin soup and pumpkin dishes everywhere.
 

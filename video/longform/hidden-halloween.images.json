@@ -1,0 +1,36 @@
+{
+  "topic": "hidden-halloween",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "karneval",
+      "file": "2023 Rosenmontagszug Kamelle.jpg",
+      "scene": "K\u00f6lner Rosenmontag"
+    },
+    {
+      "id": "karneval2",
+      "file": "2023 Rosenmontagszug Mottowagen Winterschlussverkauf.jpg",
+      "scene": "A Rosenmontag float"
+    },
+    {
+      "id": "martinszug",
+      "file": "Martinszug an der Lambertusschule M\u00fchlenstra\u00dfe um 1930 Julius S\u00f6hn.jpg",
+      "scene": "A Martinszug, around 1930"
+    },
+    {
+      "id": "ludwigsburg",
+      "file": "K\u00fcrbisausstellung im Schlossgarten.jpeg",
+      "scene": "The pumpkin exhibition, Ludwigsburg"
+    },
+    {
+      "id": "lb-figure",
+      "file": "K\u00fcrbisausstellung Ludwigsburg 2010 Figur.jpg",
+      "scene": "A pumpkin sculpture"
+    },
+    {
+      "id": "lb-seahorse",
+      "file": "K\u00fcrbisausstellung Ludwigsburg 2010 Seepferdchen.jpg",
+      "scene": "A pumpkin seahorse"
+    }
+  ]
+}
