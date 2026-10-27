@@ -26,8 +26,8 @@ Script as written: the private repo's series/logic-to-live-by/05-sorting-searchi
 
 [calm] You have folders for everything. Work, bills, travel, the car. Every email gets filed. It feels responsible. But here's a question nobody asks: does all that filing actually help you find things? Researchers measured it. And the answer is: barely.
 
-> SCENE (photo): Hands sketching.
-> sketch | Logic to Live By | color key
+> SCENE (line): Series card.
+> Logic to Live By
 
 [warmly] I'm Utpal, and this is Logic to Live By: simple rules for better decisions.
 
@@ -59,10 +59,7 @@ Computer scientists ask this all the time. Sorting is one of the most studied pr
 
 ## Why sorting is expensive
 
-> SCENE (stat): Ten books or a hundred.
-> bg | books
-> 10 | books: quick to sort @ Sort ten books
-> 100 | books: far more than ten times the work @ Sort a hundred
+> SCENE (sortcost): Ten books against a hundred, comparisons counting up.
 
 [calm] Sort ten books by hand, and it's quick. Sort a hundred, and it takes much more than ten times as long. Every new item has to find its place among all the others. The bigger the pile, the more each new item costs.
 
@@ -172,8 +169,7 @@ Photos. Don't spend evenings sorting thousands of pictures into albums. Most pho
 
 [calm] Sort what you search. Leave the rest.
 
-> SCENE (photo): An open book; a pile of clothes on a chair.
-> book | Algorithms to Live By · Brian Christian & Tom Griffiths | color
+> SCENE (photo): a pile of clothes on a chair.
 > clothes | Next: the pile on your chair is an algorithm too. | color key @ Next time
 
 [calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description. Next time on Logic to Live By: the pile on your chair is an algorithm too. What computers know about which things to keep close.

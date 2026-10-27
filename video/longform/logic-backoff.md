@@ -19,8 +19,8 @@ status: draft 1
 
 [calm] You call the hotline. Busy. You call again straight away. Busy. And again. Busy. Thousands of other people are doing exactly the same thing, at exactly the same moment. So everyone keeps hitting a wall that all of you are building together.
 
-> SCENE (photo): Hands sketching.
-> sketch | Logic to Live By | color key
+> SCENE (line): Series card.
+> Logic to Live By
 
 [warmly] I'm Utpal, and this is Logic to Live By: simple rules for better decisions.
 
@@ -82,8 +82,7 @@ Ethernet still does this today. After each collision, a network card waits up to
 
 [calm] Think about what a failure tells you. One failure might be bad luck. Five failures in a row are information. Something bigger is going on: the line is overloaded, the person is busy, the timing is wrong.
 
-> SCENE (photo): Traffic easing.
-> traffic2 | Backing off gives the problem room. | color key @ Backing off
+> SCENE (jam): Everyone retrying at once jams the line; backing off at random lets them through.
 
 [calm] If you keep trying at the same rate, you ignore that information. And when everyone does it, the overload never clears. Backing off gives the problem room to solve itself.
 
@@ -133,8 +132,7 @@ Job applications, or any message that gets no answer. Follow up after a week. If
 
 [calm] Never give up. Just try less often.
 
-> SCENE (photo): An open book; a restaurant at night.
-> book | Algorithms to Live By · Brian Christian & Tom Griffiths | color
+> SCENE (photo): a restaurant at night.
 > restaurant | Next: your favourite, or somewhere new? | color key @ Next time
 
 [calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description. Next time on Logic to Live By: your favourite restaurant, or somewhere new? The maths of when to explore and when to stick with what you know.

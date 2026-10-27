@@ -9,7 +9,7 @@ import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './
 import { useAccent, useSeries } from './series';
 import { KitScene } from '../kit/Kit';
 import { RigScene } from '../kit/Rig';
-import { Backoff, Collide, Curve, Line, Place, Stopping, Waits, WallTimeline } from './series-shots';
+import { Backoff, Bandit, Collide, Curve, Horizon, Jam, SortCost, Line, Place, Stopping, Waits, WallTimeline } from './series-shots';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
@@ -1034,6 +1034,14 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <KitScene />;
     case 'rig':
       return <RigScene topic={topic} />;
+    case 'jam':
+      return <Jam />;
+    case 'bandit':
+      return <Bandit />;
+    case 'horizon':
+      return <Horizon />;
+    case 'sortcost':
+      return <SortCost />;
     case 'collide':
       return <Collide />;
     case 'backoff':

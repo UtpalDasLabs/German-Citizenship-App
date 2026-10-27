@@ -6,7 +6,7 @@
  * voice.
  */
 import React from 'react';
-import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 
 import { alpha, C, FONT } from '../lib/brand';
 import { Grain, Photo, rise, SERIF, Vignette } from './look';
@@ -622,6 +622,180 @@ export function Backoff() {
           );
         })}
       </svg>
+    </AbsoluteFill>
+  );
+}
+
+/** Many callers on one line: retrying at once jams it (red); backing off spreads them out and they get through. */
+export function Jam() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const RED = '#F0605D';
+  const split = cue(shot, 'Backing off', fps, { fallback: 0.5 });
+  const N = 14;
+  const lane = (i: number) => 230 + i * 52;
+  // Fixed retries: everyone tries every second, so most attempts land in the same instant.
+  const fixedX = (i: number) => 120 + ((frame * 6 + i * 9) % 700);
+  // Backoff: each caller's next try is further out and random, so the line clears.
+  const backX = (i: number) => {
+    const t = Math.max(0, frame - split);
+    const wait = (1 + (i % 4)) * (1 + Math.floor(t / 30));
+    return 1040 + ((t * 5 + i * 47 * wait) % 720);
+  };
+  const o = rise(frame, split - 4, 14);
+  const jammed = Math.min(N, 3 + Math.floor(frame / 6));
+  const through = Math.min(N, Math.max(0, Math.floor((frame - split) / 7)));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        <rect x={100} y={200} width={760} height={760} rx={28} fill="#1A2130" />
+        <rect x={1020} y={200} width={760} height={760} rx={28} fill="#1A2130" opacity={0.35 + 0.65 * o} />
+        <rect x={780} y={200} width={80} height={760} fill={RED} opacity={0.2 + 0.15 * Math.sin(frame / 4)} />
+        {Array.from({ length: N }).map((_, i) => (
+          <g key={i}>
+            <circle cx={fixedX(i)} cy={lane(i)} r={14} fill={i < jammed ? RED : '#8A93A6'} />
+            <circle cx={backX(i)} cy={lane(i)} r={14} fill={i < through ? accent : '#8A93A6'} opacity={o} />
+          </g>
+        ))}
+        <rect x={1700} y={200} width={80} height={760} fill={accent} opacity={0.18 * o} />
+      </svg>
+      <div style={{ position: 'absolute', left: 100, width: 760, top: 110, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 52, color: RED }}>Everyone retries at once</div>
+      <div style={{ position: 'absolute', left: 1020, width: 760, top: 110, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 52, color: accent, opacity: o }}>Back off, at random</div>
+      <div style={{ position: 'absolute', left: 100, width: 760, top: 985, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 40, color: '#C9D3E0' }}>{jammed} of {N} stuck</div>
+      <div style={{ position: 'absolute', left: 1020, width: 760, top: 985, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 40, color: '#C9D3E0', opacity: o }}>{through} of {N} through</div>
+    </AbsoluteFill>
+  );
+}
+
+/** Three slot machines: each pull adds a win or a loss to its tally; the best one lights up. */
+export function Bandit() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const RED = '#F0605D';
+  const rates = [0.3, 0.75, 0.45];
+  const pulls = Math.floor(frame / Math.round(fps * 0.55));
+  const results = Array.from({ length: pulls }).map((_, k) => {
+    const m = k % 3;
+    const win = ((k * 7919 + m * 104729) % 100) / 100 < rates[m];
+    return { m, win };
+  });
+  const best = 1;
+  const lit = frame > fps * 6;
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', gap: 90 }}>
+        {rates.map((_, m) => {
+          const mine = results.filter((r) => r.m === m);
+          const wins = mine.filter((r) => r.win).length;
+          const pulling = results.length && results[results.length - 1].m === m;
+          const lever = pulling ? interpolate(frame % Math.round(fps * 0.55), [0, 5, 14], [0, 40, 0], { extrapolateRight: 'clamp' }) : 0;
+          const glow = lit && m === best;
+          return (
+            <div key={m} style={{ width: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }}>
+              <svg width={380} height={420}>
+                <rect x={20} y={40} width={290} height={360} rx={36} fill={glow ? accent : '#2A3246'} />
+                <rect x={50} y={90} width={230} height={120} rx={14} fill="#0E1420" />
+                {[0, 1, 2].map((k) => (
+                  <text key={k} x={88 + k * 77} y={170} fontSize={64} textAnchor="middle" fill={glow ? accent : '#F5B84A'}>
+                    {['?', '★', '?'][(k + pulls + m) % 3]}
+                  </text>
+                ))}
+                <g transform={`rotate(${lever} 330 120)`}>
+                  <line x1={330} y1={120} x2={330} y2={30} stroke="#C9D3E0" strokeWidth={10} strokeLinecap="round" />
+                  <circle cx={330} cy={26} r={20} fill={RED} />
+                </g>
+                <text x={165} y={300} fontSize={44} textAnchor="middle" fill="#FFFFFF" fontFamily={FONT} fontWeight={800}>
+                  {['A', 'B', 'C'][m]}
+                </text>
+              </svg>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, width: 300, justifyContent: 'center' }}>
+                {mine.map((r, k) => (
+                  <div key={k} style={{ width: 22, height: 22, borderRadius: 11, background: r.win ? accent : RED, opacity: rise(frame, k * 3 * Math.round(fps * 0.55) + m * Math.round(fps * 0.55), 6) }} />
+                ))}
+              </div>
+              <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 40, color: glow ? accent : '#C9D3E0' }}>
+                {mine.length ? `${wins} of ${mine.length} paid` : 'not tried yet'}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** A lifetime of evenings: early on most are new places (explore), late on most are favourites (exploit). */
+export function Horizon() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const AMBER = '#F5B84A';
+  const cols = 30;
+  const rows = 6;
+  const shown = Math.min(cols, Math.floor(frame / Math.max(1, Math.round(fps * 0.18))));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 120, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 78, color: C.text }}>
+        <span style={{ color: accent }}>Explore</span> early. <span style={{ color: AMBER }}>Enjoy</span> late.
+      </div>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        {Array.from({ length: shown }).map((_, c) =>
+          Array.from({ length: rows }).map((__, r) => {
+            const t = c / (cols - 1);
+            const isNew = ((c * 31 + r * 17) % 100) / 100 < 0.95 - 0.95 * t ** 0.8;
+            return <circle key={`${c}-${r}`} cx={180 + c * 54} cy={420 + r * 64} r={19} fill={isNew ? accent : AMBER} opacity={rise(frame, c * Math.round(fps * 0.18), 8)} />;
+          }),
+        )}
+        <line x1={160} y1={850} x2={1760} y2={850} stroke="#4A5468" strokeWidth={4} />
+        <text x={160} y={905} fill="#8A93A6" fontFamily={FONT} fontSize={36}>you arrive</text>
+        <text x={1760} y={905} fill="#8A93A6" fontFamily={FONT} fontSize={36} textAnchor="end">time running out</text>
+      </svg>
+      <div style={{ position: 'absolute', bottom: 60, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 60, fontFamily: FONT, fontSize: 38, color: '#C9D3E0' }}>
+        <span><span style={{ color: accent }}>●</span> somewhere new</span>
+        <span><span style={{ color: AMBER }}>●</span> a favourite</span>
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** Sorting cost: ten cards sort fast, a hundred take far more than ten times the comparisons. */
+export function SortCost() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const RED = '#F0605D';
+  const hundredAt = cue(shot, 'Sort a hundred', fps, { fallback: 0.35 });
+  const panel = (n: number, x: number, start: number, total: number, color: string) => {
+    const t = Math.max(0, Math.min(1, (frame - start) / (fps * (n === 10 ? 1.5 : 5))));
+    const comps = Math.round(total * Easing.inOut(Easing.cubic)(t));
+    const cols = n === 10 ? 10 : 20;
+    const size = n === 10 ? 52 : 28;
+    return (
+      <div style={{ position: 'absolute', left: x, top: 230, width: 760, opacity: rise(frame, start - 6, 12) }}>
+        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 56, color: '#FFFFFF', textAlign: 'center' }}>{n} books</div>
+        <svg width={760} height={420} style={{ marginTop: 30 }}>
+          {Array.from({ length: n }).map((_, i) => {
+            const rank = (i * 37) % n;
+            const sorted = t > (rank + 1) / n;
+            const col = (sorted ? rank : i) % cols;
+            const row = Math.floor((sorted ? rank : i) / cols);
+            const h = n === 10 ? 40 + ((rank * 53) % 60) : 18 + ((rank * 53) % 50);
+            return <rect key={i} x={20 + col * (size + 8)} y={40 + row * 80 + (80 - h)} width={size} height={h} rx={5} fill={sorted ? color : '#5E6779'} />;
+          })}
+        </svg>
+        <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 96, color, textAlign: 'center' }}>{comps.toLocaleString('en')}</div>
+        <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 36, color: '#C9D3E0', textAlign: 'center' }}>comparisons by hand</div>
+      </div>
+    );
+  };
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      {panel(10, 120, 6, 45, accent)}
+      {panel(100, 1040, hundredAt, 4950, RED)}
     </AbsoluteFill>
   );
 }

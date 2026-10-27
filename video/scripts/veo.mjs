@@ -25,6 +25,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+
+import { ffbin } from './ffbin.mjs';
+
+const FFMPEG = ffbin('ffmpeg');
 
 const VIDEO = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PRIVATE = path.join(VIDEO, '..', '..', 'German-Citizenship-Videos');
@@ -82,11 +87,20 @@ let log = logText;
 for (const c of todo) {
   // Gemini Omni through the Interactions API (Veo's predictLongRunning endpoint was retired, Oct 2026).
   const input = [];
+  // `referenceFrom`: a frame of an earlier clip of this episode keeps its character the same.
+  if (c.referenceFrom && !c.reference) {
+    const src = manifest.clips.find((x) => x.id === c.referenceFrom);
+    const png = path.join(CLIPS, `${c.referenceFrom}.reference.png`);
+    if (src && fs.existsSync(path.join(CLIPS, src.file)) && !fs.existsSync(png))
+      execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-ss', String(c.referenceAt ?? 2), '-i', path.join(CLIPS, src.file), '-frames:v', '1', png]);
+    if (fs.existsSync(png)) input.push({ type: 'image', data: fs.readFileSync(png).toString('base64'), mime_type: 'image/png' });
+    else throw new Error(`${c.id}: generate ${c.referenceFrom} first`);
+  }
   if (c.reference) {
     const file = path.join(KIT, c.reference);
     input.push({ type: 'image', data: fs.readFileSync(file).toString('base64'), mime_type: 'image/png' });
   }
-  const look = c.reference ? ' The character must look exactly like the person in this reference image (same face, hair, clothes and costume), drawn in the same flat 2D cartoon style.' : '';
+  const look = c.reference || c.referenceFrom ? ' The character must look exactly like the person in this reference image (same face, hair, clothes and costume), drawn in the same flat 2D cartoon style.' : '';
   input.push({ type: 'text', text: `Create one ${c.seconds ?? 8}-second video, 16:9 landscape, no on-screen text, no speech.${look} ${c.prompt}` });
   let result = 'ok';
   try {

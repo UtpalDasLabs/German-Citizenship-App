@@ -27,8 +27,8 @@ Script as written: the private repo's series/logic-to-live-by/04-explore-exploit
 
 [calm] Friday night. There's your favourite restaurant, where you know every dish is good. And there's the new place that opened next door. Do you go back to the one you love? Or do you take a chance on something new, and maybe waste your evening?
 
-> SCENE (photo): Hands sketching.
-> sketch | Logic to Live By | color key
+> SCENE (line): Series card.
+> Logic to Live By
 
 [warmly] I'm Utpal, and this is Logic to Live By: simple rules for better decisions.
 
@@ -42,8 +42,7 @@ Script as written: the private repo's series/logic-to-live-by/04-explore-exploit
 
 ## Explore or exploit
 
-> SCENE (photo): A row of slot machines.
-> slots | Which machine pays best? | color key
+> SCENE (bandit): Three slot machines, pulls tallied, the best one lights up.
 
 [calm] Mathematicians picture it as a row of slot machines. Each one pays out at a different rate, but you don't know which is best. Every pull is a choice. Play the machine that has paid well so far? Or try another one, to learn something?
 
@@ -156,8 +155,7 @@ Your career. Early on, try different roles and teams, even sideways moves. Later
 
 ## The takeaway
 
-> SCENE (photo): A clock.
-> clock3 | Not "new or familiar?" but "how long do I have?" | color key
+> SCENE (horizon): A lifetime of evenings: new places early, favourites late.
 
 [calm] So the question isn't "new or familiar?" It's "how long do I have?" A lot of time ahead: explore. Not much time left: enjoy the best you've found.
 
@@ -166,8 +164,7 @@ Your career. Early on, try different roles and teams, even sideways moves. Later
 
 [calm] Explore early. Enjoy late.
 
-> SCENE (photo): An open book; a messy desk.
-> book | Algorithms to Live By · Brian Christian & Tom Griffiths | color
+> SCENE (photo): a messy desk.
 > desk | Next: why a messy desk can be smart. | color key @ Next time
 
 [calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description. Next time on Logic to Live By: why a messy desk can be smart, and when tidying up is a waste of time.
