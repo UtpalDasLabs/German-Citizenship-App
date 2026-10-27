@@ -90,7 +90,7 @@ for (const c of todo) {
   // `referenceFrom`: a frame of an earlier clip of this episode keeps its character the same.
   if (c.referenceFrom && !c.reference) {
     const src = manifest.clips.find((x) => x.id === c.referenceFrom);
-    const png = path.join(CLIPS, `${c.referenceFrom}.reference.png`);
+    const png = path.join(CLIPS, 'veo', 'references', `${c.referenceFrom}.png`);
     if (src && fs.existsSync(path.join(CLIPS, src.file)) && !fs.existsSync(png))
       execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-ss', String(c.referenceAt ?? 2), '-i', path.join(CLIPS, src.file), '-frames:v', '1', png]);
     if (fs.existsSync(png)) input.push({ type: 'image', data: fs.readFileSync(png).toString('base64'), mime_type: 'image/png' });
