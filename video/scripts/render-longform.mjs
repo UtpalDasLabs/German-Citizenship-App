@@ -17,7 +17,7 @@
  * timestamps, and handed to the composition as one plan.
  */
 import { execFileSync, spawnSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { ffbin } from './ffbin.mjs';
@@ -74,6 +74,29 @@ const SERIES_KEY = script.meta.series ?? null;
 /** --short: a vertical short; its pictures and clips are the long video's (`media:`). */
 const SHORT = process.argv.includes('--short');
 const MEDIA = script.meta.media ?? topic;
+
+const readJsonTop = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null);
+// No stock clip twice: not twice in this video, and not one already used by
+// another episode. A short (`media:` set) reuses its long video's clips.
+// Override for a deliberate callback with --allow-repeat.
+if (!script.meta.media && !args.includes('--allow-repeat')) {
+  const dir = join(VIDEO, 'longform');
+  const key = (c) => (c.source === 'pixabay' ? `pixabay:${c.pixabayId}` : c.file ? `file:${c.file}` : null);
+  const mine = readJsonTop(join(dir, `${topic}.clips.json`))?.clips ?? [];
+  const seen = new Map();
+  for (const c of mine) {
+    const k = key(c);
+    if (!k) continue;
+    if (seen.has(k)) throw new Error(`${topic}: clip ${k} is used twice (${seen.get(k)} and ${c.id}). Pick another clip.`);
+    seen.set(k, c.id);
+  }
+  for (const f of readdirSync(dir).filter((f) => f.endsWith('.clips.json') && f !== `${topic}.clips.json` && !f.includes('-pilot'))) {
+    for (const c of readJsonTop(join(dir, f))?.clips ?? []) {
+      const k = key(c);
+      if (k && seen.has(k)) throw new Error(`${topic}: clip ${k} (${seen.get(k)}) is already used in ${f.replace('.clips.json', '')}. Pick another clip.`);
+    }
+  }
+}
 const SERIES = SERIES_KEY ? JSON.parse(readFileSync(join(VIDEO, 'longform', 'series.json'), 'utf8'))[SERIES_KEY] : null;
 if (SERIES_KEY && !SERIES) throw new Error(`Unknown series "${SERIES_KEY}" (longform/series.json)`);
 // Music and effects from ElevenLabs (npm run sound:elevenlabs) when they have

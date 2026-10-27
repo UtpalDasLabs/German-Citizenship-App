@@ -32,6 +32,7 @@ const THUMBS = [
   { topic: 'logic-backoff', series: 'logic', photo: 'thumb-phone', side: true, lines: ['Try again,', 'wait longer'], accent: 'longer', tag: '1 · 2 · 4 · 8: the smart way to retry' },
   { topic: 'logic-explore', series: 'logic', photo: 'thumb-restaurant', side: true, lines: ['New, or your', 'favourite?'], accent: 'favourite?', tag: 'The maths of explore vs exploit' },
   { topic: 'logic-sorting', series: 'logic', photo: 'thumb-desk', side: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
+  { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 
 /** Look, then leap, as ten doors: four only looked at, the leap glowing. */
