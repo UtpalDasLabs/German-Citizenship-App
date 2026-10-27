@@ -17,33 +17,10 @@
       "seconds": 9
     },
     {
-      "id": "karneval",
-      "source": "pixabay",
-      "pixabayId": 82769,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by ranidesign from Pixabay: https://pixabay.com/videos/id-82769/"
-    },
-    {
-      "id": "costumes",
-      "source": "pixabay",
-      "pixabayId": 62825,
-      "start": 3,
-      "seconds": 9,
-      "credit": "Video by Engin_Akyurt from Pixabay: https://pixabay.com/videos/id-62825/"
-    },
-    {
       "id": "shop-halloween",
       "source": "pixabay",
       "pixabayId": 137368,
       "start": 0,
-      "seconds": 9
-    },
-    {
-      "id": "lanterns",
-      "source": "pixabay",
-      "pixabayId": 125071,
-      "start": 3,
       "seconds": 9
     },
     {

@@ -2,8 +2,6 @@
 
 ## Video
 
-- Video by ranidesign from Pixabay: https://pixabay.com/videos/id-82769/
-- Video by Engin_Akyurt from Pixabay: https://pixabay.com/videos/id-62825/
 
 ## Voice and music
 

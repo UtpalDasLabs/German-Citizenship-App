@@ -51,9 +51,13 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [warmly] Noah's neighbour, Oma Hildegard, opens her door. "Halloween?" she says. "We barely had it here until about thirty years ago."
 
-> SCENE (photo): A Karneval parade; costumes and confetti.
-> karneval | 1991: Karneval cancelled. | color key
-> costumes |  | color @ costume makers
+> SCENE (kit): A quiet city: no Karneval in 1991.
+> bg | city-day
+> text | 1991: no Karneval
+> char | noah | shrug | 0.35
+> char | oma | point | 0.65 | flip @ costume makers
+> text | A second season? @ second season
+> prop | pumpkin | 0.82 | 1 @ Halloween
 
 [calm] The story usually goes like this. In nineteen ninety-one, during the Gulf War, many towns cancelled [[Karneval]], the big costume season in February. The costume makers lost their best weeks of the year. So they looked for a second season, and found one in America: Halloween.
 
@@ -73,8 +77,12 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [warmly] "But we had something before," Oma says, and holds up a turnip. In many villages, children hollowed out turnips in autumn and carved faces into them, with a candle inside. [[Rübengeister]]: turnip ghosts, grinning in the dark.
 
-> SCENE (photo): Children with lanterns in the dark.
-> lanterns | Lantern walks: 11 November | color key
+> SCENE (kit): Children with lanterns for Saint Martin.
+> bg | night-street
+> text | 11 November: lantern walks
+> char | kid | stand | 0.4
+> prop | lantern | 0.5 | 1
+> char | noah | cheer | 0.7 | flip @ nothing new
 
 [calm] And in November, German children already walk through the dark with lanterns, for Saint Martin. So glowing faces and children out at night are nothing new here. Only the costumes and the sweets are.
 
