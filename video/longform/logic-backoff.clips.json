@@ -131,14 +131,6 @@
       "credit": "Video by Alanchevereau from Pixabay: https://pixabay.com/videos/id-22728/"
     },
     {
-      "id": "cafe",
-      "source": "pixabay",
-      "pixabayId": 27230,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-27230/"
-    },
-    {
       "id": "restaurant",
       "source": "pixabay",
       "pixabayId": 10878,
@@ -161,14 +153,6 @@
       "start": 1,
       "seconds": 8,
       "credit": "Video by LisaRedfern from Pixabay: https://pixabay.com/videos/id-1335/"
-    },
-    {
-      "id": "redial",
-      "source": "file",
-      "file": "kling/redial.mp4",
-      "credit": "Made with Kling AI",
-      "start": 0,
-      "seconds": 5
     },
     {
       "id": "aloha1971",
@@ -209,7 +193,7 @@
       "id": "omni-friend-later",
       "source": "veo",
       "file": "veo/backoff/friend-later.mp4",
-      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. SAM: a man in his late twenties, short ginger curly hair, round glasses, a green hoodie, jeans. Same Sam and a friend with long black hair and a yellow jacket meet happily at a caf\u00e9 table after a long time; they laugh and hug. Warm afternoon light, happy ending mood.",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. SAM: a man in his late twenties, short ginger curly hair, round glasses, a green hoodie, jeans. Same Sam and a friend with long black hair and a yellow jacket meet happily at a café table after a long time; they laugh and hug. Warm afternoon light, happy ending mood.",
       "seconds": 8,
       "credit": "Made with Google Veo",
       "referenceFrom": "omni-hook-redial"

@@ -13,7 +13,7 @@ status: draft 1
 ## Cold open
 
 > SCENE (photo): Redialling at the kitchen table; a call centre; an old phone.
-> redial | Busy. Busy. Busy. | color key
+> omni-hook-redial | Busy. Busy. Busy. | color key
 > switchboard |  | color @ Thousands of other people
 > crowd |  | color @ at exactly the same moment
 
@@ -105,18 +105,17 @@ Two. Things with a fixed schedule. If appointments are released every Monday at 
 ## Three everyday uses
 
 > SCENE (photo): A phone on a desk.
-> phone2 | Busy? 2 minutes, then 5, then 15. | color key
+> omni-quarter-past | Busy? 2 minutes, then 5, then 15. | color key
 
 The hotline. If it's busy, don't redial ten times in a minute. Try again in two minutes, then five, then fifteen. And if everyone calls at nine, you can call at a quarter past twelve.
 
 > SCENE (photo): A letter box; a laptop.
-> letters | Follow up: a week, two weeks, a month. | color key
+> omni-follow-up | Follow up: a week, two weeks, a month. | color key
 
 Job applications, or any message that gets no answer. Follow up after a week. If there's still nothing, after two weeks. Then a month. You stay on their radar without becoming the person they avoid.
 
 > SCENE (photo): Friends at a café table.
-> friends | Forgive fast. Then back off. | color key @ Forgive quickly
-> cafe |  | color @ You never close the door
+> omni-friend-later | Forgive fast. Then back off. | color key @ Forgive quickly
 
 [warmly] And people. A friend cancels on you. Do you cut them off? Or do you keep making plans every weekend? Backoff suggests a middle way. Forgive quickly the first time. If it happens again, wait a bit longer before the next invitation. And again, longer still. You never close the door. But your time goes where it's valued.
 

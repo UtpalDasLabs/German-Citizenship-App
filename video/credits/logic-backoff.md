@@ -21,11 +21,13 @@
 - Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-174003/
 - Video by KIMDAEJEUNG from Pixabay: https://pixabay.com/videos/id-41211/
 - Video by Alanchevereau from Pixabay: https://pixabay.com/videos/id-22728/
-- Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-27230/
 - Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-10878/
 - Video by LisaRedfern from Pixabay: https://pixabay.com/videos/id-1335/
 - Made with Kling AI
-- Made with Kling AI
+- Made with Google Veo
+- Made with Google Veo
+- Made with Google Veo
+- Made with Google Veo
 
 ## Voice and music
 

@@ -3,22 +3,6 @@
   "note": "Pixabay stock (Content License).",
   "clips": [
     {
-      "id": "restaurant",
-      "source": "pixabay",
-      "pixabayId": 23258,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by RafterJr72 from Pixabay: https://pixabay.com/videos/id-23258/"
-    },
-    {
-      "id": "restaurant2",
-      "source": "pixabay",
-      "pixabayId": 220710,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by VikasTobria from Pixabay: https://pixabay.com/videos/id-220710/"
-    },
-    {
       "id": "clock",
       "source": "pixabay",
       "pixabayId": 55443,
@@ -107,14 +91,6 @@
       "credit": "Video by twawer2000 from Pixabay: https://pixabay.com/videos/id-136458/"
     },
     {
-      "id": "couple",
-      "source": "pixabay",
-      "pixabayId": 127943,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-127943/"
-    },
-    {
       "id": "friends",
       "source": "pixabay",
       "pixabayId": 48087,
@@ -129,14 +105,6 @@
       "start": 1,
       "seconds": 8,
       "credit": "Video by u_jorg73foes from Pixabay: https://pixabay.com/videos/id-137186/"
-    },
-    {
-      "id": "cafe",
-      "source": "pixabay",
-      "pixabayId": 202910,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by Visual_Laurence from Pixabay: https://pixabay.com/videos/id-202910/"
     },
     {
       "id": "desk",
@@ -158,7 +126,7 @@
       "id": "omni-new-city",
       "source": "veo",
       "file": "veo/explore/new-city.mp4",
-      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. Same Lena with a suitcase arrives in a new city and, in a quick happy montage, tries a different caf\u00e9, a bakery and a street-food stall, ticking them off on a little map.",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. Same Lena with a suitcase arrives in a new city and, in a quick happy montage, tries a different café, a bakery and a street-food stall, ticking them off on a little map.",
       "seconds": 8,
       "credit": "Made with Google Veo",
       "referenceFrom": "omni-hook-two-doors"
@@ -167,7 +135,7 @@
       "id": "omni-older-couple",
       "source": "veo",
       "file": "veo/explore/older-couple.mp4",
-      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. An elderly couple, a man with a white beard and a woman with grey hair in a bun, sit at their usual caf\u00e9 table; the waiter greets them by name and brings their usual order; they smile at each other contentedly.",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. An elderly couple, a man with a white beard and a woman with grey hair in a bun, sit at their usual café table; the waiter greets them by name and brings their usual order; they smile at each other contentedly.",
       "seconds": 8,
       "credit": "Made with Google Veo"
     },
@@ -175,7 +143,7 @@
       "id": "omni-last-visit",
       "source": "veo",
       "file": "veo/explore/last-visit.mp4",
-      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. Same Lena, on her last evening before moving away, walks back into her favourite little caf\u00e9; the owner recognises her and brings her favourite dish; she smiles, happy. Warm evening light, happy ending mood.",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. Same Lena, on her last evening before moving away, walks back into her favourite little café; the owner recognises her and brings her favourite dish; she smiles, happy. Warm evening light, happy ending mood.",
       "seconds": 8,
       "credit": "Made with Google Veo",
       "referenceFrom": "omni-hook-two-doors"

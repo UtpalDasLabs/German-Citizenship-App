@@ -3,22 +3,6 @@
   "note": "Pixabay stock (Content License).",
   "clips": [
     {
-      "id": "typing",
-      "source": "pixabay",
-      "pixabayId": 227133,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by kurt_BID from Pixabay: https://pixabay.com/videos/id-227133/"
-    },
-    {
-      "id": "laptop",
-      "source": "pixabay",
-      "pixabayId": 1058,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1058/"
-    },
-    {
       "id": "desk",
       "source": "pixabay",
       "pixabayId": 80314,
@@ -139,14 +123,6 @@
       "credit": "Video by u_vwhnf4huq0 from Pixabay: https://pixabay.com/videos/id-171409/"
     },
     {
-      "id": "kitchen",
-      "source": "pixabay",
-      "pixabayId": 267,
-      "start": 2,
-      "seconds": 8,
-      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-267/"
-    },
-    {
       "id": "photos",
       "source": "pixabay",
       "pixabayId": 169445,
@@ -161,14 +137,6 @@
       "start": 1,
       "seconds": 8,
       "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1028/"
-    },
-    {
-      "id": "papers2",
-      "source": "pixabay",
-      "pixabayId": 13053,
-      "start": 4,
-      "seconds": 8,
-      "credit": "Video by HolgersFotografie from Pixabay: https://pixabay.com/videos/id-13053/"
     },
     {
       "id": "clothes",
@@ -200,9 +168,10 @@
       "source": "veo",
       "file": "veo/sorting/messy-desk-win.mp4",
       "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. JONAS: a man in his thirties, dark short beard, messy brown hair, a navy cardigan over a light shirt. Same Jonas at a gloriously messy desk piled with papers; a friend teases him; he calmly pulls exactly the right sheet from the pile in one second and holds it up, triumphant. Happy ending mood.",
-      "seconds": 8,
+      "seconds": 7,
       "credit": "Made with Google Veo",
-      "referenceFrom": "omni-hook-folders"
+      "referenceFrom": "omni-hook-folders",
+      "start": 1
     }
   ]
 }

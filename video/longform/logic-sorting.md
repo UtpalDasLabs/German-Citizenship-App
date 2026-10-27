@@ -21,8 +21,7 @@ Script as written: the private repo's series/logic-to-live-by/05-sorting-searchi
 ## Cold open
 
 > SCENE (photo): An inbox; hands at a keyboard.
-> typing | Does filing help you find things? | color key
-> laptop |  | color @ Researchers measured it
+> omni-hook-folders | Does filing help you find things? | color key
 
 [calm] You have folders for everything. Work, bills, travel, the car. Every email gets filed. It feels responsible. But here's a question nobody asks: does all that filing actually help you find things? Researchers measured it. And the answer is: barely.
 
@@ -143,7 +142,7 @@ Three. You don't know what to search for. Search works when you remember a word.
 Email. Stop filing. Keep one archive and search it. If you want, keep one or two folders for things that really matter, like contracts.
 
 > SCENE (photo): A kitchen drawer.
-> kitchen | Daily spoons: a fixed place. The garlic press: the jumble. | color key
+> omni-kitchen-drawer | Daily spoons: a fixed place. The garlic press: the jumble. | color key
 
 [calm] The kitchen drawer. The spoons you use every day deserve a fixed place. The garlic press you use twice a year can live in the jumble.
 
@@ -160,7 +159,7 @@ Photos. Don't spend evenings sorting thousands of pictures into albums. Most pho
 [calm] Order isn't a virtue. It's an investment. Spend it where you'll search often. Everywhere else, a pile is fine.
 
 > SCENE (photo): A desk, papers everywhere.
-> papers2 | It's not a mess. It's an algorithm. | color key @ It's an algorithm
+> omni-messy-desk-win | It's not a mess. It's an algorithm. | color key @ It's an algorithm
 
 [warmly] So the next time someone teases you about your messy desk, you can tell them it's not a mess. It's an algorithm.
 

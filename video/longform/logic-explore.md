@@ -22,8 +22,7 @@ Script as written: the private repo's series/logic-to-live-by/04-explore-exploit
 ## Cold open
 
 > SCENE (photo): A restaurant at night; a new place next door.
-> restaurant | Your favourite, or the new place? | color key
-> restaurant2 |  | color @ the new place
+> omni-hook-two-doors | Your favourite, or the new place? | color key
 
 [calm] Friday night. There's your favourite restaurant, where you know every dish is good. And there's the new place that opened next door. Do you go back to the one you love? Or do you take a chance on something new, and maybe waste your evening?
 
@@ -127,7 +126,7 @@ Later, mathematicians found better methods. One of the best is simple to say: be
 ## Why older people stick to favourites
 
 > SCENE (photo): An older couple at a café.
-> couple | Fewer casual friends. As many close ones. | color key @ fewer casual friends
+> omni-older-couple | Fewer casual friends. As many close ones. | color key @ fewer casual friends
 
 [calm] This rule explains something about growing older. Studies led by the psychologist Laura Carstensen at Stanford found that older people have fewer casual friends, but about as many close ones as younger people. And they're mostly happy with that.
 
@@ -149,7 +148,7 @@ A new city. In your first months, say yes to everything: new cafés, new routes,
 Your career. Early on, try different roles and teams, even sideways moves. Later, build on what you're best at.
 
 > SCENE (photo): A café you love.
-> cafe | A last visit? Order the dish you know. | color key
+> omni-last-visit | A last visit? Order the dish you know. | color key
 
 [warmly] And a last visit. If you're leaving a place, or seeing a friend for the last time in a while, don't experiment. Go back to the café you love. Order the dish you know.
 
