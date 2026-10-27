@@ -13,10 +13,9 @@
     {
       "id": "files",
       "source": "pixabay",
-      "pixabayId": 9772,
-      "start": 0,
-      "seconds": 8,
-      "credit": "Video by HazarMan from Pixabay: https://pixabay.com/videos/id-9772/"
+      "pixabayId": 87592,
+      "start": 1,
+      "seconds": 8
     },
     {
       "id": "papers",
@@ -37,10 +36,9 @@
     {
       "id": "box",
       "source": "pixabay",
-      "pixabayId": 9771,
+      "pixabayId": 4878,
       "start": 1,
-      "seconds": 8,
-      "credit": "Video by HazarMan from Pixabay: https://pixabay.com/videos/id-9771/"
+      "seconds": 8
     },
     {
       "id": "library",
@@ -93,10 +91,9 @@
     {
       "id": "typing2",
       "source": "pixabay",
-      "pixabayId": 95968,
+      "pixabayId": 3174,
       "start": 1,
-      "seconds": 8,
-      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-95968/"
+      "seconds": 8
     },
     {
       "id": "clock",
@@ -141,10 +138,9 @@
     {
       "id": "clothes",
       "source": "pixabay",
-      "pixabayId": 27727,
-      "start": 2,
-      "seconds": 8,
-      "credit": "Video by RaniRamli from Pixabay: https://pixabay.com/videos/id-27727/"
+      "pixabayId": 165820,
+      "start": 1,
+      "seconds": 8
     },
     {
       "id": "omni-hook-folders",
