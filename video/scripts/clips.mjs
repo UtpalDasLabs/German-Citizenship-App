@@ -114,7 +114,10 @@ for (const c of manifest.clips) {
       cut(raw, dst, c.start, c.seconds, c.speed);
       fs.rmSync(raw);
       c.credit = `"${info.title ?? 'Video'}" from Vecteezy: https://www.vecteezy.com/video/${c.vecteezyId}`;
-    } else if (c.source === 'file') {
+    } else if (c.source === 'veo' && !fs.existsSync(path.join(CLIP_ROOT, c.file))) {
+      console.log(`${c.id}: not generated yet (npm run veo -- ${topic}); skipped`);
+      continue;
+    } else if (c.source === 'file' || c.source === 'veo') {
       cut(path.isAbsolute(c.file) ? c.file : path.join(CLIP_ROOT, c.file), dst, c.start, c.seconds, c.speed);
     } else {
       throw new Error(`${c.id}: unknown source "${c.source}"`);

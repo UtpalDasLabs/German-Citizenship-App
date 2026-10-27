@@ -22,6 +22,7 @@
     "sound:elevenlabs": "NODE_USE_ENV_PROXY=1 node scripts/sound-elevenlabs.mjs",
     "thumbnails:series": "node scripts/series-thumbnails.mjs",
     "clips": "NODE_USE_ENV_PROXY=1 node scripts/clips.mjs",
+    "veo": "NODE_USE_ENV_PROXY=1 node scripts/veo.mjs",
     "shorts:series": "node scripts/series-shorts.mjs"
   },
   "dependencies": {
