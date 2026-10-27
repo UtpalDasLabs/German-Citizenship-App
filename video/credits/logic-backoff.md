@@ -8,25 +8,22 @@
 ## Video
 
 - Video by izhar-ahamed from Pixabay: https://pixabay.com/videos/id-286687/
-- Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10824/
-- Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/
-- Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/
-- Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/
-- Video by Ri_Ya from Pixabay: https://pixabay.com/videos/id-165336/
-- Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-15615/
+- Video by cipnt from Pixabay: https://pixabay.com/videos/id-14906/
+- Video by TBIT from Pixabay: https://pixabay.com/videos/id-2176/
+- Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-165247/
+- Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3630/
+- Video by Ceos_Stock from Pixabay: https://pixabay.com/videos/id-43613/
 - Video by MattHrusc from Pixabay: https://pixabay.com/videos/id-26452/
 - Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3627/
-- Video by MagicTV from Pixabay: https://pixabay.com/videos/id-88922/
-- Video by MagicTV from Pixabay: https://pixabay.com/videos/id-87884/
-- Video by tv84 from Pixabay: https://pixabay.com/videos/id-6714/
-- Video by EnchantedStudios from Pixabay: https://pixabay.com/videos/id-197974/
+- Video by DRONESTOCKCLIPS from Pixabay: https://pixabay.com/videos/id-101869/
+- Video by ChristianBodhi from Pixabay: https://pixabay.com/videos/id-214855/
+- Video by EnchantedStudios from Pixabay: https://pixabay.com/videos/id-197973/
 - Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-174003/
 - Video by KIMDAEJEUNG from Pixabay: https://pixabay.com/videos/id-41211/
-- Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-1623/
+- Video by Alanchevereau from Pixabay: https://pixabay.com/videos/id-22728/
 - Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-27230/
-- Video by stefaniejockschat from Pixabay: https://pixabay.com/videos/id-185096/
-- Video by RafterJr72 from Pixabay: https://pixabay.com/videos/id-23258/
-- Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/
+- Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-10878/
+- Video by LisaRedfern from Pixabay: https://pixabay.com/videos/id-1335/
 - Made with Kling AI
 - Made with Kling AI
 
