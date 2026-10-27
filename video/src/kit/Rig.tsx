@@ -9,8 +9,9 @@
  *   > bg | us-house                  a clip or photo of this video, behind him
  *   > walk | 0.12 | 0.48             from x to x (0-1); starts at the scene start or @ cue
  *   > wave @ rings the bell          raises the arm, waves, lowers it
- *   > face | worried @ nobody        smile, sad, laugh, angry, neutral, frown, surprised, worried
+ *   > face | worried @ nobody        smile, wink, sad, laugh, angry, neutral, frown, surprised, worried
  *   > size | 0.7                     height as a share of the frame (default 0.66)
+ *   > costume | witch                a wizard hat, a cape and a pumpkin candy bucket
  */
 import React from 'react';
 import { AbsoluteFill, Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
@@ -73,11 +74,13 @@ export function RigScene({ topic }: { topic: string }) {
   const faces = lines.filter((l) => l.kind === 'face' && frame >= l.at - 2);
   const face = faces.length ? faces[faces.length - 1].args[0] : 'smile';
   const blinkOn = frame % 96 > 91 && face === 'smile';
+  const costume = lines.find((l) => l.kind === 'costume')?.args[0];
+  // The cape trails the body (follow-through): it swings against the walk and settles after he stops.
+  const capeSway = (walking ? -Math.sin(phase - 1.2) * 5 * speed : 0) - lean * 1.2;
 
   const src = (p: string) => staticFile(`kit/${who}/${p}.png`);
   const armDown = (side: 0 | 1, angle: number) => (
-    <Img
-      src={src('arm-down')}
+    <div
       style={{
         position: 'absolute',
         left: rig.shoulders[side] - 87,
@@ -87,7 +90,16 @@ export function RigScene({ topic }: { topic: string }) {
         transformOrigin: '87px 22px',
         transform: `scaleX(${side ? -1 : 1}) rotate(${7 + angle}deg)`,
       }}
-    />
+    >
+      <Img src={src('arm-down')} style={{ position: 'absolute', inset: 0, width: 174, height: 624 }} />
+      {costume && side === 1 && (
+        // The bucket hangs from the hand and swings a little behind the arm (overlapping action).
+        <Img
+          src={src('costume-bucket')}
+          style={{ position: 'absolute', left: -6, top: 540, width: 190, height: 224, transformOrigin: '95px 0px', transform: `rotate(${-angle * 0.8 + Math.sin(frame / 11) * 3}deg)` }}
+        />
+      )}
+    </div>
   );
   return (
     <AbsoluteFill>
@@ -114,6 +126,17 @@ export function RigScene({ topic }: { topic: string }) {
           }}
         >
           <div style={{ position: 'absolute', inset: 0, transformOrigin: '50% 100%', transform: `rotate(${lean}deg) scaleY(${squash * breathe}) scaleX(${2 - squash})` }}>
+            {costume && (
+              <svg width={rig.w} height={rig.h} style={{ position: 'absolute', left: 0, top: 0, overflow: 'visible' }}>
+                <g transform={`rotate(${capeSway} ${rig.w / 2} ${rig.shoulderY})`}>
+                  <path
+                    d={`M ${rig.shoulders[0] + 20} ${rig.shoulderY - 10} Q ${rig.w / 2} ${rig.shoulderY - 40} ${rig.shoulders[1] - 20} ${rig.shoulderY - 10} L ${rig.w + 40} 1300 Q ${rig.w * 0.75} ${1340 + Math.sin(frame / 7) * 14} ${rig.w / 2} 1310 Q ${rig.w * 0.25} ${1340 + Math.cos(frame / 7) * 14} -40 1300 Z`}
+                    fill="#4B2370"
+                  />
+                  <path d={`M ${rig.w / 2 - 60} ${rig.shoulderY - 28} L ${rig.w / 2 + 60} ${rig.shoulderY - 28} L ${rig.w / 2} ${rig.shoulderY + 30} Z`} fill="#F5B84A" />
+                </g>
+              </svg>
+            )}
             {armDown(1, -swing)}
             <Img src={src('body')} style={{ position: 'absolute', left: 0, top: 0, width: rig.w, height: rig.h }} />
             {raised ? (
@@ -144,6 +167,21 @@ export function RigScene({ topic }: { topic: string }) {
                 transform: `rotate(${tilt + lean * 0.5}deg)`,
               }}
             />
+            {costume && (
+              // The hat sits on the head and lags its tilt slightly.
+              <Img
+                src={src('costume-hat')}
+                style={{
+                  position: 'absolute',
+                  left: rig.head.x - 205,
+                  top: rig.head.y - 230,
+                  width: 410,
+                  height: 335,
+                  transformOrigin: '205px 520px',
+                  transform: `rotate(${(tilt + lean * 0.5) * 1.15}deg)`,
+                }}
+              />
+            )}
           </div>
         </div>
       </div>

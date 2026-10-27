@@ -16,6 +16,7 @@ status: test
 > SCENE (rig): Noah walks up to a decorated house, rings, waits, nobody comes.
 > bg | us-house
 > char | noah
+> costume | witch
 > walk | 0.1 | 0.42
 > face | surprised @ ready for Halloween
 > wave @ rings the bell
