@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Hero clips from Google's video models (Veo / omni) through the Gemini API.
+ * Hero clips from Google's video model (Gemini Omni; Veo's old endpoint was
+ * retired) through the Gemini API's Interactions endpoint.
  * Clips are listed in longform/<topic>.clips.json as
  *
  *   { "id": "noah-doorbell", "source": "veo", "file": "veo/halloween/noah-doorbell.mp4",
@@ -66,42 +67,42 @@ const manifestPath = path.join(VIDEO, 'longform', `${topic}.clips.json`);
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const todo = manifest.clips.filter((c) => c.source === 'veo' && (!only || c.id === only) && (only || !fs.existsSync(path.join(CLIPS, c.file))));
 const logText = fs.existsSync(LOG) ? fs.readFileSync(LOG, 'utf8') : '# Veo generations\n\n| When | Topic | Clip | Model | Seconds | Result |\n|---|---|---|---|---|---|\n';
-const used = logText.split('\n').filter((l) => l.startsWith(`| `) && l.includes(`| ${topic} |`)).length;
+const used = logText.split('\n').filter((l) => l.startsWith(`| `) && l.includes(`| ${topic} |`) && !l.includes('| failed')).length;
 console.log(`${topic}: ${todo.length} to generate, ${used} of ${MAX} already used for this topic.`);
 for (const c of todo) console.log(`  ${c.id} (${c.seconds ?? 8} s)${c.reference ? `, reference ${c.reference}` : ''}`);
 if (used + todo.length > MAX) throw new Error(`Over budget: ${used} used + ${todo.length} > ${MAX}. Ask the creator before going on.`);
 if (dry || !todo.length) process.exit(0);
 
-const model = process.env.VEO_MODEL ?? (await models()).map((m) => m.name.replace(/^models\//, '')).filter((n) => /veo/i.test(n)).sort().at(-1);
+// Veo models are often missing from the model list, so the default is named.
+const model = process.env.VEO_MODEL ?? 'gemini-omni-1.1-flash';
 if (!model) throw new Error('No Veo model available to this key; run with --list.');
 console.log(`model: ${model}`);
 
 let log = logText;
 for (const c of todo) {
-  const instance = { prompt: c.prompt };
+  // Gemini Omni through the Interactions API (Veo's predictLongRunning endpoint was retired, Oct 2026).
+  const input = [];
   if (c.reference) {
     const file = path.join(KIT, c.reference);
-    instance.image = { bytesBase64Encoded: fs.readFileSync(file).toString('base64'), mimeType: 'image/png' };
+    input.push({ type: 'image', data: fs.readFileSync(file).toString('base64'), mime_type: 'image/png' });
   }
-  const parameters = { aspectRatio: '16:9', ...(c.seconds ? { durationSeconds: c.seconds } : {}), ...(c.parameters ?? {}) };
+  const look = c.reference ? ' The character must look exactly like the person in this reference image (same face, hair, clothes and costume), drawn in the same flat 2D cartoon style.' : '';
+  input.push({ type: 'text', text: `Create one ${c.seconds ?? 8}-second video, 16:9 landscape, no on-screen text, no speech.${look} ${c.prompt}` });
   let result = 'ok';
   try {
-    let op = await api(`${API}/models/${model}:predictLongRunning`, { method: 'POST', body: JSON.stringify({ instances: [instance], parameters }) });
-    process.stdout.write(`${c.id}: generating`);
-    while (!op.done) {
+    process.stdout.write(`${c.id}: generating… `);
+    let it = await api(`${API}/interactions`, { method: 'POST', body: JSON.stringify({ model, response_modalities: ['video'], input }) });
+    while (it.status && !['completed', 'failed', 'cancelled'].includes(it.status)) {
       await new Promise((r) => setTimeout(r, 10000));
-      op = await api(`${API}/${op.name}`);
-      process.stdout.write('.');
+      it = await api(`${API}/interactions/${it.id}`);
     }
-    if (op.error) throw new Error(JSON.stringify(op.error));
-    const samples = op.response?.generateVideoResponse?.generatedSamples ?? op.response?.generatedVideos ?? [];
-    const uri = samples[0]?.video?.uri;
-    if (!uri) throw new Error(`no video in ${JSON.stringify(op.response).slice(0, 300)}`);
-    const res = await fetch(uri, { headers: { 'x-goog-api-key': KEY } });
+    const video = (it.steps ?? []).flatMap((s) => s.content ?? []).find((p) => p.type === 'video');
+    if (!video?.data) throw new Error(`no video (${it.status}): ${JSON.stringify(it).slice(0, 200)}`);
     const dst = path.join(CLIPS, c.file);
     fs.mkdirSync(path.dirname(dst), { recursive: true });
-    fs.writeFileSync(dst, Buffer.from(await res.arrayBuffer()));
-    console.log(` → ${dst}`);
+    fs.writeFileSync(dst, Buffer.from(video.data, 'base64'));
+    result = `ok, ${it.usage?.total_output_tokens ?? '?'} output tokens`;
+    console.log(`→ ${dst}`);
   } catch (e) {
     result = `failed: ${String(e.message ?? e).slice(0, 120)}`;
     console.log(`\n${c.id}: ${result}`);
