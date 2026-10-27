@@ -97,13 +97,14 @@
       "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like an animated explainer video; the character looks exactly like the reference image. Night, a quiet German residential street with tidy houses and warm lit windows. The young man in the wizard hat and purple cape walks up to a plain front door with no decorations, holding a pumpkin candy bucket. He presses the doorbell, waits hopefully, looks left and right. The door stays closed. He lowers his shoulders and looks a little disappointed. Slow camera push in. No text.",
       "reference": "noah/reference/noah-costume-white.png",
       "seconds": 8,
-      "credit": "Made with Google Veo"
+      "credit": "Made with Google Veo",
+      "speed": 0.8
     },
     {
       "id": "veo-noah-oma-turnip",
       "source": "veo",
       "file": "veo/halloween/noah-oma-turnip.mp4",
-      "prompt": "Same flat 2D cartoon style as the reference. A cosy German living room in the evening. A friendly grandmother with short grey curly hair, round glasses and a purple cardigan smiles and holds up a carved turnip lantern with a glowing candle inside, its face grinning. The young man in the wizard hat from the reference leans in, surprised, then laughs. Warm candlelight, gentle camera move. No text.",
+      "prompt": "Same flat 2D cartoon style as the reference. A cosy German living room in the evening. A friendly grandmother with short grey curly hair, round glasses and a purple cardigan smiles and holds up a carved TURNIP lantern: a pale cream-white root vegetable with a purple top and a few green leaf stalks, NOT a pumpkin and not orange, hollowed out with a small grinning face cut into it and a candle glowing inside. The young man in the wizard hat from the reference leans in, surprised, then laughs. Warm candlelight, gentle camera move. No text.",
       "reference": "noah/reference/noah-costume-white.png",
       "seconds": 8,
       "credit": "Made with Google Veo"
@@ -115,14 +116,15 @@
       "prompt": "Same flat 2D cartoon style as the reference. Night, the young man from the reference (now without the hat) has a glowing carved pumpkin on his doorstep. Three small children in simple costumes (a ghost sheet, a witch, a pumpkin) ring his bell; he opens the door and happily holds out a bowl of sweets; the children cheer. Warm, happy mood. Camera slowly pulls back to show the street with a few other glowing pumpkins. No text.",
       "reference": "noah/reference/noah-costume-white.png",
       "seconds": 8,
-      "credit": "Made with Google Veo"
+      "credit": "Made with Google Veo",
+      "speed": 0.8
     },
     {
       "id": "veo-pumpkin-regatta",
       "source": "veo",
       "file": "veo/halloween/pumpkin-regatta.mp4",
       "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading. A sunny autumn afternoon at a baroque palace lake with a yellow palace behind. People sit inside giant hollowed-out orange pumpkins and paddle them like boats in a race, splashing, laughing; spectators cheer on the shore among piles of pumpkins. Side-on tracking camera. No text, no logos.",
-      "seconds": 8,
+      "seconds": 6,
       "credit": "Made with Google Veo"
     }
   ]

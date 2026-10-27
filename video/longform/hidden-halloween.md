@@ -19,13 +19,8 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 ## Cold open
 
-> SCENE (kit): Noah, new in Germany, at a door on a dark street, ready for Halloween.
-> bg | night-street
-> prop | jack | 0.72 | 0.9
-> char | noah | wave | 0.4
-> text | 31 October @ thirty-first
-> prop | door | 0.86 | 1 @ rings the bell
-> char | noah | shrug | 0.4 @ nobody
+> SCENE (photo): Noah, new in Germany, rings at the first house; nobody opens.
+> veo-noah-doorbell | 31 October | color key
 
 [calm] It's the thirty-first of October. Noah is new in Germany, and he's ready for Halloween. Costume on, bag in hand. He rings the bell at the first house. And nobody opens.
 
@@ -67,12 +62,8 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 ## Before pumpkins: turnips
 
-> SCENE (kit): Oma holds up a carved turnip with a glowing face.
-> bg | room
-> char | oma | stand | 0.35
-> prop | turnip | 0.62 | 1.3 @ turnip
-> text | Rübengeister @ ghosts
-> char | noah | scared | 0.82 | flip @ grinning
+> SCENE (photo): Oma holds up a carved turnip with a glowing face.
+> veo-noah-oma-turnip | Rübengeister: turnip ghosts | color key @ Rübengeister
 
 [warmly] "But we had something before," Oma says, and holds up a turnip. In many villages, children hollowed out turnips in autumn and carved faces into them, with a candle inside. [[Rübengeister]]: turnip ghosts, grinning in the dark.
 
@@ -151,24 +142,15 @@ Noah, new in Germany, and Oma, his neighbour. Every clip id appears once.
 
 [calm] Every year there's a theme, and whole sculptures are built from pumpkins. This year's motto is "Let's play". There are giant pumpkins weighing hundreds of kilos, and pumpkin soup and pumpkin dishes everywhere.
 
-> SCENE (kit): A pumpkin boat race on a lake.
-> bg | garden
-> prop | boat | 0.3 | 1.2
-> prop | giant-pumpkin | 0.72 | 0.8
-> char | kid | cheer | 0.52
-> text | Pumpkin regatta @ race
+> SCENE (photo): A pumpkin boat race on the palace lake.
+> veo-pumpkin-regatta | Pumpkin regatta | color key @ race
 
 [warmly] And the best part: on the palace lake, people hollow out giant pumpkins, climb inside, and race them as boats.
 
 ## Happy Halloween
 
-> SCENE (kit): Noah and Oma at Noah's door, a pumpkin glowing, children arriving.
-> bg | night-street
-> prop | jack | 0.56 | 1
-> char | noah | wave | 0.36
-> char | oma | stand | 0.74 | flip
-> char | kid | cheer | 0.9 | flip @ ring
-> prop | candy | 0.47 | 0.7 @ sweets
+> SCENE (photo): A year later: children ring at Noah's door, a pumpkin glowing.
+> veo-kids-ring-noah | A pumpkin by the door: ring the bell | color key @ ring
 
 [warmly] So the next year, Noah puts a pumpkin by his own door. Oma brings a turnip, just for tradition. And when the children ring, he's ready with the sweets.
 
