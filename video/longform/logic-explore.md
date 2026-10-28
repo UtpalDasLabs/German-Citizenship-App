@@ -94,7 +94,8 @@ The value of exploring isn't fixed. It shrinks as the time ahead of you shrinks.
 [calm] It's not perfect. One bad evening at a great restaurant shouldn't end the relationship. But it beats choosing at random, and it's a fair way to begin.
 
 > SCENE (photo): A door, slightly open.
-> door | Be optimistic about what you don't know yet. | color key @ be optimistic
+> path-dawn | Be optimistic about what you don't know yet. | color key @ be optimistic
+> road-wind |  | color @ could be great
 
 Later, mathematicians found better methods. One of the best is simple to say: be optimistic about what you don't know yet. An option you've hardly tried could be great, so give it the benefit of the doubt, until the evidence says otherwise.
 
@@ -138,7 +139,8 @@ Later, mathematicians found better methods. One of the best is simple to say: be
 ## Three everyday uses
 
 > SCENE (photo): A city street, new arrivals.
-> city2 | New city? Say yes to everything. | color key
+> arrival | New city? Say yes to everything. | color key
+> city-night |  | color @ new cafés
 
 A new city. In your first months, say yes to everything: new cafés, new routes, new people. That's when discoveries pay off longest.
 
