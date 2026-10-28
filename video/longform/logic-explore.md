@@ -156,7 +156,7 @@ Your career. Early on, try different roles and teams, even sideways moves. Later
 
 > SCENE (photo): A café you love.
 > omni-last-visit | A last visit? Order the dish you know. | color key
-> dish |  | color @ Go back to the café
+> latte |  | color @ Go back to the café
 
 [warmly] And a last visit. If you're leaving a place, or seeing a friend for the last time in a while, don't experiment. Go back to the café you love. Order the dish you know.
 

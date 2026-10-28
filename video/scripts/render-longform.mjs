@@ -90,6 +90,13 @@ if (!script.meta.media && !args.includes('--allow-repeat')) {
     if (seen.has(k)) throw new Error(`${topic}: clip ${k} is used twice (${seen.get(k)} and ${c.id}). Pick another clip.`);
     seen.set(k, c.id);
   }
+  // One creator's clips are often one shoot (same dish, same room): look at both.
+  const byUser = new Map();
+  for (const c of mine) {
+    const user = (c.credit ?? '').match(/^Video by (.+?) from Pixabay/)?.[1];
+    if (user) byUser.set(user, [...(byUser.get(user) ?? []), c.id]);
+  }
+  for (const [user, ids] of byUser) if (ids.length > 1) console.warn(`warning: ${ids.join(', ')} are all by ${user}; check they don't look like the same shot.`);
   for (const f of readdirSync(dir).filter((f) => f.endsWith('.clips.json') && f !== `${topic}.clips.json` && !f.includes('-pilot'))) {
     for (const c of readJsonTop(join(dir, f))?.clips ?? []) {
       const k = key(c);

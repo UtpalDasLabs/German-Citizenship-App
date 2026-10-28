@@ -15,7 +15,7 @@
 - Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-39890/
 - Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3174/
 - Video by PIRO4D from Pixabay: https://pixabay.com/videos/id-8503/
-- Video by MuhammadAhmad10 from Pixabay: https://pixabay.com/videos/id-349087/
+- Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-2340/
 - Video by u_vwhnf4huq0 from Pixabay: https://pixabay.com/videos/id-171409/
 - Video by magicmore from Pixabay: https://pixabay.com/videos/id-169445/
 - Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1028/
@@ -23,6 +23,9 @@
 - Made with Google Veo
 - Made with Google Veo
 - Made with Google Veo
+- Video by MuhammadAhmad10 from Pixabay: https://pixabay.com/videos/id-349094/
+- Video by ElenLackner from Pixabay: https://pixabay.com/videos/id-21941/
+- Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-197/
 
 ## Voice and music
 

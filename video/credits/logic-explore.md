@@ -27,6 +27,12 @@
 - Made with Google Veo
 - Made with Google Veo
 - Made with Google Veo
+- Video by Visual_Laurence from Pixabay: https://pixabay.com/videos/id-201947/
+- Video by ghasoub from Pixabay: https://pixabay.com/videos/id-151194/
+- Video by ninosouza from Pixabay: https://pixabay.com/videos/id-29808/
+- Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-39836/
+- Video by csoylu from Pixabay: https://pixabay.com/videos/id-33434/
+- Video by Samidurrakzai from Pixabay: https://pixabay.com/videos/id-202134/
 
 ## Voice and music
 
