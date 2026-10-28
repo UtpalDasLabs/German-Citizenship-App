@@ -12,7 +12,7 @@
  *   > char | mia | cheer | 0.3 @ sweets  a later line replaces the same id
  *
  * Lines with `@ phrase` appear (or take over) when the voice says it.
- * Catalogue and rules: the private repo's KIT.md.
+ * Catalogue and rules: the private repo's docs/KIT.md.
  */
 import React from 'react';
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
@@ -144,7 +144,7 @@ function Houses({ frame, windows }: { frame: number; windows: string }) {
   );
 }
 
-/** Backgrounds. Add new ones here and list them in KIT.md. */
+/** Backgrounds. Add new ones here and list them in docs/KIT.md. */
 export function Background({ id, frame }: { id: string; frame: number }) {
   const stars = Array.from({ length: 60 }).map((_, i) => ({ x: (i * 397) % W, y: (i * 131) % 520, r: 1 + (i % 3) }));
   switch (id) {

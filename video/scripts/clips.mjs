@@ -99,7 +99,7 @@ for (const c of manifest.clips) {
       fs.rmSync(raw);
       c.credit = `Video by ${hit.user} from Pixabay: ${hit.pageURL}`;
     } else if (c.source === 'vecteezy') {
-      // VECTEEZY_API_KEY and VECTEEZY_ACCOUNT_ID come from the environment (see the private repo's SOURCES.md).
+      // VECTEEZY_API_KEY and VECTEEZY_ACCOUNT_ID come from the environment (see the private repo's docs/SOURCES.md).
       const key = process.env.VECTEEZY_API_KEY;
       const account = process.env.VECTEEZY_ACCOUNT_ID;
       if (!key || !account) throw new Error('Set VECTEEZY_API_KEY and VECTEEZY_ACCOUNT_ID.');

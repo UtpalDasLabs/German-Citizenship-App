@@ -29,9 +29,9 @@ const THUMBS = [
   { topic: 'logic-optimal-stopping', series: 'logic', doors: true, lines: ['The 37%', 'rule'], accent: '37%', tag: 'When to stop looking' },
   { topic: 'hidden-advent', series: 'hidden', photo: 'thumb-wheel', side: true, lines: ['It was a', 'wagon wheel'], accent: 'wheel', tag: 'The Advent wreath, explained' },
   { topic: 'logic-predicting', series: 'logic', photo: 'thumb-platform', side: true, lines: ['How long', 'will it last?'], accent: 'last?', tag: 'Predicting with almost no data' },
-  { topic: 'logic-backoff', series: 'logic', photo: 'thumb-phone', side: true, lines: ['Try again,', 'wait longer'], accent: 'longer', tag: '1 · 2 · 4 · 8: the smart way to retry' },
-  { topic: 'logic-explore', series: 'logic', photo: 'thumb-restaurant', side: true, lines: ['New, or your', 'favourite?'], accent: 'favourite?', tag: 'The maths of explore vs exploit' },
-  { topic: 'logic-sorting', series: 'logic', photo: 'thumb-desk', side: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
+  { topic: 'logic-backoff', series: 'logic', photo: 'thumb-sam', side: true, pos: '78%', narrow: true, lines: ['Try again,', 'wait longer'], accent: 'longer', tag: '1 · 2 · 4 · 8: the smart way to retry' },
+  { topic: 'logic-explore', series: 'logic', photo: 'thumb-lena', side: true, pos: '22%', narrow: true, lines: ['New, or your', 'favourite?'], accent: 'favourite?', tag: 'The maths of explore vs exploit' },
+  { topic: 'logic-sorting', series: 'logic', photo: 'thumb-win', side: true, pos: '40%', narrow: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 
@@ -45,7 +45,8 @@ const doorsHtml = (color) =>
     })
     .join('')}</div>`;
 
-function page({ topic, series, photo, side, doors, lines, accent, tag }) {
+// `pos`: which part of a side photo shows (CSS background-position x); `narrow`: smaller words, photo from 48 %.
+function page({ topic, series, photo, side, pos = 'center', narrow, doors, lines, accent, tag }) {
   const color = SERIES[series].accent;
   const img = photo ? path.join(VIDEO, 'out', 'images', topic, `${photo}.jpg`) : '';
   const words = lines
@@ -55,13 +56,13 @@ function page({ topic, series, photo, side, doors, lines, accent, tag }) {
 @font-face{font-family:Inter;font-weight:700;src:url(file://${FONTS}/inter/files/inter-latin-700-normal.woff2)}
 @font-face{font-family:Inter;font-weight:800;src:url(file://${FONTS}/inter/files/inter-latin-800-normal.woff2)}
 html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#0B0E14;font-family:Inter,sans-serif;color:#fff}
-.photo{position:absolute;top:0;bottom:0;right:0;left:${side ? '42%' : '0'};background:url(file://${img}) center/cover;filter:saturate(1.1) contrast(1.05)}
+.photo{position:absolute;top:0;bottom:0;right:0;left:${side ? (narrow ? '48%' : '42%') : '0'};background:url(file://${img}) ${pos} center/cover;filter:saturate(1.1) contrast(1.05)}
 .doors{position:absolute;right:60px;top:200px;display:flex;gap:14px;align-items:flex-end}
 .door{width:44px;height:300px;border:3px solid;border-radius:8px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;background:#1A2130}
 .door div{width:100%;border-radius:4px}
 .glow{position:absolute;inset:0;background:radial-gradient(ellipse 520px 420px at 1000px 360px,${color}2A,transparent 70%)}
 .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,16,.92) 0%,rgba(8,10,16,.75) 38%,rgba(8,10,16,0) 70%)}
-.words{position:absolute;left:64px;top:150px;font-weight:800;font-size:128px;line-height:1.02;letter-spacing:-2px;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.words{position:absolute;left:64px;top:150px;font-weight:800;font-size:${narrow ? 108 : 128}px;line-height:1.02;letter-spacing:-2px;text-shadow:0 6px 30px rgba(0,0,0,.5)}
 .tag{position:absolute;left:68px;bottom:150px;font-weight:700;font-size:38px;color:#E9EDF5}
 .series{position:absolute;left:68px;bottom:70px;display:flex;align-items:center;gap:14px;font-weight:700;font-size:28px;letter-spacing:4px;text-transform:uppercase;color:${color}}
 .dot{width:16px;height:16px;border-radius:8px;background:${color}}
