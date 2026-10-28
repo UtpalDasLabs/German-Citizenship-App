@@ -6,8 +6,8 @@
       "id": "clock",
       "source": "pixabay",
       "pixabayId": 55443,
-      "start": 1,
-      "seconds": 8,
+      "start": 0.5,
+      "seconds": 12.6,
       "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-55443/"
     },
     {
@@ -22,24 +22,25 @@
       "id": "slots2",
       "source": "pixabay",
       "pixabayId": 198477,
-      "start": 1,
-      "seconds": 8,
+      "start": 0.5,
+      "seconds": 10,
       "credit": "Video by MagicTV from Pixabay: https://pixabay.com/videos/id-198477/"
     },
     {
       "id": "street",
       "source": "pixabay",
       "pixabayId": 44663,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by My_Walking_Diary from Pixabay: https://pixabay.com/videos/id-44663/"
+      "start": 0.5,
+      "seconds": 16.2,
+      "credit": "Video by My_Walking_Diary from Pixabay: https://pixabay.com/videos/id-44663/",
+      "speed": 0.99
     },
     {
       "id": "city",
       "source": "pixabay",
       "pixabayId": 343478,
-      "start": 1,
-      "seconds": 8,
+      "start": 0.5,
+      "seconds": 16.2,
       "credit": "Video by monirulislam_bd from Pixabay: https://pixabay.com/videos/id-343478/"
     },
     {
@@ -62,24 +63,25 @@
       "id": "suitcase",
       "source": "pixabay",
       "pixabayId": 149980,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by julientromeur from Pixabay: https://pixabay.com/videos/id-149980/"
+      "start": 0.5,
+      "seconds": 8.2,
+      "credit": "Video by julientromeur from Pixabay: https://pixabay.com/videos/id-149980/",
+      "speed": 0.89
     },
     {
       "id": "dinner",
       "source": "pixabay",
       "pixabayId": 11654,
-      "start": 1,
-      "seconds": 8,
+      "start": 0.5,
+      "seconds": 11.3,
       "credit": "Video by XiaosKitchen from Pixabay: https://pixabay.com/videos/id-11654/"
     },
     {
       "id": "path-dawn",
       "source": "pixabay",
       "pixabayId": 315272,
-      "start": 1,
-      "seconds": 8,
+      "start": 0.5,
+      "seconds": 11.9,
       "credit": "Video by doktorkleinmusic from Pixabay: https://pixabay.com/videos/id-315272/"
     },
     {
@@ -94,9 +96,10 @@
       "id": "hospital",
       "source": "pixabay",
       "pixabayId": 49808,
-      "start": 1,
-      "seconds": 8,
-      "credit": "Video by Hassas_Arts from Pixabay: https://pixabay.com/videos/id-49808/"
+      "start": 0.5,
+      "seconds": 13.2,
+      "credit": "Video by Hassas_Arts from Pixabay: https://pixabay.com/videos/id-49808/",
+      "speed": 0.97
     },
     {
       "id": "ecmo",
@@ -110,7 +113,7 @@
       "id": "friends",
       "source": "pixabay",
       "pixabayId": 48087,
-      "start": 1,
+      "start": 0.5,
       "seconds": 8,
       "credit": "Video by Peggy_Marco from Pixabay: https://pixabay.com/videos/id-48087/"
     },
@@ -118,16 +121,16 @@
       "id": "office",
       "source": "pixabay",
       "pixabayId": 137186,
-      "start": 1,
-      "seconds": 8,
+      "start": 0.5,
+      "seconds": 10,
       "credit": "Video by u_jorg73foes from Pixabay: https://pixabay.com/videos/id-137186/"
     },
     {
       "id": "desk",
       "source": "pixabay",
       "pixabayId": 133319,
-      "start": 1,
-      "seconds": 8,
+      "start": 0.5,
+      "seconds": 16.9,
       "credit": "Video by KIMDAEJEUNG from Pixabay: https://pixabay.com/videos/id-133319/"
     },
     {
@@ -136,7 +139,8 @@
       "file": "veo/explore/hook-two-doors.mp4",
       "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. Friday night on a lively street: Lena stands between two restaurants, her cosy favourite with a warm glow and a brand-new place with a 'NEW' banner and balloons; she looks from one to the other, torn, then grins. No readable text except the shapes.",
       "seconds": 8,
-      "credit": "Made with Google Veo"
+      "credit": "Made with Google Veo",
+      "speed": 0.81
     },
     {
       "id": "omni-new-city",
@@ -162,7 +166,56 @@
       "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. LENA: a woman around thirty, shoulder-length wavy auburn hair, a mustard-yellow coat, a striped scarf. Same Lena, on her last evening before moving away, walks back into her favourite little café; the owner recognises her and brings her favourite dish; she smiles, happy. Warm evening light, happy ending mood.",
       "seconds": 8,
       "credit": "Made with Google Veo",
-      "referenceFrom": "omni-hook-two-doors"
+      "referenceFrom": "omni-hook-two-doors",
+      "speed": 0.9
+    },
+    {
+      "id": "cosy-room",
+      "source": "pixabay",
+      "pixabayId": 201947,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by Visual_Laurence from Pixabay: https://pixabay.com/videos/id-201947/"
+    },
+    {
+      "id": "elders",
+      "source": "pixabay",
+      "pixabayId": 151194,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by ghasoub from Pixabay: https://pixabay.com/videos/id-151194/"
+    },
+    {
+      "id": "backpacker",
+      "source": "pixabay",
+      "pixabayId": 29808,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by ninosouza from Pixabay: https://pixabay.com/videos/id-29808/"
+    },
+    {
+      "id": "park-walk",
+      "source": "pixabay",
+      "pixabayId": 39836,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-39836/"
+    },
+    {
+      "id": "dish",
+      "source": "pixabay",
+      "pixabayId": 11667,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by XiaosKitchen from Pixabay: https://pixabay.com/videos/id-11667/"
+    },
+    {
+      "id": "park-friends",
+      "source": "pixabay",
+      "pixabayId": 202134,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by Samidurrakzai from Pixabay: https://pixabay.com/videos/id-202134/"
     }
   ]
 }

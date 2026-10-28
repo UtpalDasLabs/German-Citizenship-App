@@ -40,7 +40,8 @@ status: draft 1
 > SCENE (photo): Oahu; Norman Abramson; the ALOHAnet room in 1971.
 > hawaii | Hawaii, 1971 | color key
 > abramson | Norman Abramson | color @ led by Norman
-> aloha1971 | ALOHAnet: islands linked by radio | color key @ They called it
+> aloha1971 |  | color @ They called it
+> aloha-dish | ALOHAnet: islands linked by radio | color key @ Its job was
 
 [warmly] In June 1971, a team at the University of Hawaii, led by Norman Abramson, switched on a new kind of network. They called it ALOHAnet. Its job was to connect computer terminals on different islands to one central computer, using cheap radios instead of expensive cables.
 
@@ -79,6 +80,7 @@ Ethernet still does this today. After each collision, a network card waits up to
 
 > SCENE (photo): Traffic in a jam.
 > traffic | Five failures in a row are information. | color key @ Five failures
+> commuter |  | color @ Something bigger
 
 [calm] Think about what a failure tells you. One failure might be bad luck. Five failures in a row are information. Something bigger is going on: the line is overloaded, the person is busy, the timing is wrong.
 
@@ -106,16 +108,20 @@ Two. Things with a fixed schedule. If appointments are released every Monday at 
 
 > SCENE (photo): A phone on a desk.
 > omni-quarter-past | Busy? 2 minutes, then 5, then 15. | color key
+> noon-call |  | color @ And if everyone calls
 
 The hotline. If it's busy, don't redial ten times in a minute. Try again in two minutes, then five, then fifteen. And if everyone calls at nine, you can call at a quarter past twelve.
 
 > SCENE (photo): A letter box; a laptop.
 > omni-follow-up | Follow up: a week, two weeks, a month. | color key
+> note |  | color @ Then a month
 
 Job applications, or any message that gets no answer. Follow up after a week. If there's still nothing, after two weeks. Then a month. You stay on their radar without becoming the person they avoid.
 
 > SCENE (photo): Friends at a café table.
-> omni-friend-later | Forgive fast. Then back off. | color key @ Forgive quickly
+> omni-friend-later |  | color
+> cancel-text | Forgive fast. Then back off. | color key @ Do you cut them off
+> bench-hug |  | color @ You never close the door
 
 [warmly] And people. A friend cancels on you. Do you cut them off? Or do you keep making plans every weekend? Backoff suggests a middle way. Forgive quickly the first time. If it happens again, wait a bit longer before the next invitation. And again, longer still. You never close the door. But your time goes where it's valued.
 

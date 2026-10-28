@@ -21,7 +21,8 @@ Script as written: the private repo's series/logic-to-live-by/05-sorting-searchi
 ## Cold open
 
 > SCENE (photo): An inbox; hands at a keyboard.
-> omni-hook-folders | Does filing help you find things? | color key
+> omni-hook-folders |  | color
+> reader | Does filing help you find things? | color key @ But here's a question
 
 [calm] You have folders for everything. Work, bills, travel, the car. Every email gets filed. It feels responsible. But here's a question nobody asks: does all that filing actually help you find things? Researchers measured it. And the answer is: barely.
 
@@ -78,6 +79,7 @@ Computer scientists ask this all the time. Sorting is one of the most studied pr
 
 > SCENE (photo): A library.
 > library2 | Thousands search it every day: sort it. | color key
+> dictionary |  | color @ A dictionary
 
 [calm] Here's the rule. Order is worth it only for things you'll search many times. A library sorts its books, because thousands of people search them every day. A dictionary is in alphabetical order, because people look up words all the time. That's money well spent.
 
@@ -107,6 +109,7 @@ But your own box of old receipts? You might open it once a year, if ever. Sortin
 
 > SCENE (photo): Hands typing a search.
 > typing2 | Filing didn't help them find more. | color key @ didn't help
+> laptop-cup |  | color @ Search found
 
 [calm] The results were clear. The people who filed carefully did use their folders to look for things. But the filing didn't help them find their messages more often. Search found what people wanted at least as well, and opening a folder was, if anything, a little slower than typing a search.
 

@@ -71,8 +71,9 @@ function cut(src, dst, start = 0, seconds, speed = 1) {
   execFileSync(FFMPEG, [
     '-y', '-loglevel', 'error',
     ...(start ? ['-ss', String(start)] : []),
-    '-i', src,
+    // `seconds` of the source: a slowed clip comes out longer (seconds / speed).
     ...(seconds ? ['-t', String(seconds)] : []),
+    '-i', src,
     '-vf', `${speed !== 1 ? `setpts=PTS/${speed},` : ''}scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,fps=30,format=yuv420p`,
     '-an', '-c:v', 'libx264', '-crf', '19', '-preset', 'medium', '-movflags', '+faststart',
     dst,

@@ -223,6 +223,45 @@ const plan = {
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
+// No clip loops: a clip on screen longer than it lasts would play twice in a
+// row (the player loops it). Timing as in screenLines() in src/longform/plan.ts.
+// Give the scene a second clip (`> id2 |  | color @ cue`) or a longer one.
+// Override with --allow-loop.
+if (!args.includes('--allow-loop')) {
+  const cueAt = (sh, phrase) => {
+    const needle = phrase.toLowerCase();
+    for (const p of sh.paras) {
+      const at = p.tts.toLowerCase().indexOf(needle);
+      if (at !== -1) return p.from + Math.round(p.starts[Math.max(0, Math.min(at, p.starts.length - 1))] * FPS);
+    }
+    return null;
+  };
+  const loops = [];
+  for (const sh of plan.shots) {
+    const lines = sh.screen.filter((l) => !/^hold [\d.]+$/.test(l));
+    const step = Math.min(Math.round(FPS * 1.2), Math.round((sh.frames * 0.5) / Math.max(1, lines.length)));
+    const timed = lines.map((l, i) => {
+      const [body, phrase] = l.split(' @ ');
+      const f = body.split(/ ?\| ?/).map((x) => x.trim());
+      return { f, at: (phrase ? cueAt(sh, phrase.trim()) : null) ?? 8 + i * step };
+    });
+    const spans = [];
+    if (sh.key === 'photo')
+      timed.forEach((t, i) => spans.push({ id: t.f[0], frames: (i + 1 < timed.length ? timed[i + 1].at + 12 : sh.frames + 12) - (i === 0 ? 0 : t.at) }));
+    else if (sh.key === 'place' && timed[0]) spans.push({ id: timed[0].f[0], frames: sh.frames });
+    else for (const t of timed) if (t.f[0] === 'bg') spans.push({ id: t.f[1], frames: sh.frames });
+    for (const s of spans) {
+      const len = plan.clips[s.id];
+      if (len && s.frames > Math.floor(len * FPS)) loops.push(`${Math.floor(sh.from / FPS / 60)}:${String(Math.floor(sh.from / FPS) % 60).padStart(2, '0')} ${s.id}: on screen ${(s.frames / FPS).toFixed(1)} s, clip ${len} s ("${sh.scene}")`);
+    }
+  }
+  if (loops.length) throw new Error(`${topic}: ${loops.length} clip(s) would loop:\n  ${loops.join('\n  ')}\nAdd a second clip to the scene, or a longer one.`);
+}
+if (args.includes('--check')) {
+  console.log(`${topic}: no clip loops, no clip repeats.`);
+  process.exit(0);
+}
+
 const APP_URL = 'https://utpaldaslabs.github.io/German-Citizenship-App/';
 const stamp = (frame) => {
   const t = Math.floor(frame / FPS);

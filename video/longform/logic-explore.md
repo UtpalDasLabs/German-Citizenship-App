@@ -23,6 +23,7 @@ Script as written: the private repo's series/logic-to-live-by/04-explore-exploit
 
 > SCENE (photo): A restaurant at night; a new place next door.
 > omni-hook-two-doors | Your favourite, or the new place? | color key
+> cosy-room |  | color @ Do you go back
 
 [calm] Friday night. There's your favourite restaurant, where you know every dish is good. And there's the new place that opened next door. Do you go back to the one you love? Or do you take a chance on something new, and maybe waste your evening?
 
@@ -127,12 +128,16 @@ Later, mathematicians found better methods. One of the best is simple to say: be
 ## Why older people stick to favourites
 
 > SCENE (photo): An older couple at a café.
-> omni-older-couple | Fewer casual friends. As many close ones. | color key @ fewer casual friends
+> omni-older-couple |  | color
+> elders | Fewer casual friends. As many close ones. | color key @ found that older people
 
 [calm] This rule explains something about growing older. Studies led by the psychologist Laura Carstensen at Stanford found that older people have fewer casual friends, but about as many close ones as younger people. And they're mostly happy with that.
 
 > SCENE (photo): Friends laughing at a table.
-> friends | Young people explore. Older people enjoy. Both are right. | color key @ Young people should explore
+> friends |  | color
+> park-friends |  | color @ The maths says something kinder
+> backpacker |  | color @ Young people should explore
+> park-walk | Young people explore. Older people enjoy. Both are right. | color key @ Older people should enjoy
 
 [calm] It's easy to see that as getting set in their ways. The maths says something kinder. With less time ahead, exploring pays off less, so you spend your time on the people you already know are good for you. Young people should explore. Older people should enjoy what they've found. Both are doing it right.
 
@@ -151,6 +156,7 @@ Your career. Early on, try different roles and teams, even sideways moves. Later
 
 > SCENE (photo): A café you love.
 > omni-last-visit | A last visit? Order the dish you know. | color key
+> dish |  | color @ Go back to the café
 
 [warmly] And a last visit. If you're leaving a place, or seeing a friend for the last time in a while, don't experiment. Go back to the café you love. Order the dish you know.
 
