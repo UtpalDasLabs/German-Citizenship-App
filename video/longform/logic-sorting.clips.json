@@ -15,7 +15,8 @@
       "source": "pixabay",
       "pixabayId": 87592,
       "start": 1,
-      "seconds": 8
+      "seconds": 8,
+      "credit": "Video by oybekostanov from Pixabay: https://pixabay.com/videos/id-87592/"
     },
     {
       "id": "papers",
@@ -38,7 +39,8 @@
       "source": "pixabay",
       "pixabayId": 4878,
       "start": 1,
-      "seconds": 8
+      "seconds": 8,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-4878/"
     },
     {
       "id": "library",
@@ -93,7 +95,8 @@
       "source": "pixabay",
       "pixabayId": 3174,
       "start": 1,
-      "seconds": 8
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3174/"
     },
     {
       "id": "clock",
@@ -140,7 +143,8 @@
       "source": "pixabay",
       "pixabayId": 165820,
       "start": 1,
-      "seconds": 8
+      "seconds": 8,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-165820/"
     },
     {
       "id": "omni-hook-folders",
