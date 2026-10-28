@@ -13,10 +13,12 @@
 - Video by MagicTV from Pixabay: https://pixabay.com/videos/id-198477/
 - Video by My_Walking_Diary from Pixabay: https://pixabay.com/videos/id-44663/
 - Video by monirulislam_bd from Pixabay: https://pixabay.com/videos/id-343478/
-- Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3178/
+- Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-5628/
+- Video by RafterJr72 from Pixabay: https://pixabay.com/videos/id-23258/
 - Video by julientromeur from Pixabay: https://pixabay.com/videos/id-149980/
 - Video by XiaosKitchen from Pixabay: https://pixabay.com/videos/id-11654/
-- Video by ChristianBodhi from Pixabay: https://pixabay.com/videos/id-153991/
+- Video by doktorkleinmusic from Pixabay: https://pixabay.com/videos/id-315272/
+- Video by xBriantcx from Pixabay: https://pixabay.com/videos/id-241802/
 - Video by Hassas_Arts from Pixabay: https://pixabay.com/videos/id-49808/
 - Video by twawer2000 from Pixabay: https://pixabay.com/videos/id-136458/
 - Video by Peggy_Marco from Pixabay: https://pixabay.com/videos/id-48087/
