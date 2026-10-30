@@ -1,0 +1,7 @@
+{
+  "shorts": [
+    { "id": "1", "hook": "Does filing your email help? IBM checked.", "spoken": "Does filing your email actually help you find it? IBM measured it.", "paragraphs": [11, 12, 14, 16] },
+    { "id": "2", "hook": "Your messy desk might be smart", "spoken": "Your messy desk might be the smart choice. Here's why.", "paragraphs": [3, 4, 8, 24] },
+    { "id": "3", "hook": "Sort your kitchen drawer like a computer", "spoken": "How to sort a kitchen drawer, the computer-science way.", "paragraphs": [21, 22, 25] }
+  ]
+}

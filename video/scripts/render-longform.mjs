@@ -259,7 +259,8 @@ if (!args.includes('--allow-loop')) {
     else for (const t of timed) if (t.f[0] === 'bg') spans.push({ id: t.f[1], frames: sh.frames });
     for (const s of spans) {
       const len = plan.clips[s.id];
-      if (len && s.frames > Math.floor(len * FPS)) loops.push(`${Math.floor(sh.from / FPS / 60)}:${String(Math.floor(sh.from / FPS) % 60).padStart(2, '0')} ${s.id}: on screen ${(s.frames / FPS).toFixed(1)} s, clip ${len} s ("${sh.scene}")`);
+      // A short may play a clip down to 0.6× speed to fill its scene (MIN_CLIP_RATE in look.tsx).
+      if (len && s.frames > Math.floor((len * FPS) / (SHORT ? 0.6 : 1))) loops.push(`${Math.floor(sh.from / FPS / 60)}:${String(Math.floor(sh.from / FPS) % 60).padStart(2, '0')} ${s.id}: on screen ${(s.frames / FPS).toFixed(1)} s, clip ${len} s ("${sh.scene}")`);
     }
   }
   if (loops.length) throw new Error(`${topic}: ${loops.length} clip(s) would loop:\n  ${loops.join('\n  ')}\nAdd a second clip to the scene, or a longer one.`);

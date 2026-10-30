@@ -36,7 +36,7 @@ function ShortMedia({ shot, topic }: { shot: Shot; topic: string }) {
         const end = i + 1 < lines.length ? lines[i + 1].at + 8 : shot.frames + OVERLAP;
         return (
           <Sequence key={i} from={start} durationInFrames={Math.max(1, end - start)}>
-            <Photo src={`images/${topic}/${id}.jpg`} color from={{ x: 0.5, y: 0.5, scale: 1.0 }} to={{ x: 0.5, y: 0.5, scale: 1.06 }} />
+            <Photo src={`images/${topic}/${id}.jpg`} color span={Math.max(1, end - start)} from={{ x: 0.5, y: 0.5, scale: 1.0 }} to={{ x: 0.5, y: 0.5, scale: 1.06 }} />
           </Sequence>
         );
       })}

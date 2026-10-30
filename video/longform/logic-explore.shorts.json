@@ -1,0 +1,34 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "Your favourite, or the new place?",
+      "spoken": "Your favourite restaurant, or the new place next door? Maths has an answer.",
+      "paragraphs": [
+        0,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "New city? Say yes to everything.",
+      "spoken": "Just moved to a new city? Here's what maths says to do first.",
+      "paragraphs": [
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "Win, stay. Lose, shift.",
+      "spoken": "A rule from 1952 for choosing well: win, stay. Lose, shift.",
+      "paragraphs": [
+        10,
+        11
+      ]
+    }
+  ]
+}
