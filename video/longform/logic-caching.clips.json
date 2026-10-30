@@ -3,6 +3,39 @@
   "note": "Pixabay stock (Content License) and Gemini Omni hero clips (3D look test).",
   "clips": [
     {
+      "id": "omni-wardrobe-puzzled",
+      "source": "veo",
+      "file": "veo/caching/wardrobe-puzzled.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Same Maya stands in front of her open wardrobe holding a winter coat in one hand and a summer dress in the other, looking from one to the other, puzzled, then tilts her head at the camera as if to say: who knows? Gentle comic timing.",
+      "seconds": 7,
+      "credit": "Made with Google Veo",
+      "start": 1,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-chair-grab",
+      "source": "veo",
+      "file": "veo/caching/chair-grab.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Same Maya reaches out without looking and pulls the grey hoodie neatly off the top of the clothes pile on the wooden chair, then turns to the camera with a smug, knowing little smile. The pile stays standing.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-chair-mum",
+      "source": "veo",
+      "file": "veo/caching/chair-mum.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Maya's mother, a kind woman in her sixties with short grey hair and a cardigan, stands in the bedroom doorway and points at the tall pile of clothes on the wooden chair with a raised eyebrow. Same Maya, sitting on the bed, shrugs with an innocent smile. Gentle comic timing.",
+      "seconds": 6,
+      "credit": "Made with Google Veo",
+      "start": 2,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.58
+    },
+    {
       "id": "omni-chair-end",
       "source": "veo",
       "file": "veo/caching/chair-end.mp4",
@@ -22,7 +55,7 @@
       "credit": "Made with Google Veo",
       "start": 0,
       "referenceFrom": "omni-hook-chair",
-      "speed": 0.6
+      "speed": 0.5
     },
     {
       "id": "omni-hook-chair",
@@ -44,22 +77,6 @@
       "speed": 0.7
     },
     {
-      "id": "shelves",
-      "source": "pixabay",
-      "pixabayId": 41506,
-      "start": 0.5,
-      "seconds": 12,
-      "credit": "Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-41506/"
-    },
-    {
-      "id": "chip",
-      "source": "pixabay",
-      "pixabayId": 13370,
-      "start": 0.5,
-      "seconds": 11,
-      "credit": "Video by Art-Production from Pixabay: https://pixabay.com/videos/id-13370/"
-    },
-    {
       "id": "lab",
       "source": "pixabay",
       "pixabayId": 377885,
@@ -68,71 +85,12 @@
       "credit": "Video by mignic from Pixabay: https://pixabay.com/videos/id-377885/"
     },
     {
-      "id": "tapes",
-      "source": "pixabay",
-      "pixabayId": 107142,
-      "start": 0.5,
-      "seconds": 30,
-      "credit": "Video by mootlak from Pixabay: https://pixabay.com/videos/id-107142/"
-    },
-    {
-      "id": "fog",
-      "source": "pixabay",
-      "pixabayId": 260397,
-      "start": 0.5,
-      "seconds": 14,
-      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-260397/"
-    },
-    {
-      "id": "chip2",
-      "source": "pixabay",
-      "pixabayId": 47215,
-      "start": 0.5,
-      "seconds": 14,
-      "credit": "Video by nanoslavic from Pixabay: https://pixabay.com/videos/id-47215/"
-    },
-    {
-      "id": "wardrobe2",
-      "source": "pixabay",
-      "pixabayId": 1108,
-      "start": 0.5,
-      "seconds": 8.8,
-      "credit": "Video by DistillVideos from Pixabay: https://pixabay.com/videos/id-1108/",
-      "speed": 0.7
-    },
-    {
       "id": "tokyo",
       "source": "pixabay",
       "pixabayId": 39790,
       "start": 0.5,
       "seconds": 14,
       "credit": "Video by Erjol from Pixabay: https://pixabay.com/videos/id-39790/"
-    },
-    {
-      "id": "envelopes",
-      "source": "pixabay",
-      "pixabayId": 9772,
-      "start": 0.5,
-      "seconds": 10,
-      "credit": "Video by HazarMan from Pixabay: https://pixabay.com/videos/id-9772/",
-      "speed": 0.9
-    },
-    {
-      "id": "files3",
-      "source": "pixabay",
-      "pixabayId": 349087,
-      "start": 0.5,
-      "seconds": 16,
-      "credit": "Video by MuhammadAhmad10 from Pixabay: https://pixabay.com/videos/id-349087/"
-    },
-    {
-      "id": "cellar",
-      "source": "pixabay",
-      "pixabayId": 179950,
-      "start": 0.5,
-      "seconds": 32,
-      "credit": "Video by MAURICIO_BR from Pixabay: https://pixabay.com/videos/id-179950/",
-      "speed": 0.9
     },
     {
       "id": "wardrobe3",
@@ -157,7 +115,8 @@
       "pixabayId": 143163,
       "start": 0.5,
       "seconds": 10,
-      "credit": "Video by muhammedguv from Pixabay: https://pixabay.com/videos/id-143163/"
+      "credit": "Video by muhammedguv from Pixabay: https://pixabay.com/videos/id-143163/",
+      "speed": 0.8
     },
     {
       "id": "todo",
@@ -166,73 +125,6 @@
       "start": 0.5,
       "seconds": 30,
       "credit": "Video by 32472866 from Pixabay: https://pixabay.com/videos/id-155023/"
-    },
-    {
-      "id": "laundry",
-      "source": "pixabay",
-      "pixabayId": 33220,
-      "start": 0.5,
-      "seconds": 12,
-      "credit": "Video by overjupiter from Pixabay: https://pixabay.com/videos/id-33220/"
-    },
-    {
-      "id": "bookshelf",
-      "source": "pixabay",
-      "pixabayId": 11254,
-      "start": 0.5,
-      "seconds": 7.5,
-      "credit": "Video by GreenCardShow from Pixabay: https://pixabay.com/videos/id-11254/",
-      "speed": 0.8
-    },
-    {
-      "id": "attic",
-      "source": "pixabay",
-      "pixabayId": 6133,
-      "start": 0.5,
-      "seconds": 20,
-      "credit": "Video by 3593622 from Pixabay: https://pixabay.com/videos/id-6133/"
-    },
-    {
-      "id": "servers",
-      "source": "pixabay",
-      "pixabayId": 5074,
-      "start": 0.5,
-      "seconds": 7.5,
-      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-5074/",
-      "speed": 0.6
-    },
-    {
-      "id": "drying",
-      "source": "pixabay",
-      "pixabayId": 137603,
-      "start": 0.5,
-      "seconds": 11,
-      "credit": "Video by Dx21 from Pixabay: https://pixabay.com/videos/id-137603/"
-    },
-    {
-      "id": "documents",
-      "source": "pixabay",
-      "pixabayId": 87146,
-      "start": 0.5,
-      "seconds": 5.5,
-      "credit": "Video by tolomedia43 from Pixabay: https://pixabay.com/videos/id-87146/",
-      "speed": 0.75
-    },
-    {
-      "id": "typewriter",
-      "source": "pixabay",
-      "pixabayId": 34258,
-      "start": 0.5,
-      "seconds": 15,
-      "credit": "Video by thenickmurphy from Pixabay: https://pixabay.com/videos/id-34258/"
-    },
-    {
-      "id": "pot",
-      "source": "pixabay",
-      "pixabayId": 267,
-      "start": 0.5,
-      "seconds": 15,
-      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-267/"
     }
   ]
 }

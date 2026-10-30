@@ -17,8 +17,8 @@
  *   npm run veo -- hidden-halloween                  every veo clip not generated yet
  *
  * Needs GEMINI_API_KEY in the environment (never in a file). Budget: at most
- * VEO_MAX_CLIPS generations per topic (default 6, the creator's limit),
- * retakes included; every generation is logged in the private repo's
+ * as many as the script needs (the creator approves the count first);
+ * VEO_MAX_CLIPS sets an optional cap per topic, retakes included; every generation is logged in the private repo's
  * clips/veo/LOG.md. VEO_MODEL picks the model (default: the newest Veo the
  * key can use).
  */
@@ -38,7 +38,7 @@ const KIT = path.join(PRIVATE, 'kit', 'characters');
 const LOG = path.join(CLIPS, 'veo', 'LOG.md');
 const API = 'https://generativelanguage.googleapis.com/v1beta';
 const KEY = process.env.GEMINI_API_KEY;
-const MAX = Number(process.env.VEO_MAX_CLIPS ?? 6);
+const MAX = Number(process.env.VEO_MAX_CLIPS ?? Infinity);
 
 const args = process.argv.slice(2);
 const topic = args.find((a) => !a.startsWith('--') && args[args.indexOf(a) - 1] !== '--only');
@@ -73,7 +73,7 @@ const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const todo = manifest.clips.filter((c) => c.source === 'veo' && (!only || c.id === only) && (only || !fs.existsSync(path.join(CLIPS, c.file))));
 const logText = fs.existsSync(LOG) ? fs.readFileSync(LOG, 'utf8') : '# Veo generations\n\n| When | Topic | Clip | Model | Seconds | Result |\n|---|---|---|---|---|---|\n';
 const used = logText.split('\n').filter((l) => l.startsWith(`| `) && l.includes(`| ${topic} |`) && !l.includes('| failed')).length;
-console.log(`${topic}: ${todo.length} to generate, ${used} of ${MAX} already used for this topic.`);
+console.log(`${topic}: ${todo.length} to generate, ${used} already used for this topic${Number.isFinite(MAX) ? ` (cap ${MAX})` : ""}.`);
 for (const c of todo) console.log(`  ${c.id} (${c.seconds ?? 8} s)${c.reference ? `, reference ${c.reference}` : ''}`);
 if (used + todo.length > MAX) throw new Error(`Over budget: ${used} used + ${todo.length} > ${MAX}. Ask the creator before going on.`);
 if (dry || !todo.length) process.exit(0);

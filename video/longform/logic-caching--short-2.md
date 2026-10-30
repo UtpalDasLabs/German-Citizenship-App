@@ -20,14 +20,11 @@ questions: []
 
 [calm] An economist in Tokyo, Yukio Noguchi, built a whole filing system on this idea in the nineteen-nineties.
 
-> SCENE (photo): A row of envelopes or files on a shelf.
-> envelopes | New and used files go on the left. | color key
-> documents |  | color @ every time you use one
+> SCENE (noguchi): A row of envelopes; a used one jumps back to the far left.
 
 [calm] Every document goes into an envelope. The envelopes stand in one row on a shelf. A new one goes on the far left. And every time you use one, you put it back on the far left too.
 
-> SCENE (photo): A shelf with files.
-> files3 | No labels, no sorting. It just works. | color key
+> SCENE (noguchi2): The same row, faster; the right end drifts to the archive.
 
 [calm] No categories, no labels to keep up. Over time, the files you use often stay on the left, and the ones you never touch drift to the right, ready to be archived. It's least recently used, done by hand.
 

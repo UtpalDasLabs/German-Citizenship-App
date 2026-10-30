@@ -15,7 +15,7 @@ questions: []
 
 > SCENE (photo): A chair with a pile of clothes on it.
 > omni-hook-chair | The chair. Everyone has one. | color key
-> laundry |  | color @ Someone has probably told you
+> omni-chair-mum |  | color @ Someone has probably told you
 
 [calm] That pile of clothes on your chair? It's actually smart.
 
@@ -23,7 +23,6 @@ questions: []
 
 > SCENE (photo): The clothes on the chair again.
 > omni-chair-cache | The chair is a cache. | color key @ The chair is
-> drying |  | color @ sorted by least recently used
 
 [warmly] Which brings us back to the chair. The clothes on top are the ones you wore most recently, the ones you're most likely to wear again. The chair is a cache. And the pile is sorted by least recently used, without you even trying.
 
