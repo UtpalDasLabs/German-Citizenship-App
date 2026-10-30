@@ -846,3 +846,235 @@ export function Lru() {
     </AbsoluteFill>
   );
 }
+
+const RED = '#F0605D';
+const GREY = '#8A93A6';
+
+function Tile({ label, x, y, w = 200, h = 120, color, opacity = 1, size = 40 }: { label: string; x: number; y: number; w?: number; h?: number; color: string; opacity?: number; size?: number }) {
+  return (
+    <div style={{ position: 'absolute', left: x, top: y, width: w, height: h, borderRadius: 18, background: color, opacity, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FONT, fontWeight: 800, fontSize: size, color: '#0B1220' }}>{label}</div>
+  );
+}
+
+/**
+ * The close space and the far space: a small desk next to a big loft.
+ * `fetch` times a trip to each; `full` brings a new thing to a full desk;
+ * `cache` relabels the same picture as a computer's cache and disk.
+ */
+export function DeskLoft({ mode }: { mode: 'fetch' | 'full' | 'cache' }) {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const desk = ['keys', 'phone', 'mug'];
+  const loftAt = mode === 'fetch' ? cue(shot, 'The space far away', fps, { fallback: 0.5 }) : 0;
+  const relabel = mode === 'cache' ? cue(shot, 'called a cache', fps, { fallback: 0.6 }) : 0;
+  const r = rise(frame, relabel - 4, 16);
+  const near = mode === 'cache' ? (r > 0.5 ? 'Cache' : 'Fast memory') : 'Close: your desk';
+  const far = mode === 'cache' ? (r > 0.5 ? 'Disk' : 'The disk') : 'Far: the loft';
+  // Stopwatches: one second at the desk, thirty in the loft.
+  const nearSec = Math.min(1, Math.max(0, (frame - 10) / fps)).toFixed(1);
+  const farSec = Math.min(30, Math.max(0, ((frame - loftAt) / fps) * 8)).toFixed(0);
+  const incoming = rise(frame, fps * 0.6, 20);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      {/* the desk */}
+      <div style={{ position: 'absolute', left: 140, top: 150, fontFamily: SERIF, fontWeight: 600, fontSize: 64, color: accent }}>{near}</div>
+      <div style={{ position: 'absolute', left: 140, top: 250, fontFamily: FONT, fontSize: 38, color: '#C9D3E0' }}>{mode === 'cache' ? 'tiny, very fast' : 'small, quick to reach'}</div>
+      <div style={{ position: 'absolute', left: 140, top: 520, width: 720, height: 18, borderRadius: 9, background: '#6B5A45' }} />
+      {desk.map((d, i) => (
+        <Tile key={d} label={d} x={160 + i * 235} y={390} color={accent} />
+      ))}
+      {/* the loft */}
+      <div style={{ position: 'absolute', left: 1060, top: 150, fontFamily: SERIF, fontWeight: 600, fontSize: 64, color: GREY, opacity: mode === 'fetch' ? rise(frame, loftAt - 6, 14) : 1 }}>{far}</div>
+      <div style={{ position: 'absolute', left: 1060, top: 250, fontFamily: FONT, fontSize: 38, color: '#C9D3E0', opacity: mode === 'fetch' ? rise(frame, loftAt - 6, 14) : 1 }}>{mode === 'cache' ? 'huge, slow' : 'big, slow to reach'}</div>
+      <div style={{ position: 'absolute', left: 1060, top: 330, width: 720, height: 420, borderRadius: 24, border: `4px dashed ${GREY}`, opacity: mode === 'fetch' ? rise(frame, loftAt, 14) : 1 }}>
+        {Array.from({ length: 24 }).map((_, i) => (
+          <div key={i} style={{ position: 'absolute', left: 24 + (i % 8) * 86, top: 24 + Math.floor(i / 8) * 128, width: 70, height: 100, borderRadius: 10, background: '#4A5468' }} />
+        ))}
+      </div>
+      {mode === 'fetch' && (
+        <>
+          <div style={{ position: 'absolute', left: 140, top: 640, fontFamily: FONT, fontWeight: 900, fontSize: 110, color: accent }}>⏱ {nearSec} s</div>
+          <div style={{ position: 'absolute', left: 1060, top: 800, fontFamily: FONT, fontWeight: 900, fontSize: 110, color: RED, opacity: rise(frame, loftAt, 10) }}>⏱ {farSec} s</div>
+        </>
+      )}
+      {mode === 'full' && (
+        <>
+          <Tile label="book" x={380} y={800 - 400 * incoming} color="#FFFFFF" opacity={incoming} />
+          <div style={{ position: 'absolute', left: 620, top: 820 - 400 * incoming, fontFamily: FONT, fontWeight: 900, fontSize: 140, color: RED, opacity: rise(frame, fps * 1.4, 12) }}>?</div>
+          <div style={{ position: 'absolute', left: 140, top: 640, fontFamily: FONT, fontWeight: 800, fontSize: 56, color: '#FFFFFF', opacity: rise(frame, fps * 1.6, 14) }}>Desk full. What moves to the loft?</div>
+        </>
+      )}
+      {mode === 'cache' && (
+        <div style={{ position: 'absolute', left: 140, top: 640, width: 720, fontFamily: FONT, fontWeight: 800, fontSize: 52, color: '#FFFFFF', opacity: rise(frame, cue(shot, 'choosing what to throw out', fps, { fallback: 0.8 }) - 4, 14) }}>
+          What it throws out decides how fast it feels.
+        </div>
+      )}
+    </AbsoluteFill>
+  );
+}
+
+/**
+ * Bélády's three rules race on the same list of requests, each with a desk
+ * of three: random, first in first out, and least recently used. Each lane
+ * lights up when its rule is named; misses (trips to the loft) are counted.
+ */
+export function RulesRace() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const reqs = 'EDCABBCEBCDB'.split(''); // used longest ago: 7 trips, the others 9
+  const lanes = [
+    { name: 'At random', cueAt: 'at random', pick: (s: string[], step: number) => (step * 7) % s.length },
+    { name: 'First in, first out', cueAt: 'came in first', pick: () => -1 },
+    { name: 'Used longest ago', cueAt: 'used longest ago', pick: () => -2 },
+  ];
+  const run = (lane: number) => {
+    let shelf: string[] = []; // FIFO: order of arrival; LRU: order of use
+    let misses = 0;
+    const out: { shelf: string[]; misses: number; hit: boolean }[] = [{ shelf: [], misses: 0, hit: false }];
+    reqs.forEach((q, step) => {
+      const hit = shelf.includes(q);
+      if (hit) {
+        if (lane === 2) shelf = [...shelf.filter((x) => x !== q), q];
+      } else {
+        misses++;
+        if (shelf.length === 3) {
+          const i = lane === 0 ? lanes[0].pick(shelf, step) : 0;
+          shelf = shelf.filter((_, k) => k !== i);
+        }
+        shelf = [...shelf, q];
+      }
+      out.push({ shelf, misses, hit });
+    });
+    return out;
+  };
+  const start = fps * 0.5;
+  const stepLen = Math.round(fps * 0.6);
+  const step = Math.max(0, Math.min(reqs.length, Math.floor((frame - start) / stepLen) + 1));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 100, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 64, color: C.text }}>
+        Same requests. Three rules. <span style={{ color: RED }}>Count the trips to the loft.</span>
+      </div>
+      <div style={{ position: 'absolute', top: 200, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 44, color: '#C9D3E0', letterSpacing: 6 }}>
+        {reqs.map((q, i) => (
+          <span key={i} style={{ color: i === step - 1 ? accent : i < step ? '#5E6779' : '#C9D3E0', fontWeight: i === step - 1 ? 900 : 700 }}>{q} </span>
+        ))}
+      </div>
+      {lanes.map((l, li) => {
+        const lit = rise(frame, cue(shot, l.cueAt, fps, { fallback: 0.3 + 0.2 * li }) - 6, 12);
+        const st = run(li)[step];
+        const y = 300 + li * 240;
+        return (
+          <div key={l.name} style={{ opacity: 0.3 + 0.7 * lit }}>
+            <div style={{ position: 'absolute', left: 120, top: y + 40, width: 520, fontFamily: FONT, fontWeight: 800, fontSize: 48, color: lit > 0.5 ? '#FFFFFF' : GREY }}>{l.name}</div>
+            {[0, 1, 2].map((k) => (
+              <Tile key={k} label={st.shelf[k] ?? ''} x={680 + k * 200} y={y} w={170} h={150} size={64} color={st.shelf[k] ? (st.shelf[k] === reqs[step - 1] ? (st.hit ? accent : '#FFFFFF') : GREY) : '#262E3E'} />
+            ))}
+            <div style={{ position: 'absolute', left: 1360, top: y + 20, fontFamily: FONT, fontWeight: 900, fontSize: 90, color: RED }}>{st.misses}</div>
+            <div style={{ position: 'absolute', left: 1500, top: y + 50, fontFamily: FONT, fontWeight: 600, fontSize: 36, color: '#C9D3E0' }}>trips to the loft</div>
+          </div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+}
+
+/**
+ * The perfect rule: each thing on the full desk shows when it is needed
+ * next; the one needed furthest in the future goes to the loft.
+ */
+export function FutureRule() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const items = [
+    { name: 'keys', next: 'tomorrow' },
+    { name: 'tent', next: 'in a year' },
+    { name: 'mug', next: 'in an hour' },
+  ];
+  const showNext = rise(frame, cue(shot, 'need again furthest', fps, { fallback: 0.3 }) - 6, 14);
+  const go = cue(shot, 'go to the loft', fps, { fallback: 0.75 });
+  const t = Easing.inOut(Easing.cubic)(Math.min(1, Math.max(0, (frame - go + 10) / (fps * 0.8))));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 110, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 56, color: C.text }}>
+        Throw out what you'll need <span style={{ color: accent }}>furthest in the future.</span>
+      </div>
+      <div style={{ position: 'absolute', left: 300, top: 640, width: 1320, height: 18, borderRadius: 9, background: '#6B5A45' }} />
+      {items.map((it, i) => {
+        const far = it.name === 'tent';
+        const x = 360 + i * 440;
+        return (
+          <div key={it.name}>
+            <Tile label={it.name} x={x + (far ? 700 * t : 0)} y={420 + (far ? 300 * t : 0)} w={320} h={200} size={60} color={far && showNext > 0.5 ? RED : accent} opacity={far ? 1 - 0.6 * t : 1} />
+            <div style={{ position: 'absolute', left: x - 40, top: 340, width: 400, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 40, color: far ? RED : '#C9D3E0', opacity: showNext * (far ? 1 - t : 1) }}>
+              needed {it.next}
+            </div>
+          </div>
+        );
+      })}
+      <div style={{ position: 'absolute', left: 1500, top: 900, fontFamily: FONT, fontWeight: 800, fontSize: 44, color: GREY, opacity: t }}>→ loft</div>
+    </AbsoluteFill>
+  );
+}
+
+/**
+ * Yukio Noguchi's envelopes: one row on a shelf; a used or new envelope goes
+ * back at the far left, so the untouched ones drift right. `archive` runs it
+ * faster and fades the far right end into an archive box.
+ */
+export function Noguchi({ archive = false }: { archive?: boolean }) {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const uses = archive
+    ? ['tax', 'rent', 'tax', 'job', 'rent', 'tax', 'gym', 'job', 'tax', 'rent', 'job', 'tax']
+    : ['new: tax', 'rent', 'insurance', 'tax', 'new: job', 'rent', 'tax'];
+  const N = 8;
+  const base = ['car', 'school', 'warranty', 'old flat', 'visa', 'bank', 'insurance', 'rent'];
+  const states: string[][] = [base];
+  for (const u of uses) {
+    const name = u.replace('new: ', '');
+    states.push([name, ...states[states.length - 1].filter((x) => x !== name)]);
+  }
+  const stepLen = Math.round(fps * (archive ? 0.9 : 1.6));
+  const step = Math.min(uses.length, Math.floor(frame / stepLen));
+  const t = Easing.inOut(Easing.cubic)(Math.min(1, (frame - step * stepLen) / (fps * 0.5)));
+  const prev = states[Math.max(0, step - 1)];
+  const cur = states[step];
+  const W = 160;
+  const sx = (i: number) => 110 + i * (W + 18);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 110, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 70, color: C.text }}>
+        {archive ? (
+          <>No labels. <span style={{ color: GREY }}>The untouched drift right.</span></>
+        ) : (
+          <>Used or new? <span style={{ color: accent }}>Back on the far left.</span></>
+        )}
+      </div>
+      {step > 0 && (
+        <div style={{ position: 'absolute', top: 240, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 40, color: '#C9D3E0' }}>
+          you use: <span style={{ color: accent, fontWeight: 900 }}>{uses[step - 1]}</span>
+        </div>
+      )}
+      {cur.slice(0, N + 1).map((name, i) => {
+        const from = prev.indexOf(name);
+        const x = from < 0 || step === 0 ? sx(i) : sx(from) + (sx(i) - sx(from)) * t;
+        const lift = from !== i && i === 0 && step > 0 ? -120 * Math.sin(Math.PI * t) : 0;
+        const fade = archive && i >= N - 2 ? 0.25 : 1;
+        return (
+          <div key={name} style={{ position: 'absolute', left: x, top: 420 + lift, width: W, height: 300, borderRadius: 12, background: i === 0 && step > 0 ? accent : '#D9C9A3', opacity: fade, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 24, fontFamily: FONT, fontWeight: 800, fontSize: 32, color: '#0B1220' }}>{name}</div>
+        );
+      })}
+      <div style={{ position: 'absolute', left: 110, top: 730, width: 1700, height: 16, borderRadius: 8, background: '#6B5A45' }} />
+      <div style={{ position: 'absolute', left: 120, top: 780, fontFamily: FONT, fontSize: 36, color: accent }}>used last</div>
+      <div style={{ position: 'absolute', left: 1800, top: 780, transform: 'translateX(-100%)', whiteSpace: 'nowrap', fontFamily: FONT, fontSize: 36, color: GREY }}>{archive ? '→ archive' : 'not touched for longest'}</div>
+    </AbsoluteFill>
+  );
+}

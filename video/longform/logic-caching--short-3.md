@@ -13,15 +13,14 @@ questions: []
 
 ## Short
 
-> SCENE (line): The perfect rule.
-> Throw out what you'll need again furthest in the future.
+> SCENE (futurerule): Each thing shows when it is needed next; the furthest goes.
 
 [calm] There's a perfect rule for what to throw out. One problem.
 
 [warmly] And he found the perfect rule. Throw out the thing you will need again furthest in the future. If you won't need it for a year, it can go to the loft.
 
-> SCENE (photo): A crystal ball, or fog.
-> fog | One problem: nobody knows the future. | color key
+> SCENE (photo): Maya puzzled at her wardrobe.
+> omni-wardrobe-puzzled | One problem: nobody knows the future. | color key
 
 [calm] There's just one problem. Nobody knows the future. Not you, and not a computer.
 

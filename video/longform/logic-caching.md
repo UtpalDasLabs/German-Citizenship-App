@@ -15,15 +15,15 @@ Logic to Live By, episode 6. Format: see the top of basic-rights.md.
 Delivery: calm and steady (stability 1.0), [warmly] for story peaks, no tag
 for plain practical lines. Never [dramatic].
 Phrasing: people by place, never nationality generalisations.
-Pictures: photos/clips to be sourced (Gemini key missing on 30 Oct, so no
-omni hero clips yet; hook clip "omni-hook-chair" planned when the key is back).
+Pictures (re-cut 30 Oct): show what each sentence says. 3D Maya for story,
+2D explainers for every idea, stock only when literal.
 -->
 
 ## Cold open
 
 > SCENE (photo): A chair with a pile of clothes on it.
 > omni-hook-chair | The chair. Everyone has one. | color key
-> laundry |  | color @ Someone has probably told you
+> omni-chair-mum |  | color @ Someone has probably told you
 
 [calm] There's a chair in your bedroom. It isn't for sitting. It holds the jeans you wore yesterday, the jumper from Sunday, the shirt you might wear again tomorrow. Someone has probably told you to tidy it. But that pile is doing exactly what every computer on earth does, billions of times a second.
 
@@ -34,7 +34,7 @@ omni hero clips yet; hook clip "omni-hook-chair" planned when the key is back).
 
 > SCENE (photo): A wardrobe, doors open.
 > wardrobe | What do you keep close? | color key
-> bookshelf |  | color @ and why the pile
+> omni-chair-grab |  | color @ and why the pile
 
 [calm] Today: caching. How to decide what to keep within reach, what to put away, and why the pile on your chair is smarter than it looks.
 
@@ -43,20 +43,15 @@ omni hero clips yet; hook clip "omni-hook-chair" planned when the key is back).
 
 ## The problem
 
-> SCENE (photo): A small desk; shelves behind.
-> shelves | Close space is small. Far space is slow. | color key
-> attic |  | color @ The space far away
+> SCENE (deskloft): A small desk next to a big loft; a stopwatch times a trip to each.
 
 [calm] Every home has the same problem. The space close to you is small: a desk, a bedside table, the front of a drawer. The space far away is big, but slow: the loft, the cellar, the back of the wardrobe.
 
-> SCENE (line): The question.
-> When the close space is full, what goes?
+> SCENE (deskfull): A new thing arrives at the full desk.
 
 [calm] So the real question is: when the close space is full, and you need room for something new, what do you move away?
 
-> SCENE (photo): A computer chip.
-> chip | Computers face this every second. | color key
-> servers |  | color @ The disk is huge
+> SCENE (deskcache): The same desk and loft, relabelled cache and disk.
 
 Computers face this question all the time. The memory right next to the processor is tiny but very fast. The disk is huge but slow. That small, fast space is called a cache. And choosing what to throw out of it decides how fast your computer feels.
 
@@ -67,18 +62,16 @@ Computers face this question all the time. The memory right next to the processo
 
 [warmly] In 1966, an engineer at IBM named László Bélády published a study of exactly this question.
 
-> SCENE (photo): Old computer tape drives.
-> tapes | Which page should leave the fast memory? | color key
+> SCENE (rulesrace): Three rules race on the same requests, counting trips to the loft.
 
 [calm] He tested different rules for what a computer should throw out of its fast memory, when room was needed. Throw out something at random. Throw out whatever came in first. Throw out whatever was used longest ago.
 
-> SCENE (line): The perfect rule.
-> Throw out what you'll need again furthest in the future.
+> SCENE (futurerule): Each thing shows when it is needed next; the furthest goes.
 
 [warmly] And he found the perfect rule. Throw out the thing you will need again furthest in the future. If you won't need it for a year, it can go to the loft.
 
-> SCENE (photo): A crystal ball, or fog.
-> fog | One problem: nobody knows the future. | color key
+> SCENE (photo): Maya puzzled at her wardrobe.
+> omni-wardrobe-puzzled | One problem: nobody knows the future. | color key
 
 [calm] There's just one problem. Nobody knows the future. Not you, and not a computer.
 
@@ -87,7 +80,6 @@ Computers face this question all the time. The memory right next to the processo
 [calm] But decades of tests since then have shown something useful. The rule "throw out what was used longest ago" comes surprisingly close to the perfect one. Computer scientists call it least recently used. The past is the best guess we have about the future. What you used an hour ago, you'll probably use again soon. What you haven't touched in a year, you probably won't.
 
 > SCENE (stat): Why it works.
-> bg | chip2
 > 1966 | the year Bélády compared the rules @ nineteen sixty-six
 > Billions | of times a second, your phone uses a version of it @ billions of times a second
 
@@ -96,7 +88,6 @@ Computers face this question all the time. The memory right next to the processo
 ## The rule
 
 > SCENE (list): The rule.
-> bg | wardrobe2
 > Just used | Keep it close @ What you just used
 > Not touched in a long time | Move it away @ What you haven't touched
 
@@ -104,7 +95,6 @@ Computers face this question all the time. The memory right next to the processo
 
 > SCENE (photo): The clothes on the chair again.
 > omni-chair-cache | The chair is a cache. | color key @ The chair is
-> drying |  | color @ sorted by least recently used
 
 [warmly] Which brings us back to the chair. The clothes on top are the ones you wore most recently, the ones you're most likely to wear again. The chair is a cache. And the pile is sorted by least recently used, without you even trying.
 
@@ -115,21 +105,17 @@ Computers face this question all the time. The memory right next to the processo
 
 [calm] An economist in Tokyo, Yukio Noguchi, built a whole filing system on this idea in the nineteen-nineties.
 
-> SCENE (photo): A row of envelopes or files on a shelf.
-> envelopes | New and used files go on the left. | color key
-> documents |  | color @ every time you use one
+> SCENE (noguchi): A row of envelopes; a used one jumps back to the far left.
 
 [calm] Every document goes into an envelope. The envelopes stand in one row on a shelf. A new one goes on the far left. And every time you use one, you put it back on the far left too.
 
-> SCENE (photo): A shelf with files.
-> files3 | No labels, no sorting. It just works. | color key
+> SCENE (noguchi2): The same row, faster; the right end drifts to the archive.
 
 [calm] No categories, no labels to keep up. Over time, the files you use often stay on the left, and the ones you never touch drift to the right, ready to be archived. It's least recently used, done by hand.
 
 ## Where it breaks
 
 > SCENE (list): When to break the rule.
-> bg | cellar
 > Rare but urgent | Passport, first aid kit: a fixed place @ Rare but urgent
 > Seasons | Winter coats: plan ahead @ Seasons
 > Too much stuff | No rule fixes that @ too much stuff
@@ -149,13 +135,11 @@ The wardrobe. Hang what you've just worn at one end. After a few months, look at
 
 > SCENE (photo): A tidy desk with a few papers.
 > desk3 | Desk: keep what you used this week. | color key
-> typewriter |  | color @ Everything else goes
 
 The desk. Keep on it only what you used this week. Everything else goes to a drawer, and the drawer's oldest papers go to a box.
 
 > SCENE (photo): A kitchen counter.
 > kitchen | Kitchen: the counter is your cache. | color key
-> pot |  | color @ The bread machine
 
 [calm] The kitchen. The counter is your cache. The kettle and the knife you use every day earn their place. The bread machine you used once at Christmas belongs in the cupboard.
 
