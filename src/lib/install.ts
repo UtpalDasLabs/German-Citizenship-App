@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+import { track } from './analytics';
 
 /**
  * Adding the app to the home screen.
@@ -75,6 +76,7 @@ export async function promptInstall(): Promise<boolean> {
   try {
     await deferred.prompt();
     const { outcome } = await deferred.userChoice;
+    track('install_prompt', { outcome });
     return outcome === 'accepted';
   } catch {
     return false;

@@ -8,6 +8,7 @@ import { AnswerOption, type OptionState } from '@/components/AnswerOption';
 import { KeyTermsTip } from '@/components/KeyTermsTip';
 import { QuestionVisual } from '@/components/QuestionVisual';
 import { Button, Card, ProgressBar, Screen, Txt } from '@/components/ui';
+import { track } from '@/lib/analytics';
 import { makeHaptics } from '@/lib/haptics';
 import { GOALS } from '@/lib/goals';
 import {
@@ -74,6 +75,13 @@ export default function ExamScreen() {
         total: paper.length,
         passed: correct >= EXAM_PASS,
         duration: Math.round((Date.now() - startedAt.current) / 1000),
+      });
+      // The outcome only, never which questions were missed.
+      track('exam_complete', {
+        passed: correct >= EXAM_PASS,
+        correct,
+        total: paper.length,
+        duration_sec: Math.round((Date.now() - startedAt.current) / 1000),
       });
       correct >= EXAM_PASS ? haptics.success() : haptics.error();
       return true;
