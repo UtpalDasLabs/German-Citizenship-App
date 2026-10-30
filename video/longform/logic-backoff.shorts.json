@@ -1,0 +1,7 @@
+{
+  "shorts": [
+    { "id": "1", "hook": "The hotline is busy. When do you call again?", "spoken": "The hotline is busy again. Here's the smartest way to call back.", "paragraphs": [0, 15] },
+    { "id": "2", "hook": "1971: the network that learned to wait", "spoken": "In 1971, a radio network in Hawaii found the smartest way to try again.", "paragraphs": [4, 5, 7] },
+    { "id": "3", "hook": "A friend keeps cancelling. Now what?", "spoken": "A friend keeps cancelling on you. Computer science has a kind answer.", "paragraphs": [17, 19] }
+  ]
+}
