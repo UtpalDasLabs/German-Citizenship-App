@@ -23,11 +23,11 @@
     },
     {
       "id": "3",
-      "hook": "Win, stay. Lose, shift.",
-      "spoken": "A rule from 1952 for choosing well: win, stay. Lose, shift.",
+      "hook": "Explore early. Enjoy late.",
+      "spoken": "Should you try something new, or stick with what you love? It depends on how long you have.",
       "paragraphs": [
-        10,
-        11
+        22,
+        23
       ]
     }
   ]

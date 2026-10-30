@@ -1,10 +1,10 @@
 ---
-title: "Win, stay. Lose, shift."
+title: "Explore early. Enjoy late."
 series: logic
 voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 media: logic-explore
-hook: "Win, stay. Lose, shift."
+hook: "Explore early. Enjoy late."
 parent: "Try Something New or Stick With Your Favourite? — The Maths of Explore vs Exploit"
 questions: []
 ---
@@ -13,16 +13,15 @@ questions: []
 
 ## Short
 
-> SCENE (line): Win-stay, lose-shift.
-> Win: stay. Lose: shift.
+> SCENE (horizon): A lifetime of evenings: new places early, favourites late.
 
-[calm] A rule from 1952 for choosing well: win, stay. Lose, shift.
+[calm] Should you try something new, or stick with what you love? It depends on how long you have.
 
-[calm] There's a simple starting point too. In 1952, the mathematician Herbert Robbins described a strategy called win-stay, lose-shift. Pick an option. If it works, keep using it. If it fails, switch to another.
+[calm] So the question isn't "new or familiar?" It's "how long do I have?" A lot of time ahead: explore. Not much time left: enjoy the best you've found.
 
-> SCENE (photo): A plate at a restaurant.
-> dinner | One bad evening shouldn't end it. | color key
+> SCENE (line): The key line.
+> Explore early. Enjoy late.
 
-[calm] It's not perfect. One bad evening at a great restaurant shouldn't end the relationship. But it beats choosing at random, and it's a fair way to begin.
+[calm] Explore early. Enjoy late.
 
 [calm] The full story is in the video on this channel.
