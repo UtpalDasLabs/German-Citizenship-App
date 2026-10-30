@@ -799,3 +799,50 @@ export function SortCost() {
     </AbsoluteFill>
   );
 }
+
+/** Least recently used: a shelf of five; what you use moves to the front, and when the shelf is full the item used longest ago drops off. */
+export function Lru() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const RED = '#F0605D';
+  const SLOTS = 5;
+  const uses = ['jeans', 'shirt', 'jumper', 'jeans', 'scarf', 'socks', 'shirt', 'coat', 'jeans', 'hat', 'shirt', 'socks'];
+  const states: string[][] = [[]];
+  const dropped: (string | null)[] = [null];
+  for (const u of uses) {
+    const next = [u, ...states[states.length - 1].filter((x) => x !== u)];
+    dropped.push(next.length > SLOTS ? next.pop()! : null);
+    states.push(next);
+  }
+  const stepLen = Math.round(fps * 1.6);
+  const step = Math.min(uses.length, Math.floor(frame / stepLen) + 1);
+  const t = Easing.inOut(Easing.cubic)(Math.min(1, (frame - (step - 1) * stepLen) / (fps * 0.5)));
+  const prev = states[step - 1];
+  const cur = states[step];
+  const slotX = (i: number) => 230 + i * 300;
+  const box = (name: string, x: number, y: number, color: string, opacity: number) => (
+    <div key={name} style={{ position: 'absolute', left: x, top: y, width: 260, height: 170, borderRadius: 22, background: color, opacity, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 48, color: '#0B1220' }}>{name}</div>
+  );
+  const gone = dropped[step];
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 110, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 74, color: C.text }}>
+        Used it? <span style={{ color: accent }}>To the front.</span> Full? <span style={{ color: RED }}>Oldest goes.</span>
+      </div>
+      <div style={{ position: 'absolute', top: 300, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 40, color: '#C9D3E0' }}>
+        you use: <span style={{ color: accent, fontWeight: 900 }}>{uses[step - 1]}</span>
+      </div>
+      {cur.map((name, i) => {
+        const from = prev.indexOf(name);
+        const x = from < 0 ? slotX(i) : slotX(from) + (slotX(i) - slotX(from)) * t;
+        const y = from < 0 ? 300 + 130 * t : 430;
+        return box(name, x, y, i === 0 ? accent : '#8A93A6', from < 0 ? t : 1);
+      })}
+      {gone && box(gone, slotX(SLOTS), 430 + 260 * t, RED, 1 - t)}
+      <div style={{ position: 'absolute', top: 640, left: 230, width: 1460, height: 10, borderRadius: 5, background: '#4A5468' }} />
+      <div style={{ position: 'absolute', top: 680, left: 230, fontFamily: FONT, fontSize: 36, color: '#8A93A6' }}>used last</div>
+      <div style={{ position: 'absolute', top: 680, left: 1690, transform: 'translateX(-100%)', fontFamily: FONT, fontSize: 36, color: '#8A93A6' }}>used longest ago</div>
+    </AbsoluteFill>
+  );
+}
