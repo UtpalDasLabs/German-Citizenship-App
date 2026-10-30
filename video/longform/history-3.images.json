@@ -1,0 +1,18 @@
+{
+  "topic": "history-3",
+  "note": "Every picture in the video, where it came from and under what licence. Licence fields are filled in by `npm run images -- history-3`; do not edit them by hand.",
+  "images": [
+    {
+      "id": "leipzig-1989",
+      "file": "Bundesarchiv Bild 183-1989-1023-022, Leipzig, Montagsdemonstration.jpg",
+      "scene": "Autumn 1989 — a Monday demonstration in Leipzig, 23 October 1989",
+      "licence": "CC BY-SA 3.0 de",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "author": "Friedrich Gahlbeck",
+      "date": "Taken on 23 October 1989",
+      "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-1989-1023-022,_Leipzig,_Montagsdemonstration.jpg",
+      "size": "779x532",
+      "sha1": "b662a6304702daedc2b3b83df472f0851ceaef99"
+    }
+  ]
+}

@@ -23,29 +23,66 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { ffbin } from './ffbin.mjs';
 import { parseLongform, pickChapters } from './longform.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
-const FFPROBE = path.join(root, 'node_modules/@remotion/compositor-linux-x64-gnu/ffprobe');
+const FFPROBE = ffbin('ffprobe');
 
-export const VOICE = process.env.ELEVENLABS_VOICE_ID ?? 'vFeVIow1bgkn4mgnqNwD';
+/** The instant clone the citizenship lessons were voiced with. */
+const LESSON_VOICE = 'vFeVIow1bgkn4mgnqNwD';
+/**
+ * The voice for a script: the environment, else the script's own `voice:`
+ * (the series videos name the professional clone), else the lessons' clone.
+ */
+export const voiceFor = (meta) => process.env.ELEVENLABS_VOICE_ID ?? meta?.voice ?? LESSON_VOICE;
+export const VOICE = voiceFor();
 /** Bump when the clone is retrained: ElevenLabs keeps the same voice ID. */
-export const CLONE_VERSION = process.env.ELEVENLABS_CLONE_VERSION ?? '2026-10-02';
+const cloneVersion = (voice) =>
+  process.env.ELEVENLABS_CLONE_VERSION ?? (voice === LESSON_VOICE ? '2026-10-02' : '2026-10-pvc');
+export const CLONE_VERSION = cloneVersion(VOICE);
 /**
  * Multilingual v2 with high similarity was picked by ear (A/B test, 2 Oct
  * 2026) as the one that sounds most like the creator; `style` gives back some
  * of the energy the v4 model had. v2 does not take [direction] tags.
  */
-export const MODEL = process.env.ELEVENLABS_MODEL ?? 'eleven_multilingual_v2';
-export const SETTINGS = { stability: 0.4, similarity_boost: 0.95, style: 0.35, use_speaker_boost: true };
+const ARGS = process.argv.slice(2);
+/**
+ * --expressive: Eleven v4, which performs the [excited], [laughs], [whispers]
+ * directions in the script. More energy, a little less likeness.
+ */
+const EXPRESSIVE = ARGS.includes('--expressive');
+export const MODEL = process.env.ELEVENLABS_MODEL ?? (EXPRESSIVE ? 'eleven_v4' : 'eleven_multilingual_v2');
+/**
+ * Two deliveries. "natural" (default) is the closest to the creator's own
+ * voice. "lively" (--lively, used with the lively cut) trades a little
+ * likeness for energy: less stable, more style, 8 % faster.
+ */
+export const PROFILE = EXPRESSIVE ? 'expressive' : ARGS.includes('--lively') ? 'lively' : 'natural';
+export const SETTINGS =
+  PROFILE === 'expressive'
+    ? { stability: 0.5 }
+    : PROFILE === 'lively'
+      ? { stability: 0.3, similarity_boost: 0.9, style: 0.6, use_speaker_boost: true, speed: 1.08 }
+      : { stability: 0.4, similarity_boost: 0.95, style: 0.35, use_speaker_boost: true };
 const TAKES_TAGS = /^eleven_v[34]/.test(MODEL);
 
 /** The text actually sent to the voice for a paragraph. */
-export const spokenText = (tts) => (TAKES_TAGS ? tts : tts.replace(/\[(?!\[)[a-z][a-z ,]*\]\s*/gi, '').trim());
+/** Tags the renderer acts on, never sent to the voice. */
+const STAGE = /\[(?:countdown|pause)\]\s*/gi;
+export const spokenText = (tts) =>
+  (TAKES_TAGS ? tts.replace(STAGE, '') : tts.replace(/\[(?!\[)[a-z][a-z ,]*\]\s*/gi, '')).trim();
 
-const slug = `${VOICE}-${CLONE_VERSION}-${MODEL}-s${SETTINGS.stability}-m${SETTINGS.similarity_boost}-y${SETTINGS.style}`;
-export const audioDir = (topic) => path.join(root, 'out', 'audio', 'longform', topic, slug);
+/**
+ * A script can hold the voice steadier on Eleven v4 with `stability: 1.0` in
+ * its front matter (the series: calm and even, never dramatic).
+ */
+export const settingsFor = (meta) =>
+  PROFILE === 'expressive' && meta?.stability != null ? { ...SETTINGS, stability: Number(meta.stability) } : SETTINGS;
+const slugFor = (voice, st = SETTINGS) =>
+  `${voice}-${cloneVersion(voice)}-${MODEL}-s${st.stability}${st.similarity_boost ? `-m${st.similarity_boost}` : ''}${st.style != null ? `-y${st.style}` : ''}${st.speed ? `-x${st.speed}` : ''}`;
+export const audioDir = (topic, voice = VOICE, st = SETTINGS) => path.join(root, 'out', 'audio', 'longform', topic, slugFor(voice, st));
 export const paraHash = (text) => createHash('sha1').update(text).digest('hex').slice(0, 12);
 
 async function main() {
@@ -64,21 +101,40 @@ async function main() {
   }
 
   const script = parseLongform(topic);
-  const dir = audioDir(topic);
+  const voice = voiceFor(script.meta);
+  const settings = settingsFor(script.meta);
+  const slug = slugFor(voice, settings);
+  const dir = audioDir(topic, voice, settings);
   fs.mkdirSync(dir, { recursive: true });
   const paras = pickChapters(spec, script.chapters.length)
     .flatMap((c) => script.chapters[c].shots.flatMap((s) => s.paras))
     .map((p) => ({ ...p, text: spokenText(p.tts) }));
+  // A paragraph already voiced word for word for another lesson (an outro,
+  // a stock explanation in the state lessons) is copied, not bought again.
+  const lessons = path.join(root, 'out', 'audio', 'longform');
+  let reused = 0;
+  for (const p of paras) {
+    const id = paraHash(p.text);
+    if (fs.existsSync(path.join(dir, `${id}.json`))) continue;
+    for (const other of fs.readdirSync(lessons)) {
+      const from = path.join(lessons, other, slug);
+      if (other === topic || !fs.existsSync(path.join(from, `${id}.json`))) continue;
+      for (const ext of ['json', 'mp3']) fs.copyFileSync(path.join(from, `${id}.${ext}`), path.join(dir, `${id}.${ext}`));
+      reused++;
+      break;
+    }
+  }
+  if (reused) console.log(`${reused} paragraph(s) copied from other lessons, already voiced word for word.`);
   const todo = paras.filter((p) => !fs.existsSync(path.join(dir, `${paraHash(p.text)}.json`)));
   const chars = todo.reduce((n, p) => n + p.text.length, 0);
-  console.log(`${paras.length} paragraphs, ${todo.length} not voiced yet: ${chars} characters (${VOICE}, ${MODEL})`);
+  console.log(`${paras.length} paragraphs, ${todo.length} not voiced yet: ${chars} characters (${voice}, ${MODEL}, ${PROFILE}, stability ${settings.stability})`);
   if (dry) return;
 
   for (const [i, p] of todo.entries()) {
-    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}/with-timestamps?output_format=mp3_44100_128`, {
+    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}/with-timestamps?output_format=mp3_44100_128`, {
       method: 'POST',
       headers: { 'xi-api-key': key, 'content-type': 'application/json' },
-      body: JSON.stringify({ text: p.text, model_id: MODEL, voice_settings: SETTINGS }),
+      body: JSON.stringify({ text: p.text, model_id: MODEL, voice_settings: settings }),
     });
     if (!res.ok) throw new Error(`${res.status} from ElevenLabs: ${(await res.text()).slice(0, 300)}`);
     const json = await res.json();

@@ -1,0 +1,30 @@
+{
+  "topic": "history-2",
+  "note": "Every picture in the video, where it came from and under what licence. Licence fields are filled in by `npm run images -- history-2`; do not edit them by hand.",
+  "images": [
+    {
+      "id": "airlift-tempelhof",
+      "file": "C-54 landing at Tempelhof 1948.jpg",
+      "scene": "The airlift — a C-54 landing at Tempelhof, 1948",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "USAF",
+      "date": "1948",
+      "source": "https://commons.wikimedia.org/wiki/File:C-54_landing_at_Tempelhof_1948.jpg",
+      "size": "530x422",
+      "sha1": "460cac8f24d5a242bc65729bd1bc8cf375d90826"
+    },
+    {
+      "id": "mauerbau",
+      "file": "Bundesarchiv Bild 183-88832-0001, Berlin, Mauerbau, Friedrichstraße.jpg",
+      "scene": "The Wall — building the Wall at Friedrichstraße, 1961",
+      "licence": "CC BY-SA 3.0 de",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "author": "Stöhr",
+      "date": "13 December 1961",
+      "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-88832-0001,_Berlin,_Mauerbau,_Friedrichstra%C3%9Fe.jpg",
+      "size": "784x536",
+      "sha1": "9df660a91e5be5a6189558d588771aedfb50bfda"
+    }
+  ]
+}

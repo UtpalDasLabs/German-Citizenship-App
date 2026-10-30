@@ -1,0 +1,103 @@
+{
+  "topic": "logic-backoff-pilot",
+  "note": "Pilot: Kling AI + Pixabay.",
+  "clips": [
+    {
+      "id": "redial",
+      "source": "file",
+      "file": "kling/redial.mp4",
+      "credit": "Made with Kling AI",
+      "start": 0,
+      "seconds": 5
+    },
+    {
+      "id": "aloha1971",
+      "source": "file",
+      "file": "kling/hawaii-1971.mp4",
+      "credit": "Made with Kling AI",
+      "start": 0,
+      "seconds": 5,
+      "speed": 0.7
+    },
+    {
+      "id": "switchboard",
+      "source": "pixabay",
+      "pixabayId": 286687,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by izhar-ahamed from Pixabay: https://pixabay.com/videos/id-286687/"
+    },
+    {
+      "id": "crowd",
+      "source": "pixabay",
+      "pixabayId": 165336,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Ri_Ya from Pixabay: https://pixabay.com/videos/id-165336/"
+    },
+    {
+      "id": "sketch",
+      "source": "pixabay",
+      "pixabayId": 10824,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10824/"
+    },
+    {
+      "id": "cables",
+      "source": "pixabay",
+      "pixabayId": 14900,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/"
+    },
+    {
+      "id": "cables2",
+      "source": "pixabay",
+      "pixabayId": 14900,
+      "start": 7,
+      "seconds": 8,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14900/"
+    },
+    {
+      "id": "phone2",
+      "source": "pixabay",
+      "pixabayId": 174003,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-174003/"
+    },
+    {
+      "id": "letters",
+      "source": "pixabay",
+      "pixabayId": 41211,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by KIMDAEJEUNG from Pixabay: https://pixabay.com/videos/id-41211/"
+    },
+    {
+      "id": "friends",
+      "source": "pixabay",
+      "pixabayId": 1623,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-1623/"
+    },
+    {
+      "id": "alto",
+      "source": "pixabay",
+      "pixabayId": 232538,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Darioguzben from Pixabay: https://pixabay.com/videos/id-232538/"
+    },
+    {
+      "id": "clock",
+      "source": "pixabay",
+      "pixabayId": 15615,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-15615/"
+    }
+  ]
+}

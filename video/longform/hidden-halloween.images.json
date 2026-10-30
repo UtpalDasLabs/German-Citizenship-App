@@ -1,0 +1,78 @@
+{
+  "topic": "hidden-halloween",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "karneval",
+      "file": "2023 Rosenmontagszug Kamelle.jpg",
+      "scene": "Kölner Rosenmontag",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Geolina163",
+      "date": "2023-02-26 15:22:04",
+      "source": "https://commons.wikimedia.org/wiki/File:2023_Rosenmontagszug_Kamelle.jpg",
+      "size": "4864x3648",
+      "sha1": "4ee5de30c15432529b6553ae504e95ddf704ed1f"
+    },
+    {
+      "id": "karneval2",
+      "file": "2023 Rosenmontagszug Mottowagen Winterschlussverkauf.jpg",
+      "scene": "A Rosenmontag float",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Geolina163",
+      "date": "2023-02-20 19:01:53",
+      "source": "https://commons.wikimedia.org/wiki/File:2023_Rosenmontagszug_Mottowagen_Winterschlussverkauf.jpg",
+      "size": "3468x3864",
+      "sha1": "e36524ec0da5f0b393902adda80c4b62837b29a3"
+    },
+    {
+      "id": "martinszug",
+      "file": "Martinszug an der Lambertusschule Mühlenstraße um 1930 Julius Söhn.jpg",
+      "scene": "A Martinszug, around 1930",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Julius Söhn",
+      "date": "1930",
+      "source": "https://commons.wikimedia.org/wiki/File:Martinszug_an_der_Lambertusschule_M%C3%BChlenstra%C3%9Fe_um_1930_Julius_S%C3%B6hn.jpg",
+      "size": "2800x1690",
+      "sha1": "f8dff30af979033f718c38db9042fafd2a995c16"
+    },
+    {
+      "id": "ludwigsburg",
+      "file": "Kürbisausstellung im Schlossgarten.jpeg",
+      "scene": "The pumpkin exhibition, Ludwigsburg",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Aerial video capture",
+      "date": "2015-11-22 14:53:38",
+      "source": "https://commons.wikimedia.org/wiki/File:K%C3%BCrbisausstellung_im_Schlossgarten.jpeg",
+      "size": "4206x2612",
+      "sha1": "11f41c5d2bdb130d186fed590ea85da1bcf15526"
+    },
+    {
+      "id": "lb-figure",
+      "file": "Kürbisausstellung Ludwigsburg 2010 Figur.jpg",
+      "scene": "A pumpkin sculpture",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Max Siegmayer",
+      "date": "2010-09-12 14:18:37",
+      "source": "https://commons.wikimedia.org/wiki/File:K%C3%BCrbisausstellung_Ludwigsburg_2010_Figur.jpg",
+      "size": "2144x3216",
+      "sha1": "38f1d4c0390858f15b5d5cd8cb3d657245227e49"
+    },
+    {
+      "id": "lb-seahorse",
+      "file": "Kürbisausstellung Ludwigsburg 2010 Seepferdchen.jpg",
+      "scene": "A pumpkin seahorse",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Max Siegmayer",
+      "date": "2010-09-12 14:13:39",
+      "source": "https://commons.wikimedia.org/wiki/File:K%C3%BCrbisausstellung_Ludwigsburg_2010_Seepferdchen.jpg",
+      "size": "2144x3216",
+      "sha1": "41790f24e5567f4e630070dfb310ac35f972f70b"
+    }
+  ]
+}

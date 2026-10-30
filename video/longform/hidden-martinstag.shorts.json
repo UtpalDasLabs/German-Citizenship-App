@@ -1,0 +1,41 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "Why do kids in Germany walk with lanterns in November?",
+      "spoken": "Why do kids in Germany walk through the dark with lanterns every November?",
+      "paragraphs": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "Why does Karneval start at 11:11 on 11.11?",
+      "spoken": "Why does Karneval start at eleven minutes past eleven, on the eleventh of November?",
+      "paragraphs": [
+        12,
+        13
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "Why do so many people in Germany eat goose on 11 November?",
+      "spoken": "Why do so many people in Germany eat goose on the eleventh of November?",
+      "paragraphs": [
+        9,
+        10
+      ]
+    },
+    {
+      "id": "4",
+      "hook": "A Roman soldier cut his cloak in two. Germany still celebrates it.",
+      "spoken": "A Roman soldier cut his cloak in two. Sixteen hundred years later, Germany still celebrates it.",
+      "paragraphs": [
+        4,
+        5,
+        6
+      ]
+    }
+  ]
+}

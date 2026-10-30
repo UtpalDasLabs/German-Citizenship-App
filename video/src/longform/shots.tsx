@@ -6,13 +6,16 @@ import { OptionCard, PictureTile, type CardState } from '../components';
 import { EuropeMap } from './europe';
 import { StatesMap } from './states';
 import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './generic';
+import { useAccent, useSeries } from './series';
+import { KitScene } from '../kit/Kit';
+import { RigScene } from '../kit/Rig';
+import { Backoff, Bandit, Collide, Curve, Horizon, Jam, SortCost, Line, Place, Stopping, Waits, WallTimeline } from './series-shots';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
-import { charFrame, cue, findCue, paraStart, useShot } from './plan';
+import { charFrame, cue, findCue, paraStart, useShot, type Shot } from './plan';
 
 export const img = (topic: string, id: string, ext = 'jpg') => `images/${topic}/${id}.${ext}`;
-
 
 // ─── Cold open ──────────────────────────────────────────────────────────────
 
@@ -82,8 +85,6 @@ function Bonn({ topic }: { topic: string }) {
     </AbsoluteFill>
   );
 }
-
-
 
 function Article1({ topic, questions }: { topic: string; questions: number[] }) {
   const shot = useShot();
@@ -235,6 +236,8 @@ function QuestionGrid({ questions, at, label }: { questions: number[]; at: numbe
 }
 
 function Title({ title }: { title: string }) {
+  const GOLD = useAccent();
+  const series = useSeries();
   const frame = useCurrentFrame();
   // `> OVERLINE` under the scene: the topic's German name.
   const overline = useShot().screen[0] ?? 'GRUNDRECHTE';
@@ -269,7 +272,10 @@ function Title({ title }: { title: string }) {
         style={{
           fontFamily: FONT,
           fontWeight: 800,
-          fontSize: 150,
+          fontSize: main.length > 28 ? 104 : 150,
+          maxWidth: 1640,
+          textAlign: 'center',
+          lineHeight: 1.1,
           color: C.text,
           opacity: rise(frame, 8),
           transform: `translateY(${(1 - rise(frame, 8)) * 20}px)`,
@@ -301,16 +307,17 @@ function Title({ title }: { title: string }) {
           opacity: rise(frame, 20) * 0.9,
         }}
       >
-        <Img src={staticFile('icon.png')} style={{ width: 56, height: 56, borderRadius: 13 }} />
+        {series ? null : <Img src={staticFile('icon.png')} style={{ width: 56, height: 56, borderRadius: 13 }} />}
         <div
           style={{
             fontFamily: FONT,
             fontWeight: 700,
             fontSize: 28,
+            letterSpacing: series ? 4 : 0,
             color: C.textMuted,
           }}
         >
-          {APP_NAME}
+          {series ? 'LIVING IN DEUTSCHLAND' : APP_NAME}
         </div>
       </div>
     </AbsoluteFill>
@@ -545,7 +552,8 @@ function Map1949() {
   const { fps } = useVideoConfig();
   const divided = cue(shot, 'divided', fps, { fallback: 0.15 });
   const temporary = cue(shot, 'temporary arrangement', fps, { fallback: 0.7 });
-  const still = paraStart(shot, 1);
+  // The year counts up on a second paragraph, or a second after the stamp.
+  const still = shot.paras[1] ? paraStart(shot, 1) : temporary + fps;
   const w = rise(frame, divided, 20);
   const stamp = rise(frame, temporary, 8);
   const year = Math.round(
@@ -723,33 +731,32 @@ const breakable = (t: string) => t.replace(/\//g, '/\u200b');
 function WithNegation({ text }: { text: string }) {
   return (
     <>
-      {breakable(text).split(/(\bnicht\b|\bkein\w*)/i).map((part, i) =>
-        i % 2 ? (
-          <span key={i} style={{ color: C.danger }}>
-            {part}
-          </span>
-        ) : (
-          part
-        ),
-      )}
+      {breakable(text)
+        .split(/(\bnicht\b|\bkein\w*)/i)
+        .map((part, i) =>
+          i % 2 ? (
+            <span key={i} style={{ color: C.danger }}>
+              {part}
+            </span>
+          ) : (
+            part
+          ),
+        )}
     </>
   );
 }
 
 /**
- * An exam question exactly as worded in the catalogue. The right answer lights
- * up when the narrator says it; wrong answers dim as the narrator rules them out.
+ * When a question card's answer lights up, and when each wrong option is ruled
+ * out (first spoken). Shared with the sound effects, so the ding lands on the
+ * same frame as the green.
  */
-function Question() {
-  const shot = useShot();
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+export function questionTiming(shot: Shot, fps: number) {
   const id = shot.questions[0];
   if (id == null) throw new Error(`A question shot needs a {Q<id>} anchor: ${shot.scene}`);
   const { q } = load(id);
   const answer = q.answer as (typeof LETTERS)[number];
-
-  // When each option's German text is first spoken, after the question itself.
+  // When each option's German text is first spoken.
   const spoken: Partial<Record<string, number>> = {};
   for (const p of shot.paras) {
     for (const d of p.de) {
@@ -762,6 +769,73 @@ function Question() {
   const revealCue = shot.screen.find((l) => l.startsWith('@ '));
   const revealAt = revealCue ? findCue(shot, revealCue.slice(2).trim(), fps) : null;
   const answerAt = revealAt ?? spoken[answer] ?? Math.round(shot.frames * 0.6);
+  const ruledOut = LETTERS.filter((l) => l !== answer && spoken[l] != null && spoken[l]! < answerAt).map((l) => spoken[l]!);
+  return { id, q, answer, spoken, answerAt, ruledOut };
+}
+
+/** Three, two, one: a ring that empties while the viewer guesses. */
+function Countdown({ from, frames }: { from: number; frames: number }) {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame - from;
+  if (t < 0 || t > frames) return null;
+  const left = Math.max(1, Math.ceil((frames - t) / fps));
+  const o = Math.min(
+    interpolate(t, [0, 6], [0, 1], { extrapolateRight: 'clamp' }),
+    interpolate(t, [frames - 6, frames], [1, 0], { extrapolateLeft: 'clamp' }),
+  );
+  const r = 70;
+  const progress = 1 - t / frames;
+  const beat = (t % fps) / fps;
+  return (
+    <div style={{ position: 'absolute', right: 110, top: 80, opacity: o, display: 'flex', alignItems: 'center', gap: 24 }}>
+      <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 30, letterSpacing: 3, color: GOLD }}>YOUR GUESS?</div>
+      <div style={{ position: 'relative', width: 2 * r + 20, height: 2 * r + 20 }}>
+        <svg width={2 * r + 20} height={2 * r + 20} style={{ position: 'absolute', transform: 'rotate(-90deg)' }}>
+          <circle cx={r + 10} cy={r + 10} r={r} fill="none" stroke={C.track} strokeWidth={12} />
+          <circle
+            cx={r + 10}
+            cy={r + 10}
+            r={r}
+            fill="none"
+            stroke={GOLD}
+            strokeWidth={12}
+            strokeLinecap="round"
+            strokeDasharray={2 * Math.PI * r}
+            strokeDashoffset={2 * Math.PI * r * (1 - progress)}
+          />
+        </svg>
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: FONT,
+            fontWeight: 800,
+            fontSize: 76,
+            color: C.text,
+            transform: `scale(${1.15 - 0.15 * Math.min(1, beat * 4)})`,
+          }}
+        >
+          {left}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * An exam question exactly as worded in the catalogue. The right answer lights
+ * up when the narrator says it; wrong answers dim as the narrator rules them out.
+ */
+function Question() {
+  const shot = useShot();
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const { id, q, answer, spoken, answerAt } = questionTiming(shot, fps);
+  const guess = shot.paras.find((p) => p.countdown);
   // Some catalogue questions are whole stories; keep them on one screen.
   const qSize = q.de.text.length > 150 ? 44 : q.de.text.length > 90 ? 54 : 64;
   const longest = Math.max(...LETTERS.map((l) => q.de.options[l].length));
@@ -823,7 +897,15 @@ function Question() {
         {LETTERS.map((l, i) => {
           if (q.imageMode === 'options') {
             const state: CardState = frame >= answerAt ? (l === answer ? 'correct' : 'dim') : 'idle';
-            return <PictureTile key={l} letter={l.toUpperCase()} imageKey={q.images[i]} state={state} enter={rise(frame, 10 + i * 4, 14)} />;
+            return (
+              <PictureTile
+                key={l}
+                letter={l.toUpperCase()}
+                imageKey={q.images[i]}
+                state={state}
+                enter={rise(frame, 10 + i * 4, 14)}
+              />
+            );
           }
           const ruledOut = l !== answer && spoken[l] != null && frame >= spoken[l]!;
           const state: CardState = frame >= answerAt ? (l === answer ? 'correct' : 'dim') : ruledOut ? 'dim' : 'idle';
@@ -842,6 +924,7 @@ function Question() {
           );
         })}
       </div>
+      {guess ? <Countdown from={guess.from - 3 * fps} frames={3 * fps} /> : null}
     </AbsoluteFill>
   );
 }
@@ -873,7 +956,12 @@ function ExamPicture({ imageKey, credit }: { imageKey: string; credit: string | 
       </div>
     );
   }
-  return <Img src={staticFile(`questions/${imageKey}.webp`)} style={{ height: 240, alignSelf: 'flex-start', borderRadius: 14, opacity: o }} />;
+  return (
+    <Img
+      src={staticFile(`questions/${imageKey}.webp`)}
+      style={{ height: 240, alignSelf: 'flex-start', borderRadius: 14, opacity: o }}
+    />
+  );
 }
 
 /** Scenes that already put all their German on screen themselves. */
@@ -913,9 +1001,9 @@ export function shotFor(key: string | null, topic: string, title: string, questi
     case 'term':
       return <Term />;
     case 'list':
-      return <List />;
+      return <List topic={topic} />;
     case 'stat':
-      return <Stat />;
+      return <Stat topic={topic} />;
     case 'fact':
       return <Fact />;
     case 'quote':
@@ -932,6 +1020,34 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <EuropeMap />;
     case 'states':
       return <StatesMap />;
+    case 'line':
+      return <Line topic={topic} />;
+    case 'place':
+      return <Place topic={topic} />;
+    case 'stopping':
+      return <Stopping />;
+    case 'curve':
+      return <Curve />;
+    case 'wall':
+      return <WallTimeline />;
+    case 'kit':
+      return <KitScene />;
+    case 'rig':
+      return <RigScene topic={topic} />;
+    case 'jam':
+      return <Jam />;
+    case 'bandit':
+      return <Bandit />;
+    case 'horizon':
+      return <Horizon />;
+    case 'sortcost':
+      return <SortCost />;
+    case 'collide':
+      return <Collide />;
+    case 'backoff':
+      return <Backoff />;
+    case 'waits':
+      return <Waits />;
     default:
       return null;
   }

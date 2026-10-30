@@ -1,0 +1,30 @@
+{
+  "topic": "logic-predicting",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "wall1969",
+      "file": "President Nixon visits the Berlin Wall at Moritzplatz, Berlin - NARA - 194608.tif",
+      "scene": "The Berlin Wall, 1969",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Oliver F. Atkins",
+      "date": "27 February 1969",
+      "source": "https://commons.wikimedia.org/wiki/File:President_Nixon_visits_the_Berlin_Wall_at_Moritzplatz,_Berlin_-_NARA_-_194608.tif",
+      "size": "3000x1992",
+      "sha1": "e9916362405eb8f26d0b9dc23d94fd823f0cbb09"
+    },
+    {
+      "id": "fall1989",
+      "file": "Berlin 1989, Fall der Mauer, Chute du mur 20.jpg",
+      "scene": "The fall, 1989",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "author": "Raphaël Thiémard from Belgique",
+      "date": "November 1989 as statted by author but possibly 22 December 1989",
+      "source": "https://commons.wikimedia.org/wiki/File:Berlin_1989,_Fall_der_Mauer,_Chute_du_mur_20.jpg",
+      "size": "4800x3200",
+      "sha1": "4f7f8dc41496a1f452deed0ad4288451d952d33b"
+    }
+  ]
+}

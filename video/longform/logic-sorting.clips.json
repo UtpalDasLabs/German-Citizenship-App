@@ -1,0 +1,210 @@
+{
+  "topic": "logic-sorting",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "desk",
+      "source": "pixabay",
+      "pixabayId": 80314,
+      "start": 0.5,
+      "seconds": 9.2,
+      "credit": "Video by Kathanhero from Pixabay: https://pixabay.com/videos/id-80314/",
+      "speed": 0.86
+    },
+    {
+      "id": "files",
+      "source": "pixabay",
+      "pixabayId": 87592,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by oybekostanov from Pixabay: https://pixabay.com/videos/id-87592/"
+    },
+    {
+      "id": "papers",
+      "source": "pixabay",
+      "pixabayId": 41121,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by wonderlandwoo from Pixabay: https://pixabay.com/videos/id-41121/"
+    },
+    {
+      "id": "cables",
+      "source": "pixabay",
+      "pixabayId": 14907,
+      "start": 0.5,
+      "seconds": 13.1,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14907/"
+    },
+    {
+      "id": "box",
+      "source": "pixabay",
+      "pixabayId": 4878,
+      "start": 0.5,
+      "seconds": 10.2,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-4878/",
+      "speed": 0.86
+    },
+    {
+      "id": "library",
+      "source": "pixabay",
+      "pixabayId": 846,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-846/"
+    },
+    {
+      "id": "library2",
+      "source": "pixabay",
+      "pixabayId": 818,
+      "start": 0.5,
+      "seconds": 10.2,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-818/",
+      "speed": 0.86
+    },
+    {
+      "id": "receipts",
+      "source": "pixabay",
+      "pixabayId": 212508,
+      "start": 0.5,
+      "seconds": 10.3,
+      "credit": "Video by MaxMedyk from Pixabay: https://pixabay.com/videos/id-212508/"
+    },
+    {
+      "id": "office",
+      "source": "pixabay",
+      "pixabayId": 134112,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by zillurrahman1 from Pixabay: https://pixabay.com/videos/id-134112/"
+    },
+    {
+      "id": "laptop2",
+      "source": "pixabay",
+      "pixabayId": 215751,
+      "start": 0.5,
+      "seconds": 9.8,
+      "credit": "Video by G3Remote from Pixabay: https://pixabay.com/videos/id-215751/"
+    },
+    {
+      "id": "office2",
+      "source": "pixabay",
+      "pixabayId": 39890,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-39890/"
+    },
+    {
+      "id": "typing2",
+      "source": "pixabay",
+      "pixabayId": 3174,
+      "start": 0.5,
+      "seconds": 11.1,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3174/"
+    },
+    {
+      "id": "clock",
+      "source": "pixabay",
+      "pixabayId": 8503,
+      "start": 0.5,
+      "seconds": 9.5,
+      "credit": "Video by PIRO4D from Pixabay: https://pixabay.com/videos/id-8503/"
+    },
+    {
+      "id": "files2",
+      "source": "pixabay",
+      "pixabayId": 2340,
+      "start": 0.5,
+      "seconds": 45,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-2340/"
+    },
+    {
+      "id": "laptop3",
+      "source": "pixabay",
+      "pixabayId": 171409,
+      "start": 0.5,
+      "seconds": 9.2,
+      "credit": "Video by u_vwhnf4huq0 from Pixabay: https://pixabay.com/videos/id-171409/",
+      "speed": 0.82
+    },
+    {
+      "id": "photos",
+      "source": "pixabay",
+      "pixabayId": 169445,
+      "start": 0.5,
+      "seconds": 14.3,
+      "credit": "Video by magicmore from Pixabay: https://pixabay.com/videos/id-169445/"
+    },
+    {
+      "id": "desk2",
+      "source": "pixabay",
+      "pixabayId": 1028,
+      "start": 0.5,
+      "seconds": 9.7,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1028/"
+    },
+    {
+      "id": "clothes",
+      "source": "pixabay",
+      "pixabayId": 165820,
+      "start": 0.5,
+      "seconds": 18.4,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-165820/"
+    },
+    {
+      "id": "omni-hook-folders",
+      "source": "veo",
+      "file": "veo/sorting/hook-folders.mp4",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. JONAS: a man in his thirties, dark short beard, messy brown hair, a navy cardigan over a light shirt. Jonas at his laptop drags every single email into one of dozens of tiny colourful folders while a colleague next to him just types a word into a search box and instantly finds the message; Jonas stares at the screen, then at her. Comic timing.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "speed": 0.74,
+      "start": 0
+    },
+    {
+      "id": "omni-kitchen-drawer",
+      "source": "veo",
+      "file": "veo/sorting/kitchen-drawer.mp4",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. JONAS: a man in his thirties, dark short beard, messy brown hair, a navy cardigan over a light shirt. Same Jonas opens a kitchen drawer: the everyday spoons are neatly in front, while a jumble of rarely used gadgets (a garlic press, a cookie cutter) sits at the back; he grabs a spoon instantly and smiles.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "referenceFrom": "omni-hook-folders",
+      "speed": 0.8,
+      "start": 0
+    },
+    {
+      "id": "omni-messy-desk-win",
+      "source": "veo",
+      "file": "veo/sorting/messy-desk-win.mp4",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. JONAS: a man in his thirties, dark short beard, messy brown hair, a navy cardigan over a light shirt. Same Jonas at a gloriously messy desk piled with papers; a friend teases him; he calmly pulls exactly the right sheet from the pile in one second and holds it up, triumphant. Happy ending mood.",
+      "seconds": 7,
+      "credit": "Made with Google Veo",
+      "referenceFrom": "omni-hook-folders",
+      "start": 1,
+      "speed": 0.87
+    },
+    {
+      "id": "reader",
+      "source": "pixabay",
+      "pixabayId": 349094,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by MuhammadAhmad10 from Pixabay: https://pixabay.com/videos/id-349094/"
+    },
+    {
+      "id": "dictionary",
+      "source": "pixabay",
+      "pixabayId": 21941,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by ElenLackner from Pixabay: https://pixabay.com/videos/id-21941/"
+    },
+    {
+      "id": "laptop-cup",
+      "source": "pixabay",
+      "pixabayId": 197,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-197/"
+    }
+  ]
+}

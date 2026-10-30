@@ -1,0 +1,206 @@
+{
+  "topic": "logic-predicting",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "platform",
+      "source": "pixabay",
+      "pixabayId": 7502,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Train_Video from Pixabay: https://pixabay.com/videos/id-7502/"
+    },
+    {
+      "id": "dark-platform",
+      "source": "pixabay",
+      "pixabayId": 363589,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Openly from Pixabay: https://pixabay.com/videos/id-363589/"
+    },
+    {
+      "id": "dark-platform2",
+      "source": "pixabay",
+      "pixabayId": 363589,
+      "start": 4,
+      "seconds": 8,
+      "credit": "Video by Openly from Pixabay: https://pixabay.com/videos/id-363589/"
+    },
+    {
+      "id": "watch",
+      "source": "pixabay",
+      "pixabayId": 34855,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Danil_Shostak from Pixabay: https://pixabay.com/videos/id-34855/"
+    },
+    {
+      "id": "watch2",
+      "source": "pixabay",
+      "pixabayId": 15615,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-15615/"
+    },
+    {
+      "id": "berlin-tower",
+      "source": "pixabay",
+      "pixabayId": 15233,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by sacharine from Pixabay: https://pixabay.com/videos/id-15233/"
+    },
+    {
+      "id": "berlin-tower2",
+      "source": "pixabay",
+      "pixabayId": 15233,
+      "start": 8,
+      "seconds": 8,
+      "credit": "Video by sacharine from Pixabay: https://pixabay.com/videos/id-15233/"
+    },
+    {
+      "id": "sketch",
+      "source": "pixabay",
+      "pixabayId": 10824,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-10824/"
+    },
+    {
+      "id": "guitar",
+      "source": "pixabay",
+      "pixabayId": 45445,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Josh_Malic from Pixabay: https://pixabay.com/videos/id-45445/"
+    },
+    {
+      "id": "shop",
+      "source": "pixabay",
+      "pixabayId": 95069,
+      "start": 5,
+      "seconds": 8,
+      "credit": "Video by Engin_Akyurt from Pixabay: https://pixabay.com/videos/id-95069/"
+    },
+    {
+      "id": "city-night",
+      "source": "pixabay",
+      "pixabayId": 88921,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by MagicTV from Pixabay: https://pixabay.com/videos/id-88921/"
+    },
+    {
+      "id": "earth",
+      "source": "pixabay",
+      "pixabayId": 57786,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by ds-films from Pixabay: https://pixabay.com/videos/id-57786/"
+    },
+    {
+      "id": "football",
+      "source": "pixabay",
+      "pixabayId": 208387,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by ThomaLutfpv from Pixabay: https://pixabay.com/videos/id-208387/"
+    },
+    {
+      "id": "pizza",
+      "source": "pixabay",
+      "pixabayId": 79570,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by TPMotion from Pixabay: https://pixabay.com/videos/id-79570/"
+    },
+    {
+      "id": "bw-platform",
+      "source": "pixabay",
+      "pixabayId": 366526,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Openly from Pixabay: https://pixabay.com/videos/id-366526/"
+    },
+    {
+      "id": "meteor",
+      "source": "pixabay",
+      "pixabayId": 301757,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by flutie8211 from Pixabay: https://pixabay.com/videos/id-301757/"
+    },
+    {
+      "id": "milky-way",
+      "source": "pixabay",
+      "pixabayId": 285663,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Kanenori from Pixabay: https://pixabay.com/videos/id-285663/"
+    },
+    {
+      "id": "bus",
+      "source": "pixabay",
+      "pixabayId": 29507,
+      "start": 3,
+      "seconds": 8,
+      "credit": "Video by pauldaley1977 from Pixabay: https://pixabay.com/videos/id-29507/"
+    },
+    {
+      "id": "phone-news",
+      "source": "pixabay",
+      "pixabayId": 9490,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by chayka1270 from Pixabay: https://pixabay.com/videos/id-9490/"
+    },
+    {
+      "id": "train-arrive",
+      "source": "pixabay",
+      "pixabayId": 127494,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by Trek_Jason from Pixabay: https://pixabay.com/videos/id-127494/"
+    },
+    {
+      "id": "book",
+      "source": "pixabay",
+      "pixabayId": 185096,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by stefaniejockschat from Pixabay: https://pixabay.com/videos/id-185096/"
+    },
+    {
+      "id": "rotary",
+      "source": "pixabay",
+      "pixabayId": 119507,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MabelAmber from Pixabay: https://pixabay.com/videos/id-119507/"
+    },
+    {
+      "id": "traffic",
+      "source": "pixabay",
+      "pixabayId": 88922,
+      "start": 2,
+      "seconds": 8,
+      "credit": "Video by MagicTV from Pixabay: https://pixabay.com/videos/id-88922/"
+    },
+    {
+      "id": "berlin-tower3",
+      "source": "pixabay",
+      "pixabayId": 15233,
+      "start": 14,
+      "seconds": 8,
+      "credit": "Video by sacharine from Pixabay: https://pixabay.com/videos/id-15233/"
+    },
+    {
+      "id": "platform2",
+      "source": "pixabay",
+      "pixabayId": 7502,
+      "start": 12,
+      "seconds": 8,
+      "credit": "Video by Train_Video from Pixabay: https://pixabay.com/videos/id-7502/"
+    }
+  ]
+}

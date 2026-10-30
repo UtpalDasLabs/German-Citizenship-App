@@ -16,14 +16,17 @@
  * first. Every frame number is worked out here, from the voice's own
  * timestamps, and handed to the composition as one plan.
  */
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+
+import { ffbin } from './ffbin.mjs';
 
 import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
 
 import { parseLongform, pickChapters } from './longform.mjs';
-import { audioDir, MODEL, paraHash, spokenText, VOICE } from './voice-longform.mjs';
+import { audioDir, MODEL, paraHash, PROFILE, settingsFor, spokenText, voiceFor } from './voice-longform.mjs';
 
 const VIDEO = join(import.meta.dirname, '..');
 const ROOT = join(VIDEO, '..');
@@ -31,12 +34,22 @@ const OUT = join(VIDEO, 'out');
 const FPS = 30;
 
 /** Seconds of air around the voice. */
-const LEAD = 0.35; //         before a shot's first paragraph
-const BETWEEN = 0.45; //      between paragraphs
-const PAUSE = 0.6; //         extra, before a paragraph tagged [pause]
-const TAIL = 0.7; //          after a shot's last paragraph
-const READ = 1.4; //          extra after a question, to read the card
-const SILENT_SHOT = 4; //     a shot with no narration (title cards)
+const args0 = process.argv.slice(2);
+/**
+ * --lively: music, sound effects, punch words and a much tighter edit. The
+ * calm timings leave air for reading; the lively ones keep the voice moving,
+ * the way fast explainer channels cut.
+ */
+const LIVELY = args0.includes('--lively');
+const T = LIVELY
+  ? { lead: 0.12, between: 0.22, pause: 0.35, tail: 0.3, read: 0.5, silentShot: 2.4 }
+  : { lead: 0.35, between: 0.45, pause: 0.6, tail: 0.7, read: 1.4, silentShot: 4 };
+const LEAD = T.lead; //         before a shot's first paragraph
+const BETWEEN = T.between; //   between paragraphs
+const PAUSE = T.pause; //       extra, before a paragraph tagged [pause]
+const TAIL = T.tail; //         after a shot's last paragraph
+const READ = T.read; //         extra after a question, to read the card
+const SILENT_SHOT = T.silentShot; // a shot with no narration (title cards)
 const WORDS_PER_SECOND = 2.6; // --silent only
 
 const args = process.argv.slice(2);
@@ -44,7 +57,7 @@ const flags = new Set(args.filter((a) => a.startsWith('--')));
 const spec = args.includes('--chapters') ? args[args.indexOf('--chapters') + 1] : undefined;
 const topic = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--chapters');
 if (!topic) {
-  console.error('usage: npm run render:longform -- <topic> [--chapters 0-1] [--stills] [--silent]');
+  console.error('usage: npm run render:longform -- <topic> [--chapters 0-1] [--lively] [--expressive] [--stills] [--silent]');
   process.exit(1);
 }
 const silent = flags.has('--silent');
@@ -54,7 +67,60 @@ const script = parseLongform(topic);
 // tags, for models that do not take them).
 for (const c of script.chapters) for (const sh of c.shots) for (const p of sh.paras) p.tts = spokenText(p.tts);
 const chapters = pickChapters(spec, script.chapters.length);
-const voiceDir = audioDir(topic);
+const VOICE = voiceFor(script.meta);
+const voiceDir = audioDir(topic, VOICE, settingsFor(script.meta));
+/** A series video (Logic to Live By, Hidden Deutschland), or null for a lesson. */
+const SERIES_KEY = script.meta.series ?? null;
+/** --short: a vertical short; its pictures and clips are the long video's (`media:`). */
+const SHORT = process.argv.includes('--short');
+const MEDIA = script.meta.media ?? topic;
+
+const readJsonTop = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null);
+// No stock clip twice: not twice in this video, and not one already used by
+// another episode. A short (`media:` set) reuses its long video's clips.
+// Override for a deliberate callback with --allow-repeat.
+if (!script.meta.media && !args.includes('--allow-repeat')) {
+  const dir = join(VIDEO, 'longform');
+  const key = (c) => (c.source === 'pixabay' ? `pixabay:${c.pixabayId}` : c.source === 'vecteezy' ? `vecteezy:${c.vecteezyId}` : c.file ? `file:${c.file}` : null);
+  const mine = readJsonTop(join(dir, `${topic}.clips.json`))?.clips ?? [];
+  const seen = new Map();
+  for (const c of mine) {
+    const k = key(c);
+    if (!k) continue;
+    if (seen.has(k)) throw new Error(`${topic}: clip ${k} is used twice (${seen.get(k)} and ${c.id}). Pick another clip.`);
+    seen.set(k, c.id);
+  }
+  // One creator's clips are often one shoot (same dish, same room): look at both.
+  const byUser = new Map();
+  for (const c of mine) {
+    const user = (c.credit ?? '').match(/^Video by (.+?) from Pixabay/)?.[1];
+    if (user) byUser.set(user, [...(byUser.get(user) ?? []), c.id]);
+  }
+  for (const [user, ids] of byUser) if (ids.length > 1) console.warn(`warning: ${ids.join(', ')} are all by ${user}; check they don't look like the same shot.`);
+  for (const f of readdirSync(dir).filter((f) => f.endsWith('.clips.json') && f !== `${topic}.clips.json` && !f.includes('-pilot'))) {
+    for (const c of readJsonTop(join(dir, f))?.clips ?? []) {
+      const k = key(c);
+      if (k && seen.has(k)) throw new Error(`${topic}: clip ${k} (${seen.get(k)}) is already used in ${f.replace('.clips.json', '')}. Pick another clip.`);
+    }
+  }
+}
+const SERIES = SERIES_KEY ? JSON.parse(readFileSync(join(VIDEO, 'longform', 'series.json'), 'utf8'))[SERIES_KEY] : null;
+if (SERIES_KEY && !SERIES) throw new Error(`Unknown series "${SERIES_KEY}" (longform/series.json)`);
+// Music and effects from ElevenLabs (npm run sound:elevenlabs) when they have
+// been made, else the synthesised ones (npm run sound).
+const EL_SOUND = join(OUT, 'sound-elevenlabs');
+const elSound = existsSync(join(EL_SOUND, 'sounds.json'))
+  ? JSON.parse(readFileSync(join(EL_SOUND, 'sounds.json'), 'utf8'))
+  : null;
+/** The music bed, and how loud it sits under the voice and in the gaps. */
+const seriesBed = SERIES_KEY ? elSound?.series?.[SERIES_KEY] : null;
+const MUSIC = seriesBed
+  ? // The series' own calmer bed, about 20 dB under the voice like the
+    // reference videos, rising a little in the gaps.
+    { src: `sound/${seriesBed.music}`, seconds: seriesBed.musicSeconds, under: 0.1, gap: 0.32 }
+  : elSound
+    ? { src: `sound/${elSound.music}`, seconds: elSound.musicSeconds, under: 0.16, gap: 0.4 }
+    : { src: 'sound/music.wav', seconds: null, under: 0.07, gap: 0.2 };
 const frames = (s) => Math.round(s * FPS);
 
 /** Timing for one paragraph: from the voice, or estimated from its length. */
@@ -81,6 +147,17 @@ function timing(p) {
   };
 }
 
+/** Punch words as ranges of the text the voice was sent. */
+function punchRanges(p) {
+  let from = 0;
+  return p.punch.map((text) => {
+    const start = p.tts.indexOf(text, from);
+    if (start === -1) throw new Error(`Punch "${text}" not found in "${p.tts}"`);
+    from = start + text.length;
+    return { text, start, end: start + text.length };
+  });
+}
+
 /** German spans as ranges of the text the voice was sent. */
 function deRanges(p) {
   let from = 0;
@@ -101,6 +178,9 @@ for (const c of chapters) {
     const paras = s.paras.map((p, j) => {
       if (j > 0) t += frames(BETWEEN);
       if (p.tags.includes('pause')) t += frames(PAUSE);
+      // [countdown]: three silent seconds to guess before the answer.
+      const countdown = p.tags.includes('countdown');
+      if (countdown) t += frames(3);
       const { seconds, starts, src } = timing(p);
       const para = {
         from: t,
@@ -109,11 +189,16 @@ for (const c of chapters) {
         tts: p.tts,
         starts,
         de: deRanges(p),
+        punch: punchRanges(p),
+        countdown,
       };
       t += para.frames;
       return para;
     });
-    const length = paras.length ? t + frames(TAIL + (s.key === 'question' ? READ : 0)) : frames(SILENT_SHOT);
+    // `> hold 2.5` under a scene: seconds of picture after the voice, for an
+    // animation that makes its point without words.
+    const hold = Number(s.screen.find((l) => /^hold [\d.]+$/.test(l))?.slice(5) ?? 0);
+    const length = paras.length ? t + frames(TAIL + hold + (s.key === 'question' ? READ : 0)) : frames(SILENT_SHOT);
     shots.push({
       key: s.key,
       scene: s.scene,
@@ -130,14 +215,59 @@ for (const c of chapters) {
   });
 }
 const plan = {
-  topic,
+  topic: MEDIA,
   title: script.meta.title,
   questions: script.meta.questions,
   fps: FPS,
   total: cursor,
   shots,
+  lively: LIVELY,
+  music: LIVELY && !args0.includes('--no-music') ? MUSIC : null,
+  series: SERIES_KEY,
+  // Video clips fetched by npm run clips -- <topic> (id → seconds).
+  clips: existsSync(join(OUT, 'clips', MEDIA, 'clips.json')) ? JSON.parse(readFileSync(join(OUT, 'clips', MEDIA, 'clips.json'), 'utf8')) : {},
+  short: SHORT ? { hook: script.meta.hook ?? script.meta.title, parent: script.meta.parent ?? '' } : null,
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
+
+// No clip loops: a clip on screen longer than it lasts would play twice in a
+// row (the player loops it). Timing as in screenLines() in src/longform/plan.ts.
+// Give the scene a second clip (`> id2 |  | color @ cue`) or a longer one.
+// Override with --allow-loop.
+if (!args.includes('--allow-loop')) {
+  const cueAt = (sh, phrase) => {
+    const needle = phrase.toLowerCase();
+    for (const p of sh.paras) {
+      const at = p.tts.toLowerCase().indexOf(needle);
+      if (at !== -1) return p.from + Math.round(p.starts[Math.max(0, Math.min(at, p.starts.length - 1))] * FPS);
+    }
+    return null;
+  };
+  const loops = [];
+  for (const sh of plan.shots) {
+    const lines = sh.screen.filter((l) => !/^hold [\d.]+$/.test(l));
+    const step = Math.min(Math.round(FPS * 1.2), Math.round((sh.frames * 0.5) / Math.max(1, lines.length)));
+    const timed = lines.map((l, i) => {
+      const [body, phrase] = l.split(' @ ');
+      const f = body.split(/ ?\| ?/).map((x) => x.trim());
+      return { f, at: (phrase ? cueAt(sh, phrase.trim()) : null) ?? 8 + i * step };
+    });
+    const spans = [];
+    if (sh.key === 'photo')
+      timed.forEach((t, i) => spans.push({ id: t.f[0], frames: (i + 1 < timed.length ? timed[i + 1].at + 12 : sh.frames + 12) - (i === 0 ? 0 : t.at) }));
+    else if (sh.key === 'place' && timed[0]) spans.push({ id: timed[0].f[0], frames: sh.frames });
+    else for (const t of timed) if (t.f[0] === 'bg') spans.push({ id: t.f[1], frames: sh.frames });
+    for (const s of spans) {
+      const len = plan.clips[s.id];
+      if (len && s.frames > Math.floor(len * FPS)) loops.push(`${Math.floor(sh.from / FPS / 60)}:${String(Math.floor(sh.from / FPS) % 60).padStart(2, '0')} ${s.id}: on screen ${(s.frames / FPS).toFixed(1)} s, clip ${len} s ("${sh.scene}")`);
+    }
+  }
+  if (loops.length) throw new Error(`${topic}: ${loops.length} clip(s) would loop:\n  ${loops.join('\n  ')}\nAdd a second clip to the scene, or a longer one.`);
+}
+if (args.includes('--check')) {
+  console.log(`${topic}: no clip loops, no clip repeats.`);
+  process.exit(0);
+}
 
 const APP_URL = 'https://utpaldaslabs.github.io/German-Citizenship-App/';
 const stamp = (frame) => {
@@ -147,6 +277,95 @@ const stamp = (frame) => {
   const sec = String(t % 60).padStart(2, '0');
   return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`;
 };
+/** Picture and clip ids the cut actually shows (a clip hides the photo with the same id). */
+function shownMedia() {
+  const ids = new Set();
+  for (const sh of shots) {
+    if (!['photo', 'line', 'place', 'list', 'stat'].includes(sh.key)) continue;
+    for (const l of sh.screen) {
+      const f = l.split(' @ ')[0].split(/ ?\| ?/).map((x) => x.trim());
+      ids.add(f[0] === 'bg' ? f[1] : f[0]);
+    }
+  }
+  const clipIds = new Set(Object.keys(plan.clips ?? {}));
+  const readJson = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null);
+  const images = (readJson(join(VIDEO, 'longform', `${topic}.images.json`))?.images ?? []).filter(
+    (im) => ids.has(im.id) && !clipIds.has(im.id),
+  );
+  const clips = (readJson(join(VIDEO, 'longform', `${topic}.clips.json`))?.clips ?? []).filter((c) => ids.has(c.id));
+  return { images, clips };
+}
+
+const CREDITS_URL = `https://github.com/UtpalDasLabs/German-Citizenship-App/blob/claude/series-logic-hidden/video/credits/${topic}.md`;
+
+/**
+ * Credits for a series video: short lines for the description (YouTube
+ * allows 5,000 characters), and a full page with every link, kept in this
+ * public repository at video/credits/<topic>.md and linked from the
+ * description. CC BY / BY-SA allow attribution through such a page.
+ */
+function seriesCredits() {
+  const { images, clips } = shownMedia();
+  const plain = (f) => f.replace(/\.[a-z0-9]+$/i, '');
+  const pixabay = clips.filter((c) => c.source === 'pixabay');
+  const users = [...new Set(pixabay.map((c) => (c.credit ?? '').match(/^Video by (.+?) from Pixabay/)?.[1]).filter(Boolean))];
+  const made = [...new Set(clips.filter((c) => /made with|Kling|Veo/i.test(c.credit ?? '')).map((c) => (/Veo/i.test(c.credit) ? 'Google Veo' : 'Kling AI')))];
+  const ccClips = clips.filter((c) => c.source === 'file' && /CC BY/.test(c.credit ?? ''));
+  const short = [
+    'Pictures and video',
+    ...images.map((im) => `• ${plain(im.file)}: ${im.author.replace(/\s*\(talk\).*$/, '')}, ${im.licence}`),
+    ...ccClips.map((c) => `• ${c.credit.split(': http')[0]}`),
+    ...(users.length ? [`• Stock video from Pixabay (Content License): ${users.join(', ')}`] : []),
+    ...(clips.some((c) => c.source === 'vecteezy') ? ['• Stock video from Vecteezy (www.vecteezy.com); each clip is listed below'] : []),
+    ...(made.length ? [`• Some scenes made with ${made.join(' and ')}`] : []),
+    `Full credits with links: ${CREDITS_URL}`,
+  ];
+  const full = [
+    `# Credits: ${script.meta.title}`,
+    '',
+    ...(images.length ? ['## Pictures (Wikimedia Commons)', '', ...images.map((im) => `- [${plain(im.file)}](${im.source}): ${im.author.replace(/\s*\(talk\).*$/, '')}, ${im.licence}${im.licenceUrl ? ` ([licence](${im.licenceUrl}))` : ''}`), ''] : []),
+    ...(clips.length ? ['## Video', '', ...clips.filter((c) => c.credit).map((c) => `- ${c.credit}`), ''] : []),
+    '## Voice and music',
+    '',
+    "- Narrated by Utpal, using a voice model trained on his own recordings (ElevenLabs).",
+    '- Music: made with ElevenLabs.',
+    '',
+  ];
+  mkdirSync(join(VIDEO, 'credits'), { recursive: true });
+  writeFileSync(join(VIDEO, 'credits', `${topic}.md`), full.join('\n'));
+  return short;
+}
+
+/** The YouTube description of a series video: no exam questions, its sources instead. */
+function describeSeries(chapterLines) {
+  const sources = script.meta.sources ?? [];
+  const text = [
+    script.meta.title,
+    '',
+    ...(script.meta.summary ? [script.meta.summary, ''] : []),
+    'Chapters',
+    ...chapterLines,
+    '',
+    `${SERIES.name}: ${SERIES.tagline}. A series from Living in Deutschland.`,
+    SERIES.credit,
+    ...(sources.length ? ['', 'Sources', ...sources.map((u) => `• ${u}`)] : []),
+    '',
+    'Narrated by Utpal, using a voice model trained on his own recordings.',
+    '',
+    'Free apps from this channel, no account needed:',
+    '• German citizenship test (all 460 questions): https://lid.utpaldas.com',
+    '• German driving theory test: https://fuehrerschein.utpaldas.com',
+    '',
+    ...seriesCredits(),
+    ...(LIVELY ? [elSound ? 'Music: made with ElevenLabs.' : 'Music: made for this channel.'] : []),
+    '',
+  ].join('\n').replace(/[<>]/g, '');
+  // YouTube refuses descriptions over 5,000 characters (and any < or >).
+  if (text.length > 5000) console.warn(`  description: ${text.length} characters, over YouTube's 5,000 — shorten it`);
+  else console.log(`  description: ${text.length} characters`);
+  return text;
+}
+
 function describe() {
   const chapterLines = [];
   for (const sh of shots) {
@@ -155,6 +374,7 @@ function describe() {
     }
   }
   const credits = join(OUT, 'images', topic, 'credits.txt');
+  if (SERIES) return describeSeries(chapterLines);
   const usesMap = shots.some((sh) => sh.key === 'map1949' || sh.key === 'reunify');
   const asked = shots.flatMap((sh) => sh.questions);
   return [
@@ -169,16 +389,23 @@ function describe() {
     '',
     `Questions in this video (catalogue numbers): ${asked.map((id) => `#${id}`).join(', ')}`,
     '',
-    "Narrated with an AI version of the creator's own voice (ElevenLabs). Every fact was checked against the official question catalogue and the Grundgesetz. This channel is independent and not affiliated with the BAMF or any government body.",
+    "Narrated with an AI version of the creator's own voice (ElevenLabs). Every fact was checked against the official question catalogue and its legal sources. This channel is independent and not affiliated with the BAMF or any government body.",
     '',
-    existsSync(credits) ? readFileSync(credits, 'utf8').trim() : 'Pictures: none',
-    ...(usesMap ? ['• Map of Germany: @svg-maps/germany, based on MapSVG (mapsvg.com), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)'] : []),
+    ...(existsSync(credits) ? [readFileSync(credits, 'utf8').trim()] : []),
+    ...(usesMap
+      ? [
+          '• Map of Germany: @svg-maps/germany, based on MapSVG (mapsvg.com), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)',
+        ]
+      : []),
+    ...(LIVELY ? ['', elSound ? 'Music and sound effects: made with ElevenLabs.' : 'Music and sound effects: made for this channel.'] : []),
     '',
   ].join('\n');
 }
 const descriptionFile = join(OUT, `lesson-${topic}${spec ? `-ch${spec}` : ''}-description.txt`);
-writeFileSync(descriptionFile, describe());
-console.log(`Description → ${descriptionFile}`);
+if (!SHORT) {
+  writeFileSync(descriptionFile, describe());
+  console.log(`Description → ${descriptionFile}`);
+}
 if (flags.has('--describe')) process.exit(0);
 
 // The bundle's public dir: the app icon, this topic's pictures and voice.
@@ -187,11 +414,28 @@ const pub = join(OUT, `.public-longform-${topic}`);
 rmSync(pub, { recursive: true, force: true });
 mkdirSync(join(pub, 'audio'), { recursive: true });
 cpSync(join(ROOT, 'assets', 'icon.png'), join(pub, 'icon.png'));
+if (LIVELY) {
+  if (elSound) {
+    cpSync(EL_SOUND, join(pub, 'sound'), { recursive: true });
+  } else {
+    if (!existsSync(join(OUT, 'sound', 'music.wav')))
+      execFileSync('node', [join(VIDEO, 'scripts', 'sound.mjs')], { stdio: 'inherit' });
+    cpSync(join(OUT, 'sound'), join(pub, 'sound'), { recursive: true });
+  }
+}
 // The catalogue's own pictures, for picture questions.
 cpSync(join(ROOT, 'assets', 'questions'), join(pub, 'questions'), { recursive: true });
-cpSync(join(OUT, 'images', topic), join(pub, 'images', topic), {
-  recursive: true,
-});
+// This video's clips, if it has any.
+if (existsSync(join(OUT, 'clips', MEDIA))) {
+  cpSync(join(OUT, 'clips', MEDIA), join(pub, 'clips', MEDIA), { recursive: true });
+}
+// Rigged characters (licensed artwork, kept in the private repo's kit/characters/).
+const KIT_CHARS = process.env.SERIES_KIT_DIR ?? join(VIDEO, '..', '..', 'German-Citizenship-Videos', 'kit', 'characters');
+if (existsSync(KIT_CHARS)) cpSync(KIT_CHARS, join(pub, 'kit'), { recursive: true });
+// This lesson's own pictures, if it has any.
+if (existsSync(join(OUT, 'images', MEDIA))) {
+  cpSync(join(OUT, 'images', MEDIA), join(pub, 'images', MEDIA), { recursive: true });
+}
 if (!silent)
   for (const s of shots) for (const p of s.paras) cpSync(join(voiceDir, p.src.slice('audio/'.length)), join(pub, p.src));
 
@@ -206,11 +450,11 @@ const serveUrl = await bundle({
 const inputProps = { plan };
 const composition = await selectComposition({
   serveUrl,
-  id: 'LongForm',
+  id: SHORT ? 'SeriesShort' : 'LongForm',
   inputProps,
   browserExecutable,
 });
-const label = `${topic}${spec ? `-ch${spec}` : ''}`;
+const label = `${topic}${spec ? `-ch${spec}` : ''}${LIVELY ? '-lively' : ''}${PROFILE === 'expressive' ? '-expressive' : ''}`;
 
 if (flags.has('--stills')) {
   for (const [i, s] of shots.entries()) {
@@ -227,7 +471,7 @@ if (flags.has('--stills')) {
     console.log(`  ${file}`);
   }
 } else {
-  const file = join(OUT, `lesson-${label}${silent ? '-silent' : ''}.mp4`);
+  const file = join(OUT, SHORT ? `short-${topic}.mp4` : `lesson-${label}${silent ? '-silent' : ''}.mp4`);
   const started = Date.now();
   await renderMedia({
     composition,
@@ -242,4 +486,30 @@ if (flags.has('--stills')) {
     onProgress: ({ progress }) => process.stdout.write(`\r  ${Math.round(progress * 100)}%`),
   });
   console.log(`\r  → ${file}  (${(cursor / FPS).toFixed(1)}s, rendered in ${((Date.now() - started) / 1000).toFixed(0)}s)`);
+  if (SERIES && !silent) loudnorm(file);
+}
+
+/**
+ * Series videos: bring the mix to -14 LUFS, where YouTube plays everything.
+ * YouTube turns loud videos down but never turns quiet ones up, and the raw
+ * mix sits near -23. Two passes (measure, then correct linearly); the
+ * picture is copied untouched. Keeps the raw mix if no ffmpeg can do it.
+ */
+function loudnorm(file) {
+  const target = 'I=-14:TP=-1.5:LRA=11';
+  const out = file.replace(/\.mp4$/, '.norm.mp4');
+  for (const bin of new Set([ffbin('ffmpeg'), 'ffmpeg'])) {
+    const measure = spawnSync(bin, ['-hide_banner', '-nostats', '-i', file, '-af', `loudnorm=${target}:print_format=json`, '-f', 'null', '-'], { encoding: 'utf8' });
+    const report = measure.status === 0 ? measure.stderr.match(/\{[^{}]*"input_i"[^{}]*\}/) : null;
+    if (!report) continue;
+    const m = JSON.parse(report[0]);
+    const filter = `loudnorm=${target}:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`;
+    const fix = spawnSync(bin, ['-y', '-hide_banner', '-loglevel', 'error', '-i', file, '-c:v', 'copy', '-af', filter, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', out]);
+    if (fix.status !== 0) continue;
+    cpSync(out, file);
+    rmSync(out);
+    console.log(`  loudness: ${m.input_i} → -14 LUFS`);
+    return;
+  }
+  console.warn('  loudness: no ffmpeg could normalise it; the file keeps its raw mix');
 }

@@ -17,6 +17,10 @@ export type Para = {
   starts: number[];
   /** German spans, as character ranges of `tts`. */
   de: { text: string; start: number; end: number }[];
+  /** Words to punch on screen (`**…**` in the script), as ranges of `tts`. */
+  punch: { text: string; start: number; end: number }[];
+  /** Three silent seconds to guess come right before this paragraph. */
+  countdown: boolean;
 };
 
 export type Shot = {
@@ -34,6 +38,9 @@ export type Shot = {
   paras: Para[];
 };
 
+/** The music bed: its file, its length (null: loop it as is) and its levels. */
+export type Music = { src: string; seconds: number | null; under: number; gap: number };
+
 export type Plan = {
   topic: string;
   title: string;
@@ -42,6 +49,16 @@ export type Plan = {
   fps: number;
   total: number;
   shots: Shot[];
+  /** Music, sound effects and punch-ins on (the lively cut) or off. */
+  lively: boolean;
+  /** Music under the lively cut (null with --no-music). */
+  music: Music | null;
+  /** A series video (`series:` in the script), or null for a lesson. */
+  series?: string | null;
+  /** Video clips for this topic (id → seconds); a clip replaces the photo with the same id. */
+  clips?: Record<string, number>;
+  /** A vertical short cut from a series video: its on-screen hook and the long video's title. */
+  short?: { hook: string; parent: string } | null;
 };
 
 export const ShotContext = createContext<Shot | null>(null);
@@ -91,7 +108,8 @@ export function screenLines(shot: Shot, fps: number): ScreenLine[] {
   const step = Math.min(Math.round(fps * 1.2), Math.round((shot.frames * 0.5) / Math.max(1, n)));
   return shot.screen.map((line, i) => {
     const [body, phrase] = line.split(' @ ');
-    const fields = body.split(' | ').map((f) => f.trim());
+    // `a | | b` leaves the middle field empty (a photo with no caption).
+    const fields = body.split(/ ?\| ?/).map((f) => f.trim());
     const spoken = phrase ? findCue(shot, phrase.trim(), fps) : null;
     return { fields, at: spoken ?? 8 + i * step };
   });

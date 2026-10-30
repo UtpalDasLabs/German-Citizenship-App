@@ -1,0 +1,256 @@
+{
+  "topic": "logic-backoff",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "phone",
+      "source": "pixabay",
+      "pixabayId": 34767,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by jaumeps99 from Pixabay: https://pixabay.com/videos/id-34767/"
+    },
+    {
+      "id": "switchboard",
+      "source": "pixabay",
+      "pixabayId": 286687,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by izhar-ahamed from Pixabay: https://pixabay.com/videos/id-286687/"
+    },
+    {
+      "id": "cables",
+      "source": "pixabay",
+      "pixabayId": 14906,
+      "start": 0,
+      "seconds": 7.7,
+      "credit": "Video by cipnt from Pixabay: https://pixabay.com/videos/id-14906/",
+      "speed": 0.82
+    },
+    {
+      "id": "cables2",
+      "source": "pixabay",
+      "pixabayId": 2176,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by TBIT from Pixabay: https://pixabay.com/videos/id-2176/"
+    },
+    {
+      "id": "cables3",
+      "source": "pixabay",
+      "pixabayId": 165247,
+      "start": 0.5,
+      "seconds": 15.8,
+      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-165247/"
+    },
+    {
+      "id": "crowd",
+      "source": "pixabay",
+      "pixabayId": 3630,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3630/"
+    },
+    {
+      "id": "clock",
+      "source": "pixabay",
+      "pixabayId": 43613,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Ceos_Stock from Pixabay: https://pixabay.com/videos/id-43613/"
+    },
+    {
+      "id": "clock2",
+      "source": "pixabay",
+      "pixabayId": 7515,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by MilanWulf from Pixabay: https://pixabay.com/videos/id-7515/"
+    },
+    {
+      "id": "clock3",
+      "source": "pixabay",
+      "pixabayId": 26452,
+      "start": 0.5,
+      "seconds": 13.8,
+      "credit": "Video by MattHrusc from Pixabay: https://pixabay.com/videos/id-26452/"
+    },
+    {
+      "id": "crowd2",
+      "source": "pixabay",
+      "pixabayId": 3627,
+      "start": 0.5,
+      "seconds": 15.2,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3627/",
+      "speed": 0.83
+    },
+    {
+      "id": "traffic",
+      "source": "pixabay",
+      "pixabayId": 101869,
+      "start": 0.5,
+      "seconds": 9.2,
+      "credit": "Video by DRONESTOCKCLIPS from Pixabay: https://pixabay.com/videos/id-101869/",
+      "speed": 0.98
+    },
+    {
+      "id": "door",
+      "source": "pixabay",
+      "pixabayId": 214855,
+      "start": 0.5,
+      "seconds": 14.7,
+      "credit": "Video by ChristianBodhi from Pixabay: https://pixabay.com/videos/id-214855/"
+    },
+    {
+      "id": "calendar",
+      "source": "pixabay",
+      "pixabayId": 31392,
+      "start": 0.5,
+      "seconds": 31,
+      "credit": "Video by HolgersFotografie from Pixabay: https://pixabay.com/videos/id-31392/"
+    },
+    {
+      "id": "phone2",
+      "source": "pixabay",
+      "pixabayId": 174003,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-174003/"
+    },
+    {
+      "id": "letters",
+      "source": "pixabay",
+      "pixabayId": 41211,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by KIMDAEJEUNG from Pixabay: https://pixabay.com/videos/id-41211/"
+    },
+    {
+      "id": "friends",
+      "source": "pixabay",
+      "pixabayId": 22728,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by Alanchevereau from Pixabay: https://pixabay.com/videos/id-22728/"
+    },
+    {
+      "id": "restaurant",
+      "source": "pixabay",
+      "pixabayId": 10878,
+      "start": 0.5,
+      "seconds": 18.7,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-10878/"
+    },
+    {
+      "id": "holmes-hall",
+      "source": "pixabay",
+      "pixabayId": 199377,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by LadislavBur from Pixabay: https://pixabay.com/videos/id-199377/"
+    },
+    {
+      "id": "alto",
+      "source": "pixabay",
+      "pixabayId": 1335,
+      "start": 1,
+      "seconds": 8,
+      "credit": "Video by LisaRedfern from Pixabay: https://pixabay.com/videos/id-1335/"
+    },
+    {
+      "id": "aloha1971",
+      "source": "file",
+      "file": "kling/hawaii-1971.mp4",
+      "credit": "Made with Kling AI",
+      "start": 0,
+      "seconds": 5,
+      "speed": 0.7
+    },
+    {
+      "id": "omni-hook-redial",
+      "source": "veo",
+      "file": "veo/backoff/hook-redial.mp4",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. SAM: a man in his late twenties, short ginger curly hair, round glasses, a green hoodie, jeans. Sam sits at a kitchen table pressing redial on his phone again and again; each time a red BUSY icon pops up; he groans and drops his forehead on the table. Morning light, close camera, comic timing.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "speed": 0.9
+    },
+    {
+      "id": "omni-quarter-past",
+      "source": "veo",
+      "file": "veo/backoff/quarter-past.mp4",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. SAM: a man in his late twenties, short ginger curly hair, round glasses, a green hoodie, jeans. Same Sam, later: the kitchen clock shows a quarter past twelve; he calmly dials once, and a green 'connected' bubble appears; he sits up, smiles and gives a thumbs up.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "referenceFrom": "omni-hook-redial",
+      "speed": 0.79
+    },
+    {
+      "id": "omni-follow-up",
+      "source": "veo",
+      "file": "veo/backoff/follow-up.mp4",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. SAM: a man in his late twenties, short ginger curly hair, round glasses, a green hoodie, jeans. Same Sam at a desk sending a polite follow-up email; a wall calendar flips one week, two weeks, a month; on the last flip a reply arrives with a bright notification and he punches the air.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "referenceFrom": "omni-hook-redial",
+      "speed": 0.8
+    },
+    {
+      "id": "omni-friend-later",
+      "source": "veo",
+      "file": "veo/backoff/friend-later.mp4",
+      "prompt": "Flat 2D cartoon style, clean vector shapes, soft shading, like a polished animated explainer video. SAM: a man in his late twenties, short ginger curly hair, round glasses, a green hoodie, jeans. Same Sam and a friend with long black hair and a yellow jacket meet happily at a café table after a long time; they laugh and hug. Warm afternoon light, happy ending mood.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "referenceFrom": "omni-hook-redial"
+    },
+    {
+      "id": "aloha-dish",
+      "source": "pixabay",
+      "pixabayId": 40041,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-40041/"
+    },
+    {
+      "id": "commuter",
+      "source": "pixabay",
+      "pixabayId": 3608,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-3608/"
+    },
+    {
+      "id": "noon-call",
+      "source": "pixabay",
+      "pixabayId": 174009,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-174009/"
+    },
+    {
+      "id": "note",
+      "source": "pixabay",
+      "pixabayId": 4952,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-4952/"
+    },
+    {
+      "id": "bench-hug",
+      "source": "pixabay",
+      "pixabayId": 2301,
+      "start": 0.5,
+      "seconds": 12,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-2301/"
+    },
+    {
+      "id": "cancel-text",
+      "source": "pixabay",
+      "pixabayId": 131161,
+      "start": 0.5,
+      "seconds": 16,
+      "credit": "Video by Dx21 from Pixabay: https://pixabay.com/videos/id-131161/"
+    }
+  ]
+}

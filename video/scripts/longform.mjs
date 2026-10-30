@@ -21,8 +21,15 @@ export const LONGFORM_DIR = path.resolve(here, '..', 'longform');
 const TAG = /\[(?!\[)([a-z][a-z ,]*)\](?!\])/gi;
 
 function paragraph(text) {
-  // *Emphasis* is for the reader of the script; the voice gets plain words.
-  const raw = text.replace(/\*([^*]+)\*/g, '$1');
+  // **Punch** words pop up on screen as they are spoken; *emphasis* is only
+  // for the reader of the script. The voice gets plain words either way.
+  const punch = [];
+  const raw = text
+    .replace(/\*\*([^*]+)\*\*/g, (_, words) => {
+      punch.push(words);
+      return words;
+    })
+    .replace(/\*([^*]+)\*/g, '$1');
   const tags = [...raw.matchAll(TAG)].map((m) => m[1].toLowerCase());
   const tts = raw
     .replace(/\[\[(.+?)\]\]/g, '$1')
@@ -45,7 +52,7 @@ function paragraph(text) {
     rest = rest.slice(m.index + m[0].length);
   }
   plain += rest;
-  return { tts, plain, de, tags };
+  return { tts, plain, de, tags, punch };
 }
 
 export function parseLongform(topic) {

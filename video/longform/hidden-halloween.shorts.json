@@ -1,0 +1,9 @@
+{
+  "shorts": [
+    { "id": "1", "hook": "Nobody opened the door on Halloween. Here's why.", "spoken": "On Halloween in Germany, many doors stay shut. Here's the rule nobody tells you.", "paragraphs": [0, 12, 13] },
+    { "id": "2", "hook": "Halloween only reached Germany in 1991.", "spoken": "Halloween only really arrived in Germany in the nineteen-nineties. Because of a war.", "paragraphs": [3, 4, 5] },
+    { "id": "3", "hook": "Before pumpkins, Germans carved turnips.", "spoken": "Before pumpkins, children in Germany carved turnips.", "paragraphs": [6, 7] },
+    { "id": "4", "hook": "A Halloween party in Bavaria? Check the law.", "spoken": "Planning a Halloween party in Germany? Check your state first.", "paragraphs": [8, 9, 10, 11] },
+    { "id": "5", "hook": "They race giant pumpkins as boats.", "spoken": "In one German town, people race giant pumpkins as boats.", "paragraphs": [16, 17, 18] }
+  ]
+}

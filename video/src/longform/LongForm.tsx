@@ -2,8 +2,11 @@ import React from 'react';
 import { AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame } from 'remotion';
 
 import { C } from '../lib/brand';
+import { Soundtrack, usePunchScale } from './lively';
 import { ChapterLabel, GermanCaption, Storyboard } from './look';
 import { ShotContext, type Plan, type Shot } from './plan';
+import { ClipContext, SeriesContext } from './series';
+import { SeriesPill } from './series-shots';
 import { shownGerman, SHOWS_GERMAN, shotFor } from './shots';
 
 /** Scenes with a photo caption at the bottom: the German sits above it. */
@@ -17,24 +20,41 @@ export const OVERLAP = 12;
 function ShotView({ shot, plan, first }: { shot: Shot; plan: Plan; first: boolean }) {
   const frame = useCurrentFrame();
   const opacity = first ? 1 : interpolate(frame, [0, OVERLAP], [0, 1], { extrapolateRight: 'clamp' });
+  const scale = usePunchScale(shot);
   return (
     <ShotContext.Provider value={shot}>
       <AbsoluteFill style={{ opacity }}>
-        {shotFor(shot.key, plan.topic, plan.title, plan.questions) ?? <Storyboard />}
+        <AbsoluteFill style={{ transform: plan.lively ? `scale(${scale})` : undefined }}>
+          {shotFor(shot.key, plan.topic, plan.title, plan.questions) ?? <Storyboard />}
+        </AbsoluteFill>
         {shot.key && SHOWS_GERMAN.has(shot.key) ? null : (
           <GermanCaption
             exclude={shownGerman(shot.questions, shot.screen, shot.key)}
-            bottom={PHOTO_SCENES.has(shot.key ?? '') ? 190 : 70}
+            bottom={shot.key === 'line' || shot.key === 'place' ? 300 : PHOTO_SCENES.has(shot.key ?? '') ? 190 : 70}
           />
         )}
-        {shot.opensChapter ? <ChapterLabel number={shot.chapter} title={shot.chapterTitle} /> : null}
+        {shot.opensChapter && !plan.series ? <ChapterLabel number={shot.chapter} title={shot.chapterTitle} /> : null}
       </AbsoluteFill>
     </ShotContext.Provider>
   );
 }
 
+/** Series videos: one chapter pill per chapter, up from its first shot to its last (not on the end card). */
+function pills(plan: Plan) {
+  const spans = new Map<number, { title: string; from: number; to: number }>();
+  for (const s of plan.shots) {
+    if (s.chapter === 0 || s.key === 'end' || s.key === 'title') continue;
+    const span = spans.get(s.chapter) ?? { title: s.chapterTitle, from: s.from, to: s.from };
+    span.to = s.from + s.frames;
+    spans.set(s.chapter, span);
+  }
+  return [...spans.values()];
+}
+
 export function LongForm({ plan }: LongFormProps) {
   return (
+    <SeriesContext.Provider value={plan.series ?? null}>
+    <ClipContext.Provider value={plan.clips ?? {}}>
     <AbsoluteFill style={{ backgroundColor: C.bg }}>
       {plan.shots.map((shot, i) => (
         <Sequence
@@ -46,14 +66,26 @@ export function LongForm({ plan }: LongFormProps) {
           <ShotView shot={shot} plan={plan} first={i === 0} />
         </Sequence>
       ))}
+      {plan.series
+        ? pills(plan).map((p) => (
+            <Sequence key={`pill-${p.from}`} from={p.from} durationInFrames={p.to - p.from} name="chapter pill">
+              <SeriesPill title={p.title} />
+            </Sequence>
+          ))
+        : null}
+      {plan.lively ? <Soundtrack plan={plan} /> : null}
       {plan.shots.flatMap((shot, i) =>
         // A silent cut (--silent) has timings but no audio.
-        shot.paras.filter((p) => p.src).map((p, j) => (
-          <Sequence key={`${i}-${j}`} from={shot.from + p.from} durationInFrames={p.frames} name="voice">
-            <Audio src={staticFile(p.src!)} />
-          </Sequence>
-        )),
+        shot.paras
+          .filter((p) => p.src)
+          .map((p, j) => (
+            <Sequence key={`${i}-${j}`} from={shot.from + p.from} durationInFrames={p.frames} name="voice">
+              <Audio src={staticFile(p.src!)} />
+            </Sequence>
+          )),
       )}
     </AbsoluteFill>
+    </ClipContext.Provider>
+    </SeriesContext.Provider>
   );
 }

@@ -1,0 +1,54 @@
+{
+  "topic": "hidden-reformationstag",
+  "note": "Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "commute",
+      "source": "pixabay",
+      "pixabayId": 6387,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-6387/"
+    },
+    {
+      "id": "pumpkin",
+      "source": "pixabay",
+      "pixabayId": 308787,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by klaatubaradanikto from Pixabay: https://pixabay.com/videos/id-308787/"
+    },
+    {
+      "id": "pumpkin2",
+      "source": "pixabay",
+      "pixabayId": 306169,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by flutie8211 from Pixabay: https://pixabay.com/videos/id-306169/"
+    },
+    {
+      "id": "nail",
+      "source": "pixabay",
+      "pixabayId": 64444,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by dubicek from Pixabay: https://pixabay.com/videos/id-64444/"
+    },
+    {
+      "id": "church-door",
+      "source": "pixabay",
+      "pixabayId": 48685,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by caelan from Pixabay: https://pixabay.com/videos/id-48685/"
+    },
+    {
+      "id": "quill",
+      "source": "pixabay",
+      "pixabayId": 107189,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by Placidplace from Pixabay: https://pixabay.com/videos/id-107189/"
+    }
+  ]
+}
