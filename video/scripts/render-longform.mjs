@@ -25,6 +25,7 @@ import { renderMedia, renderStill, selectComposition } from '@remotion/renderer'
 
 import { parseLongform, pickChapters } from './longform.mjs';
 import { audioDir, MODEL, paraHash, PROFILE, spokenText, VOICE } from './voice-longform.mjs';
+import { preinstalledChrome } from './browser.mjs';
 
 const VIDEO = join(import.meta.dirname, '..');
 const ROOT = join(VIDEO, '..');
@@ -252,8 +253,7 @@ if (existsSync(join(OUT, 'images', topic))) {
 if (!silent)
   for (const s of shots) for (const p of s.paras) cpSync(join(voiceDir, p.src.slice('audio/'.length)), join(pub, p.src));
 
-const PREINSTALLED = '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell';
-const browserExecutable = process.env.REMOTION_BROWSER ?? (existsSync(PREINSTALLED) ? PREINSTALLED : null);
+const browserExecutable = preinstalledChrome();
 
 console.log(`${shots.length} shots, ${(cursor / FPS).toFixed(1)}s${silent ? ' (silent)' : ` (${VOICE}, ${MODEL})`}. Bundling…`);
 const serveUrl = await bundle({

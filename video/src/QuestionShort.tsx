@@ -54,9 +54,20 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
 
   const stateOf = (i: number): CardState => (!revealed ? 'idle' : i === script.answerIndex ? 'correct' : 'dim');
 
+  // Press photos the catalogue credits to someone else are never shown in a
+  // published video (render.mjs leaves those questions out of the shorts).
+  const examPicture = q.imageMode === 'single' && !q.imageCredit;
   const longestOption = Math.max(...LETTERS.map((l) => q.de.options[l.toLowerCase() as 'a'].length));
-  const questionSize = q.de.text.length > 110 ? 48 : q.de.text.length > 70 ? 54 : 60;
-  const optionSize = longestOption > 40 ? 36 : 44;
+  const questionSize = (q.de.text.length > 110 ? 48 : q.de.text.length > 70 ? 54 : 60) - (examPicture ? 6 : 0);
+  // The picture gets the room the text leaves: everything has to fit between
+  // the platforms' top and bottom bars.
+  const pictureHeight = longestOption > 25 ? 180 : q.de.text.length > 90 ? 320 : 440;
+  // Options as short as "1"–"4" sit two by two under a picture.
+  const gridOptions = examPicture && longestOption <= 12;
+  // With a picture and long options there's no room for a second line per
+  // option; there the English adds nothing anyway (the zones: names in both).
+  const compactOptions = examPicture && longestOption > 25;
+  const optionSize = longestOption > 40 ? (examPicture ? 32 : 36) : 44;
 
   const hookOut = 1 - enter('question');
   const endIn = enter('end');
@@ -77,7 +88,7 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
           right: SAFE.side,
           display: 'flex',
           flexDirection: 'column',
-          gap: 30,
+          gap: examPicture ? 16 : 30,
         }}
       >
         {/* header */}
@@ -108,6 +119,22 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
           </div>
         </div>
 
+        {/* The picture the question is about: a map, a flag, a ballot. Without it
+            "Welches Bundesland ist …?" can't be answered. */}
+        {examPicture ? (
+          <Img
+            src={staticFile(`questions/${q.images[0]}.webp`)}
+            style={{
+              height: pictureHeight,
+              alignSelf: 'center',
+              borderRadius: 24,
+              backgroundColor: '#ffffff',
+              padding: 12,
+              opacity: enter('question'),
+            }}
+          />
+        ) : null}
+
         {/* options */}
         {script.picture ? (
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
@@ -122,7 +149,13 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
             ))}
           </div>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div
+            style={
+              gridOptions
+                ? { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }
+                : { display: 'flex', flexDirection: 'column', gap: 16 }
+            }
+          >
             {LETTERS.map((letter, i) => {
               const key = letter.toLowerCase() as 'a' | 'b' | 'c' | 'd';
               const beat = `option${letter}`;
@@ -137,6 +170,7 @@ export function QuestionShort({ id, showSafeArea = false, beatSeconds }: Questio
                   state={stateOf(i)}
                   enter={enter(beat)}
                   fontSize={optionSize}
+                  compact={compactOptions}
                   marks={i === script.answerIndex ? answerMarks : []}
                 />
               );

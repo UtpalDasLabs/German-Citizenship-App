@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
+import { preinstalledChrome } from './browser.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const VIDEO = join(HERE, '..');
@@ -34,13 +35,22 @@ if (ids.includes('all')) {
   ids = JSON.parse(readFileSync(join(ROOT, 'src/data/questions.json'), 'utf8')).map((q) => q.id);
 }
 ids = ids.map(Number);
+// A question about a press photo can't be answered without the photo, and the
+// photo isn't ours to publish: those stay in the long lessons, which describe
+// them, and are left out of the shorts.
+{
+  const all = JSON.parse(readFileSync(join(ROOT, 'src/data/questions.json'), 'utf8'));
+  const credited = new Set(all.filter((q) => q.imageMode === 'single' && q.imageCredit).map((q) => q.id));
+  const skipped = ids.filter((id) => credited.has(id));
+  if (skipped.length) console.log(`Skipping ${skipped.map((id) => `#${id}`).join(', ')}: the question needs a press photo we can't show.`);
+  ids = ids.filter((id) => !credited.has(id));
+}
 if (ids.length === 0 || ids.some(Number.isNaN)) {
   console.error('Usage: node scripts/render.mjs <id ...|all> [--stills] [--safe]');
   process.exit(1);
 }
 
-const PREINSTALLED = '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell';
-const browserExecutable = process.env.REMOTION_BROWSER ?? (existsSync(PREINSTALLED) ? PREINSTALLED : null);
+const browserExecutable = preinstalledChrome();
 
 mkdirSync(OUT, { recursive: true });
 

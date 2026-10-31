@@ -13,13 +13,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { parseLongform } from './longform.mjs';
+import { preinstalledChrome } from './browser.mjs';
 
 const VIDEO = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(VIDEO, 'out', 'thumbnails');
 const FONTS = path.join(VIDEO, 'node_modules', '@fontsource');
 const SVG = fs.readFileSync(path.join(VIDEO, 'node_modules', '@svg-maps', 'germany', 'germany.svg'), 'utf8');
-const CHROME =
-  process.env.REMOTION_BROWSER ?? '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell';
+const CHROME = preinstalledChrome();
 
 const T = { constitution: '#2BB3F3', democracy: '#A472F0', institutions: '#0FA3B1', history: '#FF9F1C', law: '#FF4B4B', work: '#18B98A', society: '#F45D9C', europe: '#5B7CF5', states: '#4CC93F' };
 
