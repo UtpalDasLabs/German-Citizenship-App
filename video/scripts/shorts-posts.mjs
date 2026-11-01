@@ -157,7 +157,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       `${r.cells[4]}\n\n${r.cells[1]}\n\nFirst comment:\n${firstComment()}\n\nPost on: ${r.cells[0]}\n`,
     );
   }
-  const rows = all.slice(SKIP);
+  // Press-photo questions keep their number (file names stay stable) but are
+  // never posted: the photo can't be shown and the question can't be answered.
+  const rows = all.slice(SKIP).filter((r) => !(r.q.imageMode === 'single' && r.q.imageCredit));
 
   const csv = (rs) => `${[HEADER, ...rs.map((r) => r.cells)].map((r) => r.map(csvCell).join(',')).join('\n')}\n`;
   writeFileSync(join(OUT, 'order.txt'), all.map((r) => `${r.n} ${r.q.id}`).join('\n') + '\n');

@@ -26,6 +26,7 @@ import { fileURLToPath } from 'node:url';
 import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
 import { preinstalledChrome } from './browser.mjs';
+import { expectation } from './check-shorts.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const VIDEO = join(HERE, '..');
@@ -115,6 +116,11 @@ const serveUrl = await bundle({
 });
 
 for (const id of ids) {
+  // A press photo can't be shown, and the question can't be answered without it.
+  if (expectation(beatsModule.QUESTIONS.find((q) => q.id === id)) === 'press-photo') {
+    console.log(`  #${id} skipped: its question is about a press photo, so it is never a short`);
+    continue;
+  }
   audioDir = audioPattern ? audioPattern.replaceAll('{id}', id) : null;
   const beatSeconds = audioDir ? narratedSeconds(id) : undefined;
   const inputProps = { id, showSafeArea: flags.has('--safe'), ...(beatSeconds ? { beatSeconds } : {}) };
