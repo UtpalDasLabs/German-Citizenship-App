@@ -26,5 +26,4 @@
 - Before importing to Publer: `npm run check:plan` per account (TikTok has its
   own plan), check the live schedule, verify after. Checklist: "Before anything
   goes to Publer" in the private repo's `docs/SHORTS-POSTING.md`.
-- `main` lacks the picture fix until this branch is merged; render shorts from
-  `claude/german-citizenship-test-app-gc14en`.
+- The picture fix is on `main` (PR #22); the render workflows use `main`.
