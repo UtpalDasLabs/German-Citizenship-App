@@ -5,6 +5,7 @@
  * what is missing (delete a file to make it again).
  *
  *   npm run sound:elevenlabs            writes to out/sound-elevenlabs/
+ *   npm run sound:elevenlabs -- --series   only the series beds (music-<series>.mp3)
  *
  * Needs ELEVENLABS_API_KEY with the "Music Generation" and "Sound Effects"
  * permissions. Renders use these sounds instead of the synthesised ones from
@@ -15,9 +16,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { ffbin } from './ffbin.mjs';
+
 const VIDEO = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(VIDEO, 'out', 'sound-elevenlabs');
-const FFMPEG = path.join(VIDEO, 'node_modules', '@remotion', 'compositor-linux-x64-gnu', 'ffmpeg');
+const FFMPEG = ffbin('ffmpeg');
 const API = 'https://api.elevenlabs.io/v1';
 const KEY = process.env.ELEVENLABS_API_KEY;
 
@@ -27,6 +30,28 @@ const MUSIC = {
     'pizzicato strings, warm marimba, light claps, soft punchy kick, bright synth plucks. Steady energy throughout, ' +
     'no big drops, no vocals, sits under a narrator. 118 bpm.',
   seconds: 60,
+};
+
+/**
+ * A calmer bed for each series video (`series:` in the script's front
+ * matter), after the reference videos the creator picked: a steady, warm
+ * underscore well below the voice, more film than quiz show.
+ */
+const SERIES_MUSIC = {
+  logic: {
+    prompt:
+      'Thoughtful modern documentary underscore for a calm explainer about decision-making. Soft felt piano motif, ' +
+      'warm analog synth pads, gentle pulsing plucks, very light brushed percussion. Curious, hopeful, focused. ' +
+      'Steady throughout, no drops, no build-ups, no vocals, leaves room for a narrator. 90 bpm.',
+    seconds: 90,
+  },
+  hidden: {
+    prompt:
+      'Warm cinematic travel-documentary underscore about hidden places and old traditions in Germany. Fingerpicked ' +
+      'acoustic guitar, soft piano, light strings, a faint touch of accordion. Wonder and discovery, cosy, never ' +
+      'kitschy. Steady throughout, no drops, no vocals, sits under a narrator. 85 bpm.',
+    seconds: 90,
+  },
 };
 
 /** One effect per thing that happens on screen. */
@@ -107,7 +132,27 @@ if (!KEY) {
 }
 fs.mkdirSync(OUT, { recursive: true });
 
+const SERIES_ONLY = process.argv.includes('--series');
+const series = {};
+for (const [name, m] of Object.entries(SERIES_MUSIC)) {
+  const file = path.join(OUT, `music-${name}.mp3`);
+  if (!fs.existsSync(file)) {
+    console.log(`music (${name}): ${m.seconds}s`);
+    fs.writeFileSync(
+      file,
+      await post('/music', { prompt: m.prompt, music_length_ms: m.seconds * 1000, force_instrumental: true }),
+    );
+  }
+  series[name] = { music: `music-${name}.mp3`, musicSeconds: Math.min(seconds(file), body(file)) };
+}
+
 const music = path.join(OUT, 'music.mp3');
+if (SERIES_ONLY) {
+  const old = fs.existsSync(path.join(OUT, 'sounds.json')) ? JSON.parse(fs.readFileSync(path.join(OUT, 'sounds.json'), 'utf8')) : {};
+  fs.writeFileSync(path.join(OUT, 'sounds.json'), JSON.stringify({ ...old, series }, null, 2) + '\n');
+  console.log(`→ ${OUT}  (series beds: ${Object.keys(series).join(', ')})`);
+  process.exit(0);
+}
 if (!fs.existsSync(music)) {
   console.log(`music: ${MUSIC.seconds}s`);
   fs.writeFileSync(
@@ -140,6 +185,6 @@ for (const [name, fx] of Object.entries(EFFECTS)) {
     path.join(OUT, `${name}.wav`),
   ]);
 }
-const info = { music: 'music.mp3', musicSeconds: Math.min(seconds(music), body(music)) };
+const info = { music: 'music.mp3', musicSeconds: Math.min(seconds(music), body(music)), series };
 fs.writeFileSync(path.join(OUT, 'sounds.json'), JSON.stringify(info, null, 2) + '\n');
 console.log(`→ ${OUT}  (music ${info.musicSeconds.toFixed(1)}s)`);

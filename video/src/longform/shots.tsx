@@ -6,6 +6,10 @@ import { OptionCard, PictureTile, type CardState } from '../components';
 import { EuropeMap } from './europe';
 import { StatesMap } from './states';
 import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './generic';
+import { useAccent, useSeries } from './series';
+import { KitScene } from '../kit/Kit';
+import { RigScene } from '../kit/Rig';
+import { Backoff, Bandit, Collide, Curve, Horizon, Jam, Lru, DeskLoft, RulesRace, FutureRule, Noguchi, SortCost, Line, Place, Stopping, Waits, WallTimeline } from './series-shots';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
@@ -232,6 +236,8 @@ function QuestionGrid({ questions, at, label }: { questions: number[]; at: numbe
 }
 
 function Title({ title }: { title: string }) {
+  const GOLD = useAccent();
+  const series = useSeries();
   const frame = useCurrentFrame();
   // `> OVERLINE` under the scene: the topic's German name.
   const overline = useShot().screen[0] ?? 'GRUNDRECHTE';
@@ -266,7 +272,10 @@ function Title({ title }: { title: string }) {
         style={{
           fontFamily: FONT,
           fontWeight: 800,
-          fontSize: 150,
+          fontSize: main.length > 28 ? 104 : 150,
+          maxWidth: 1640,
+          textAlign: 'center',
+          lineHeight: 1.1,
           color: C.text,
           opacity: rise(frame, 8),
           transform: `translateY(${(1 - rise(frame, 8)) * 20}px)`,
@@ -298,16 +307,17 @@ function Title({ title }: { title: string }) {
           opacity: rise(frame, 20) * 0.9,
         }}
       >
-        <Img src={staticFile('icon.png')} style={{ width: 56, height: 56, borderRadius: 13 }} />
+        {series ? null : <Img src={staticFile('icon.png')} style={{ width: 56, height: 56, borderRadius: 13 }} />}
         <div
           style={{
             fontFamily: FONT,
             fontWeight: 700,
             fontSize: 28,
+            letterSpacing: series ? 4 : 0,
             color: C.textMuted,
           }}
         >
-          {APP_NAME}
+          {series ? 'LIVING IN DEUTSCHLAND' : APP_NAME}
         </div>
       </div>
     </AbsoluteFill>
@@ -991,9 +1001,9 @@ export function shotFor(key: string | null, topic: string, title: string, questi
     case 'term':
       return <Term />;
     case 'list':
-      return <List />;
+      return <List topic={topic} />;
     case 'stat':
-      return <Stat />;
+      return <Stat topic={topic} />;
     case 'fact':
       return <Fact />;
     case 'quote':
@@ -1010,6 +1020,50 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <EuropeMap />;
     case 'states':
       return <StatesMap />;
+    case 'line':
+      return <Line topic={topic} />;
+    case 'place':
+      return <Place topic={topic} />;
+    case 'stopping':
+      return <Stopping />;
+    case 'curve':
+      return <Curve />;
+    case 'wall':
+      return <WallTimeline />;
+    case 'kit':
+      return <KitScene />;
+    case 'rig':
+      return <RigScene topic={topic} />;
+    case 'jam':
+      return <Jam />;
+    case 'bandit':
+      return <Bandit />;
+    case 'horizon':
+      return <Horizon />;
+    case 'lru':
+      return <Lru />;
+    case 'deskloft':
+      return <DeskLoft mode="fetch" />;
+    case 'deskfull':
+      return <DeskLoft mode="full" />;
+    case 'deskcache':
+      return <DeskLoft mode="cache" />;
+    case 'rulesrace':
+      return <RulesRace />;
+    case 'futurerule':
+      return <FutureRule />;
+    case 'noguchi':
+      return <Noguchi />;
+    case 'noguchi2':
+      return <Noguchi archive />;
+    case 'sortcost':
+      return <SortCost />;
+    case 'collide':
+      return <Collide />;
+    case 'backoff':
+      return <Backoff />;
+    case 'waits':
+      return <Waits />;
     default:
       return null;
   }

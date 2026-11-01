@@ -1,0 +1,130 @@
+{
+  "topic": "logic-caching",
+  "note": "Pixabay stock (Content License) and Gemini Omni hero clips (3D look test).",
+  "clips": [
+    {
+      "id": "omni-wardrobe-puzzled",
+      "source": "veo",
+      "file": "veo/caching/wardrobe-puzzled.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Same Maya stands in front of her open wardrobe holding a winter coat in one hand and a summer dress in the other, looking from one to the other, puzzled, then tilts her head at the camera as if to say: who knows? Gentle comic timing.",
+      "seconds": 7,
+      "credit": "Made with Google Veo",
+      "start": 1,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-chair-grab",
+      "source": "veo",
+      "file": "veo/caching/chair-grab.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Same Maya reaches out without looking and pulls the grey hoodie neatly off the top of the clothes pile on the wooden chair, then turns to the camera with a smug, knowing little smile. The pile stays standing.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-chair-mum",
+      "source": "veo",
+      "file": "veo/caching/chair-mum.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Maya's mother, a kind woman in her sixties with short grey hair and a cardigan, stands in the bedroom doorway and points at the tall pile of clothes on the wooden chair with a raised eyebrow. Same Maya, sitting on the bed, shrugs with an innocent smile. Gentle comic timing.",
+      "seconds": 6,
+      "credit": "Made with Google Veo",
+      "start": 2,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.58
+    },
+    {
+      "id": "omni-chair-end",
+      "source": "veo",
+      "file": "veo/caching/chair-end.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Same Maya sits on her bed with a cup of tea next to the wooden chair with its neat pile of clothes, and gives the pile a proud little pat, smiling. Happy ending mood.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-chair-cache",
+      "source": "veo",
+      "file": "veo/caching/chair-cache.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Same Maya, morning, in a hurry: she pulls the striped shirt straight off the top of the clothes pile on the wooden chair without looking, puts it on, and walks out. The wardrobe behind her stays closed.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.5
+    },
+    {
+      "id": "omni-hook-chair",
+      "source": "veo",
+      "file": "veo/caching/hook-chair.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Maya walks into her bedroom and drops yesterday's blue jeans onto a wooden chair that already holds a tall, wobbly pile of clothes: a grey hoodie, a striped shirt, a green scarf. The pile sways; she steadies it with one finger and grins guiltily at the camera. Comic timing.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "speed": 0.68
+    },
+    {
+      "id": "wardrobe",
+      "source": "pixabay",
+      "pixabayId": 163116,
+      "start": 0.5,
+      "seconds": 7.1,
+      "credit": "Video by livesmart from Pixabay: https://pixabay.com/videos/id-163116/",
+      "speed": 0.7
+    },
+    {
+      "id": "lab",
+      "source": "pixabay",
+      "pixabayId": 377885,
+      "start": 0.5,
+      "seconds": 14,
+      "credit": "Video by mignic from Pixabay: https://pixabay.com/videos/id-377885/"
+    },
+    {
+      "id": "tokyo",
+      "source": "pixabay",
+      "pixabayId": 39790,
+      "start": 0.5,
+      "seconds": 14,
+      "credit": "Video by Erjol from Pixabay: https://pixabay.com/videos/id-39790/"
+    },
+    {
+      "id": "wardrobe3",
+      "source": "pixabay",
+      "pixabayId": 1006,
+      "start": 0.5,
+      "seconds": 14,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1006/"
+    },
+    {
+      "id": "desk3",
+      "source": "pixabay",
+      "pixabayId": 42409,
+      "start": 0.5,
+      "seconds": 8.8,
+      "credit": "Video by SamuelFJohanns from Pixabay: https://pixabay.com/videos/id-42409/",
+      "speed": 0.7
+    },
+    {
+      "id": "kitchen",
+      "source": "pixabay",
+      "pixabayId": 143163,
+      "start": 0.5,
+      "seconds": 10,
+      "credit": "Video by muhammedguv from Pixabay: https://pixabay.com/videos/id-143163/",
+      "speed": 0.8
+    },
+    {
+      "id": "todo",
+      "source": "pixabay",
+      "pixabayId": 155023,
+      "start": 0.5,
+      "seconds": 30,
+      "credit": "Video by 32472866 from Pixabay: https://pixabay.com/videos/id-155023/"
+    }
+  ]
+}

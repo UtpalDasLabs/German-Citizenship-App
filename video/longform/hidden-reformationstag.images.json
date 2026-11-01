@@ -1,0 +1,42 @@
+{
+  "topic": "hidden-reformationstag",
+  "note": "Every picture, where it came from and under what licence. npm run images -- hidden-reformationstag checks and downloads them.",
+  "images": [
+    {
+      "id": "luther",
+      "file": "Lucas Cranach d.Ä. - Martin Luther, 1528 (Veste Coburg).jpg",
+      "scene": "Luther short",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Lucas Cranach the Elder",
+      "date": "1528",
+      "source": "https://commons.wikimedia.org/wiki/File:Lucas_Cranach_d.%C3%84._-_Martin_Luther,_1528_(Veste_Coburg).jpg",
+      "size": "2148x3400",
+      "sha1": "35cf10b59a29177e7b167893219c186f23b6ab65"
+    },
+    {
+      "id": "thesentuer",
+      "file": "Thesentür (Schlosskirche Wittenberg).jpg",
+      "scene": "Luther short",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Avi1111 dr. avishai teicher",
+      "date": "2016-06-28 12:01:23",
+      "source": "https://commons.wikimedia.org/wiki/File:Thesent%C3%BCr_(Schlosskirche_Wittenberg).jpg",
+      "size": "4608x3456",
+      "sha1": "7227a7f8107348299c596d40121ffa0847da1440"
+    },
+    {
+      "id": "schlosskirche",
+      "file": "Wittenberg, Schlosskirche (Juni 2026) 1.jpg",
+      "scene": "Luther short",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Romzig",
+      "date": "2026-06-15 09:08:27",
+      "source": "https://commons.wikimedia.org/wiki/File:Wittenberg,_Schlosskirche_(Juni_2026)_1.jpg",
+      "size": "4984x3323",
+      "sha1": "97a76afc634859d6fc7baf4575216ddbd97d4c7f"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
-import React from 'react';
-import { AbsoluteFill, Easing, Img, interpolate, random, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
+import React, { useContext } from 'react';
+import { AbsoluteFill, Easing, Img, interpolate, Loop, OffthreadVideo, random, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
 import { alpha, C, FONT, GOLD } from '../lib/brand';
 import { charFrame, spokenCount, useShot, type Para } from './plan';
+import { ClipContext, useAccent } from './series';
 
 export const SERIF = '"Source Serif 4", Georgia, serif';
 export const INK = '#0B0E14';
@@ -28,6 +29,9 @@ type Framing = { x: number; y: number; scale: number };
  * slow move from one framing to another, grain and a vignette on top.
  * `x`/`y` are the point of the photo kept in the centre (0–1).
  */
+/** The slowest a clip may play to fill its time on screen (shorts); render-longform.mjs checks the same limit. */
+export const MIN_CLIP_RATE = 0.6;
+
 export function Photo({
   src,
   from = { x: 0.5, y: 0.5, scale: 1.05 },
@@ -36,6 +40,7 @@ export function Photo({
   end,
   color = false,
   fit = 'cover',
+  span,
 }: {
   src: string;
   from?: Framing;
@@ -44,9 +49,32 @@ export function Photo({
   end?: number;
   color?: boolean;
   fit?: 'cover' | 'contain';
+  /** Frames this picture is on screen; a clip a little shorter than that plays slower instead of looping (shorts). */
+  span?: number;
 }) {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
+  const { durationInFrames, fps } = useVideoConfig();
+  // A video clip with the same id as the photo plays instead of it (series videos).
+  const clips = useContext(ClipContext);
+  const clipId = src.match(/^images\/[^/]+\/(.+)\.jpg$/)?.[1];
+  if (clipId && clips[clipId]) {
+    const clip = staticFile(src.replace(/^images\//, 'clips/').replace(/\.jpg$/, '.mp4'));
+    const clipFrames = Math.max(1, Math.floor(clips[clipId] * fps) - 1);
+    const rate = span && span > clipFrames ? Math.max(MIN_CLIP_RATE, clipFrames / span) : 1;
+    const loop = Math.max(1, Math.floor(clipFrames / rate));
+    return (
+      <AbsoluteFill style={{ overflow: 'hidden', backgroundColor: INK }}>
+        <Loop durationInFrames={loop}>
+          <OffthreadVideo
+            src={clip}
+            muted
+            playbackRate={rate}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'saturate(0.9) contrast(1.04) brightness(0.95)' }}
+          />
+        </Loop>
+      </AbsoluteFill>
+    );
+  }
   const t = interpolate(frame, [start, end ?? durationInFrames], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
@@ -124,6 +152,7 @@ export function Fade({
 
 /** Small documentary caption: where and when a photo was taken. */
 export function PhotoCaption({ text, at = 10 }: { text: string; at?: number }) {
+  const GOLD = useAccent();
   const frame = useCurrentFrame();
   const o = rise(frame, at, 20);
   return (

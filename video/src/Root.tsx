@@ -6,6 +6,7 @@ import { FPS, HEIGHT, WIDTH } from './lib/brand';
 import { load } from './lib/data';
 import { timeline } from './lib/timeline';
 import { LongForm, type LongFormProps } from './longform/LongForm';
+import { SeriesShort } from './longform/SeriesShort';
 import { QuestionShort, type QuestionShortProps } from './QuestionShort';
 
 /**
@@ -48,6 +49,19 @@ export function Root() {
         component={LongForm}
         width={1920}
         height={1080}
+        fps={FPS}
+        durationInFrames={FPS}
+        defaultProps={{ plan: EMPTY_PLAN } satisfies LongFormProps}
+        calculateMetadata={({ props }) => ({
+          durationInFrames: Math.max(1, props.plan.total),
+        })}
+      />
+      {/* A vertical short cut from a series video (render-longform.mjs --short). */}
+      <Composition
+        id="SeriesShort"
+        component={SeriesShort}
+        width={1080}
+        height={1920}
         fps={FPS}
         durationInFrames={FPS}
         defaultProps={{ plan: EMPTY_PLAN } satisfies LongFormProps}

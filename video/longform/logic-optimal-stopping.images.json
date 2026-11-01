@@ -1,0 +1,66 @@
+{
+  "topic": "logic-optimal-stopping",
+  "note": "Every picture in the video, where it came from and under what licence. `npm run images -- logic-optimal-stopping` checks each file's licence on Wikimedia Commons, downloads it and writes the credits for the description. Licence fields are filled in by the script; do not edit them by hand.",
+  "images": [
+    {
+      "id": "flat-room",
+      "file": "Living room in apartment of Condomínio do Edifício Zaher, Le Blond, Rio de Janeiro, Brazil.jpg",
+      "scene": "Cold open; the problem; your flat",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Wilfredor",
+      "date": "2024-06-21 16:30:53",
+      "source": "https://commons.wikimedia.org/wiki/File:Living_room_in_apartment_of_Condom%C3%ADnio_do_Edif%C3%ADcio_Zaher,_Le_Blond,_Rio_de_Janeiro,_Brazil.jpg",
+      "size": "8256x4492",
+      "sha1": "732ed73b11ca9f7c4397ad4cef843fccab5ecf0f"
+    },
+    {
+      "id": "flat-building",
+      "file": "Berlin, Kreuzberg, Boeckhstrasse 14, Mietshaus.jpg",
+      "scene": "The problem; your flat",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Jörg Zägel",
+      "date": "2012-09-04 16:24:03",
+      "source": "https://commons.wikimedia.org/wiki/File:Berlin,_Kreuzberg,_Boeckhstrasse_14,_Mietshaus.jpg",
+      "size": "2529x3944",
+      "sha1": "4b60b5098c65fa216531e1d8cc508187006160b0"
+    },
+    {
+      "id": "kepler",
+      "file": "Johannes Kepler Uffizien.jpg",
+      "scene": "A famous search",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "unknown",
+      "date": null,
+      "source": "https://commons.wikimedia.org/wiki/File:Johannes_Kepler_Uffizien.jpg",
+      "size": "2372x2755",
+      "sha1": "b8fef8483430746b1e772b8921abc5e96b85c53b"
+    },
+    {
+      "id": "parking",
+      "file": "Aerial view of an empty car parking lot.jpg",
+      "scene": "Use it tomorrow: parking",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Gabriel Picard",
+      "date": "2024-08-24",
+      "source": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_an_empty_car_parking_lot.jpg",
+      "size": "4750x3164",
+      "sha1": "1635fd4c85bc429b11074c7788c1726c2fd51c0f"
+    },
+    {
+      "id": "interview",
+      "file": "Woman on a Job Interview - 38826218972.jpg",
+      "scene": "Use it tomorrow: hiring",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "author": "amtec_photos",
+      "date": "2017-11-09 13:13:02",
+      "source": "https://commons.wikimedia.org/wiki/File:Woman_on_a_Job_Interview_-_38826218972.jpg",
+      "size": "5471x3651",
+      "sha1": "87030652b125952f2e927737761651816771dc51"
+    }
+  ]
+}

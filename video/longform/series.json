@@ -1,0 +1,14 @@
+{
+  "logic": {
+    "name": "Logic to Live By",
+    "tagline": "Logical decision-making, explained",
+    "accent": "#3CC6C0",
+    "credit": "Inspired by the book \"Algorithms to Live By\" by Brian Christian and Tom Griffiths (2016). The scripts are our own words."
+  },
+  "hidden": {
+    "name": "Hidden Deutschland",
+    "tagline": "The stories behind Germany's places and traditions",
+    "accent": "#F59E3B",
+    "credit": "Every fact is checked against the sources listed below."
+  }
+}

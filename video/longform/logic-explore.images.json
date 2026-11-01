@@ -1,0 +1,42 @@
+{
+  "topic": "logic-explore",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "ann-arbor",
+      "file": "University of Michigan Medical Campus, Ann Arbor, Michigan.JPG",
+      "scene": "University of Michigan medical campus",
+      "licence": "CC BY 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+      "author": "Dwight Burdette",
+      "date": "2013-05-19",
+      "source": "https://commons.wikimedia.org/wiki/File:University_of_Michigan_Medical_Campus,_Ann_Arbor,_Michigan.JPG",
+      "size": "5184x3353",
+      "sha1": "0827738d93b21369fa2c6febebab503e12ff9393"
+    },
+    {
+      "id": "incubator",
+      "file": "MODULAR NICU WITH HEPAFILTERS.jpg",
+      "scene": "A newborn intensive care unit",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Kaveri appala",
+      "date": "2017-04-29 12:39:38",
+      "source": "https://commons.wikimedia.org/wiki/File:MODULAR_NICU_WITH_HEPAFILTERS.jpg",
+      "size": "5312x2988",
+      "sha1": "1fa446e39a75b404981c4dcca4af99541d35b047"
+    },
+    {
+      "id": "incubator2",
+      "file": "Cunero Hospital de Especialidades Nuevo Laredo.jpg",
+      "scene": "An incubator",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Miguel Angel Omaña Rojas",
+      "date": "2016-06-02 15:07:31",
+      "source": "https://commons.wikimedia.org/wiki/File:Cunero_Hospital_de_Especialidades_Nuevo_Laredo.jpg",
+      "size": "4128x2322",
+      "sha1": "9a89adaef69fedf1b684713c1e5b75cab2b4dfd8"
+    }
+  ]
+}

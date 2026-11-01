@@ -6,7 +6,9 @@
 import React from 'react';
 import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
-import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
+import { alpha, APP_NAME, C, FONT } from '../lib/brand';
+import { useAccent, useSeries } from './series';
+import { KeyLine } from './series-shots';
 import { Archive, CrossIn, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
 import { findCue, screenLines, useShot, type ScreenLine } from './plan';
 
@@ -18,6 +20,25 @@ function useLines(): ScreenLine[] {
   return lines;
 }
 
+
+/**
+ * `bg | clip-or-photo-id` as a line under a card scene (list, stat): the
+ * footage runs dimmed behind the cards, so the frame keeps moving.
+ */
+function useBackdrop(topic?: string): { lines: ScreenLine[]; backdrop: React.ReactNode } {
+  const all = useLines();
+  const bg = all.find((l) => l.fields[0] === 'bg');
+  const lines = all.filter((l) => l !== bg);
+  const backdrop =
+    bg && topic ? (
+      <AbsoluteFill>
+        <Photo src={`images/${topic}/${bg.fields[1]}.jpg`} color />
+        <AbsoluteFill style={{ backgroundColor: alpha(C.bg, 0.72) }} />
+      </AbsoluteFill>
+    ) : null;
+  return { lines, backdrop };
+}
+
 /** Slow drift so a still layout never looks frozen. */
 function useDrift(): number {
   const frame = useCurrentFrame();
@@ -26,6 +47,7 @@ function useDrift(): number {
 }
 
 function Glow({ strength = 0.1 }: { strength?: number }) {
+  const GOLD = useAccent();
   return (
     <AbsoluteFill
       style={{ background: `radial-gradient(ellipse at 50% 42%, ${alpha(GOLD, strength)} 0%, ${alpha(GOLD, 0)} 60%)` }}
@@ -34,6 +56,7 @@ function Glow({ strength = 0.1 }: { strength?: number }) {
 }
 
 function Overline({ children, o = 1 }: { children: React.ReactNode; o?: number }) {
+  const GOLD = useAccent();
   return (
     <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: 28, letterSpacing: 5, color: GOLD, textTransform: 'uppercase', opacity: o }}>
       {children}
@@ -43,6 +66,7 @@ function Overline({ children, o = 1 }: { children: React.ReactNode; o?: number }
 
 /** `German | English | reference`: one key term, large. Appears when spoken, if it is. */
 export function Term() {
+  const GOLD = useAccent();
   const shot = useShot();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -77,9 +101,10 @@ export function Term() {
 }
 
 /** One card per line, `big | small`, side by side. */
-export function List() {
+export function List({ topic }: { topic?: string }) {
+  const GOLD = useAccent();
   const frame = useCurrentFrame();
-  const lines = useLines();
+  const { lines, backdrop } = useBackdrop(topic);
   const width = lines.length >= 5 ? 330 : lines.length === 4 ? 410 : 520;
   // Long German compounds must fit on one line of the card: size the type to
   // the longest word (soft hyphens mark where a word may break instead).
@@ -87,6 +112,7 @@ export function List() {
   const bigSize = Math.min(60, Math.floor((width - 84) / (longestWord * 0.56)));
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <Glow strength={0.05} />
       <div style={{ display: 'flex', gap: lines.length >= 5 ? 24 : 40, alignItems: 'stretch', transform: `scale(${useDrift()})` }}>
         {lines.map(({ fields: [big, small], at }, i) => {
@@ -121,11 +147,13 @@ export function List() {
 }
 
 /** `number | label` per line, side by side. Whole numbers count up. */
-export function Stat() {
+export function Stat({ topic }: { topic?: string }) {
+  const GOLD = useAccent();
   const frame = useCurrentFrame();
-  const lines = useLines();
+  const { lines, backdrop } = useBackdrop(topic);
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <Glow />
       <div style={{ display: 'flex', gap: 180, transform: `scale(${useDrift()})` }}>
         {lines.map(({ fields: [value, label], at }, i) => {
@@ -149,6 +177,7 @@ export function Stat() {
 
 /** `DATE | German | English`: a dated fact, full screen. */
 export function Fact() {
+  const GOLD = useAccent();
   const frame = useCurrentFrame();
   const [{ fields }] = useLines();
   const [date, de, en] = fields;
@@ -178,6 +207,7 @@ export function Fact() {
 
 /** `German | English | source`: typed in time with the voice when it is spoken. */
 export function Quote() {
+  const GOLD = useAccent();
   const shot = useShot();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -210,7 +240,8 @@ export function Quote() {
 
 /**
  * `image-id | caption | options` per line; several lines cut from one photo to
- * the next. Options: `color` (modern photo), `paper` (a document), and
+ * the next. Options: `color` (modern photo), `paper` (a document), `key` (the
+ * caption is the series' big key line, not a small label), and
  * `from x y scale` / `to x y scale` for the camera move.
  */
 export function PhotoScene({ topic }: { topic: string }) {
@@ -236,7 +267,7 @@ export function PhotoScene({ topic }: { topic: string }) {
                   from={framing('from', { x: 0.5, y: 0.5, scale: 1.0 })}
                   to={framing('to', { x: 0.5, y: 0.5, scale: 1.12 })}
                 />
-                {caption ? <PhotoCaption text={caption} /> : null}
+                {caption ? /\bkey\b/.test(options) ? <KeyLine text={caption} /> : <PhotoCaption text={caption} /> : null}
               </Archive>
             </CrossIn>
           </Sequence>
@@ -248,6 +279,7 @@ export function PhotoScene({ topic }: { topic: string }) {
 
 /** Comma-separated words in a grid; each lands when the voice says it. */
 export function Words() {
+  const GOLD = useAccent();
   const shot = useShot();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -293,6 +325,7 @@ export function Words() {
  * under the scene; without it, Article 1.
  */
 export function Outro() {
+  const GOLD = useAccent();
   const shot = useShot();
   const [de, en, over] = shot.screen[0]?.split(' | ').map((f) => f.trim()) ?? [
     'Die Würde des Menschen ist unantastbar.',
@@ -334,13 +367,16 @@ export function Outro() {
 /** Closing card, with the AI-voice disclosure on screen. */
 export function End() {
   const frame = useCurrentFrame();
+  const series = useSeries();
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center', gap: 40 }}>
       <Glow strength={0.06} />
       <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 100, color: C.text, opacity: rise(frame, 6, 18) }}>Bis bald.</div>
       <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 44, color: C.textMuted, opacity: rise(frame, 14, 18) }}>See you in the next one.</div>
       <div style={{ position: 'absolute', bottom: 70, fontFamily: FONT, fontWeight: 500, fontSize: 28, color: C.textFaint, opacity: rise(frame, 4, 18) }}>
-        Narrated with an AI version of the creator's voice. Facts checked against the official question catalogue.
+        {series
+          ? `${series.name} · Narrated by Utpal · Sources in the description.`
+          : "Narrated with an AI version of the creator's voice. Facts checked against the official question catalogue."}
       </div>
     </AbsoluteFill>
   );

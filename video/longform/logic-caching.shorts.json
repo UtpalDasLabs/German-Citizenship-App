@@ -1,0 +1,7 @@
+{
+  "shorts": [
+    { "id": "1", "hook": "The pile on your chair is smart", "spoken": "That pile of clothes on your chair? It's actually smart.", "paragraphs": [0, 13, 24] },
+    { "id": "2", "hook": "A filing system with no labels", "spoken": "A filing system with no labels and no sorting. It just works.", "paragraphs": [14, 15, 16] },
+    { "id": "3", "hook": "The perfect rule for what to throw out", "spoken": "There's a perfect rule for what to throw out. One problem.", "paragraphs": [8, 9, 10] }
+  ]
+}
