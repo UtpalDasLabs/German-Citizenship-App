@@ -1,10 +1,13 @@
-import { Stack, useRouter, useSegments } from 'expo-router';
+import { Stack, usePathname, useRouter, useSegments } from 'expo-router';
 import Head from 'expo-router/head';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 
+import { ConsentBanner } from '@/components/ConsentBanner';
+import { initAnalytics, setAnalyticsContext, track, trackPageView } from '@/lib/analytics';
 import { registerServiceWorker } from '@/lib/durability';
 import { hideSplash } from '@/lib/splash';
 import { useAppReady } from '@/components/Loading';
@@ -14,6 +17,9 @@ import { ProgressProvider } from '@/store/ProgressProvider';
 import { SettingsProvider } from '@/store/SettingsProvider';
 import { ThemeProvider, useTheme } from '@/theme/ThemeProvider';
 
+// Before anything renders, so consent defaults are queued ahead of any hit.
+initAnalytics();
+
 function Navigator() {
   const { colors, dark } = useTheme();
   const ready = useAppReady();
@@ -21,12 +27,33 @@ function Navigator() {
   const { progress } = useProgress();
   const router = useRouter();
   const segments = useSegments();
+  const pathname = usePathname();
+  const lastLanguage = useRef<string | null>(null);
 
   // Hold the splash until stored settings and progress have loaded, so the
   // first frame the user sees is their real state rather than an empty shell.
   useEffect(() => {
     if (ready) hideSplash();
   }, [ready]);
+
+  // Tag every hit with the interface and question language, so reports show
+  // who studies in German, in English or side by side. A change after the
+  // first load is an event of its own.
+  useEffect(() => {
+    if (!ready) return;
+    const ui = settings.uiGerman ? 'de' : 'en';
+    setAnalyticsContext({ app_language: ui, question_language: settings.language });
+    const key = `${ui}/${settings.language}`;
+    if (lastLanguage.current && lastLanguage.current !== key) {
+      track('language_change', { app_language: ui, question_language: settings.language });
+    }
+    lastLanguage.current = key;
+  }, [ready, settings.uiGerman, settings.language]);
+
+  // Client-side navigation does not reload the page, so count each screen.
+  useEffect(() => {
+    if (ready) trackPageView();
+  }, [ready, pathname]);
 
   // Send first-time visitors to the intro, whichever route they arrived on.
   // Waiting for `ready` matters: before storage loads everyone looks new.
@@ -55,6 +82,7 @@ function Navigator() {
         <meta name="description" content="Learn all 460 official German citizenship test questions." />
       </Head>
       <StatusBar style={dark ? 'light' : 'dark'} />
+      <View style={{ flex: 1 }}>
       <Stack
         screenOptions={{
           headerShown: false,
@@ -70,6 +98,8 @@ function Navigator() {
         <Stack.Screen name="learn" />
         <Stack.Screen name="exam-session" />
       </Stack>
+      <ConsentBanner />
+      </View>
     </>
   );
 }

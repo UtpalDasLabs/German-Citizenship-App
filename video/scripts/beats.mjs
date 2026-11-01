@@ -31,3 +31,9 @@ export async function load(id, fps) {
     return timed;
   });
 }
+
+/** Question ids from the command line: numbers, or "all". */
+export function resolveIds(args) {
+  if (args.includes('all')) return QUESTIONS.map((q) => q.id);
+  return args.map(Number);
+}

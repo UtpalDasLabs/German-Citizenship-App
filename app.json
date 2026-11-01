@@ -40,7 +40,7 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "baseUrl": "/German-Citizenship-App"
+      "baseUrl": ""
     }
   }
 }

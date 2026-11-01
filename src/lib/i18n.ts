@@ -249,6 +249,13 @@ const strings = {
     importFailed: 'That file could not be read',
     importConfirm: 'Replace your current progress with this backup?',
     storageSecured: 'Your browser has marked this data as protected.',
+    storageBodyWeb: 'Your progress stays on this device, and there is no account. Anonymised usage statistics go to Google Analytics only if you allow it below.',
+    consentTitle: 'Help improve this free app?',
+    consentBody: 'If you allow it, the app sends anonymised usage statistics to Google Analytics: which sections are used and mock-exam results, never your answers. Your progress stays on this device either way, and you can change this any time under “You”.',
+    consentAccept: 'Allow',
+    consentDecline: 'No thanks',
+    analyticsToggle: 'Share usage statistics',
+    analyticsToggleSub: 'Anonymised, via Google Analytics. Never your answers.',
   },
 
   de: {
@@ -480,6 +487,13 @@ const strings = {
     importFailed: 'Diese Datei konnte nicht gelesen werden',
     importConfirm: 'Aktuellen Fortschritt durch diese Sicherung ersetzen?',
     storageSecured: 'Dein Browser hat diese Daten als gesch\u00fctzt markiert.',
+    storageBodyWeb: 'Dein Fortschritt bleibt auf diesem Gerät, es gibt kein Konto. Anonymisierte Nutzungsstatistiken gehen nur an Google Analytics, wenn du es unten erlaubst.',
+    consentTitle: 'Hilfst du, diese kostenlose App zu verbessern?',
+    consentBody: 'Wenn du zustimmst, sendet die App anonymisierte Nutzungsstatistiken an Google Analytics: welche Bereiche genutzt werden und Ergebnisse des Probetests, nie deine Antworten. Dein Fortschritt bleibt in jedem Fall auf diesem Gerät, und du kannst das jederzeit unter „Du“ ändern.',
+    consentAccept: 'Erlauben',
+    consentDecline: 'Nein, danke',
+    analyticsToggle: 'Nutzungsstatistiken teilen',
+    analyticsToggleSub: 'Anonymisiert, über Google Analytics. Nie deine Antworten.',
   },
 } as const;
 

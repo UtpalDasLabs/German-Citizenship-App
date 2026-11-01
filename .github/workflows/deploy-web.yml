@@ -1,23 +1,26 @@
-name: Deploy web app to GitHub Pages
+name: Checks, and the handover at the old address
+
+# The web app is served by Vercel at https://lid.utpaldas.com (see vercel.json).
+# GitHub Pages keeps the old address, utpaldaslabs.github.io/German-Citizenship-App/, alive only
+# to carry each visitor's saved progress over to it: see handover/.
 
 on:
   push:
-    branches: [main, claude/german-citizenship-test-app-gc14en]
+    branches: [main]
+  pull_request:
   workflow_dispatch:
 
-# Allow the workflow to publish to Pages.
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Let a running deploy finish rather than cancelling it mid-publish.
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,30 +36,30 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
-      - name: Build static web bundle
-        run: npm run build:web
+  handover:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Add SPA fallback and disable Jekyll
+      - name: Assemble the handover site
         run: |
-          # GitHub Pages serves 404.html for unknown paths; expo's static export
-          # already emits a page per route, so this only covers deep links that
-          # arrive before the client router boots.
-          cp dist/index.html dist/404.html
-          touch dist/.nojekyll
+          mkdir site
+          # index.html answers the old start URL; 404.html answers every old
+          # deep link; sw.js replaces the old offline cache at the same URL.
+          cp handover/index.html site/index.html
+          cp handover/index.html site/404.html
+          cp handover/sw.js site/sw.js
+          touch site/.nojekyll
 
-      # Requires the Pages site to already exist: Settings -> Pages -> Source:
-      # GitHub Actions. `enablement: true` cannot stand in for that - the default
-      # GITHUB_TOKEN is not allowed to create a Pages site, and trying turns a
-      # clear "Pages is not enabled" message into "Resource not accessible by
-      # integration".
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
   deploy:
-    needs: build
+    needs: handover
     runs-on: ubuntu-latest
     environment:
       name: github-pages

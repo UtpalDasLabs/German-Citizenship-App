@@ -17,8 +17,8 @@
  * timestamps, and handed to the composition as one plan.
  */
 import { execFileSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 
 import { bundle } from '@remotion/bundler';
 import { renderMedia, renderStill, selectComposition } from '@remotion/renderer';
@@ -66,7 +66,18 @@ const script = parseLongform(topic);
 // tags, for models that do not take them).
 for (const c of script.chapters) for (const sh of c.shots) for (const p of sh.paras) p.tts = spokenText(p.tts);
 const chapters = pickChapters(spec, script.chapters.length);
-const voiceDir = audioDir(topic);
+// Narration in the current voice if it exists; otherwise the one take set a
+// lesson already has (lessons voiced before the switch to the professional
+// clone), so a voice change never forces a re-voice.
+const voiceDir = (() => {
+  const wanted = audioDir(topic);
+  const base = dirname(wanted);
+  if (existsSync(wanted) || !existsSync(base)) return wanted;
+  const earlier = readdirSync(base).filter((d) => d.includes('-eleven_'));
+  if (earlier.length !== 1) return wanted;
+  console.log(`Narration for ${topic} is in an earlier voice; using ${earlier[0]}.`);
+  return join(base, earlier[0]);
+})();
 // Music and effects from ElevenLabs (npm run sound:elevenlabs) when they have
 // been made, else the synthesised ones (npm run sound).
 const EL_SOUND = join(OUT, 'sound-elevenlabs');
@@ -182,7 +193,7 @@ const plan = {
 };
 if (silent) for (const s of plan.shots) s.paras = s.paras.map((p) => ({ ...p, src: null }));
 
-const APP_URL = 'https://utpaldaslabs.github.io/German-Citizenship-App/';
+const APP_URL = 'https://lid.utpaldas.com/';
 const stamp = (frame) => {
   const t = Math.floor(frame / FPS);
   const h = Math.floor(t / 3600);

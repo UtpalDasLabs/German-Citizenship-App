@@ -29,13 +29,18 @@ English translation, a plain-English explanation, and a visual.
   27 hand-drawn SVG scenes elsewhere.
 - **German, English or both**, light and dark, works offline.
 
+## Privacy
+
+Progress stays on the device and there is no account. On the web the app asks
+before sending anonymised usage statistics (screens used, mock-exam results —
+never answers) to Google Analytics. Nothing is fetched from Google until you
+allow it, the choice can be changed any time on the "You" tab, and native
+builds send nothing. See `src/lib/analytics.ts`.
+
 ## Try the web app
 
-Once GitHub Pages is enabled (see below), the app is served at:
-
-```
-https://<your-github-username>.github.io/German-Citizenship-App/
-```
+The app is served at **https://lid.utpaldas.com**, deployed by Vercel from `main`
+(`vercel.json`).
 
 To run it locally:
 
@@ -44,16 +49,16 @@ npm install
 npm run web          # dev server with fast refresh
 ```
 
-Or build and serve the exact bundle that ships to Pages:
+Or build and serve the exact bundle that ships:
 
 ```bash
 npm run build:web
 npx http-server dist -p 8080
 ```
 
-> The static build is generated with a base path of `/German-Citizenship-App`
-> (set in `app.json` under `experiments.baseUrl`). If you fork this repo under a
-> different name, change that value to match, or the CSS and JS will 404 on Pages.
+> It used to live at `utpaldaslabs.github.io/German-Citizenship-App/`. GitHub Pages still serves
+> that address, but only the page in `handover/`, which carries each visitor's
+> saved progress over to lid.utpaldas.com (`public/handover.html` receives it).
 
 ## Installing it as an app
 
