@@ -30,13 +30,15 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
 const FFPROBE = ffbin('ffprobe');
 
-/** The instant clone the citizenship lessons were voiced with. */
-const LESSON_VOICE = 'vFeVIow1bgkn4mgnqNwD';
 /**
- * The voice for a script: the environment, else the script's own `voice:`
- * (the series videos name the professional clone), else the lessons' clone.
+ * The instant clone the 30 citizenship lessons were voiced with. Their
+ * narration stays: render-longform falls back to it.
  */
-export const voiceFor = (meta) => process.env.ELEVENLABS_VOICE_ID ?? meta?.voice ?? LESSON_VOICE;
+const LESSON_VOICE = 'vFeVIow1bgkn4mgnqNwD';
+/** The creator's Professional Voice Clone, for everything voiced from October 2026 on. */
+const PRO_VOICE = 'Rr3HT8xllxaRdjMZxGBa';
+/** The voice for a script: the environment, else the script's own `voice:`, else the professional clone. */
+export const voiceFor = (meta) => process.env.ELEVENLABS_VOICE_ID ?? meta?.voice ?? PRO_VOICE;
 export const VOICE = voiceFor();
 /** Bump when the clone is retrained: ElevenLabs keeps the same voice ID. */
 const cloneVersion = (voice) =>

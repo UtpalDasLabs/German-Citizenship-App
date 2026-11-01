@@ -59,6 +59,7 @@ export function OptionCard({
   enter,
   fontSize,
   marks,
+  compact = false,
 }: {
   letter: string;
   de: string;
@@ -68,8 +69,11 @@ export function OptionCard({
   enter: number;
   fontSize: number;
   marks: Mark[];
+  /** Leave out the English line (no room, or it would repeat the German). */
+  compact?: boolean;
 }) {
   const correct = state === 'correct';
+  const sameAsGerman = !en || en.trim() === de.trim();
   return (
     <div
       style={{
@@ -89,10 +93,13 @@ export function OptionCard({
         <div style={{ fontFamily: FONT, fontWeight: 700, fontSize, lineHeight: 1.2, color: correct ? C.success : C.text }}>
           <Highlighted text={de} marks={marks} />
         </div>
-        {/* Space is always reserved, so cards never jump when English arrives. */}
-        <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 32, lineHeight: 1.25, color: C.textMuted, opacity: enShown }}>
-          {en ?? ' '}
-        </div>
+        {/* Space is always reserved, so cards never jump when English arrives. An
+            option that reads the same in both languages ("1", "2") has none. */}
+        {compact || sameAsGerman ? null : (
+          <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 32, lineHeight: 1.25, color: C.textMuted, opacity: enShown }}>
+            {en}
+          </div>
+        )}
       </div>
       {correct ? <Check /> : null}
     </div>

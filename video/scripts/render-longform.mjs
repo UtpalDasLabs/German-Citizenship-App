@@ -18,7 +18,7 @@
  */
 import { execFileSync, spawnSync } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 
 import { ffbin } from './ffbin.mjs';
 
@@ -27,6 +27,7 @@ import { renderMedia, renderStill, selectComposition } from '@remotion/renderer'
 
 import { parseLongform, pickChapters } from './longform.mjs';
 import { audioDir, MODEL, paraHash, PROFILE, settingsFor, spokenText, voiceFor } from './voice-longform.mjs';
+import { preinstalledChrome } from './browser.mjs';
 
 const VIDEO = join(import.meta.dirname, '..');
 const ROOT = join(VIDEO, '..');
@@ -68,7 +69,18 @@ const script = parseLongform(topic);
 for (const c of script.chapters) for (const sh of c.shots) for (const p of sh.paras) p.tts = spokenText(p.tts);
 const chapters = pickChapters(spec, script.chapters.length);
 const VOICE = voiceFor(script.meta);
-const voiceDir = audioDir(topic, VOICE, settingsFor(script.meta));
+// Narration in this script's voice if it exists; otherwise the one take set a
+// lesson already has (lessons voiced before the switch to the professional
+// clone), so a voice change never forces a re-voice.
+const voiceDir = (() => {
+  const wanted = audioDir(topic, VOICE, settingsFor(script.meta));
+  const base = dirname(wanted);
+  if (existsSync(wanted) || !existsSync(base)) return wanted;
+  const earlier = readdirSync(base).filter((d) => d.includes('-eleven_'));
+  if (earlier.length !== 1) return wanted;
+  console.log(`Narration for ${topic} is in an earlier voice; using ${earlier[0]}.`);
+  return join(base, earlier[0]);
+})();
 /** A series video (Logic to Live By, Hidden Deutschland), or null for a lesson. */
 const SERIES_KEY = script.meta.series ?? null;
 /** --short: a vertical short; its pictures and clips are the long video's (`media:`). */
@@ -270,7 +282,7 @@ if (args.includes('--check')) {
   process.exit(0);
 }
 
-const APP_URL = 'https://utpaldaslabs.github.io/German-Citizenship-App/';
+const APP_URL = 'https://lid.utpaldas.com/';
 const stamp = (frame) => {
   const t = Math.floor(frame / FPS);
   const h = Math.floor(t / 3600);
@@ -440,8 +452,7 @@ if (existsSync(join(OUT, 'images', MEDIA))) {
 if (!silent)
   for (const s of shots) for (const p of s.paras) cpSync(join(voiceDir, p.src.slice('audio/'.length)), join(pub, p.src));
 
-const PREINSTALLED = '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell';
-const browserExecutable = process.env.REMOTION_BROWSER ?? (existsSync(PREINSTALLED) ? PREINSTALLED : null);
+const browserExecutable = preinstalledChrome();
 
 console.log(`${shots.length} shots, ${(cursor / FPS).toFixed(1)}s${silent ? ' (silent)' : ` (${VOICE}, ${MODEL})`}. Bundling…`);
 const serveUrl = await bundle({

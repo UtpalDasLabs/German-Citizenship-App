@@ -12,8 +12,10 @@ export type Beat = {
   answerIndex?: number;
   /** "why" only: whether the line was hand-written with its German marked. */
   marked?: boolean;
-  ask?: string[];
-  answer?: string[];
+  /** Delivery tag for Eleven v4 ("[curious]"); never shown, never spoken. */
+  tag?: string;
+  /** Shown without narration; its length comes from SILENT_SECONDS. */
+  silent?: boolean;
 };
 
 export type KeyTerms = { trap: boolean; ask: string[]; answer: string[] };
@@ -23,6 +25,9 @@ export type Script = {
   trap: boolean;
   picture: boolean;
   answerIndex: number;
+  /** Key terms, highlighted in the question and the answer at the reveal. */
+  ask: string[];
+  answer: string[];
   beats: Beat[];
 };
 
