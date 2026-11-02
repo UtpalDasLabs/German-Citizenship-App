@@ -1,0 +1,76 @@
+{
+  "topic": "hidden-advent",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "old-hamburg",
+      "file": "PPN790325802 Die neue Bergstraße und die St. Petri Kirche in Hamburg (1840).jpg",
+      "scene": "Hamburg, 1840"
+    },
+    {
+      "id": "wichern",
+      "file": "1858 Otto Speckter Lithographie, Charles Fuchs (Hamburg) Druck Dreiviertel-Portrait des Theologen, Sozialpädagogen und Gefängnis-Reformers Johann Hinrich Wichern.jpg",
+      "scene": "Johann Hinrich Wichern"
+    },
+    {
+      "id": "munich-1900",
+      "file": "Marienplatz 1900.jpg",
+      "scene": "Munich, Marienplatz, 1900"
+    },
+    {
+      "id": "old-dresden",
+      "file": "Canaletto - View of the Neumarkt in Dresden from the Jüdenhofe - Google Art Project.jpg",
+      "scene": "Old Dresden (Canaletto)"
+    },
+    {
+      "id": "stollen",
+      "file": "Stollen-Dresdner Christstollen.jpg",
+      "scene": "Dresdner Christstollen"
+    },
+    {
+      "id": "stollen-sliced",
+      "file": "Dresdner Mandelstollen 2 141228 AW.jpg",
+      "scene": "Stollen, sliced"
+    },
+    {
+      "id": "elector-ernst",
+      "file": "Ernst Kurfürst von Sachsen, 1441-1486 (AT KHM GG4795).jpg",
+      "scene": "Elector Ernst of Saxony"
+    },
+    {
+      "id": "freiberg",
+      "file": "Fg080509 10dom.jpg",
+      "scene": "Freiberg Cathedral"
+    },
+    {
+      "id": "freiberg-gate",
+      "file": "Freiberg, Dom, Goldene Pforte-007.jpg",
+      "scene": "The Golden Gate of Freiberg Cathedral"
+    },
+    {
+      "id": "august",
+      "file": "Aŭgust Mocny. Аўгуст Моцны (L. Silvestre, 1730).jpg",
+      "scene": "August the Strong"
+    },
+    {
+      "id": "mugs",
+      "file": "Glühweintasse des Augustusmarkts (Dresden) (1).jpg",
+      "scene": "A Glühwein mug from a Dresden market"
+    },
+    {
+      "id": "striezel-open",
+      "file": "Dresden, Striezelmarkt -- 2023 -- 9306.jpg",
+      "scene": "The Striezelmarkt today"
+    },
+    {
+      "id": "striezelmarkt",
+      "file": "20041202240DR Dresden Striezelmarkt auf dem Altmarkt.jpg",
+      "scene": "The Striezelmarkt at night"
+    },
+    {
+      "id": "bautzen",
+      "file": "Bautzen Altstadt 61.jpg",
+      "scene": "Bautzen"
+    }
+  ]
+}
