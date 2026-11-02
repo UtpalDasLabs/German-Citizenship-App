@@ -47,12 +47,12 @@
 - Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3158/
 - Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8170/
 - Video by New1one from Pixabay: https://pixabay.com/videos/id-142245/
+- Made with Google Gemini (Veo)
+- Made with Google Gemini (Veo)
 - Made with Google Veo
 - Made with Google Veo
-- Made with Google Veo
-- Made with Google Veo
-- Made with Google Veo
-- Made with Google Veo
+- Made with Google Gemini (Veo)
+- Made with Google Gemini (Veo)
 - Video by NickyPe from Pixabay: https://pixabay.com/videos/id-132583/
 
 ## Voice and music
