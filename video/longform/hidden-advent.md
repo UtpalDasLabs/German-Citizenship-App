@@ -152,9 +152,9 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 
 > SCENE (photo): Dresden; the baroque camp; the giant Stollen.
 > august | August the Strong | color key
-> giant-a | Zeithain, 1730 | color key @ In 1730
+> giant-a | Zeithain, 1730 | color key @ In 1730 he
 > zeithain-camp |  | color @ near the village
-> giant-b | About seven metres long | color key @ seven metres
+> giant-b | About seven metres long | color key @ about seven metres
 
 [calm] Then came August the Strong, ruler of Saxony, a man who did nothing small. In 1730 he put on an enormous military show near the village of [[Zeithain]], with tens of thousands of guests. To end it, his bakers made a Stollen about seven metres long.
 
