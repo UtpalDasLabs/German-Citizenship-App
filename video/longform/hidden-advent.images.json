@@ -71,6 +71,16 @@
       "id": "bautzen",
       "file": "Bautzen Altstadt 61.jpg",
       "scene": "Bautzen"
+    },
+    {
+      "id": "early-calendar",
+      "file": "Adventskalender, Gotlands museum.jpg",
+      "scene": "An early printed Advent calendar"
+    },
+    {
+      "id": "chocolate-calendar",
+      "file": "Adventcalendar3.jpg",
+      "scene": "A chocolate Advent calendar"
     }
   ]
 }
