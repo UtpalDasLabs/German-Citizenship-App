@@ -75,7 +75,7 @@
       "seconds": 3,
       "credit": "Stollen before butter: made with Google Veo",
       "start": 0,
-      "speed": 0.95
+      "speed": 0.74
     },
     {
       "id": "oil-b",
@@ -315,7 +315,7 @@
       "source": "pixabay",
       "pixabayId": 132583,
       "start": 2,
-      "seconds": 9,
+      "seconds": 11,
       "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-132583/"
     }
   ]

@@ -197,7 +197,14 @@
     {
       "id": "zeithain-camp",
       "file": "Lager bei Zeithain 1730 von Alexander Thiele.jpg",
-      "scene": "The Zeithain camp, 1730"
+      "scene": "The Zeithain camp, 1730",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Johann Alexander Thiele",
+      "date": "circa 1730",
+      "source": "https://commons.wikimedia.org/wiki/File:Lager_bei_Zeithain_1730_von_Alexander_Thiele.jpg",
+      "size": "767x493",
+      "sha1": "d45b5e4347a46905ba647ba131592a539166386a"
     }
   ]
 }

@@ -130,7 +130,7 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 
 > SCENE (photo): Stollen; a medieval bakery.
 > stollen-sliced | Stollen | color key
-> oil-a |  | color @ fasting
+> oil-a |  | color @ fasting meant
 > oil-b |  | color @ with oil
 
 [warmly] And what do you eat at a market in Saxony? Stollen. But for a long time, Stollen was not very nice. [calm] Advent used to be a time of fasting, and fasting meant no butter. So bakers made their Stollen with oil. And the oil back then was bitter.
@@ -153,7 +153,7 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 > SCENE (photo): Dresden; the baroque camp; the giant Stollen.
 > august | August the Strong | color key
 > giant-a | Zeithain, 1730 | color key @ In 1730
-> zeithain-camp |  | color @ tens of thousands
+> zeithain-camp |  | color @ near the village
 > giant-b | About seven metres long | color key @ seven metres
 
 [calm] Then came August the Strong, ruler of Saxony, a man who did nothing small. In 1730 he put on an enormous military show near the village of [[Zeithain]], with tens of thousands of guests. To end it, his bakers made a Stollen about seven metres long.
