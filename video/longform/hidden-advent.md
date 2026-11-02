@@ -41,7 +41,7 @@ Rule for this episode: every clip id appears once, and no shot runs longer than 
 
 > SCENE (photo): Old Hamburg; Wichern; children at a window.
 > old-hamburg | Hamburg, 1839 | color key
-> wichern | Johann Hinrich Wichern | color key @ a young theologian
+> wichern | Johann Hinrich Wichern | color key from 0.5 0.2 1.0 to 0.5 0.18 1.1 @ a young theologian
 > kids-a |  | color @ Every December
 > kids-b |  | color @ How many days
 
@@ -136,7 +136,7 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 [warmly] And what do you eat at a market in Saxony? Stollen. But for a long time, Stollen was not very nice. [calm] Advent used to be a time of fasting, and fasting meant no butter. So bakers made their Stollen with oil. And the oil back then was bitter.
 
 > SCENE (photo): The Elector; the letter; butter at last; Freiberg Cathedral.
-> elector-ernst | Elector Ernst of Saxony | color key
+> elector-ernst | Elector Ernst of Saxony | color key from 0.5 0.18 1.0 to 0.5 0.16 1.1
 > letter-b | The Butterbrief, 1491 | color key @ Pope Innocent
 > adv-butter-joy |  | color @ the butter letter
 > freiberg | Pay a fee. Build a cathedral. | color key @ there was a catch
