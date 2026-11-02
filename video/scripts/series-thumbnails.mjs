@@ -34,6 +34,9 @@ const THUMBS = [
   { topic: 'logic-sorting', series: 'logic', photo: 'thumb-win', side: true, pos: '40%', narrow: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
   { topic: 'logic-caching', series: 'logic', photo: 'thumb-maya', side: true, pos: '14%', narrow: true, lines: ['The pile on', 'your chair', 'is smart'], accent: 'smart', tag: 'Keep close what you used last' },
   { topic: 'logic-scheduling', series: 'logic', photo: 'thumb-jonas', side: true, pos: '55%', narrow: true, lines: ['Which task', 'first?'], accent: 'first?', tag: 'Stress is unfinished work', },
+  // Martinstag A/B test (YouTube "Test & compare", from 3 Nov 2026): B and C against the lantern thumbnail.
+  { topic: 'hidden-martinstag', name: 'hidden-martinstag-b-cloak', series: 'hidden', photo: 'thumb-cloak', side: true, pos: '75%', narrow: true, lines: ['He cut his', 'coat in half'], accent: 'half', tag: 'Why Germany walks with lanterns on 11 Nov' },
+  { topic: 'hidden-martinstag', name: 'hidden-martinstag-c-geese', series: 'hidden', photo: 'thumb-geese', side: true, pos: '72%', narrow: true, lines: ['Betrayed by', 'geese'], accent: 'geese', tag: 'Martinstag: lanterns, geese, a cloak' },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 
@@ -75,8 +78,8 @@ html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#0B0E14;
 
 fs.mkdirSync(OUT, { recursive: true });
 for (const t of THUMBS) {
-  const html = path.join(OUT, `series-${t.topic}.html`);
-  const png = path.join(OUT, `series-${t.topic}.png`);
+  const html = path.join(OUT, `series-${t.name ?? t.topic}.html`);
+  const png = path.join(OUT, `series-${t.name ?? t.topic}.png`);
   fs.writeFileSync(html, page(t));
   execFileSync(
     CHROME,
