@@ -1,0 +1,92 @@
+{
+  "topic": "logic-scheduling",
+  "note": "Gemini Omni hero clips, Pixar 3D look, one look all episode.",
+  "clips": [
+    {
+      "id": "omni-hook-desk",
+      "source": "veo",
+      "file": "veo/scheduling/hook-desk.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy student room with a desk and a laptop. JONAS: a young man in his early twenties, short messy dark hair, green hoodie, friendly face. Jonas sits at his desk on a Sunday evening with three coloured sticky notes in front of him. He picks one up, looks at it worried, puts it down, picks up another, then rests his chin on his hand and looks at the camera with a tired comic sigh. Gentle comic timing.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "speed": 0.65
+    },
+    {
+      "id": "omni-dentist",
+      "source": "veo",
+      "file": "veo/scheduling/dentist.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy student room. Same JONAS: a young man in his early twenties, short messy dark hair, green hoodie. Jonas picks up his phone, holds it to his ear, nods and smiles while talking briefly, then hangs up and peels a yellow sticky note off the desk and drops it in the bin with a satisfied little fist pump.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-desk",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-flatmates",
+      "source": "veo",
+      "file": "veo/scheduling/flatmates.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, small cosy kitchen. Same JONAS: a young man in his early twenties, short messy dark hair, green hoodie, sits at a kitchen table across from his flatmate ANA: a young woman, black bob haircut, red scarf. Two mugs on the table, an awkward silence, both looking away. A paper note on the fridge behind them reads HEATING BILL. Jonas takes a breath, looks up, and says something gently; Ana's shoulders relax and she gives a small nod.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-desk",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-walk",
+      "source": "veo",
+      "file": "veo/scheduling/walk.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, golden Sunday afternoon light, a path through a park with autumn trees. Two friends: MIRA, a woman in her fifties, grey-streaked bun, blue coat, and TOM, a man in his fifties, flat cap, brown jacket. They walk side by side, then stop, look at each other, and hug warmly. Gentle, emotional, no dialogue.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "speed": 0.65
+    },
+    {
+      "id": "omni-ending",
+      "source": "veo",
+      "file": "veo/scheduling/ending.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy student room. Same JONAS: a young man in his early twenties, short messy dark hair, green hoodie. Jonas sits calmly at his desk on a Thursday evening typing on his laptop with a mug of tea, a small tidy list beside him with all but one item ticked. He leans back, smiles contentedly at the camera.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-desk",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-switching",
+      "source": "veo",
+      "file": "veo/scheduling/switching.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy student room. Same JONAS: a young man in his early twenties, short messy dark hair, green hoodie. Jonas sits at his desk with a laptop, a phone and a notebook, and keeps jumping between them: types a line, grabs the phone, scribbles in the notebook, back to the laptop, getting more and more flustered, hair a bit messier, then stops and looks at the camera exhausted.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-desk",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-study",
+      "source": "veo",
+      "file": "veo/scheduling/study.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy student room. Same JONAS: a young man in his early twenties, short messy dark hair, green hoodie. Jonas sits down at the desk with a textbook, a mug of tea and a small wall calendar showing a circled Tuesday. He opens the book, starts reading with calm focus, makes a tick mark on a paper checklist, and gives a small satisfied nod.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-desk",
+      "speed": 0.65
+    },
+    {
+      "id": "omni-reply",
+      "source": "veo",
+      "file": "veo/scheduling/reply.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy student room. Same JONAS: a young man in his early twenties, short messy dark hair, green hoodie. Jonas sits on a sofa and types a message on his phone, presses send, then breathes out with relief and smiles. A small warm lamp glows next to him.",
+      "seconds": 8,
+      "credit": "Made with Google Veo",
+      "start": 0,
+      "referenceFrom": "omni-hook-desk",
+      "speed": 0.65
+    }
+  ]
+}

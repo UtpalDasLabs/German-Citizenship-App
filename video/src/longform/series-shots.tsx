@@ -1078,3 +1078,147 @@ export function Noguchi({ archive = false }: { archive?: boolean }) {
     </AbsoluteFill>
   );
 }
+
+const TASKS = [
+  { name: 'Essay', due: 'Fri', rank: 2, color: '#8A93A6' },
+  { name: 'Rent form', due: 'Tue', rank: 0, color: '#3CC6C0' },
+  { name: 'Call dentist', due: 'Sun', rank: 3, color: '#8A93A6' },
+  { name: 'Flat visit', due: 'Wed', rank: 1, color: '#8A93A6' },
+];
+
+/** Earliest due date: tasks shuffle into order of their deadline; the worst delay stays small. */
+export function Edf() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const t = Easing.inOut(Easing.cubic)(Math.min(1, Math.max(0, (frame - fps * 2) / (fps * 1.4))));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 110, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 74, color: C.text }}>
+        Due <span style={{ color: accent }}>soonest</span> goes first.
+      </div>
+      {TASKS.map((tk, i) => {
+        const x = 150 + (i + (tk.rank - i) * t) * 400;
+        return (
+          <div key={tk.name} style={{ position: 'absolute', left: x, top: 380, width: 360, height: 240, borderRadius: 24, background: t > 0.9 && tk.rank === 0 ? accent : tk.color, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: FONT, color: '#0B1220' }}>
+            <div style={{ fontWeight: 800, fontSize: 48 }}>{tk.name}</div>
+            <div style={{ fontWeight: 600, fontSize: 38, marginTop: 10 }}>due {tk.due}</div>
+          </div>
+        );
+      })}
+      <div style={{ position: 'absolute', top: 720, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 44, color: '#C9D3E0', opacity: rise(frame, fps * 3.4, 14) }}>
+        No other order makes your <span style={{ color: accent, fontWeight: 900 }}>latest</span> task less late.
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** Shortest job first: the same two jobs in two orders, with the wait of the one that goes second. */
+export function Spt() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const grow = (start: number, len: number) => Math.min(1, Math.max(0, (frame - start) / (fps * len)));
+  const U = 200; // px per hour
+  const row = (y: number, first: [string, number, string], second: [string, number, string], wait: string, start: number, waitColor: string) => (
+    <div style={{ position: 'absolute', left: 160, top: y }}>
+      <div style={{ position: 'absolute', left: 0, top: 0, width: first[1] * U * grow(start, 0.8), height: 120, borderRadius: 16, background: first[2], overflow: 'hidden', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: '#0B1220', display: 'flex', alignItems: 'center', justifyContent: 'center', whiteSpace: 'nowrap' }}>{first[0]}</div>
+      <div style={{ position: 'absolute', left: first[1] * U, top: 0, width: second[1] * U * grow(start + 0.8, 0.8), height: 120, borderRadius: 16, background: second[2], overflow: 'hidden', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: '#0B1220', display: 'flex', alignItems: 'center', justifyContent: 'center', whiteSpace: 'nowrap' }}>{second[0]}</div>
+      <div style={{ position: 'absolute', left: first[1] * U + 40, top: 140, fontFamily: FONT, fontWeight: 900, fontSize: 56, color: waitColor, opacity: rise(frame, start + 1.8 * fps, 12), whiteSpace: 'nowrap' }}>{wait}</div>
+    </div>
+  );
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 90, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 70, color: C.text }}>
+        Quick one first: <span style={{ color: accent }}>less waiting</span> in total.
+      </div>
+      {row(280, ['5 h job', 5, GREY], ['1 h job', 1, GREY], 'the 1 h job waits 5 h', 0.2 * fps, RED)}
+      {row(560, ['1 h job', 1, accent], ['5 h job', 5, GREY], 'the 5 h job waits 1 h', 5.5 * fps, accent)}
+    </AbsoluteFill>
+  );
+}
+
+/** Priority inversion: low holds the lock, medium keeps interrupting, high waits; the fix lends high priority to low. */
+export function Inversion() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const s = (n: number) => frame >= n * fps;
+  const lane = (y: number, name: string, color: string) => (
+    <div key={name} style={{ position: 'absolute', left: 120, top: y, width: 1680, height: 150, borderRadius: 20, background: 'rgba(255,255,255,0.05)' }}>
+      <div style={{ position: 'absolute', left: 24, top: 46, fontFamily: FONT, fontWeight: 800, fontSize: 44, color }}>{name}</div>
+    </div>
+  );
+  const blk = (x: number, y: number, w: number, label: string, color: string, o = 1) => (
+    <div style={{ position: 'absolute', left: x, top: y + 20, width: w, height: 110, borderRadius: 14, background: color, opacity: o, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 34, color: '#0B1220', whiteSpace: 'nowrap' }}>{label}</div>
+  );
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 80, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 68, color: C.text }}>
+        {s(9) ? <>The fix: <span style={{ color: accent }}>lend your priority</span> to the blocker.</> : <>The urgent job is stuck behind the <span style={{ color: RED }}>least</span> urgent.</>}
+      </div>
+      {lane(240, 'HIGH', accent)}
+      {lane(430, 'MEDIUM', '#F5C14B')}
+      {lane(620, 'LOW', GREY)}
+      {s(1) && !s(9) && blk(520, 620, 260, 'holds the lock', GREY)}
+      {s(3) && blk(780, 240, 520, 'waiting for the lock…', RED, 0.9 + 0.1 * Math.sin(frame / 6))}
+      {s(4) && blk(540, 430, 760, 'keeps interrupting', '#F5C14B')}
+      {s(6) && !s(9) && <div style={{ position: 'absolute', left: 0, right: 0, top: 820, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 64, color: RED }}>Watchdog: reboot. Again.</div>}
+      {s(9) && blk(520, 620, 700, 'LOW borrows HIGH, finishes, frees the lock', accent)}
+      {s(11) && <div style={{ position: 'absolute', left: 0, right: 0, top: 820, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 64, color: accent }}>Pathfinder carries on.</div>}
+    </AbsoluteFill>
+  );
+}
+
+/** Open loops: one big task with nothing done vs twenty with a few finished. */
+export function Loops() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const done = Math.min(8, Math.floor(Math.max(0, frame - fps * 3) / (fps * 0.35)));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 90, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 74, color: C.text }}>
+        Stress is the <span style={{ color: RED }}>unfinished</span> part.
+      </div>
+      <div style={{ position: 'absolute', left: 140, top: 270, width: 560, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 44, color: '#C9D3E0' }}>1 task, not started</div>
+      <div style={{ position: 'absolute', left: 280, top: 400, width: 280, height: 280, borderRadius: 140, border: `14px solid ${RED}`, opacity: 0.75 + 0.25 * Math.sin(frame / 8) }} />
+      <div style={{ position: 'absolute', left: 140, top: 740, width: 560, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 64, color: RED }}>stressed</div>
+      <div style={{ position: 'absolute', left: 860, top: 270, width: 940, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 44, color: '#C9D3E0' }}>20 tasks, {done} done</div>
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div key={i} style={{ position: 'absolute', left: 900 + (i % 5) * 180, top: 380 + Math.floor(i / 5) * 90, width: 70, height: 70, borderRadius: 35, background: i < done ? accent : 'transparent', border: `8px solid ${i < done ? accent : GREY}` }} />
+      ))}
+      <div style={{ position: 'absolute', left: 860, top: 780, width: 940, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 64, color: accent, opacity: rise(frame, fps * 5, 14) }}>calmer</div>
+    </AbsoluteFill>
+  );
+}
+
+/** A year-long goal turned into weekly sessions, each with its own small deadline and a tick. */
+export function Sessions() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const ticks = Math.min(8, Math.floor(Math.max(0, frame - fps * 2.5) / (fps * 0.5)));
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 90, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 70, color: C.text }}>
+        Don't schedule the goal. <span style={{ color: accent }}>Schedule the session.</span>
+      </div>
+      <div style={{ position: 'absolute', top: 260, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 600, fontSize: 42, color: GREY }}>
+        <span style={{ textDecoration: 'line-through' }}>Pass the exam in 12 months</span>
+      </div>
+      <div style={{ position: 'absolute', top: 330, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 54, color: C.text, opacity: rise(frame, fps * 1, 12) }}>
+        Tuesday · 18:00 · 45 minutes
+      </div>
+      {Array.from({ length: 8 }).map((_, i) => (
+        <div key={i} style={{ position: 'absolute', left: 170 + i * 205, top: 520, width: 175, height: 190, borderRadius: 20, background: i < ticks ? accent : 'rgba(255,255,255,0.07)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: FONT, fontWeight: 800, color: i < ticks ? '#0B1220' : GREY }}>
+          <div style={{ fontSize: 34 }}>Week {i + 1}</div>
+          <div style={{ fontSize: 80, lineHeight: 1 }}>{i < ticks ? '✓' : ''}</div>
+        </div>
+      ))}
+      <div style={{ position: 'absolute', top: 780, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 46, color: '#C9D3E0', opacity: rise(frame, fps * 6, 14) }}>
+        A row of small <span style={{ color: accent, fontWeight: 900 }}>finished</span> things.
+      </div>
+    </AbsoluteFill>
+  );
+}
