@@ -1112,7 +1112,8 @@ function Candle({ x, y, h, w, color, lit, frame, seed }: { x: number; y: number;
 export function AdventWheel({ mode }: { mode: 'wheel' | 'wreath' | 'sundays' }) {
   const frame = useCurrentFrame();
   const shot = useShot();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const side = width < height ? 460 : 0; // a short shows only the middle 1000 px: wrap the captions there
   const accent = useAccent();
   const SUNDAYS = [3, 10, 17, 24]; // a December with Sundays on the 3rd, 10th, 17th and 24th
   const day = (i: number) => i + 1;
@@ -1221,7 +1222,7 @@ export function AdventWheel({ mode }: { mode: 'wheel' | 'wreath' | 'sundays' }) 
         <div style={{ position: 'absolute', top: 120, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 96, color: litDays === 24 ? accent : '#FFFFFF' }}>{counter}</div>
       )}
       {label && (
-        <div style={{ position: 'absolute', top: 900, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 60 }}>{label}</div>
+        <div style={{ position: 'absolute', top: side ? 150 : 900, left: side, right: side, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 60, lineHeight: 1.15 }}>{label}</div>
       )}
     </AbsoluteFill>
   );
@@ -1234,7 +1235,8 @@ export function AdventWheel({ mode }: { mode: 'wheel' | 'wreath' | 'sundays' }) 
 export function Rivals() {
   const frame = useCurrentFrame();
   const shot = useShot();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
+  const side = width < height ? 460 : 0; // a short shows only the middle 1000 px
   const accent = useAccent();
   const bAt = cue(shot, 'Bautzen', fps, { fallback: 0.05 });
   const charterAt = cue(shot, 'royal charter', fps, { fallback: 0.3 });
@@ -1271,10 +1273,10 @@ export function Rivals() {
       <div style={{ position: 'absolute', left: dX - 300, width: 600, top: Y - 150, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 72, color: accent }}>Dresden</div>
       <div style={{ position: 'absolute', left: bX - 300, width: 600, top: Y - 150, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 72, color: RED, opacity: b }}>Bautzen</div>
       <div style={{ position: 'absolute', left: (dX + bX) / 2 - 200, width: 400, top: Y + 20, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 40, color: '#C9D3E0', opacity: b }}>about 50 km</div>
-      <div style={{ position: 'absolute', left: year(1434) - 250, width: 500, top: 640, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: accent }}>1434: a Christmas market</div>
-      <div style={{ position: 'absolute', left: year(1384) - 250, width: 500, top: 640, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: RED, opacity: ch }}>1384: a royal charter</div>
+      <div style={{ position: 'absolute', left: year(1434) - (side ? 170 : 250), width: side ? 340 : 500, top: 640, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: accent }}>1434: a Christmas market</div>
+      <div style={{ position: 'absolute', left: year(1384) - (side ? 170 : 250), width: side ? 340 : 500, top: 640, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: RED, opacity: ch }}>1384: a royal charter</div>
       <div style={{ position: 'absolute', left: (year(1384) + year(1434)) / 2 - 200, width: 400, top: 700, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 32, color: RED, opacity: ch }}>50 years earlier</div>
-      <div style={{ position: 'absolute', left: 0, right: 0, top: 930, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 60, color: '#FFFFFF', opacity: q }}>
+      <div style={{ position: 'absolute', left: side, right: side, top: side ? 470 : 930, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: side ? 44 : 60, lineHeight: 1.15, color: '#FFFFFF', opacity: q }}>
         A Christmas market, or just a winter market? <span style={{ color: accent }}>Nobody knows.</span>
       </div>
     </AbsoluteFill>
