@@ -39,7 +39,8 @@
       "id": "biscuits-b",
       "source": "file",
       "file": "veo/advent-biscuits.mp4",
-      "start": 5
+      "start": 5,
+      "speed": 0.85
     },
     {
       "id": "morph-a",
@@ -74,7 +75,7 @@
       "seconds": 3,
       "credit": "Stollen before butter: made with Google Veo",
       "start": 0,
-      "speed": 0.6
+      "speed": 0.95
     },
     {
       "id": "oil-b",
@@ -95,7 +96,8 @@
       "id": "letter-b",
       "source": "file",
       "file": "veo/butter-letter.mp4",
-      "start": 5
+      "start": 5,
+      "speed": 0.85
     },
     {
       "id": "giant-a",
@@ -201,7 +203,8 @@
       "pixabayId": 245639,
       "start": 1,
       "seconds": 9,
-      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245639/"
+      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245639/",
+      "speed": 0.9
     },
     {
       "id": "christmas-tree",
@@ -263,7 +266,7 @@
       "id": "adv-gerhard-boy",
       "source": "veo",
       "file": "veo/advent/gerhard-boy.mp4",
-      "seconds": 8,
+      "seconds": 10,
       "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Winter in the 1880s, a simple farmhouse kitchen in Swabia with frost on the small window. A mother in a plain 19th-century dress lays small round biscuits one by one on a large piece of cardboard on the wooden table; her son, about six years old, in a woollen jumper, watches eagerly and counts on his fingers.",
       "credit": "Made with Google Veo"
     },
@@ -303,7 +306,7 @@
       "id": "adv-ending",
       "source": "veo",
       "file": "veo/advent/ending.mp4",
-      "seconds": 8,
+      "seconds": 10,
       "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Present day, a cosy German living room on the fourth Sunday of Advent, evening. A family, a mother, a father and a girl of about eight, sit around an Advent wreath of fir branches with four candles on the table. The girl carefully lights the fourth candle; everyone smiles; snow falls outside the window. Warm, happy mood.",
       "credit": "Made with Google Veo"
     },

@@ -5,82 +5,199 @@
     {
       "id": "old-hamburg",
       "file": "PPN790325802 Die neue Bergstraße und die St. Petri Kirche in Hamburg (1840).jpg",
-      "scene": "Hamburg, 1840"
+      "scene": "Hamburg, 1840",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Suhr, Peter",
+      "date": "1840",
+      "source": "https://commons.wikimedia.org/wiki/File:PPN790325802_Die_neue_Bergstra%C3%9Fe_und_die_St._Petri_Kirche_in_Hamburg_(1840).jpg",
+      "size": "8121x6385",
+      "sha1": "eb953860d7b4986efb36cf6f7946bff07c5d9827"
     },
     {
       "id": "wichern",
       "file": "1858 Otto Speckter Lithographie, Charles Fuchs (Hamburg) Druck Dreiviertel-Portrait des Theologen, Sozialpädagogen und Gefängnis-Reformers Johann Hinrich Wichern.jpg",
-      "scene": "Johann Hinrich Wichern"
+      "scene": "Johann Hinrich Wichern",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Otto Speckter / Charles Fuchs",
+      "date": "1858",
+      "source": "https://commons.wikimedia.org/wiki/File:1858_Otto_Speckter_Lithographie,_Charles_Fuchs_(Hamburg)_Druck_Dreiviertel-Portrait_des_Theologen,_Sozialp%C3%A4dagogen_und_Gef%C3%A4ngnis-Reformers_Johann_Hinrich_Wichern.jpg",
+      "size": "4464x6362",
+      "sha1": "9ec886a0a8b4cadbd1ae4ab309cc2df46786ae27"
     },
     {
       "id": "munich-1900",
       "file": "Marienplatz 1900.jpg",
-      "scene": "Munich, Marienplatz, 1900"
+      "scene": "Munich, Marienplatz, 1900",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Unknown authorUnknown author",
+      "date": "between 1890 and 1905",
+      "source": "https://commons.wikimedia.org/wiki/File:Marienplatz_1900.jpg",
+      "size": "3491x2581",
+      "sha1": "0a61256bc83e6194b1720f2c16ebd691d2da332c"
     },
     {
       "id": "old-dresden",
       "file": "Canaletto - View of the Neumarkt in Dresden from the Jüdenhofe - Google Art Project.jpg",
-      "scene": "Old Dresden (Canaletto)"
+      "scene": "Old Dresden (Canaletto)",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Bernardo Bellotto",
+      "date": "1749",
+      "source": "https://commons.wikimedia.org/wiki/File:Canaletto_-_View_of_the_Neumarkt_in_Dresden_from_the_J%C3%BCdenhofe_-_Google_Art_Project.jpg",
+      "size": "4763x2717",
+      "sha1": "48d3cc96204a59fba942a1ea8ea355ea4377b4ac"
     },
     {
       "id": "stollen",
       "file": "Stollen-Dresdner Christstollen.jpg",
-      "scene": "Dresdner Christstollen"
+      "scene": "Dresdner Christstollen",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Gürgi",
+      "date": "2008-03-16",
+      "source": "https://commons.wikimedia.org/wiki/File:Stollen-Dresdner_Christstollen.jpg",
+      "size": "2560x1920",
+      "sha1": "b8266eb01b9532f66ede4490c9b5b1714ae6e19a"
     },
     {
       "id": "stollen-sliced",
       "file": "Dresdner Mandelstollen 2 141228 AW.jpg",
-      "scene": "Stollen, sliced"
+      "scene": "Stollen, sliced",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Alice Wiegand",
+      "date": "2014-12-28",
+      "source": "https://commons.wikimedia.org/wiki/File:Dresdner_Mandelstollen_2_141228_AW.jpg",
+      "size": "3863x2855",
+      "sha1": "dcb22be6e9fe927fa6c2977e284c6f06071e9fcd"
     },
     {
       "id": "elector-ernst",
       "file": "Ernst Kurfürst von Sachsen, 1441-1486 (AT KHM GG4795).jpg",
-      "scene": "Elector Ernst of Saxony"
+      "scene": "Elector Ernst of Saxony",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Lucas Cranach the Younger",
+      "date": "between 1578 and 1580",
+      "source": "https://commons.wikimedia.org/wiki/File:Ernst_Kurf%C3%BCrst_von_Sachsen,_1441-1486_(AT_KHM_GG4795).jpg",
+      "size": "1926x2544",
+      "sha1": "c6bf82d52ac7f17e9f799335046883687dc65ed2"
     },
     {
       "id": "freiberg",
       "file": "Fg080509 10dom.jpg",
-      "scene": "Freiberg Cathedral"
+      "scene": "Freiberg Cathedral",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Unukorno",
+      "date": "2009-05-08",
+      "source": "https://commons.wikimedia.org/wiki/File:Fg080509_10dom.jpg",
+      "size": "4752x3168",
+      "sha1": "1e6a0aff41d4f18e472de394370d87cf8e90e53d"
     },
     {
       "id": "freiberg-gate",
       "file": "Freiberg, Dom, Goldene Pforte-007.jpg",
-      "scene": "The Golden Gate of Freiberg Cathedral"
+      "scene": "The Golden Gate of Freiberg Cathedral",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Tilman2007",
+      "date": "2014-08-29",
+      "source": "https://commons.wikimedia.org/wiki/File:Freiberg,_Dom,_Goldene_Pforte-007.jpg",
+      "size": "4928x3264",
+      "sha1": "e0f0f306b44228c5a66e2ffc558f18a6e8f49b3c"
     },
     {
       "id": "august",
       "file": "Aŭgust Mocny. Аўгуст Моцны (L. Silvestre, 1730).jpg",
-      "scene": "August the Strong"
+      "scene": "August the Strong",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Louis de Silvestre",
+      "date": "1730",
+      "source": "https://commons.wikimedia.org/wiki/File:A%C5%ADgust_Mocny._%D0%90%D1%9E%D0%B3%D1%83%D1%81%D1%82_%D0%9C%D0%BE%D1%86%D0%BD%D1%8B_(L._Silvestre,_1730).jpg",
+      "size": "946x1285",
+      "sha1": "f1afabe55416986d138d8bbfdbc2058272ddd87b"
     },
     {
       "id": "mugs",
       "file": "Glühweintasse des Augustusmarkts (Dresden) (1).jpg",
-      "scene": "A Glühwein mug from a Dresden market"
+      "scene": "A Glühwein mug from a Dresden market",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Aagnverglaser",
+      "date": "2025-01-02 18:18:37",
+      "source": "https://commons.wikimedia.org/wiki/File:Gl%C3%BChweintasse_des_Augustusmarkts_(Dresden)_(1).jpg",
+      "size": "3000x3079",
+      "sha1": "1ba5b9d1e3a94e3b79c53214b4352178b7c24c8f"
     },
     {
       "id": "striezel-open",
       "file": "Dresden, Striezelmarkt -- 2023 -- 9306.jpg",
-      "scene": "The Striezelmarkt today"
+      "scene": "The Striezelmarkt today",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Dietmar Rabich",
+      "date": "Taken on 1 December 2023, 17:54",
+      "source": "https://commons.wikimedia.org/wiki/File:Dresden,_Striezelmarkt_--_2023_--_9306.jpg",
+      "size": "6720x4480",
+      "sha1": "22fd3f3aa2fa8817b83385dc06006815850caf98"
     },
     {
       "id": "striezelmarkt",
       "file": "20041202240DR Dresden Striezelmarkt auf dem Altmarkt.jpg",
-      "scene": "The Striezelmarkt at night"
+      "scene": "The Striezelmarkt at night",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Jörg Blobelt",
+      "date": "2004-01-01 06:46:00",
+      "source": "https://commons.wikimedia.org/wiki/File:20041202240DR_Dresden_Striezelmarkt_auf_dem_Altmarkt.jpg",
+      "size": "2522x1884",
+      "sha1": "890179eeba61b33eaa70f2ccf2773197e4181b57"
     },
     {
       "id": "bautzen",
       "file": "Bautzen Altstadt 61.jpg",
-      "scene": "Bautzen"
+      "scene": "Bautzen",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Jan-Herm Janßen",
+      "date": "Taken on 3 June 2020",
+      "source": "https://commons.wikimedia.org/wiki/File:Bautzen_Altstadt_61.jpg",
+      "size": "5457x3110",
+      "sha1": "16a66b91b0c642f9af24625a2038e84534adbed8"
     },
     {
       "id": "early-calendar",
       "file": "Adventskalender, Gotlands museum.jpg",
-      "scene": "An early printed Advent calendar"
+      "scene": "An early printed Advent calendar",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "author": "Gotlands museum",
+      "date": "2020-02-07 09:13:17",
+      "source": "https://commons.wikimedia.org/wiki/File:Adventskalender,_Gotlands_museum.jpg",
+      "size": "1096x1200",
+      "sha1": "f80c42f983a28efd0415d900d28f1f45b363f94f"
     },
     {
       "id": "chocolate-calendar",
       "file": "Adventcalendar3.jpg",
-      "scene": "A chocolate Advent calendar"
+      "scene": "A chocolate Advent calendar",
+      "licence": "CC0",
+      "licenceUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Hortensja Bukietowa",
+      "date": null,
+      "source": "https://commons.wikimedia.org/wiki/File:Adventcalendar3.jpg",
+      "size": "2322x4128",
+      "sha1": "31ddb9caad1fef50d3009add03dd7ebb8cc28280"
+    },
+    {
+      "id": "zeithain-camp",
+      "file": "Lager bei Zeithain 1730 von Alexander Thiele.jpg",
+      "scene": "The Zeithain camp, 1730"
     }
   ]
 }

@@ -91,7 +91,7 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 > SCENE (photo): Munich around 1900; the print shop; an early calendar.
 > munich-1900 | Munich | color key
 > adv-printer |  | color @ printed the first Advent calendars
-> early-calendar | Printed calendars: 1903 to 1908 | color key @ exact year
+> early-calendar | Printed calendars: 1903 to 1908 | color key @ sheets of pictures
 
 [calm] Gerhard grew up, became a printer in Munich, and remembered the biscuits. In the early nineteen-hundreds, he printed the first Advent calendars: sheets of pictures you cut out and glued on, one for each day. Sources argue about the exact year, somewhere between 1903 and 1908.
 
@@ -153,6 +153,7 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 > SCENE (photo): Dresden; the baroque camp; the giant Stollen.
 > august | August the Strong | color key
 > giant-a | Zeithain, 1730 | color key @ In 1730
+> zeithain-camp |  | color @ tens of thousands
 > giant-b | About seven metres long | color key @ seven metres
 
 [calm] Then came August the Strong, ruler of Saxony, a man who did nothing small. In 1730 he put on an enormous military show near the village of [[Zeithain]], with tens of thousands of guests. To end it, his bakers made a Stollen about seven metres long.
@@ -165,16 +166,16 @@ On the first Sunday of Advent, you light one candle. On the second, two. By the 
 
 ## The oldest Glühwein cup
 
-> SCENE (photo): A castle on the Rhine; the tankard.
-> rhine-castle | The Rhine, about 1420 | color key
+> SCENE (photo): Glühwein; a castle on the Rhine; the tankard.
+> steam-cup | Glühwein | color key
+> rhine-castle | The Rhine, about 1420 | color key @ But the oldest
 > tankard-a |  | color @ a count on the Rhine
 > tankard-b | A silver cup for hot spiced wine | color key @ gold-plated
 
 [calm] And to drink? [[Glühwein]], hot spiced red wine. People heated wine with spices back in Roman times. But the oldest known Glühwein cup in Germany belonged to a count on the Rhine, around 1420. A gold-plated silver tankard, made for hot spiced wine.
 
-> SCENE (photo): Steam from a cup; grapes.
-> steam-cup |  | color
-> grapes |  | color @ Riesling
+> SCENE (photo): Riesling grapes.
+> grapes | Riesling | color key
 
 [warmly] The same count, the story goes, was among the first to plant Riesling grapes. A man who knew his wine, hot or cold.
 
