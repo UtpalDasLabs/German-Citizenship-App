@@ -1,0 +1,30 @@
+{
+  "topic": "logic-scheduling",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "sojourner",
+      "file": "Sojourner on Mars PIA01122.jpg",
+      "scene": "Sojourner rover on Mars, 1997 (NASA/JPL)",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "NASA",
+      "date": "1997-12-12",
+      "source": "https://commons.wikimedia.org/wiki/File:Sojourner_on_Mars_PIA01122.jpg",
+      "size": "1276x1170",
+      "sha1": "7eb4260d05a175195a5adf1db857c146a386c297"
+    },
+    {
+      "id": "pano",
+      "file": "Mars Pathfinder Presidential Panorama.jpg",
+      "scene": "Mars Pathfinder landing site panorama (NASA/JPL)",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "NASA",
+      "date": "1997",
+      "source": "https://commons.wikimedia.org/wiki/File:Mars_Pathfinder_Presidential_Panorama.jpg",
+      "size": "6230x1079",
+      "sha1": "5298495789c946a703f672dd35c9e8e42aa1fb8e"
+    }
+  ]
+}

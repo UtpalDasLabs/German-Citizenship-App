@@ -33,6 +33,7 @@ const THUMBS = [
   { topic: 'logic-explore', series: 'logic', photo: 'thumb-lena', side: true, pos: '22%', narrow: true, lines: ['New, or your', 'favourite?'], accent: 'favourite?', tag: 'The maths of explore vs exploit' },
   { topic: 'logic-sorting', series: 'logic', photo: 'thumb-win', side: true, pos: '40%', narrow: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
   { topic: 'logic-caching', series: 'logic', photo: 'thumb-maya', side: true, pos: '14%', narrow: true, lines: ['The pile on', 'your chair', 'is smart'], accent: 'smart', tag: 'Keep close what you used last' },
+  { topic: 'logic-scheduling', series: 'logic', photo: 'thumb-jonas', side: true, pos: '55%', narrow: true, lines: ['Which task', 'first?'], accent: 'first?', tag: 'Stress is unfinished work', },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 
