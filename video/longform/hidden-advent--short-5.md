@@ -14,9 +14,10 @@ questions: []
 ## Short
 
 > SCENE (photo): Dresden; the baroque camp; the giant Stollen.
-> dresden-steamer | August the Strong | color key
-> giant-a | Zeithain, 1730 | color key @ In 1730
-> giant-b | About seven metres long | color key @ seven metres
+> august | August the Strong | color key
+> giant-a | Zeithain, 1730 | color key @ In 1730 he
+> zeithain-camp |  | color @ near the village
+> giant-b | About seven metres long | color key @ about seven metres
 
 [calm] In 1730, the ruler of Saxony had a Stollen baked that was seven metres long.
 

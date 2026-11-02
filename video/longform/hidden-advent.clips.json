@@ -39,7 +39,8 @@
       "id": "biscuits-b",
       "source": "file",
       "file": "veo/advent-biscuits.mp4",
-      "start": 5
+      "start": 5,
+      "speed": 0.85
     },
     {
       "id": "morph-a",
@@ -74,7 +75,7 @@
       "seconds": 3,
       "credit": "Stollen before butter: made with Google Veo",
       "start": 0,
-      "speed": 0.6
+      "speed": 0.74
     },
     {
       "id": "oil-b",
@@ -95,7 +96,8 @@
       "id": "letter-b",
       "source": "file",
       "file": "veo/butter-letter.mp4",
-      "start": 5
+      "start": 5,
+      "speed": 0.85
     },
     {
       "id": "giant-a",
@@ -124,60 +126,12 @@
       "start": 5
     },
     {
-      "id": "wreath2",
-      "source": "pixabay",
-      "pixabayId": 60321,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Bernhard1960 from Pixabay: https://pixabay.com/videos/id-60321/"
-    },
-    {
-      "id": "wreath3",
-      "source": "pixabay",
-      "pixabayId": 6568,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Dieter_G from Pixabay: https://pixabay.com/videos/id-6568/"
-    },
-    {
       "id": "wreath4",
       "source": "pixabay",
       "pixabayId": 143969,
       "start": 2,
       "seconds": 9,
       "credit": "Video by New1one from Pixabay: https://pixabay.com/videos/id-143969/"
-    },
-    {
-      "id": "candle-match",
-      "source": "pixabay",
-      "pixabayId": 143419,
-      "start": 0,
-      "seconds": 9,
-      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-143419/"
-    },
-    {
-      "id": "candle",
-      "source": "pixabay",
-      "pixabayId": 141824,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-141824/"
-    },
-    {
-      "id": "candles-many",
-      "source": "pixabay",
-      "pixabayId": 93480,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by jrydertr from Pixabay: https://pixabay.com/videos/id-93480/"
-    },
-    {
-      "id": "striezel",
-      "source": "pixabay",
-      "pixabayId": 8124,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8124/"
     },
     {
       "id": "striezel2",
@@ -196,28 +150,12 @@
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8128/"
     },
     {
-      "id": "dresden-night",
-      "source": "pixabay",
-      "pixabayId": 8129,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8129/"
-    },
-    {
       "id": "dresden-skate",
       "source": "pixabay",
       "pixabayId": 8119,
       "start": 1,
       "seconds": 9,
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8119/"
-    },
-    {
-      "id": "punch-fire",
-      "source": "pixabay",
-      "pixabayId": 143319,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Nightwolfone from Pixabay: https://pixabay.com/videos/id-143319/"
     },
     {
       "id": "gingerbread",
@@ -236,30 +174,6 @@
       "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-100314/"
     },
     {
-      "id": "hamburg",
-      "source": "pixabay",
-      "pixabayId": 218405,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by 43485955 from Pixabay: https://pixabay.com/videos/id-218405/"
-    },
-    {
-      "id": "hamburg-ship",
-      "source": "pixabay",
-      "pixabayId": 209560,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by 43485955 from Pixabay: https://pixabay.com/videos/id-209560/"
-    },
-    {
-      "id": "snow-street",
-      "source": "pixabay",
-      "pixabayId": 63970,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-63970/"
-    },
-    {
       "id": "snow-church",
       "source": "pixabay",
       "pixabayId": 63977,
@@ -276,22 +190,6 @@
       "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-102364/"
     },
     {
-      "id": "snowfall",
-      "source": "pixabay",
-      "pixabayId": 6310,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by knoxi from Pixabay: https://pixabay.com/videos/id-6310/"
-    },
-    {
-      "id": "fir2",
-      "source": "pixabay",
-      "pixabayId": 13025,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Dieter_G from Pixabay: https://pixabay.com/videos/id-13025/"
-    },
-    {
       "id": "cookies",
       "source": "pixabay",
       "pixabayId": 100315,
@@ -300,36 +198,13 @@
       "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-100315/"
     },
     {
-      "id": "cookies2",
-      "source": "pixabay",
-      "pixabayId": 245490,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245490/"
-    },
-    {
       "id": "anise",
       "source": "pixabay",
       "pixabayId": 245639,
       "start": 1,
       "seconds": 9,
-      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245639/"
-    },
-    {
-      "id": "calendar",
-      "source": "pixabay",
-      "pixabayId": 190230,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by AG-Pics from Pixabay: https://pixabay.com/videos/id-190230/"
-    },
-    {
-      "id": "chocolate",
-      "source": "pixabay",
-      "pixabayId": 98283,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by bellergy from Pixabay: https://pixabay.com/videos/id-98283/"
+      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-245639/",
+      "speed": 0.9
     },
     {
       "id": "christmas-tree",
@@ -348,60 +223,12 @@
       "credit": "Video by sandrahm from Pixabay: https://pixabay.com/videos/id-143314/"
     },
     {
-      "id": "dough",
-      "source": "pixabay",
-      "pixabayId": 43653,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by aghyadnajjar from Pixabay: https://pixabay.com/videos/id-43653/"
-    },
-    {
-      "id": "flour",
-      "source": "pixabay",
-      "pixabayId": 61956,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by krzys16 from Pixabay: https://pixabay.com/videos/id-61956/"
-    },
-    {
-      "id": "oven-fire",
-      "source": "pixabay",
-      "pixabayId": 2336,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-2336/"
-    },
-    {
-      "id": "butter-pan",
-      "source": "pixabay",
-      "pixabayId": 72930,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Engin_Akyurt from Pixabay: https://pixabay.com/videos/id-72930/"
-    },
-    {
-      "id": "sugar",
-      "source": "pixabay",
-      "pixabayId": 208754,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by Kaffeesüchtig from Pixabay: https://pixabay.com/videos/id-208754/"
-    },
-    {
       "id": "rhine-castle",
       "source": "pixabay",
       "pixabayId": 42175,
       "start": 2,
       "seconds": 9,
       "credit": "Video by denfran from Pixabay: https://pixabay.com/videos/id-42175/"
-    },
-    {
-      "id": "cinnamon-cup",
-      "source": "pixabay",
-      "pixabayId": 93866,
-      "start": 4,
-      "seconds": 9,
-      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-93866/"
     },
     {
       "id": "steam-cup",
@@ -412,52 +239,12 @@
       "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3158/"
     },
     {
-      "id": "dresden-steamer",
-      "source": "pixabay",
-      "pixabayId": 8168,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8168/"
-    },
-    {
       "id": "blue-wonder",
       "source": "pixabay",
       "pixabayId": 8170,
       "start": 2,
       "seconds": 9,
       "credit": "Video by glorydays2012pro from Pixabay: https://pixabay.com/videos/id-8170/"
-    },
-    {
-      "id": "snow-window",
-      "source": "pixabay",
-      "pixabayId": 172145,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by briroseee from Pixabay: https://pixabay.com/videos/id-172145/"
-    },
-    {
-      "id": "snow-window2",
-      "source": "pixabay",
-      "pixabayId": 12416,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by MixailMixail from Pixabay: https://pixabay.com/videos/id-12416/"
-    },
-    {
-      "id": "desk-window",
-      "source": "pixabay",
-      "pixabayId": 130878,
-      "start": 4,
-      "seconds": 9,
-      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-130878/"
-    },
-    {
-      "id": "rooftops",
-      "source": "pixabay",
-      "pixabayId": 3154,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3154/"
     },
     {
       "id": "carousel",
@@ -468,84 +255,72 @@
       "credit": "Video by New1one from Pixabay: https://pixabay.com/videos/id-142245/"
     },
     {
-      "id": "carousel2",
-      "source": "pixabay",
-      "pixabayId": 142244,
-      "start": 10,
-      "seconds": 9,
-      "credit": "Video by New1one from Pixabay: https://pixabay.com/videos/id-142244/"
+      "id": "adv-kids-light",
+      "source": "veo",
+      "file": "veo/advent/kids-light.mp4",
+      "seconds": 10,
+      "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Evening in 1839 in a plain wooden room of a Hamburg children's home. Children in plain 19th-century clothes gather under a big wooden wagon wheel hanging from the ceiling; on it stand four big white candles and many small red candles. A young man in a dark 19th-century coat lights one more small red candle with a long taper while the children sing softly; the room glows warmer. Slow camera push in.",
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
     },
     {
-      "id": "toy-train",
-      "source": "pixabay",
-      "pixabayId": 141768,
+      "id": "adv-gerhard-boy",
+      "source": "veo",
+      "file": "veo/advent/gerhard-boy.mp4",
+      "seconds": 10,
+      "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Winter in the 1880s, a simple farmhouse kitchen in Swabia with frost on the small window. A mother in a plain 19th-century dress lays small round biscuits one by one on a large piece of cardboard on the wooden table; her son, about six years old, in a woollen jumper, watches eagerly and counts on his fingers.",
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
+    },
+    {
+      "id": "adv-printer",
+      "source": "veo",
+      "file": "veo/advent/printer.mp4",
+      "referenceFrom": "biscuits-a",
+      "referenceAt": 2,
+      "seconds": 6,
+      "prompt": "Same visual style as the reference image: painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Early 1900s, a small print shop in Munich. A young man in a waistcoat with rolled-up sleeves pulls a freshly printed sheet off a hand press: a colourful grid of 24 little Christmas pictures. He holds it up to the window light and smiles proudly. Dust in the air, warm light.",
+      "credit": "Made with Google Veo",
       "start": 2,
-      "seconds": 9,
-      "credit": "Video by fotoblend from Pixabay: https://pixabay.com/videos/id-141768/"
+      "note": "0-2 s shows the same man twice at the press; cut from 2 s."
     },
     {
-      "id": "forest-lights",
-      "source": "pixabay",
-      "pixabayId": 142872,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by u_t71agjuavm from Pixabay: https://pixabay.com/videos/id-142872/"
+      "id": "adv-meat-market",
+      "source": "veo",
+      "file": "veo/advent/meat-market.mp4",
+      "referenceFrom": "market-a",
+      "referenceAt": 2,
+      "seconds": 4,
+      "prompt": "Same visual style as the reference image: painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. The same medieval winter market as the reference, Dresden in the 1400s: a butcher's stall with hams and joints of meat hanging from a wooden beam; townspeople in medieval clothes buy their Christmas roast; light snow, lanterns, breath in the cold air.",
+      "credit": "Made with Google Veo"
     },
     {
-      "id": "red-candle",
+      "id": "adv-butter-joy",
+      "source": "veo",
+      "file": "veo/advent/butter-joy.mp4",
+      "referenceFrom": "oil-a",
+      "referenceAt": 2,
+      "seconds": 10,
+      "prompt": "Same visual style as the reference image: painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. The same medieval baker as the reference, in the same stone bakery. Now he has a big block of yellow butter: he works it into the Stollen dough, tastes a piece of the finished Stollen and smiles, delighted. Warm fire light.",
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
+    },
+    {
+      "id": "adv-ending",
+      "source": "veo",
+      "file": "veo/advent/ending.mp4",
+      "seconds": 10,
+      "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Present day, a cosy German living room on the fourth Sunday of Advent, evening. A family, a mother, a father and a girl of about eight, sit around an Advent wreath of fir branches with four candles on the table. The girl carefully lights the fourth candle; everyone smiles; snow falls outside the window. Warm, happy mood.",
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
+    },
+    {
+      "id": "grapes",
       "source": "pixabay",
-      "pixabayId": 98895,
+      "pixabayId": 132583,
       "start": 2,
-      "seconds": 9,
-      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-98895/"
-    },
-    {
-      "id": "red-candle2",
-      "source": "pixabay",
-      "pixabayId": 19621,
-      "start": 3,
-      "seconds": 9,
-      "credit": "Video by ElenLackner from Pixabay: https://pixabay.com/videos/id-19621/"
-    },
-    {
-      "id": "candle-snow",
-      "source": "pixabay",
-      "pixabayId": 56504,
-      "start": 3,
-      "seconds": 9,
-      "credit": "Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-56504/"
-    },
-    {
-      "id": "frost",
-      "source": "pixabay",
-      "pixabayId": 7090,
-      "start": 1,
-      "seconds": 9,
-      "credit": "Video by Hans from Pixabay: https://pixabay.com/videos/id-7090/"
-    },
-    {
-      "id": "oldtown-roofs",
-      "source": "pixabay",
-      "pixabayId": 167088,
-      "start": 2,
-      "seconds": 9,
-      "credit": "Video by WN79 from Pixabay: https://pixabay.com/videos/id-167088/"
-    },
-    {
-      "id": "teddy-carousel",
-      "source": "pixabay",
-      "pixabayId": 182,
-      "start": 3,
-      "seconds": 9,
-      "credit": "Video by Republica from Pixabay: https://pixabay.com/videos/id-182/"
-    },
-    {
-      "id": "candle-desk",
-      "source": "pixabay",
-      "pixabayId": 8389,
-      "start": 5,
-      "seconds": 9,
-      "credit": "Video by RobVanDerMeijden from Pixabay: https://pixabay.com/videos/id-8389/"
+      "seconds": 11,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-132583/"
     }
   ]
 }

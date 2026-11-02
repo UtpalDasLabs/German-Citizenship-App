@@ -83,6 +83,9 @@ const model = process.env.VEO_MODEL ?? 'gemini-omni-1.1-flash';
 if (!model) throw new Error('No Veo model available to this key; run with --list.');
 console.log(`model: ${model}`);
 
+// References go as JPEG: a 1.5 MB PNG makes the API answer 502 with no message (2 Nov 2026).
+const jpeg = (file) => execFileSync(FFMPEG, ['-loglevel', 'error', '-i', file, '-frames:v', '1', '-f', 'image2pipe', '-c:v', 'mjpeg', '-q:v', '3', '-']).toString('base64');
+
 let log = logText;
 for (const c of todo) {
   // Gemini Omni through the Interactions API (Veo's predictLongRunning endpoint was retired, Oct 2026).
@@ -93,14 +96,19 @@ for (const c of todo) {
     const png = path.join(CLIPS, 'veo', 'references', `${c.referenceFrom}.png`);
     if (src && fs.existsSync(path.join(CLIPS, src.file)) && !fs.existsSync(png))
       execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-ss', String(c.referenceAt ?? 2), '-i', path.join(CLIPS, src.file), '-frames:v', '1', png]);
-    if (fs.existsSync(png)) input.push({ type: 'image', data: fs.readFileSync(png).toString('base64'), mime_type: 'image/png' });
+    if (fs.existsSync(png)) input.push({ type: 'image', data: jpeg(png), mime_type: 'image/jpeg' });
     else throw new Error(`${c.id}: generate ${c.referenceFrom} first`);
   }
   if (c.reference) {
     const file = path.join(KIT, c.reference);
-    input.push({ type: 'image', data: fs.readFileSync(file).toString('base64'), mime_type: 'image/png' });
+    input.push({ type: 'image', data: jpeg(file), mime_type: 'image/jpeg' });
   }
-  const look = c.reference || c.referenceFrom ? ' The character must look exactly like the person in this reference image (same face, hair, clothes and costume), drawn in the same flat 2D cartoon style.' : '';
+  // A kit character (`reference`) is a flat 2D cartoon; a frame of an earlier clip (`referenceFrom`) keeps that clip's own look.
+  const look = c.reference
+    ? ' The character must look exactly like the person in this reference image (same face, hair, clothes and costume), drawn in the same flat 2D cartoon style.'
+    : c.referenceFrom
+      ? ' Keep the people, place and visual style of this reference image.'
+      : '';
   input.push({ type: 'text', text: `Create one ${c.seconds ?? 8}-second video, 16:9 landscape, no on-screen text, no speech.${look} ${c.prompt}` });
   let result = 'ok';
   try {

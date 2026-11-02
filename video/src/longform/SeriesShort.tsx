@@ -55,11 +55,15 @@ function BigLine({ text }: { text: string }) {
   );
 }
 
+/** 16:9 scenes whose content sits in the middle 1080 px and wraps its captions in a vertical video. */
+const CENTRED = new Set(['adventwheel', 'adventwreath', 'adventsundays', 'rivals']);
+
 /** A 16:9 scene (a diagram, a card) shown whole across the middle of the frame. */
 function Letterboxed({ shot, plan }: { shot: Shot; plan: Plan }) {
   // A little larger than the frame is wide: the scenes keep their content
   // away from the left and right edges, so only margin is cropped.
-  const scale = 0.66;
+  // Scenes drawn to fit the middle 1080 px (see CENTRED) show full size.
+  const scale = CENTRED.has(shot.key ?? '') ? 1 : 0.66;
   return (
     <AbsoluteFill style={{ backgroundColor: '#131720' }}>
       <div

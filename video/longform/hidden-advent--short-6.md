@@ -13,8 +13,9 @@ questions: []
 
 ## Short
 
-> SCENE (photo): A castle on the Rhine; the tankard.
-> rhine-castle | The Rhine, about 1420 | color key
+> SCENE (photo): Glühwein; a castle on the Rhine; the tankard.
+> steam-cup | Glühwein | color key
+> rhine-castle | The Rhine, about 1420 | color key @ But the oldest
 > tankard-a |  | color @ a count on the Rhine
 > tankard-b | A silver cup for hot spiced wine | color key @ gold-plated
 
@@ -22,9 +23,8 @@ questions: []
 
 [calm] And to drink? [[Glühwein]], hot spiced red wine. People heated wine with spices back in Roman times. But the oldest known Glühwein cup in Germany belonged to a count on the Rhine, around 1420. A gold-plated silver tankard, made for hot spiced wine.
 
-> SCENE (photo): Steam from a cup; cinnamon.
-> steam-cup |  | color
-> cinnamon-cup |  | color @ Riesling
+> SCENE (photo): Riesling grapes.
+> grapes | Riesling | color key
 
 [warmly] The same count, the story goes, was among the first to plant Riesling grapes. A man who knew his wine, hot or cold.
 

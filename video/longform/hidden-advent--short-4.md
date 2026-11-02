@@ -14,24 +14,24 @@ questions: []
 ## Short
 
 > SCENE (photo): Stollen; a medieval bakery.
-> sugar | Stollen | color key
-> oil-a |  | color @ fasting
+> stollen-sliced | Stollen | color key
+> oil-a |  | color @ fasting meant
 > oil-b |  | color @ with oil
 
 [calm] German Christmas Stollen once needed a letter from the Pope.
 
 [warmly] And what do you eat at a market in Saxony? Stollen. But for a long time, Stollen was not very nice. [calm] Advent used to be a time of fasting, and fasting meant no butter. So bakers made their Stollen with oil. And the oil back then was bitter.
 
-> SCENE (photo): Dough; the seal; the messenger.
-> dough |  | color
+> SCENE (photo): The Elector; the letter; butter at last; Freiberg Cathedral.
+> elector-ernst | Elector Ernst of Saxony | color key from 0.5 0.18 1.0 to 0.5 0.16 1.1
 > letter-b | The Butterbrief, 1491 | color key @ Pope Innocent
-> butter-pan |  | color @ the butter letter
-> oven-fire | Pay a fee. Build a cathedral. | color key @ there was a catch
+> adv-butter-joy |  | color @ the butter letter
+> freiberg | Pay a fee. Build a cathedral. | color key @ there was a catch
 
 [calm] The rulers of Saxony asked the Pope for permission to use butter. It took years. In 1491, Pope Innocent the Eighth finally answered, in a letter now called the [[Butterbrief]], the butter letter. Yes, you may use butter. But there was a catch. Pay a fee, and the money goes towards the cathedral in [[Freiberg]].
 
-> SCENE (photo): Flour and dough.
-> flour |  | color
+> SCENE (photo): Freiberg Cathedral's Golden Gate.
+> freiberg-gate | Freiberg Cathedral | color key
 
 [warmly] So the butter in your Stollen helped to pay for a church.
 

@@ -61,10 +61,12 @@ const strip = (html = '') =>
   html.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
 
 async function get(url) {
-  for (let attempt = 0; attempt < 6; attempt++) {
+  // Cloud addresses are shared, so the limit can last many minutes: keep
+  // waiting (at least 30 s a time) for up to about 20 minutes.
+  for (let attempt = 0; attempt < 30; attempt++) {
     const res = await fetch(url, { headers: { 'User-Agent': UA } });
     if (res.status !== 429 && res.status !== 503) return res;
-    const wait = Number(res.headers.get('retry-after')) * 1000 || 5000 * 2 ** attempt;
+    const wait = Math.max(30000, (Number(res.headers.get('retry-after')) || 0) * 1000 + 5000);
     console.log(`  rate limited, waiting ${Math.round(wait / 1000)}s`);
     await sleep(wait);
   }

@@ -1222,3 +1222,207 @@ export function Sessions() {
     </AbsoluteFill>
   );
 }
+
+const WAX_WHITE = '#F4EEDF';
+const WAX_RED = '#C8423B';
+const FIR = '#2F6B3E';
+
+/** A candle seen from the side, with a flickering flame when `lit` > 0. */
+function Candle({ x, y, h, w, color, lit, frame, seed }: { x: number; y: number; h: number; w: number; color: string; lit: number; frame: number; seed: number }) {
+  const flick = 1 + 0.08 * Math.sin(frame * 0.55 + seed * 1.7) + 0.05 * Math.sin(frame * 1.3 + seed);
+  const fh = w * 1.5 * lit * flick;
+  return (
+    <g>
+      {lit > 0 && <circle cx={x} cy={y - h - fh * 0.45} r={w * 2.2 * lit} fill={alpha('#FFC85A', 0.22 * lit)} />}
+      <rect x={x - w / 2} y={y - h} width={w} height={h} rx={w * 0.18} fill={color} />
+      <line x1={x} y1={y - h} x2={x} y2={y - h - w * 0.25} stroke="#2B2118" strokeWidth={Math.max(2, w * 0.08)} />
+      {lit > 0 && (
+        <path
+          d={`M ${x} ${y - h - w * 0.15 - fh} C ${x + w * 0.42} ${y - h - fh * 0.45}, ${x + w * 0.3} ${y - h - w * 0.1}, ${x} ${y - h - w * 0.1} C ${x - w * 0.3} ${y - h - w * 0.1}, ${x - w * 0.42} ${y - h - fh * 0.45}, ${x} ${y - h - w * 0.15 - fh} Z`}
+          fill="#FFD166"
+        />
+      )}
+    </g>
+  );
+}
+
+/**
+ * Wichern's Advent wheel and what became of it, seen from slightly above.
+ * `wheel`: 4 white Sunday candles, then 20 red ones, then all 24 light in a
+ * countdown. `wreath`: fir branches grow, the red candles go, the ring
+ * shrinks to a table wreath. `sundays`: the wreath lights one, two, then all
+ * four candles.
+ */
+export function AdventWheel({ mode }: { mode: 'wheel' | 'wreath' | 'sundays' }) {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps, width, height } = useVideoConfig();
+  const side = width < height ? 460 : 0; // a short shows only the middle 1000 px: wrap the captions there
+  const accent = useAccent();
+  const SUNDAYS = [3, 10, 17, 24]; // a December with Sundays on the 3rd, 10th, 17th and 24th
+  const day = (i: number) => i + 1;
+  const isSunday = (i: number) => SUNDAYS.includes(day(i));
+  const ease = Easing.inOut(Easing.cubic);
+  const step = (at: number, len: number) => ease(Math.min(1, Math.max(0, (frame - at) / len)));
+
+  // wheel mode
+  const whiteAt = mode === 'wheel' ? cue(shot, 'four big white candles', fps, { fallback: 0.25 }) : 0;
+  const redAt = mode === 'wheel' ? cue(shot, 'small red candle', fps, { fallback: 0.55 }) : 0;
+  const countAt = mode === 'wheel' ? cue(shot, 'all the way', fps, { fallback: 0.75 }) : 0;
+  const countLen = fps * 3;
+  const litDays = mode === 'wheel' ? Math.max(0, Math.min(24, Math.floor(((frame - countAt) / countLen) * 24) + 1)) : 0;
+
+  // wreath mode
+  const firAt = mode === 'wreath' ? cue(shot, 'fir branches', fps, { fallback: 0.1 }) : 0;
+  const shrinkAt = mode === 'wreath' ? cue(shot, 'the wheel shrank', fps, { fallback: 0.4 }) : 0;
+  const fourAt = mode === 'wreath' ? cue(shot, 'only the four', fps, { fallback: 0.75 }) : 0;
+  const fir = mode === 'wheel' ? 0 : mode === 'wreath' ? step(firAt - 4, fps * 1.2) : 1;
+  const shrink = mode === 'wheel' ? 0 : mode === 'wreath' ? step(shrinkAt, fps * 1.6) : 1;
+
+  // sundays mode
+  const sunAt = [
+    mode === 'sundays' ? cue(shot, 'first Sunday', fps, { fallback: 0.1 }) : 0,
+    mode === 'sundays' ? cue(shot, 'On the second', fps, { fallback: 0.35 }) : 0,
+    mode === 'sundays' ? cue(shot, 'By the fourth', fps, { fallback: 0.6 }) : 0,
+  ];
+  const sundaysLit = mode !== 'sundays' ? 0 : frame >= sunAt[2] ? 4 : frame >= sunAt[1] ? 2 : frame >= sunAt[0] ? 1 : 0;
+
+  const cx = 960;
+  const cy = 600;
+  const R = 430 - 190 * shrink; // ring radius, in screen x
+  const tilt = 0.42; // the ring seen from above at an angle
+  const candles = Array.from({ length: 24 }, (_, i) => i)
+    .filter((i) => mode === 'wheel' || isSunday(i) || shrink < 1)
+    .map((i) => {
+      // Sundays move to the four quarter points as the wheel becomes a wreath.
+      const k = SUNDAYS.indexOf(day(i));
+      const a0 = (i / 24) * Math.PI * 2 - Math.PI / 2;
+      const a1 = k >= 0 ? (k / 4) * Math.PI * 2 + 0.45 : a0; // offset so no candle hides behind another
+      const a = a0 + (a1 - a0) * shrink;
+      return { i, a, x: cx + R * Math.cos(a), y: cy + R * tilt * Math.sin(a) };
+    })
+    .sort((p, q) => p.y - q.y); // far side first
+  const appear = (i: number) => (mode !== 'wheel' ? 1 : isSunday(i) ? rise(frame, whiteAt - 4, 14) : rise(frame, redAt - 4 + (i % 6) * 2, 12));
+  const litOf = (i: number) => {
+    if (mode === 'wheel') return day(i) <= litDays ? 1 : 0;
+    if (mode === 'sundays') return SUNDAYS.indexOf(day(i)) < sundaysLit ? 1 : 0;
+    return 0;
+  };
+  const counter = mode === 'wheel' && frame >= countAt ? `${litDays} December` : '';
+  const label =
+    mode === 'wheel'
+      ? frame >= countAt
+        ? null
+        : frame >= redAt
+          ? <><span style={{ color: '#FFFFFF' }}>4 white: the Sundays.</span> <span style={{ color: WAX_RED }}>Red: every other day.</span></>
+          : frame >= whiteAt
+            ? <span style={{ color: '#FFFFFF' }}>4 white candles: the Sundays</span>
+            : <span style={{ color: '#C9D3E0' }}>An old wagon wheel. Hamburg, 1839</span>
+      : mode === 'wreath'
+        ? frame >= fourAt
+          ? <span style={{ color: '#FFFFFF' }}>Only the four Sundays stay.</span>
+          : frame >= shrinkAt
+            ? <span style={{ color: '#C9D3E0' }}>Too big for a kitchen table</span>
+            : <span style={{ color: accent }}>Fir branches: around 1860</span>
+        : <span style={{ color: '#FFFFFF' }}>{['', 'First Advent: one candle', 'Second Advent: two', '', 'Fourth Advent: all four'][sundaysLit] || 'Four Sundays, four candles'}</span>;
+  const glow = mode === 'wheel' ? litDays / 24 : mode === 'sundays' ? sundaysLit / 4 : 0;
+  return (
+    <AbsoluteFill style={{ backgroundColor: '#120D0A' }}>
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 55%, ${alpha('#FFB347', 0.08 + 0.3 * glow)} 0%, ${alpha('#FFB347', 0)} 65%)` }} />
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        {/* the ring: wood for the wheel, fir for the wreath */}
+        <ellipse cx={cx} cy={cy} rx={R} ry={R * tilt} fill="none" stroke="#7A5634" strokeWidth={46 * (1 - fir) + 2} opacity={1 - fir * 0.9} />
+        {mode === 'wheel' &&
+          Array.from({ length: 8 }).map((_, s) => {
+            const a = (s / 8) * Math.PI * 2;
+            return <line key={s} x1={cx} y1={cy} x2={cx + R * Math.cos(a)} y2={cy + R * tilt * Math.sin(a)} stroke="#5E4127" strokeWidth={16} />;
+          })}
+        {mode === 'wheel' && <ellipse cx={cx} cy={cy} rx={60} ry={60 * tilt} fill="#5E4127" />}
+        {Array.from({ length: 90 }).map((_, n) => {
+          const a = (n / 90) * Math.PI * 2;
+          const g = Math.min(1, Math.max(0, fir * 1.6 - (n % 9) / 9));
+          if (g <= 0) return null;
+          const x = cx + R * Math.cos(a);
+          const y = cy + R * tilt * Math.sin(a);
+          return <ellipse key={n} cx={x} cy={y} rx={46 * g} ry={22 * g} transform={`rotate(${(a * 180) / Math.PI + 90 + (n % 3) * 25} ${x} ${y})`} fill={n % 2 ? FIR : '#3E8550'} />;
+        })}
+        {candles.map(({ i, x, y }) => {
+          const sunday = isSunday(i);
+          const gone = !sunday && mode === 'wreath' ? shrink : 0;
+          const o = appear(i) * (1 - gone);
+          if (o <= 0.01) return null;
+          const size = sunday ? 1 : 0.62;
+          // On the wreath the Sunday candles become stout table candles.
+          const h = sunday ? 120 - 20 * shrink : 120 * size;
+          const w = sunday ? 34 + 22 * shrink : 34 * size;
+          return (
+            <g key={i} opacity={o} transform={`translate(0 ${(1 - o) * -30})`}>
+              <Candle x={x} y={y} h={h} w={w} color={sunday ? WAX_WHITE : WAX_RED} lit={litOf(i)} frame={frame} seed={i} />
+            </g>
+          );
+        })}
+      </svg>
+      {counter && (
+        <div style={{ position: 'absolute', top: 120, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 96, color: litDays === 24 ? accent : '#FFFFFF' }}>{counter}</div>
+      )}
+      {label && (
+        <div style={{ position: 'absolute', top: side ? 150 : 900, left: side, right: side, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 60, lineHeight: 1.15 }}>{label}</div>
+      )}
+    </AbsoluteFill>
+  );
+}
+
+/**
+ * Dresden against Bautzen: two towns 50 km apart, each with its year.
+ * Bautzen's 1384 lands earlier on a timeline; then a question mark.
+ */
+export function Rivals() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps, width, height } = useVideoConfig();
+  const side = width < height ? 460 : 0; // a short shows only the middle 1000 px
+  const accent = useAccent();
+  const bAt = cue(shot, 'Bautzen', fps, { fallback: 0.05 });
+  const charterAt = cue(shot, 'royal charter', fps, { fallback: 0.3 });
+  const histAt = cue(shot, 'Historians', fps, { fallback: 0.7 });
+  const argueAt = cue(shot, 'still arguing', fps, { fallback: 0.9 });
+  const b = rise(frame, bAt - 4, 16);
+  const ch = rise(frame, charterAt - 4, 16);
+  const q = rise(frame, histAt - 4, 14);
+  const pulse = frame >= argueAt ? 1 + 0.06 * Math.sin((frame - argueAt) * 0.4) : 1;
+  const Y = 360;
+  const dX = 620;
+  const bX = 1300;
+  const year = (x: number) => 260 + ((x - 1360) / 100) * 1400; // 1360-1460 across the timeline
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        {/* the map: two towns on the Elbe/Spree road */}
+        <path d={`M ${dX - 260} ${Y + 90} C ${dX - 80} ${Y + 40}, ${dX + 80} ${Y + 120}, ${dX + 260} ${Y + 60}`} stroke="#3B6EA5" strokeWidth={14} fill="none" opacity={0.7} />
+        <line x1={dX} y1={Y} x2={dX + (bX - dX) * b} y2={Y} stroke={GREY} strokeWidth={4} strokeDasharray="14 12" />
+        <circle cx={dX} cy={Y} r={22 * pulse} fill={accent} />
+        <circle cx={bX} cy={Y} r={22 * pulse} fill={RED} opacity={b} />
+        {/* the timeline */}
+        <line x1={260} y1={820} x2={1660} y2={820} stroke="#4A5468" strokeWidth={6} />
+        {[1380, 1400, 1420, 1440].map((y) => (
+          <g key={y}>
+            <line x1={year(y)} y1={808} x2={year(y)} y2={832} stroke="#4A5468" strokeWidth={4} />
+            <text x={year(y)} y={880} textAnchor="middle" fontFamily={FONT} fontSize={30} fill={GREY}>{y}</text>
+          </g>
+        ))}
+        <circle cx={year(1434)} cy={820} r={18} fill={accent} />
+        <circle cx={year(1384)} cy={820} r={18} fill={RED} opacity={ch} />
+        <line x1={year(1384)} y1={760} x2={year(1384) + (year(1434) - year(1384)) * ch} y2={760} stroke={RED} strokeWidth={4} opacity={ch} />
+      </svg>
+      <div style={{ position: 'absolute', left: dX - 300, width: 600, top: Y - 150, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 72, color: accent }}>Dresden</div>
+      <div style={{ position: 'absolute', left: bX - 300, width: 600, top: Y - 150, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 72, color: RED, opacity: b }}>Bautzen</div>
+      <div style={{ position: 'absolute', left: (dX + bX) / 2 - 200, width: 400, top: Y + 20, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 40, color: '#C9D3E0', opacity: b }}>about 50 km</div>
+      <div style={{ position: 'absolute', left: year(1434) - (side ? 170 : 250), width: side ? 340 : 500, top: 640, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: accent }}>1434: a Christmas market</div>
+      <div style={{ position: 'absolute', left: year(1384) - (side ? 170 : 250), width: side ? 340 : 500, top: 640, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 40, color: RED, opacity: ch }}>1384: a royal charter</div>
+      <div style={{ position: 'absolute', left: (year(1384) + year(1434)) / 2 - 200, width: 400, top: 700, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 32, color: RED, opacity: ch }}>50 years earlier</div>
+      <div style={{ position: 'absolute', left: side, right: side, top: side ? 470 : 930, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: side ? 44 : 60, lineHeight: 1.15, color: '#FFFFFF', opacity: q }}>
+        A Christmas market, or just a winter market? <span style={{ color: accent }}>Nobody knows.</span>
+      </div>
+    </AbsoluteFill>
+  );
+}
