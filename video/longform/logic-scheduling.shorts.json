@@ -1,0 +1,7 @@
+{
+  "shorts": [
+    { "id": "1", "hook": "Do the quick one first", "spoken": "Which task first? Do the quick one first.", "paragraphs": [10, 11] },
+    { "id": "2", "hook": "The argument you keep postponing", "spoken": "The argument you keep postponing costs more than having it.", "paragraphs": [28, 29, 32, 34, 37] },
+    { "id": "3", "hook": "The Mars computer kept rebooting", "spoken": "A computer on Mars kept rebooting. Here is why.", "paragraphs": [13, 14, 15] }
+  ]
+}
