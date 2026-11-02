@@ -13,23 +13,20 @@ questions: []
 
 ## Short
 
-> SCENE (photo): The wheel; candles.
-> wheel-a | Four white candles for the Sundays. A red one for every other day. | color key
-> red-candle |  | color @ four big white candles
-> red-candle2 |  | color @ a small red candle
+> SCENE (adventwheel): The wagon wheel: four white Sunday candles, a red one for every other day, then a countdown to the 24th.
 
 [calm] The Advent wreath started as a wagon wheel, in Hamburg, in 1839.
 
 [warmly] So Wichern found an old wagon wheel and hung it from the ceiling. On it he put four big white candles, one for each Sunday of Advent. And a small red candle for every day in between, all the way to the twenty-fourth.
 
-> SCENE (photo): Lighting candles; the wheel glowing.
-> candle-match |  | color
+> SCENE (photo): Wichern lights one more candle; the wheel glowing.
+> adv-kids-light |  | color
 > wheel-b |  | color @ brighter every day
 
 [warmly] Each evening, the children gathered, sang, and lit one more candle. The room got brighter every day. They could see Christmas coming.
 
-> SCENE (photo): Many candles.
-> candles-many | A countdown you could light. | color key
+> SCENE (photo): The wheel, all lit.
+> wheel-a | A countdown you could light. | color key
 
 [calm] A countdown you could light.
 

@@ -258,9 +258,10 @@
       "id": "adv-kids-light",
       "source": "veo",
       "file": "veo/advent/kids-light.mp4",
-      "seconds": 8,
+      "seconds": 10,
       "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Evening in 1839 in a plain wooden room of a Hamburg children's home. Children in plain 19th-century clothes gather under a big wooden wagon wheel hanging from the ceiling; on it stand four big white candles and many small red candles. A young man in a dark 19th-century coat lights one more small red candle with a long taper while the children sing softly; the room glows warmer. Slow camera push in.",
-      "credit": "Made with Google Veo"
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
     },
     {
       "id": "adv-gerhard-boy",
@@ -268,7 +269,8 @@
       "file": "veo/advent/gerhard-boy.mp4",
       "seconds": 10,
       "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Winter in the 1880s, a simple farmhouse kitchen in Swabia with frost on the small window. A mother in a plain 19th-century dress lays small round biscuits one by one on a large piece of cardboard on the wooden table; her son, about six years old, in a woollen jumper, watches eagerly and counts on his fingers.",
-      "credit": "Made with Google Veo"
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
     },
     {
       "id": "adv-printer",
@@ -298,9 +300,10 @@
       "file": "veo/advent/butter-joy.mp4",
       "referenceFrom": "oil-a",
       "referenceAt": 2,
-      "seconds": 8,
+      "seconds": 10,
       "prompt": "Same visual style as the reference image: painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. The same medieval baker as the reference, in the same stone bakery. Now he has a big block of yellow butter: he works it into the Stollen dough, tastes a piece of the finished Stollen and smiles, delighted. Warm fire light.",
-      "credit": "Made with Google Veo"
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
     },
     {
       "id": "adv-ending",
@@ -308,7 +311,8 @@
       "file": "veo/advent/ending.mp4",
       "seconds": 10,
       "prompt": "Painterly, cinematic 3D animation like a high-quality animated historical film, warm candlelight, soft film look. Present day, a cosy German living room on the fourth Sunday of Advent, evening. A family, a mother, a father and a girl of about eight, sit around an Advent wreath of fir branches with four candles on the table. The girl carefully lights the fourth candle; everyone smiles; snow falls outside the window. Warm, happy mood.",
-      "credit": "Made with Google Veo"
+      "credit": "Made with Google Gemini (Veo)",
+      "note": "Made by the creator in the Gemini app, 2 Nov 2026"
     },
     {
       "id": "grapes",

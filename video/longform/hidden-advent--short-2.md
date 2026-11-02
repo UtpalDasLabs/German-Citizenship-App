@@ -13,8 +13,8 @@ questions: []
 
 ## Short
 
-> SCENE (photo): A snowy window; the biscuits on the cardboard.
-> snow-window | Swabia, the 1880s | color key
+> SCENE (photo): Gerhard's mother lays out the biscuits.
+> adv-gerhard-boy | Swabia, the 1880s | color key
 > biscuits-a | Twenty-four biscuits, one a day. | color key @ his mother
 > cookies |  | color @ One a day
 
@@ -22,14 +22,13 @@ questions: []
 
 [warmly] Now the calendar. In the eighteen-eighties, a boy called Gerhard Lang grew up in Swabia. Before Christmas, his mother put twenty-four little biscuits on a piece of cardboard. One a day. That was it.
 
-> SCENE (photo): Chocolate.
-> chocolate | Chocolate behind the doors: 1958 | color key @ Not until
+> SCENE (photo): A chocolate Advent calendar.
+> chocolate-calendar | Chocolate behind the doors: 1958 | color key
 
 [calm] Little doors came later. And chocolate behind every door? Not until 1958.
 
 > SCENE (photo): Biscuits by candlelight.
-> cookies2 |  | color
-> anise | One mother. One piece of cardboard. | color key @ one mother
+> anise | One mother. One piece of cardboard. | color key
 
 [warmly] So every chocolate calendar in every supermarket goes back to one mother, one piece of cardboard, and a boy who couldn't wait.
 
