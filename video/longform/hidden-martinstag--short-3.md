@@ -14,9 +14,10 @@ questions: []
 ## Short
 
 > SCENE (photo): Martin hiding among the geese; geese in a field.
-> geese-barn |  | color
+> goose |  | color
 > tours | Tours, France | color @ people of Tours wanted Martin
-> geese-field |  | color @ honked so loudly
+> geese-barn |  | color @ So he hid
+> geese-field |  | color @ made bishop
 
 [calm] Why do so many people in Germany eat goose on the eleventh of November?
 
