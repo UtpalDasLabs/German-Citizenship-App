@@ -87,6 +87,30 @@
       "start": 0,
       "referenceFrom": "omni-hook-desk",
       "speed": 0.65
+    },
+    {
+      "id": "wait-room",
+      "source": "pixabay",
+      "pixabayId": 1057,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Coverr-Free-Footage from Pixabay: https://pixabay.com/videos/id-1057/"
+    },
+    {
+      "id": "argument",
+      "source": "pixabay",
+      "pixabayId": 202135,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Samidurrakzai from Pixabay: https://pixabay.com/videos/id-202135/"
+    },
+    {
+      "id": "message",
+      "source": "pixabay",
+      "pixabayId": 64289,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Tanya50 from Pixabay: https://pixabay.com/videos/id-64289/"
     }
   ]
 }

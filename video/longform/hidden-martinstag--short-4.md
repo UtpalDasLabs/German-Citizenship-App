@@ -16,7 +16,7 @@ questions: []
 > SCENE (photo): El Greco's painting; a snowy forest; the soldier at the gate.
 > elgreco | El Greco, Saint Martin and the Beggar, 1597–1599 | color from 0.5 0.35 1.0 to 0.5 0.4 1.12
 > snow-forest |  | color @ freezing night
-> cloak-a |  | color @ rode past a beggar
+> cloak-a-short |  | color @ rode past a beggar
 
 [calm] A Roman soldier cut his cloak in two. Sixteen hundred years later, Germany still celebrates it.
 

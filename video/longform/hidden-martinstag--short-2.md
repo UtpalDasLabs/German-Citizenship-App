@@ -15,6 +15,7 @@ questions: []
 
 > SCENE (photo): Wine; a goose dinner; confetti.
 > wine |  | color
+> church-light |  | color @ last big feast
 > goose |  | color @ Eat the goose
 > confetti |  | color @ Celebrate
 

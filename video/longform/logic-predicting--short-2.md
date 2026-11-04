@@ -15,7 +15,8 @@ questions: []
 
 > SCENE (photo): A regional train; a dark platform.
 > platform2 | 2025: only about 60% of long-distance trains on time. | color key
-> dark-platform |  | color @ long tail
+> dark-platform |  | color @ In 2025
+> train-arrive |  | color @ Delays happen
 
 [calm] Your train is forty minutes late, and the board says ten more. Should you believe it?
 
@@ -23,12 +24,14 @@ questions: []
 
 > SCENE (photo): A dark platform at night.
 > dark-platform2 | 40 minutes late? Expect more. | color key
-> watch |  | color @ the longer it has lasted
+> watch |  | color @ Something bigger
+> watch2 |  | color @ the longer it has lasted
 
 [calm] So a train that's five minutes late will probably be a few minutes late. But a train that's already forty minutes late? That's a different kind of delay. Something bigger has gone wrong, and the longer it has lasted, the more of it is still to come.
 
 > SCENE (photo): A bus at night.
 > bus | Late in a long delay? Look for the other way home. | color key @ That's when
+> traffic |  | color @ the other train
 
 [calm] That's why the board's "ten more minutes" deserves more trust at the start of a delay than an hour into it. And that's when it pays to look for the other train, the bus, or the hotel.
 
