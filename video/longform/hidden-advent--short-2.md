@@ -15,8 +15,7 @@ questions: []
 
 > SCENE (photo): Gerhard's mother lays out the biscuits.
 > adv-gerhard-boy | Swabia, the 1880s | color key
-> biscuits-a | Twenty-four biscuits, one a day. | color key @ his mother
-> cookies |  | color @ One a day
+> cookies | Twenty-four biscuits, one a day. | color key @ his mother
 
 [calm] The Advent calendar started with twenty-four biscuits.
 

@@ -15,7 +15,7 @@ questions: []
 
 > SCENE (photo): Jonas and Ana at the kitchen table.
 > omni-flatmates | An open loop with a person attached. | color key
-> argument |  | color @ These rules don't only
+> argument |  | color @ Now the part
 
 [calm] The argument you keep postponing costs more than having it.
 
@@ -32,8 +32,7 @@ questions: []
 [calm] Rule two: small and quick, today. "Sorry, I was short with you this morning." Ten seconds, and a loop closes.
 
 > SCENE (photo): Jonas answers Ana's message.
-> omni-reply | Answer, even with "I need until tomorrow." | color key
-> message |  | color @ Answer, even
+> message |  | color key @ Everything she plans
 
 [calm] Everything she plans is stuck behind him. Answer, even with "I need until tomorrow."
 

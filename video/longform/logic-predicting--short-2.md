@@ -23,9 +23,8 @@ questions: []
 [calm] Back to the platform. In 2025, only about sixty percent of long-distance trains in Germany arrived on time. Delays happen. And they have a long tail: most are a few minutes, a few last for hours.
 
 > SCENE (photo): A dark platform at night.
-> dark-platform2 | 40 minutes late? Expect more. | color key
-> watch |  | color @ Something bigger
-> watch2 |  | color @ the longer it has lasted
+> phone-news | 40 minutes late? Expect more. | color key
+> city-night |  | color @ different kind
 
 [calm] So a train that's five minutes late will probably be a few minutes late. But a train that's already forty minutes late? That's a different kind of delay. Something bigger has gone wrong, and the longer it has lasted, the more of it is still to come.
 

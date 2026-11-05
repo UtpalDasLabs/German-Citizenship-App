@@ -15,7 +15,7 @@ questions: []
 
 > SCENE (photo): Jonas calls the dentist.
 > omni-dentist | Two minutes. Top of the list. | color key
-> wait-room |  | color @ Everyone's waiting time
+> wait-room |  | color @ calling the dentist
 
 [calm] Which task first? Do the quick one first.
 
