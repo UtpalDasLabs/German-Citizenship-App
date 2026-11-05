@@ -22,6 +22,12 @@
       "credit": "Martin and the beggar: made with Google Veo"
     },
     {
+      "id": "cloak-a-short",
+      "source": "file",
+      "file": "veo/martin-cloak.mp4",
+      "seconds": 5
+    },
+    {
       "id": "cloak-b",
       "source": "file",
       "file": "veo/martin-cloak.mp4",
