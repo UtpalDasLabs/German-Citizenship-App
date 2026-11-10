@@ -1662,3 +1662,70 @@ export function Figure({ topic }: { topic: string }) {
     </AbsoluteFill>
   );
 }
+
+/**
+ * A verdict stamp that slams onto the dark frame: `TEXT | red` (or `amber`) `@ cue`.
+ */
+export function Stamp() {
+  const frame = useCurrentFrame();
+  const accent = useAccent();
+  const [{ fields, at }] = useFields();
+  const colour = fields[1] === 'red' ? '#E5484D' : accent;
+  const t = Math.max(0, frame - at);
+  const k = Math.min(1, t / 7);
+  const scale = 1 + (1 - Easing.out(Easing.cubic)(k)) * 1.1;
+  const shake = t > 7 && t < 16 ? Math.sin(t * 3.4) * (16 - t) * 0.9 : 0;
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 50%, ${alpha(colour, 0.14)} 0%, ${alpha(colour, 0)} 60%)` }} />
+      <div
+        style={{
+          transform: `translate(${shake}px, ${shake * 0.6}px) rotate(-6deg) scale(${scale})`,
+          opacity: Math.min(1, t / 4),
+          border: `16px solid ${colour}`,
+          borderRadius: 20,
+          padding: '26px 80px',
+          color: colour,
+          fontFamily: FONT,
+          fontWeight: 900,
+          fontSize: fields[0].length > 9 ? 96 : 150,
+          letterSpacing: 10,
+          whiteSpace: 'nowrap',
+          textAlign: 'center',
+          boxShadow: `0 0 0 5px ${alpha(colour, 0.3)} inset, 0 0 80px ${alpha(colour, 0.25)}`,
+        }}
+      >
+        {fields[0].toUpperCase()}
+      </div>
+      <Grain opacity={0.08} />
+    </AbsoluteFill>
+  );
+}
+
+/**
+ * One or two big numbers. First line: the heading. Then `value | label @ cue`, one per number.
+ */
+export function BigNums() {
+  const frame = useCurrentFrame();
+  const accent = useAccent();
+  const [head, ...rows] = useFields();
+  const colours = [accent, '#E5484D', accent];
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ position: 'absolute', top: 120, width: '100%', textAlign: 'center', fontFamily: SERIF, fontSize: 52, color: alpha(C.text, 0.75), opacity: rise(frame, 0, 16) }}>
+        {head.fields[0]}
+      </div>
+      <div style={{ display: 'flex', gap: 150, alignItems: 'flex-end' }}>
+        {rows.map((r, i) => {
+          const o = rise(frame, r.at, 14);
+          return (
+            <div key={i} style={{ textAlign: 'center', opacity: o, transform: `translateY(${(1 - o) * 30}px) scale(${0.9 + o * 0.1})` }}>
+              <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 170, lineHeight: 1, whiteSpace: 'nowrap', color: colours[i % colours.length] }}>{r.fields[0]}</div>
+              <div style={{ fontFamily: SERIF, fontSize: 56, color: C.text, marginTop: 18 }}>{r.fields[1]}</div>
+            </div>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+}
