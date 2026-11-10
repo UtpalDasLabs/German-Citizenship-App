@@ -6,7 +6,7 @@
  * voice.
  */
 import React from 'react';
-import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
 import { alpha, C, FONT } from '../lib/brand';
 import { Grain, Photo, rise, SERIF, Vignette } from './look';
@@ -1422,6 +1422,242 @@ export function Rivals() {
       <div style={{ position: 'absolute', left: (year(1384) + year(1434)) / 2 - 200, width: 400, top: 700, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 32, color: RED, opacity: ch }}>50 years earlier</div>
       <div style={{ position: 'absolute', left: side, right: side, top: side ? 470 : 930, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: side ? 44 : 60, lineHeight: 1.15, color: '#FFFFFF', opacity: q }}>
         A Christmas market, or just a winter market? <span style={{ color: accent }}>Nobody knows.</span>
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* German Food Labs scenes: receipts, aluminium bars, salt gauge, notebook */
+/* ------------------------------------------------------------------ */
+
+const PAPER_BG = '#EDE6D6';
+const PAPER_INK = '#1B1F27';
+
+/** `text with ==a highlight==`: the highlighted part gets a marker stroke. */
+function Marked({ text, color }: { text: string; color: string }) {
+  const parts = text.split(/(==[^=]+==)/g).filter(Boolean);
+  return (
+    <>
+      {parts.map((p, i) =>
+        p.startsWith('==') ? (
+          <span key={i} style={{ background: `linear-gradient(transparent 12%, ${alpha(color, 0.55)} 12%, ${alpha(color, 0.55)} 88%, transparent 88%)`, padding: '0 6px' }}>
+            {p.slice(2, -2)}
+          </span>
+        ) : (
+          <span key={i}>{p}</span>
+        ),
+      )}
+    </>
+  );
+}
+
+/**
+ * A "receipt": the document the claim rests on, typeset as a card (not a copy of
+ * the original). First line: `Issuer | Title of the document`. Every line after
+ * it is a quoted passage, `passage with ==highlight== | small note @ cue`.
+ */
+export function Receipt() {
+  const frame = useCurrentFrame();
+  const accent = useAccent();
+  const [head, ...rest] = useFields();
+  const [issuer, title] = head.fields;
+  const o = rise(frame, head.at, 18);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 45%, ${alpha(accent, 0.1)} 0%, ${alpha(accent, 0)} 60%)` }} />
+      <div
+        style={{
+          width: 1480,
+          backgroundColor: PAPER_BG,
+          borderRadius: 10,
+          padding: '56px 80px 64px',
+          boxShadow: '0 30px 80px rgba(0,0,0,0.55)',
+          transform: `translateY(${(1 - o) * 30}px) rotate(-0.4deg)`,
+          opacity: o,
+        }}
+      >
+        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 26, letterSpacing: 4, textTransform: 'uppercase', color: '#8A5A12' }}>{issuer}</div>
+        <div style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 52, lineHeight: 1.15, color: PAPER_INK, marginTop: 14 }}>{title}</div>
+        <div style={{ height: 3, backgroundColor: PAPER_INK, opacity: 0.25, margin: '30px 0 28px' }} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
+          {rest.map((l, i) => {
+            const q = rise(frame, l.at, 14);
+            return (
+              <div key={i} style={{ opacity: q, transform: `translateY(${(1 - q) * 14}px)` }}>
+                <div style={{ fontFamily: SERIF, fontWeight: 500, fontSize: 44, lineHeight: 1.3, color: PAPER_INK }}>
+                  <Marked text={l.fields[0]} color={accent} />
+                </div>
+                {l.fields[1] ? <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 26, color: '#5B6475', marginTop: 6 }}>{l.fields[1]}</div> : null}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** BfR 2002: aluminium in lye pastry baked on aluminium trays (NRW samples from 2000). */
+export function AluBars() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const firstAt = cue(shot, 'forty-six', fps, { fallback: 0.05 });
+  const avg1At = cue(shot, 'averaging 8.9', fps, { fallback: 0.2 });
+  const secondAt = cue(shot, 'fifty samples', fps, { fallback: 0.4 });
+  const avg2At = cue(shot, 'averaging 4.9', fps, { fallback: 0.55 });
+  const MAX = 90;
+  const X0 = 560;
+  const W = 1180;
+  const x = (v: number) => X0 + (v / MAX) * W;
+  const rows = [
+    { label: 'First set (46 samples): highest', v: 82.8, at: firstAt, color: RED },
+    { label: 'First set: average', v: 8.9, at: avg1At, color: accent },
+    { label: 'Second set (50 samples): highest', v: 19.1, at: secondAt, color: RED },
+    { label: 'Second set: average', v: 4.9, at: avg2At, color: accent },
+  ];
+  const lineO = rise(frame, firstAt + 20, 16);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', left: 120, top: 120, fontFamily: SERIF, fontWeight: 700, fontSize: 58, color: '#FFFFFF' }}>Aluminium in lye pastry baked on aluminium trays</div>
+      <div style={{ position: 'absolute', left: 120, top: 196, fontFamily: FONT, fontWeight: 600, fontSize: 32, color: GREY }}>mg per kg · BfR statement, 25 Nov 2002 · samples from North Rhine-Westphalia, 2000</div>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        <line x1={X0} y1={280} x2={X0} y2={900} stroke="#4A5468" strokeWidth={4} />
+        {rows.map((r, i) => {
+          const y = 310 + i * 130;
+          const p = rise(frame, r.at, 22);
+          return (
+            <g key={i} opacity={p > 0 ? 1 : 0}>
+              <rect x={X0} y={y} width={Math.max(2, (x(r.v) - X0) * p)} height={78} rx={6} fill={r.color} />
+              <text x={X0 - 24} y={y + 50} textAnchor="end" fontFamily={FONT} fontWeight={700} fontSize={30} fill="#C9D3E0">{r.label}</text>
+              <text x={Math.max(x(r.v), x(10)) + 22} y={y + 54} fontFamily={FONT} fontWeight={800} fontSize={44} fill="#FFFFFF" opacity={p}>{r.v}</text>
+            </g>
+          );
+        })}
+        <g opacity={lineO}>
+          <line x1={x(10)} y1={250} x2={x(10)} y2={880} stroke="#FFFFFF" strokeWidth={4} strokeDasharray="14 12" />
+          <text x={x(10) + 16} y={925} fontFamily={FONT} fontWeight={700} fontSize={30} fill="#FFFFFF">10: Bavaria's enforcement value since 1999 (cited by BfR)</text>
+        </g>
+      </svg>
+    </AbsoluteFill>
+  );
+}
+
+/** Stiftung Warentest 2017: salt in a frozen pretzel, before and after the coarse salt. */
+export function SaltGauge() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const quarterAt = cue(shot, 'one and a half grams', fps, { fallback: 0.1 });
+  const moreAt = cue(shot, 'Add the coarse salt', fps, { fallback: 0.6 });
+  const a = rise(frame, quarterAt, 26);
+  const b = rise(frame, moreAt, 26);
+  const W = 1400;
+  const fill = (0.25 * a) + (0.30 * b); // a quarter, then "more than half"
+  const col = b > 0.1 ? RED : accent;
+  const bLabel = rise(frame, moreAt + 10, 14);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ position: 'absolute', top: 150, width: '100%', textAlign: 'center', fontFamily: SERIF, fontWeight: 700, fontSize: 60, color: '#FFFFFF' }}>
+        Salt in one frozen pretzel, against the daily maximum
+      </div>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        <rect x={260} y={440} width={W} height={120} rx={14} fill="#1E2533" stroke="#4A5468" strokeWidth={4} />
+        <rect x={260} y={440} width={W * fill} height={120} rx={14} fill={col} />
+        {[0.25, 0.5, 1].map((t) => (
+          <g key={t}>
+            <line x1={260 + W * t} y1={430} x2={260 + W * t} y2={580} stroke="#8A93A6" strokeWidth={3} />
+            <text x={260 + W * t} y={625} textAnchor={t === 1 ? 'end' : 'middle'} fontFamily={FONT} fontWeight={700} fontSize={32} fill={GREY}>{t === 1 ? 'the daily maximum (DGE)' : `${t * 100}%`}</text>
+          </g>
+        ))}
+      </svg>
+      <div style={{ position: 'absolute', left: 260, top: 700, width: W, fontFamily: FONT, fontWeight: 800, fontSize: 44, color: accent, opacity: a }}>About 1.5 g of salt, before the coarse salt: a quarter</div>
+      <div style={{ position: 'absolute', left: 260, top: 780, width: W, fontFamily: FONT, fontWeight: 800, fontSize: 44, color: RED, opacity: bLabel }}>With coarse salt on top: more than half</div>
+      <div style={{ position: 'absolute', left: 260, top: 930, width: W, fontFamily: FONT, fontWeight: 600, fontSize: 28, color: GREY }}>Stiftung Warentest, 22 Feb 2017: 17 pretzels tested; frozen ones, without extra salt</div>
+    </AbsoluteFill>
+  );
+}
+
+/** The lab notebook: what we looked for and could not verify. One `item | note @ cue` per line. */
+export function Notebook() {
+  const frame = useCurrentFrame();
+  const accent = useAccent();
+  const lines = useFields();
+  const o = rise(frame, 0, 20);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <div
+        style={{
+          width: 1420,
+          minHeight: 820,
+          backgroundColor: PAPER_BG,
+          borderRadius: 8,
+          padding: '48px 90px 56px 110px',
+          boxShadow: '0 30px 80px rgba(0,0,0,0.55)',
+          transform: `rotate(-0.8deg) translateY(${(1 - o) * 30}px)`,
+          opacity: o,
+          backgroundImage: 'repeating-linear-gradient(transparent, transparent 71px, rgba(60,90,160,0.22) 72px)',
+          backgroundPosition: '0 118px',
+        }}
+      >
+        <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: 30, letterSpacing: 6, color: '#8A5A12' }}>LAB NOTEBOOK</div>
+        <div style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 56, color: PAPER_INK, margin: '6px 0 22px' }}>What we couldn't verify</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {lines.map((l, i) => {
+            const p = rise(frame, l.at, 12);
+            return (
+              <div key={i} style={{ height: 72, display: 'flex', alignItems: 'center', gap: 22, opacity: p, transform: `translateX(${(1 - p) * -16}px)` }}>
+                <div style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: accent, color: '#1B1F27', fontFamily: FONT, fontWeight: 900, fontSize: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>?</div>
+                <div style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, fontSize: 40, color: PAPER_INK, whiteSpace: 'nowrap' }}>{l.fields[0]}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/**
+ * A figure from an archive, shown whole (never cropped or blown up) with a ring that
+ * marks the detail. First line: `image-id | Caption | ringX ringY` (the ring's centre
+ * as fractions of the picture) `@ cue`. Further lines: notes beside it, `text @ cue`.
+ */
+export function Figure({ topic }: { topic: string }) {
+  const frame = useCurrentFrame();
+  const accent = useAccent();
+  const [head, ...rest] = useFields();
+  const [id, caption, ring] = head.fields;
+  const [rx, ry] = (ring ?? '0.5 0.5').split(/\s+/).map(Number);
+  const H = 840;
+  const Wd = Math.round(H * (500 / 842));
+  const o = rise(frame, 0, 20);
+  const r = rise(frame, head.at, 18);
+  const pulse = 1 + 0.04 * Math.sin(frame * 0.2);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse at 30% 50%, ${alpha(accent, 0.12)} 0%, ${alpha(accent, 0)} 60%)` }} />
+      <div style={{ position: 'absolute', left: 250, top: 120, width: Wd, height: H, opacity: o, boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
+        <Img src={staticFile(`images/${topic}/${id}.jpg`)} style={{ width: Wd, height: H, objectFit: 'cover', display: 'block' }} />
+        <svg width={Wd} height={H} style={{ position: 'absolute', left: 0, top: 0 }}>
+          <ellipse cx={rx * Wd} cy={ry * H} rx={92 * pulse} ry={78 * pulse} fill="none" stroke={accent} strokeWidth={7} opacity={r} strokeDasharray="520" strokeDashoffset={(1 - r) * 520} />
+        </svg>
+      </div>
+      <div style={{ position: 'absolute', left: 250, top: 975, fontFamily: FONT, fontWeight: 600, fontSize: 22, color: GREY }}>Public domain, via Wikimedia Commons</div>
+      <div style={{ position: 'absolute', left: 980, top: 200, width: 760, display: 'flex', flexDirection: 'column', gap: 34 }}>
+        <div style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 64, lineHeight: 1.12, color: '#FFFFFF', opacity: o }}>{caption}</div>
+        <div style={{ width: 120, height: 4, borderRadius: 2, backgroundColor: accent, opacity: o }} />
+        {rest.map((l, i) => {
+          const q = rise(frame, l.at, 14);
+          return (
+            <div key={i} style={{ fontFamily: FONT, fontWeight: 600, fontSize: 42, lineHeight: 1.3, color: i === rest.length - 1 ? accent : '#C9D3E0', opacity: q, transform: `translateY(${(1 - q) * 12}px)` }}>
+              {l.fields[0]}
+            </div>
+          );
+        })}
       </div>
     </AbsoluteFill>
   );

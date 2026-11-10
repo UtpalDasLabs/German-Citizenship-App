@@ -1,0 +1,18 @@
+{
+  "topic": "food-pretzel",
+  "note": "Every picture, where it came from and under what licence.",
+  "images": [
+    {
+      "id": "hortus",
+      "file": "Hortus Deliciarum 1190.jpg",
+      "scene": "Hortus Deliciarum, banquet of Esther and Ahasuerus, late 12th century",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Herrad of Landsberg",
+      "date": "12th century",
+      "source": "https://commons.wikimedia.org/wiki/File:Hortus_Deliciarum_1190.jpg",
+      "size": "506x852",
+      "sha1": "232de631c7ad70702093e7d3695b3c3a28d1d74b"
+    }
+  ]
+}

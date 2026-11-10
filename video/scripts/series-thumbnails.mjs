@@ -37,6 +37,7 @@ const THUMBS = [
   // Martinstag A/B test (YouTube "Test & compare", from 3 Nov 2026): B and C against the lantern thumbnail.
   { topic: 'hidden-martinstag', name: 'hidden-martinstag-b-cloak', series: 'hidden', photo: 'thumb-cloak', side: true, pos: '75%', narrow: true, lines: ['He cut his', 'coat in half'], accent: 'half', tag: 'Why Germany walks with lanterns on 11 Nov' },
   { topic: 'hidden-martinstag', name: 'hidden-martinstag-c-geese', series: 'hidden', photo: 'thumb-geese', side: true, pos: '72%', narrow: true, lines: ['Betrayed by', 'geese'], accent: 'geese', tag: 'Martinstag: lanterns, geese, a cloak' },
+  { topic: 'food-pretzel', series: 'hidden', photo: 'thumb-pretzel', side: true, pos: '40%', narrow: true, lines: ['Who made the', 'pretzel?'], accent: 'pretzel?', tag: '3 legends vs the evidence' },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 

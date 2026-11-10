@@ -1,0 +1,76 @@
+{
+  "topic": "food-pretzel",
+  "note": "Omni renders (stylised, painted storybook) and Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "pretzel-hook",
+      "source": "file",
+      "file": "veo/pretzel-hook.mp4",
+      "credit": "A pretzel and three legends: made with Gemini Omni"
+    },
+    {
+      "id": "legend-cat",
+      "source": "file",
+      "file": "veo/legend-cat.mp4",
+      "credit": "The cat legend (Urach, 1477): made with Gemini Omni"
+    },
+    {
+      "id": "legend-bucket",
+      "source": "file",
+      "file": "veo/legend-bucket.mp4",
+      "credit": "The bucket legend (Munich, 1839): made with Gemini Omni"
+    },
+    {
+      "id": "lye-dip",
+      "source": "file",
+      "file": "veo/lye-dip.mp4",
+      "credit": "The lye dip: made with Gemini Omni"
+    },
+    {
+      "id": "tray-swap",
+      "source": "file",
+      "file": "veo/tray-swap.mp4",
+      "credit": "The tray swap: made with Gemini Omni"
+    },
+    {
+      "id": "oven-loaf",
+      "source": "pixabay",
+      "pixabayId": 14239,
+      "start": 0,
+      "seconds": 12,
+      "credit": "Video by AlekseiyPovar from Pixabay: https://pixabay.com/videos/id-14239/"
+    },
+    {
+      "id": "lab-molecules",
+      "source": "pixabay",
+      "pixabayId": 197486,
+      "start": 2,
+      "seconds": 9,
+      "credit": "Video by Roque_dg from Pixabay: https://pixabay.com/videos/id-197486/"
+    },
+    {
+      "id": "legend-king",
+      "source": "veo",
+      "file": "veo/legend-king.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A grand early-1800s dining hall in Vienna, chandeliers glowing. A king in a rich uniform, seen from behind and in profile, gestures kindly as a servant sets a silver tray of glossy golden pretzels on a long table of elegant guests, who lean in curiously. Gentle, comic, festive mood. No face turned to the camera, no text.",
+      "seconds": 8,
+      "credit": "Story two: a Bavarian king and lye pretzels in Vienna: made with Gemini Omni"
+    },
+    {
+      "id": "tray-lye",
+      "source": "veo",
+      "file": "veo/tray-lye.mp4",
+      "prompt": "A painterly, warmly lit animated close-up in the style of a modern illustrated storybook, soft brush textures. Overhead view of a dull grey aluminium baking tray on a wooden table. A pale liquid is poured over it, the metal surface slowly clouds, and tiny silver flecks drift into the liquid. A piece of pretzel dough is placed on the tray and a few flecks cling to its underside. Calm, curious, slightly worrying mood. No people, no text.",
+      "seconds": 8,
+      "credit": "Lye and an aluminium tray: made with Gemini Omni"
+    },
+    {
+      "id": "pretzel-finale",
+      "source": "veo",
+      "file": "veo/pretzel-finale.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A cosy kitchen table at golden hour. Two hands, no faces, tear a fresh golden pretzel apart, steam curling up and a few grains of coarse salt falling. Soft light glows through a window. Joyful, warm, satisfied mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "A fresh pretzel, torn open: made with Gemini Omni"
+    }
+  ]
+}
