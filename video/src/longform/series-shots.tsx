@@ -21,6 +21,23 @@ function useFields(): { fields: string[]; at: number }[] {
   return lines;
 }
 
+/**
+ * `bg | clip-id` as a line under a card scene: the clip (or photo) with that id runs dimmed behind
+ * the card, so the frame keeps moving. The other lines are returned as usual.
+ */
+function useBackdropFields(topic: string): { lines: { fields: string[]; at: number }[]; backdrop: React.ReactNode } {
+  const all = useFields();
+  const bg = all.find((l) => l.fields[0] === 'bg');
+  const lines = all.filter((l) => l !== bg);
+  const backdrop = bg ? (
+    <AbsoluteFill>
+      <Photo src={`images/${topic}/${bg.fields[1]}.jpg`} color />
+      <AbsoluteFill style={{ backgroundColor: alpha(C.bg, 0.74) }} />
+    </AbsoluteFill>
+  ) : null;
+  return { lines, backdrop };
+}
+
 /** A full-colour picture with a slow push, grain and a soft vignette. */
 function Picture({ topic, id }: { topic: string; id: string }) {
   return (
@@ -1457,14 +1474,16 @@ function Marked({ text, color }: { text: string; color: string }) {
  * the original). First line: `Issuer | Title of the document`. Every line after
  * it is a quoted passage, `passage with ==highlight== | small note @ cue`.
  */
-export function Receipt() {
+export function Receipt({ topic }: { topic: string }) {
   const frame = useCurrentFrame();
   const accent = useAccent();
-  const [head, ...rest] = useFields();
+  const { lines, backdrop } = useBackdropFields(topic);
+  const [head, ...rest] = lines;
   const [issuer, title] = head.fields;
   const o = rise(frame, head.at, 18);
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 45%, ${alpha(accent, 0.1)} 0%, ${alpha(accent, 0)} 60%)` }} />
       <div
         style={{
@@ -1551,8 +1570,8 @@ export function SaltGauge() {
   const shot = useShot();
   const { fps } = useVideoConfig();
   const accent = useAccent();
-  const quarterAt = cue(shot, 'one and a half grams', fps, { fallback: 0.1 });
-  const moreAt = cue(shot, 'Add the coarse salt', fps, { fallback: 0.6 });
+  const quarterAt = cue(shot, 'a quarter', fps, { fallback: 0.1 });
+  const moreAt = cue(shot, 'With it', fps, { fallback: 0.6 });
   const a = rise(frame, quarterAt, 26);
   const b = rise(frame, moreAt, 26);
   const W = 1400;
@@ -1705,13 +1724,15 @@ export function Stamp() {
 /**
  * One or two big numbers. First line: the heading. Then `value | label @ cue`, one per number.
  */
-export function BigNums() {
+export function BigNums({ topic }: { topic: string }) {
   const frame = useCurrentFrame();
   const accent = useAccent();
-  const [head, ...rows] = useFields();
+  const { lines, backdrop } = useBackdropFields(topic);
+  const [head, ...rows] = lines;
   const colours = [accent, '#E5484D', accent];
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <div style={{ position: 'absolute', top: 120, width: '100%', textAlign: 'center', fontFamily: SERIF, fontSize: 52, color: alpha(C.text, 0.75), opacity: rise(frame, 0, 16) }}>
         {head.fields[0]}
       </div>
@@ -1726,6 +1747,43 @@ export function BigNums() {
           );
         })}
       </div>
+    </AbsoluteFill>
+  );
+}
+
+
+/**
+ * GDCh 2015: a worst-case pretzel (3.3 mg aluminium, BfR 2002) against a 20 kg child's daily share of
+ * the EFSA limit (1 mg per kg per week: 20 mg a week, 2.9 mg a day).
+ */
+export function ChildGauge() {
+  const frame = useCurrentFrame();
+  const shot = useShot();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const reachAt = cue(shot, 'worst-case pretzel', fps, { fallback: 0.2 });
+  const harmlessAt = cue(shot, 'harmless by current knowledge', fps, { fallback: 0.7 });
+  const a = rise(frame, reachAt, 34);
+  const b = rise(frame, harmlessAt, 14);
+  const X0 = 260;
+  const W = 1100; // 0 to 120 %
+  const x = (pct: number) => X0 + (pct / 120) * W;
+  const worst = 114; // 3.31 mg against 2.9 mg
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ position: 'absolute', top: 130, width: '100%', textAlign: 'center', fontFamily: SERIF, fontWeight: 700, fontSize: 56, color: '#FFFFFF' }}>
+        One worst-case pretzel, against a small child's daily share
+      </div>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        <rect x={X0} y={430} width={W} height={120} rx={14} fill="#1E2533" stroke="#4A5468" strokeWidth={4} />
+        <rect x={X0} y={430} width={(x(worst) - X0) * a} height={120} rx={14} fill={a > 0.8 ? RED : accent} />
+        <line x1={x(100)} y1={400} x2={x(100)} y2={590} stroke="#FFFFFF" strokeWidth={5} strokeDasharray="12 8" />
+        <text x={x(100)} y={385} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={34} fill="#FFFFFF">100 %: the child's daily share</text>
+        <text x={X0} y={625} fontFamily={FONT} fontWeight={700} fontSize={30} fill={GREY}>0</text>
+      </svg>
+      <div style={{ position: 'absolute', left: X0, top: 700, width: 1400, fontFamily: FONT, fontWeight: 800, fontSize: 44, color: RED, opacity: a }}>3.3 mg in the worst-case pretzel: about 114 %</div>
+      <div style={{ position: 'absolute', left: X0, top: 780, width: 1400, fontFamily: FONT, fontWeight: 700, fontSize: 36, color: GREY, opacity: b }}>Still called harmless by current knowledge; extra intake unwanted (GDCh, 2015)</div>
+      <div style={{ position: 'absolute', left: X0, top: 930, width: 1500, fontFamily: FONT, fontWeight: 600, fontSize: 26, color: GREY }}>EFSA limit 1 mg per kg per week, for a 20 kg child: 2.9 mg a day. Worst case from the 2000 NRW samples (BfR, 2002).</div>
     </AbsoluteFill>
   );
 }

@@ -294,7 +294,7 @@ const stamp = (frame) => {
 function shownMedia() {
   const ids = new Set();
   for (const sh of shots) {
-    if (!['photo', 'line', 'place', 'list', 'stat', 'figure'].includes(sh.key)) continue;
+    if (!['photo', 'line', 'place', 'list', 'stat', 'figure', 'receipt', 'bignums'].includes(sh.key)) continue;
     for (const l of sh.screen) {
       const f = l.split(' @ ')[0].split(/ ?\| ?/).map((x) => x.trim());
       ids.add(f[0] === 'bg' ? f[1] : f[0]);

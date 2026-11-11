@@ -9,7 +9,7 @@ import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './
 import { useAccent, useSeries } from './series';
 import { KitScene } from '../kit/Kit';
 import { RigScene } from '../kit/Rig';
-import { Backoff, Bandit, Collide, Curve, Horizon, Jam, Lru, DeskLoft, RulesRace, FutureRule, Noguchi, AdventWheel, Rivals, Receipt, Figure, Stamp, BigNums, AluBars, SaltGauge, Notebook, SortCost, Line, Place, Stopping, Waits, WallTimeline, Edf, Spt, Inversion, Loops, Sessions } from './series-shots';
+import { Backoff, Bandit, Collide, Curve, Horizon, Jam, Lru, DeskLoft, RulesRace, FutureRule, Noguchi, AdventWheel, Rivals, Receipt, Figure, Stamp, BigNums, ChildGauge, AluBars, SaltGauge, Notebook, SortCost, Line, Place, Stopping, Waits, WallTimeline, Edf, Spt, Inversion, Loops, Sessions } from './series-shots';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
@@ -1065,13 +1065,15 @@ export function shotFor(key: string | null, topic: string, title: string, questi
     case 'rivals':
       return <Rivals />;
     case 'receipt':
-      return <Receipt />;
+      return <Receipt topic={topic} />;
     case 'figure':
       return <Figure topic={topic} />;
     case 'stamp':
       return <Stamp />;
     case 'bignums':
-      return <BigNums />;
+      return <BigNums topic={topic} />;
+    case 'childgauge':
+      return <ChildGauge />;
     case 'alubars':
       return <AluBars />;
     case 'saltgauge':
