@@ -355,7 +355,7 @@ function describeSeries(chapterLines) {
   const text = [
     script.meta.title,
     '',
-    ...(script.meta.summary ? [script.meta.summary, ''] : []),
+    ...(script.meta.summary ? [String(script.meta.summary).replace(/^"|"$/g, '').replace(/\\n/g, '\n'), ''] : []),
     'Chapters',
     ...chapterLines,
     '',

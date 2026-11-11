@@ -1,0 +1,38 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "Your pretzel is dipped in drain-cleaner chemistry",
+      "spoken": "Here's something odd about every German pretzel.",
+      "paragraphs": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "Three stories say who invented the pretzel",
+      "spoken": "Who invented the lye pretzel? Three famous stories, three suspects.",
+      "paragraphs": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "The real pretzel surprise: the baking tray",
+      "spoken": "Old pretzel trays were aluminium, and lye eats aluminium. Germany measured: up to eighty-three milligrams per kilo of pastry.",
+      "paragraphs": [
+        16,
+        17,
+        18
+      ]
+    }
+  ]
+}

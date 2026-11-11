@@ -1,22 +1,10 @@
 ---
-title: "Nobody Can Prove Who Invented the Pretzel: What the Evidence Really Shows"
+title: "Why German Pretzels Are Dipped in Drain-Cleaner Chemistry (and Who Really Invented Them)"
 series: hidden
 voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 questions: []
-summary: "A classic German pretzel is dipped in a chemical that is also in drain cleaner. Why that is fine, where the word Brezel and the word Lauge come from, three famous legends of who invented it, the oldest picture and the oldest word, and the baking-tray problem German regulators measured, with the documents on screen.
-
-Lab notebook: what we looked for and could not verify
-• When the lye pretzel was first made
-• Which copy of the Hortus Deliciarum our picture comes from
-• Where the story of the monk in 610 comes from
-• The exact chemistry of lye on the crust (a textbook idea, no pretzel study)
-• The full 2019 aroma paper (we read the abstract and the press release)
-• The exact numbers in the 2017 Stiftung Warentest test (paywalled)
-• What bakery pretzels contain today
-If you know better, tell us in the comments.
-
-The aroma study: Sebastian Schoenauer and Peter Schieberle, Technical University of Munich, Journal of Agricultural and Food Chemistry, 2019. Word origins: DWDS, Wolfgang Pfeifer, Etymologisches Wörterbuch. Not medical advice: we only report what the sources say."
+summary: "A classic German pretzel is dipped in a chemical that is also in drain cleaner. Why that is fine, where the word Brezel and the word Lauge come from, three famous legends of who invented it, the oldest picture and the oldest word, and the baking-tray problem German regulators measured, with the documents on screen.\n\nLab notebook: what we looked for and could not verify\n• When the lye pretzel was first made\n• Which copy of the Hortus Deliciarum our picture comes from\n• Where the story of the monk in 610 comes from\n• The exact chemistry of lye on the crust (a textbook idea, no pretzel study)\n• The full 2019 aroma paper (we read the abstract and the press release)\n• The exact numbers in the 2017 Stiftung Warentest test (paywalled)\n• What bakery pretzels contain today\nIf you know better, tell us in the comments.\n\nThe aroma study: Sebastian Schoenauer and Peter Schieberle, Technical University of Munich, Journal of Agricultural and Food Chemistry, 2019. Word origins: DWDS, Wolfgang Pfeifer, Etymologisches Wörterbuch. Not medical advice: we only report what the sources say."
 sources: ["Brezel and Lauge, Digitales Wörterbuch der deutschen Sprache (DWDS), Etymologisches Wörterbuch by Wolfgang Pfeifer: https://www.dwds.de/wb/Brezel and https://www.dwds.de/wb/Lauge", "Laugenbrezel, Laugengebäck (Austrian Federal Ministry of Agriculture, BMLUK): https://www.bmluk.gv.at/themen/lebensmittel/trad-lebensmittel/backerzeugnisse/laugenbrezel_gebaeck.html", "Erhöhte Gehalte von Aluminium in Laugengebäck (BfR statement, 25 November 2002): https://www.bfr.bund.de/cm/343/erhoehte_gehalte_von_aluminium_in_laugengebaeck.pdf", "Verwendung von Aluminiumgeräten beim Herstellen von Laugengebäck (GDCh working group, 25 February 2015): https://www.gdch.de/fileadmin/downloads/Netzwerk_und_Strukturen/Fachgruppen/Lebensmittelchemiker/Arbeitsgruppen/getreide/positionspapier_laugengebaeck_25_02_2015.pdf", "BfR Opinion No. 045/2019, Reducing aluminium intake can minimise potential health risks: https://bfr.bund.de/cm/349/reducing-aluminium-intake-can-minimise-potential-health-risks.pdf", "Schoenauer and Schieberle, Characterization of the Key Aroma Compounds in the Crust of Soft Pretzels by Application of the Sensomics Concept, Journal of Agricultural and Food Chemistry 67(25), 2019, Technical University of Munich (we read the abstract and the American Chemical Society press release, not the full paper): https://doi.org/10.1021/acs.jafc.9b02601", "Laugenbrezeln im Test, Stiftung Warentest, 22 February 2017 (free introduction only): https://www.test.de/Laugenbrezeln-im-Test-Tiefkuehlware-schneidet-besser-ab-als-frische-5141172-0/", "Hortus deliciarum (Wikipedia): https://en.wikipedia.org/wiki/Hortus_deliciarum", "Hortus Deliciarum, banquet of Esther (Wikimedia Commons): https://commons.wikimedia.org/wiki/File:Hortus_Deliciarum_1190.jpg"]
 target: set by the script, about 4.5 minutes
 status: v4 plain-words re-cut (11 Nov 2026), from series/german-food-labs/01-pretzel-beatsheet-v4.md; every claim is in 01-pretzel-facts.md
