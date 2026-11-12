@@ -38,6 +38,8 @@ const THUMBS = [
   { topic: 'hidden-martinstag', name: 'hidden-martinstag-b-cloak', series: 'hidden', photo: 'thumb-cloak', side: true, pos: '75%', narrow: true, lines: ['He cut his', 'coat in half'], accent: 'half', tag: 'Why Germany walks with lanterns on 11 Nov' },
   { topic: 'hidden-martinstag', name: 'hidden-martinstag-c-geese', series: 'hidden', photo: 'thumb-geese', side: true, pos: '72%', narrow: true, lines: ['Betrayed by', 'geese'], accent: 'geese', tag: 'Martinstag: lanterns, geese, a cloak' },
   { topic: 'food-pretzel-v4', series: 'hidden', photo: 'thumb-pretzel', side: true, pos: '40%', narrow: true, lines: ['Dipped in', 'drain cleaner?'], accent: 'drain cleaner?', tag: 'Why it is fine, and what is not' },
+  { topic: 'food-sour', series: 'hidden', photo: 'thumb-ship', side: true, pos: '60%', narrow: true, lines: ['Did sauerkraut', 'save Cook?'], accent: 'save Cook?', tag: 'And why rye bread needs sour' },
+  { topic: 'food-fastfood', series: 'hidden', photo: 'thumb-doener', side: true, pos: '45%', narrow: true, lines: ['Döner vs', 'Currywurst'], accent: 'Currywurst', tag: 'What the paperwork says' },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 

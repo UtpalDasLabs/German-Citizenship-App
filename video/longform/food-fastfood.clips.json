@@ -1,0 +1,106 @@
+{
+  "topic": "food-fastfood",
+  "note": "Omni (stylised storybook) and Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "doener-hook",
+      "source": "veo",
+      "file": "veo/doener-hook.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A tall cone of roasting meat turning slowly on a vertical spit in a warm street-food stall at dusk, glowing heating elements, steam rising, a hand with a long knife shaves a thin slice, no face. Slow camera push-in. Curious mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "The döner spit: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "currywurst-hook",
+      "source": "veo",
+      "file": "veo/currywurst-hook.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A post-war Berlin snack stand in 1949 on an evening of light drizzle, warm lamp light, a woman seen from behind pours red-orange sauce over sliced sausage on a paper plate and dusts it with yellow curry powder, steam rising. Cosy, nostalgic mood. No face turned to the camera, no text.",
+      "seconds": 8,
+      "credit": "The Currywurst story: made with Gemini Omni",
+      "speed": 0.66
+    },
+    {
+      "id": "doener-finale",
+      "source": "veo",
+      "file": "veo/doener-finale.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. On a street-food counter at dusk, two hands, no faces, wrap a loaded flatbread sandwich in paper; beside it sits a paper plate of sliced sausage with red sauce and curry powder. Warm glowing lights. Joyful, satisfied mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "Both icons: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "spit-stock",
+      "source": "pixabay",
+      "pixabayId": 4296,
+      "start": 0,
+      "seconds": 17.8,
+      "credit": "Video by MixailMixail from Pixabay: https://pixabay.com/videos/id-4296/"
+    },
+    {
+      "id": "night-street",
+      "source": "pixabay",
+      "pixabayId": 6456,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by FindingFootage from Pixabay: https://pixabay.com/videos/id-6456/",
+      "speed": 0.95
+    },
+    {
+      "id": "sauce-stock",
+      "source": "pixabay",
+      "pixabayId": 78962,
+      "start": 0,
+      "seconds": 12,
+      "credit": "Video by koudyt from Pixabay: https://pixabay.com/videos/id-78962/"
+    },
+    {
+      "id": "wurst-stock",
+      "source": "pixabay",
+      "pixabayId": 14147,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by AlekseiyPovar from Pixabay: https://pixabay.com/videos/id-14147/"
+    },
+    {
+      "id": "beer-tease",
+      "source": "pixabay",
+      "pixabayId": 67395,
+      "start": 0,
+      "seconds": 9,
+      "credit": "Video by BreakDownPictures from Pixabay: https://pixabay.com/videos/id-67395/"
+    },
+    {
+      "id": "bg-typewriter",
+      "source": "pixabay",
+      "pixabayId": 50826,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by AntoMes from Pixabay: https://pixabay.com/videos/id-50826/"
+    },
+    {
+      "id": "bg-typewriter2",
+      "source": "pixabay",
+      "pixabayId": 1334,
+      "start": 0,
+      "seconds": 22,
+      "credit": "Video by LisaRedfern from Pixabay: https://pixabay.com/videos/id-1334/"
+    },
+    {
+      "id": "bg-archive",
+      "source": "pixabay",
+      "pixabayId": 96690,
+      "start": 0,
+      "seconds": 15,
+      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-96690/"
+    },
+    {
+      "id": "bg-berlin",
+      "source": "pixabay",
+      "pixabayId": 15641,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by sacharine from Pixabay: https://pixabay.com/videos/id-15641/"
+    }
+  ]
+}

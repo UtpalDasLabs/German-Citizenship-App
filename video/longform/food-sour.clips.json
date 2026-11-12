@@ -1,0 +1,99 @@
+{
+  "topic": "food-sour",
+  "note": "Omni (stylised storybook) and Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "cook-hook",
+      "source": "veo",
+      "file": "veo/cook-hook.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A wooden 18th-century sailing ship on a calm golden-hour sea, seen from low on the water, sails full, barrels and sacks stacked on the deck, gulls wheeling. Slow camera push-in. Adventurous, curious mood. No faces close up, no text.",
+      "seconds": 8,
+      "credit": "Captain Cook's ship: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "kraut-barrel",
+      "source": "veo",
+      "file": "veo/kraut-barrel.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Close overhead view of two hands, no faces, pressing shredded pale cabbage with coarse salt into a large stoneware crock with a wooden tamper, brine rising between the shreds, warm kitchen light. Calm, cosy mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "Pressing sauerkraut: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "wort-barley",
+      "source": "pixabay",
+      "pixabayId": 43760,
+      "start": 0,
+      "seconds": 20,
+      "credit": "Video by NickyPe from Pixabay: https://pixabay.com/videos/id-43760/",
+      "speed": 0.95
+    },
+    {
+      "id": "rye-loaf",
+      "source": "pixabay",
+      "pixabayId": 329392,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by Dimi_Tri from Pixabay: https://pixabay.com/videos/id-329392/"
+    },
+    {
+      "id": "wheat-dough",
+      "source": "pixabay",
+      "pixabayId": 43653,
+      "start": 0,
+      "seconds": 13,
+      "credit": "Video by aghyadnajjar from Pixabay: https://pixabay.com/videos/id-43653/",
+      "speed": 0.8
+    },
+    {
+      "id": "flour-dough",
+      "source": "pixabay",
+      "pixabayId": 250784,
+      "start": 0,
+      "seconds": 12,
+      "credit": "Video by u_7xgcof5pvg from Pixabay: https://pixabay.com/videos/id-250784/",
+      "speed": 0.95
+    },
+    {
+      "id": "rye-slices",
+      "source": "pixabay",
+      "pixabayId": 63066,
+      "start": 2,
+      "seconds": 10,
+      "credit": "Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-63066/"
+    },
+    {
+      "id": "sausage-tease",
+      "source": "pixabay",
+      "pixabayId": 82725,
+      "start": 0,
+      "seconds": 9,
+      "credit": "Video by shahfaisalkhan6676 from Pixabay: https://pixabay.com/videos/id-82725/"
+    },
+    {
+      "id": "bg-ship",
+      "source": "pixabay",
+      "pixabayId": 3588,
+      "start": 0,
+      "seconds": 25,
+      "credit": "Video by Life-Of-Vids from Pixabay: https://pixabay.com/videos/id-3588/"
+    },
+    {
+      "id": "bg-letters",
+      "source": "pixabay",
+      "pixabayId": 8851,
+      "start": 0,
+      "seconds": 13,
+      "credit": "Video by krzys16 from Pixabay: https://pixabay.com/videos/id-8851/"
+    },
+    {
+      "id": "bg-library",
+      "source": "pixabay",
+      "pixabayId": 1310,
+      "start": 0,
+      "seconds": 17,
+      "credit": "Video by klimkin from Pixabay: https://pixabay.com/videos/id-1310/"
+    }
+  ]
+}

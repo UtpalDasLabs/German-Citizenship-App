@@ -1753,6 +1753,43 @@ export function BigNums({ topic }: { topic: string }) {
 
 
 /**
+ * Generic horizontal bars, one at a time. First line: `Title | unit and source`. Every line after:
+ * `Label | value | red` (red optional) `@ cue`. Bars scale to the largest value.
+ */
+export function Bars({ topic }: { topic: string }) {
+  const frame = useCurrentFrame();
+  const accent = useAccent();
+  const { lines, backdrop } = useBackdropFields(topic);
+  const [head, ...rows] = lines;
+  const vals = rows.map((r) => parseFloat(r.fields[1]));
+  const max = Math.max(...vals) * 1.18;
+  const X0 = 620;
+  const W = 1100;
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      {backdrop}
+      <div style={{ position: 'absolute', left: 120, top: 120, fontFamily: SERIF, fontWeight: 700, fontSize: 58, color: '#FFFFFF' }}>{head.fields[0]}</div>
+      <div style={{ position: 'absolute', left: 120, top: 196, fontFamily: FONT, fontWeight: 600, fontSize: 32, color: '#9AA6B8' }}>{head.fields[1]}</div>
+      <svg width={1920} height={1080} style={{ position: 'absolute' }}>
+        <line x1={X0} y1={290} x2={X0} y2={290 + rows.length * 150} stroke="#4A5468" strokeWidth={4} />
+        {rows.map((r, i) => {
+          const y = 320 + i * 150;
+          const p = rise(frame, r.at, 22);
+          const col = r.fields[2] === 'red' ? '#E5484D' : accent;
+          return (
+            <g key={i} opacity={p > 0 ? 1 : 0}>
+              <rect x={X0} y={y} width={Math.max(2, (vals[i] / max) * W * p)} height={92} rx={6} fill={col} />
+              <text x={X0 - 24} y={y + 60} textAnchor="end" fontFamily={FONT} fontWeight={700} fontSize={34} fill="#C9D3E0">{r.fields[0]}</text>
+              <text x={X0 + (vals[i] / max) * W * p + 22} y={y + 66} fontFamily={FONT} fontWeight={800} fontSize={52} fill="#FFFFFF" opacity={p}>{r.fields[1]}</text>
+            </g>
+          );
+        })}
+      </svg>
+    </AbsoluteFill>
+  );
+}
+
+/**
  * GDCh 2015: a worst-case pretzel (3.3 mg aluminium, BfR 2002) against a 20 kg child's daily share of
  * the EFSA limit (1 mg per kg per week: 20 mg a week, 2.9 mg a day).
  */
