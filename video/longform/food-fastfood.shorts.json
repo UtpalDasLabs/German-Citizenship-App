@@ -1,0 +1,35 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "Europe nearly redefined the döner",
+      "spoken": "In 2025, Europe nearly decided what a döner may be.",
+      "paragraphs": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "Currywurst was never patented",
+      "spoken": "Berlin says Herta Heuwer invented the Currywurst. Did she patent it?",
+      "paragraphs": [
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "A fictional woman has a Currywurst plaque",
+      "spoken": "A woman who never existed has a plaque for the Currywurst.",
+      "paragraphs": [
+        14,
+        15,
+        16
+      ]
+    }
+  ]
+}

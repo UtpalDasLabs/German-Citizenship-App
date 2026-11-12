@@ -294,7 +294,7 @@ const stamp = (frame) => {
 function shownMedia() {
   const ids = new Set();
   for (const sh of shots) {
-    if (!['photo', 'line', 'place', 'list', 'stat'].includes(sh.key)) continue;
+    if (!['photo', 'line', 'place', 'list', 'stat', 'figure', 'receipt', 'bignums'].includes(sh.key)) continue;
     for (const l of sh.screen) {
       const f = l.split(' @ ')[0].split(/ ?\| ?/).map((x) => x.trim());
       ids.add(f[0] === 'bg' ? f[1] : f[0]);
@@ -322,7 +322,7 @@ function seriesCredits() {
   const plain = (f) => f.replace(/\.[a-z0-9]+$/i, '');
   const pixabay = clips.filter((c) => c.source === 'pixabay');
   const users = [...new Set(pixabay.map((c) => (c.credit ?? '').match(/^Video by (.+?) from Pixabay/)?.[1]).filter(Boolean))];
-  const made = [...new Set(clips.filter((c) => /made with|Kling|Veo/i.test(c.credit ?? '')).map((c) => (/Veo/i.test(c.credit) ? 'Google Veo' : 'Kling AI')))];
+  const made = [...new Set(clips.filter((c) => /made with|Kling|Veo|Omni/i.test(c.credit ?? '')).map((c) => (/Omni/i.test(c.credit) ? 'Gemini Omni' : /Veo/i.test(c.credit) ? 'Google Veo' : 'Kling AI')))];
   const ccClips = clips.filter((c) => c.source === 'file' && /CC BY/.test(c.credit ?? ''));
   const short = [
     'Pictures and video',
@@ -355,7 +355,7 @@ function describeSeries(chapterLines) {
   const text = [
     script.meta.title,
     '',
-    ...(script.meta.summary ? [script.meta.summary, ''] : []),
+    ...(script.meta.summary ? [String(script.meta.summary).replace(/^"|"$/g, '').replace(/\\n/g, '\n'), ''] : []),
     'Chapters',
     ...chapterLines,
     '',
