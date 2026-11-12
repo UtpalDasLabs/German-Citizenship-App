@@ -77,6 +77,46 @@
       "start": 0,
       "seconds": 15,
       "credit": "Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-250772/"
+    },
+    {
+      "id": "glu-history",
+      "source": "pixabay",
+      "pixabayId": 42128,
+      "start": 0,
+      "seconds": 22,
+      "credit": "Video by caelan from Pixabay: https://pixabay.com/videos/id-42128/"
+    },
+    {
+      "id": "glu-after",
+      "source": "pixabay",
+      "pixabayId": 63970,
+      "start": 0,
+      "seconds": 31,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-63970/"
+    },
+    {
+      "id": "bg-paper",
+      "source": "pixabay",
+      "pixabayId": 154141,
+      "start": 0,
+      "seconds": 20,
+      "credit": "Video by Placidplace from Pixabay: https://pixabay.com/videos/id-154141/"
+    },
+    {
+      "id": "bg-news",
+      "source": "pixabay",
+      "pixabayId": 119672,
+      "start": 0,
+      "seconds": 27,
+      "credit": "Video by Eartvideos from Pixabay: https://pixabay.com/videos/id-119672/"
+    },
+    {
+      "id": "bg-library",
+      "source": "pixabay",
+      "pixabayId": 202823,
+      "start": 0,
+      "seconds": 30,
+      "credit": "Video by Visual_Laurence from Pixabay: https://pixabay.com/videos/id-202823/"
     }
   ]
 }

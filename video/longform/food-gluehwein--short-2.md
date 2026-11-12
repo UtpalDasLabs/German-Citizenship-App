@@ -14,7 +14,7 @@ questions: []
 ## Short
 
 > SCENE (receipt): Kalte Ente.
-> bg | bg-typewriter2
+> bg | bg-archive
 > Regulation (EU) 251/2014, Annex II | Kalte Ente
 > Wine plus at least ==a quarter sparkling wine== | share of the finished drink @ quarter sparkling
 > Natural ==lemon== or its extracts | @ lemon
