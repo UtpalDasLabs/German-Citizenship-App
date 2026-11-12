@@ -1,0 +1,90 @@
+{
+  "topic": "food-beer",
+  "note": "Omni (stylised storybook) and Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "beer-hook",
+      "source": "veo",
+      "file": "veo/beer-hook.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A foaming beer mug on a wooden table in front of an old parchment document with a wax seal, candlelight. Curious mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "The beer and the old law: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "beer-guesses",
+      "source": "veo",
+      "file": "veo/beer-guesses.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A painted medieval monk beside a steaming brewing kettle with foam rising, a quill and parchment on the bench. Whimsical mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "Where does the word come from: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "beer-wheat",
+      "source": "veo",
+      "file": "veo/beer-wheat.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A painted medieval baker kneading dough beside a field of golden wheat, a brewer watching from the doorway. Warm mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "Wheat for bakers: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "beer-finale",
+      "source": "veo",
+      "file": "veo/beer-finale.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Warm light, several beer glasses clinking together on a wooden table, foam spilling a little, a joyful pub evening. Joyful mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "Cheers: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "yeast-foam",
+      "source": "pixabay",
+      "pixabayId": 218613,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by Kaffeesüchtig from Pixabay: https://pixabay.com/videos/id-218613/"
+    },
+    {
+      "id": "brewery",
+      "source": "pixabay",
+      "pixabayId": 82603,
+      "start": 0,
+      "seconds": 20,
+      "credit": "Video by TPMotion from Pixabay: https://pixabay.com/videos/id-82603/"
+    },
+    {
+      "id": "bg-typewriter",
+      "source": "pixabay",
+      "pixabayId": 107243,
+      "start": 0,
+      "seconds": 24,
+      "credit": "Video by mootlak from Pixabay: https://pixabay.com/videos/id-107243/"
+    },
+    {
+      "id": "bg-typewriter2",
+      "source": "pixabay",
+      "pixabayId": 113407,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by AttilaPergel from Pixabay: https://pixabay.com/videos/id-113407/"
+    },
+    {
+      "id": "bg-archive",
+      "source": "pixabay",
+      "pixabayId": 33237,
+      "start": 0,
+      "seconds": 12,
+      "credit": "Video by tarlamu from Pixabay: https://pixabay.com/videos/id-33237/"
+    },
+    {
+      "id": "bg-berlin",
+      "source": "pixabay",
+      "pixabayId": 2241,
+      "start": 0,
+      "seconds": 15,
+      "credit": "Video by Maria_Briones from Pixabay: https://pixabay.com/videos/id-2241/"
+    }
+  ]
+}

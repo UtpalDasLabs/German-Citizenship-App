@@ -1,0 +1,33 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "The famous beer law never mentions yeast",
+      "spoken": "The famous 1516 beer law names three ingredients. Yeast isn't one of them.",
+      "paragraphs": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "Beer rules existed before 1516",
+      "spoken": "The story says 1516 gave Germany its beer purity law. The paper trail shows beer rules from 1302.",
+      "paragraphs": [
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "Nobody can explain the word Bier",
+      "spoken": "The German word for beer has an unexplained origin.",
+      "paragraphs": [
+        7,
+        8
+      ]
+    }
+  ]
+}

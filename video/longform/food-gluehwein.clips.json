@@ -1,0 +1,82 @@
+{
+  "topic": "food-gluehwein",
+  "note": "Omni (stylised storybook) and Pixabay stock (Content License).",
+  "clips": [
+    {
+      "id": "glu-market-hook",
+      "source": "veo",
+      "file": "veo/glu-market-hook.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A Christmas market stall at dusk, strings of warm lights, steam rising from a large pot of dark red wine, a hand with a ladle fills a cup, snow-dusted roofs behind. Curious mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "The Christmas market stall: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "glu-pot-stir",
+      "source": "veo",
+      "file": "veo/glu-pot-stir.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Close view of a copper pot of red wine on a stall, a hand drops cinnamon sticks and cloves into it, steam curling. Warm, cosy mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "The spiced pot: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "glu-duck",
+      "source": "veo",
+      "file": "veo/glu-duck.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A friendly painted duck standing on a cold snowy market table next to a tall glass of pale sparkling wine with a lemon slice. Playful mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "Kalte Ente: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "glu-finale",
+      "source": "veo",
+      "file": "veo/glu-finale.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A painted Christmas market at night, two gloved hands around a steaming cup, warm glowing lights and soft snowfall. Joyful, satisfied mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "The cup in your hand: made with Gemini Omni",
+      "speed": 0.7
+    },
+    {
+      "id": "topping-up",
+      "source": "pixabay",
+      "pixabayId": 143319,
+      "start": 0,
+      "seconds": 15,
+      "credit": "Video by Nightwolfone from Pixabay: https://pixabay.com/videos/id-143319/"
+    },
+    {
+      "id": "woodland",
+      "source": "pixabay",
+      "pixabayId": 12687,
+      "start": 0,
+      "seconds": 17,
+      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-12687/"
+    },
+    {
+      "id": "bg-typewriter",
+      "source": "pixabay",
+      "pixabayId": 108946,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by mootlak from Pixabay: https://pixabay.com/videos/id-108946/"
+    },
+    {
+      "id": "bg-typewriter2",
+      "source": "pixabay",
+      "pixabayId": 34258,
+      "start": 0,
+      "seconds": 20,
+      "credit": "Video by thenickmurphy from Pixabay: https://pixabay.com/videos/id-34258/"
+    },
+    {
+      "id": "bg-archive",
+      "source": "pixabay",
+      "pixabayId": 250772,
+      "start": 0,
+      "seconds": 15,
+      "credit": "Video by jeffjacobs1990 from Pixabay: https://pixabay.com/videos/id-250772/"
+    }
+  ]
+}
