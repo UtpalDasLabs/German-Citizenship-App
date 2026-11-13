@@ -1,0 +1,94 @@
+{
+  "topic": "logic-sunkcost",
+  "note": "Gemini Omni hero clips, Pixar 3D look, one look all episode. Lena, Max, Sara are made-up people.",
+  "clips": [
+    {
+      "id": "omni-hook-lena",
+      "source": "veo",
+      "file": "veo/sunkcost/hook-lena.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm dim lamp light at night, cosy small living room. LENA: a woman in her early thirties, shoulder-length wavy auburn hair, teal knit sweater, kind expressive face. Lena sits curled on the sofa late at night holding her phone, its glow on her face. Through a half-open door behind her, a bedroom with a sleeping figure. She glances at the door, looks down at the phone, then stares into the distance with a long, tired, conflicted sigh. Gentle, quiet, no dialogue.",
+      "seconds": 8,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "speed": 0.65
+    },
+    {
+      "id": "omni-lena-friend",
+      "source": "veo",
+      "file": "veo/sunkcost/lena-friend.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm afternoon light, cosy cafe with two cups on a wooden table. Same LENA: a woman in her early thirties, shoulder-length wavy auburn hair, teal knit sweater, kind expressive face, sits across from her friend SARA: a woman in her early thirties, curly black hair, mustard yellow coat. Lena talks, shrugging sadly. Sara listens, tilts her head and asks one quiet question; Lena freezes, then slowly looks down at her cup, deep in thought.",
+      "seconds": 8,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "speed": 0.65,
+      "referenceFrom": "omni-hook-lena"
+    },
+    {
+      "id": "omni-lena-max",
+      "source": "veo",
+      "file": "veo/sunkcost/lena-max.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, small kitchen with a wooden table and two mugs. Same LENA: a woman in her early thirties, shoulder-length wavy auburn hair, teal knit sweater, kind expressive face, sits across from MAX: a man in his early thirties, short dark hair, light stubble, grey knit jumper. Lena speaks gently and honestly; Max listens, his shoulders relax, he nods and reaches across the table to take her hand. A feeling of relief and a fresh start.",
+      "seconds": 8,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "speed": 0.65,
+      "referenceFrom": "omni-hook-lena"
+    },
+    {
+      "id": "omni-ending",
+      "source": "veo",
+      "file": "veo/sunkcost/ending.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm golden evening light, bright cosy kitchen. Same LENA: a woman in her early thirties, shoulder-length wavy auburn hair, teal knit sweater, kind expressive face and same MAX: a man in his early thirties, short dark hair, light stubble, grey knit jumper cooking together, chopping vegetables, laughing; she flicks a bit of flour at his nose, he laughs and hugs her from the side. Joyful and light.",
+      "seconds": 8,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "speed": 0.65,
+      "referenceFrom": "omni-hook-lena"
+    },
+    {
+      "id": "coins",
+      "source": "pixabay",
+      "pixabayId": 5132,
+      "start": 0,
+      "seconds": 18,
+      "speed": 0.7,
+      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-5132/"
+    },
+    {
+      "id": "curtain",
+      "source": "pixabay",
+      "pixabayId": 320,
+      "start": 0,
+      "seconds": 10,
+      "speed": 0.55,
+      "credit": "Video by Vimeo-Free-Videos from Pixabay: https://pixabay.com/videos/id-320/"
+    },
+    {
+      "id": "gym",
+      "source": "pixabay",
+      "pixabayId": 77916,
+      "start": 0,
+      "seconds": 16,
+      "speed": 1,
+      "credit": "Video by patw64 from Pixabay: https://pixabay.com/videos/id-77916/"
+    },
+    {
+      "id": "paint",
+      "source": "pixabay",
+      "pixabayId": 85348,
+      "start": 0,
+      "seconds": 10,
+      "speed": 0.65,
+      "credit": "Video by AlexKopeykin from Pixabay: https://pixabay.com/videos/id-85348/"
+    },
+    {
+      "id": "study",
+      "source": "pixabay",
+      "pixabayId": 124252,
+      "start": 0,
+      "seconds": 15,
+      "speed": 0.8,
+      "credit": "Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-124252/"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import { End, Fact, List, Outro, PhotoScene, Quote, Stat, Term, Words } from './
 import { useAccent, useSeries } from './series';
 import { KitScene } from '../kit/Kit';
 import { RigScene } from '../kit/Rig';
-import { Backoff, Bandit, Collide, Curve, Horizon, Jam, Lru, DeskLoft, RulesRace, FutureRule, Noguchi, AdventWheel, Rivals, Receipt, Figure, Stamp, BigNums, Bars, ChildGauge, AluBars, SaltGauge, Notebook, SortCost, Line, Place, Stopping, Waits, WallTimeline, Edf, Spt, Inversion, Loops, Sessions } from './series-shots';
+import { Backoff, Bandit, Collide, Curve, Horizon, Jam, Lru, DeskLoft, RulesRace, FutureRule, Noguchi, AdventWheel, Rivals, Receipt, Figure, Stamp, BigNums, Bars, ChildGauge, AluBars, SaltGauge, Notebook, SortCost, Line, Place, Stopping, Waits, WallTimeline, Edf, Spt, Inversion, Loops, Sessions, Sunk, Theatre, TheatreBars } from './series-shots';
 import { alpha, APP_NAME, C, FONT, GOLD } from '../lib/brand';
 import { load } from '../lib/data';
 import { Archive, CrossIn, FactCard, Grain, INK, PAPER, Photo, PhotoCaption, rise, SERIF, SpokenText } from './look';
@@ -1100,6 +1100,12 @@ export function shotFor(key: string | null, topic: string, title: string, questi
       return <Loops />;
     case 'sessions':
       return <Sessions />;
+    case 'sunk':
+      return <Sunk />;
+    case 'theatre':
+      return <Theatre />;
+    case 'theatre2':
+      return <TheatreBars />;
     default:
       return null;
   }

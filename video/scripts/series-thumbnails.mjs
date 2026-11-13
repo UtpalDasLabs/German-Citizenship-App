@@ -42,6 +42,7 @@ const THUMBS = [
   { topic: 'food-gluehwein', series: 'hidden', photo: 'thumb-glu', side: true, pos: '50%', narrow: true, lines: ['No water in', 'Glühwein?'], accent: 'Glühwein?', tag: 'What European law says is in the cup' },
   { topic: 'food-beer', series: 'hidden', photo: 'thumb-beer', side: true, pos: '50%', narrow: true, lines: ['The beer law', 'never said yeast'], accent: 'yeast', tag: 'What 1516 really said' },
   { topic: 'food-fastfood', series: 'hidden', photo: 'thumb-doener', side: true, pos: '45%', narrow: true, lines: ['Döner vs', 'Currywurst'], accent: 'Currywurst', tag: 'What the paperwork says' },
+  { topic: 'logic-sunkcost', series: 'logic', photo: 'thumb-lena', side: true, pos: '55%', narrow: true, lines: ['Four years.', 'Stay?'], accent: 'Stay?', tag: 'The logic of money and time already spent' },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 
@@ -66,7 +67,7 @@ function page({ topic, series, photo, side, pos = 'center', narrow, doors, lines
 @font-face{font-family:Inter;font-weight:700;src:url(file://${FONTS}/inter/files/inter-latin-700-normal.woff2)}
 @font-face{font-family:Inter;font-weight:800;src:url(file://${FONTS}/inter/files/inter-latin-800-normal.woff2)}
 html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#0B0E14;font-family:Inter,sans-serif;color:#fff}
-.photo{position:absolute;top:0;bottom:0;right:0;left:${side ? (narrow ? '48%' : '42%') : '0'};background:url(file://${img}) ${pos} center/cover;filter:saturate(1.1) contrast(1.05)}
+.photo{position:absolute;top:0;bottom:0;right:0;left:${side ? (narrow ? '48%' : '42%') : '0'};background:url('file://${encodeURI(img)}') ${pos} center/cover;filter:saturate(1.1) contrast(1.05)}
 .doors{position:absolute;right:60px;top:200px;display:flex;gap:14px;align-items:flex-end}
 .door{width:44px;height:300px;border:3px solid;border-radius:8px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;background:#1A2130}
 .door div{width:100%;border-radius:4px}
@@ -82,7 +83,7 @@ html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#0B0E14;
 }
 
 fs.mkdirSync(OUT, { recursive: true });
-for (const t of THUMBS) {
+for (const t of THUMBS.filter((x) => !process.argv[2] || x.topic === process.argv[2])) {
   const html = path.join(OUT, `series-${t.name ?? t.topic}.html`);
   const png = path.join(OUT, `series-${t.name ?? t.topic}.png`);
   fs.writeFileSync(html, page(t));

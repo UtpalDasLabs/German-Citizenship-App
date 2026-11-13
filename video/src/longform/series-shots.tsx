@@ -1824,3 +1824,95 @@ export function ChildGauge() {
     </AbsoluteFill>
   );
 }
+
+/** Sunk cost: two doors, STAY and LEAVE; the money already spent sits, greyed, behind both. */
+export function Sunk() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const door = (x: number, label: string, sub: string, at: number) => (
+    <div style={{ position: 'absolute', left: x, top: 170, width: 640, height: 640, borderRadius: 28, border: `4px solid ${alpha(accent, 0.7)}`, background: 'rgba(255,255,255,0.05)', opacity: rise(frame, at, 14), display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: 50 }}>
+      <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 84, color: C.text, letterSpacing: 4 }}>{label}</div>
+      <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 38, color: '#C9D3E0', marginTop: 10 }}>{sub}</div>
+      <div style={{ marginTop: 120, padding: '26px 40px', borderRadius: 20, background: 'rgba(160,170,185,0.25)', border: '3px dashed #8A94A6', fontFamily: FONT, fontWeight: 900, fontSize: 56, color: '#8A94A6', textDecoration: 'line-through', opacity: rise(frame, fps * 8, 14) }}>
+        4 years
+      </div>
+      <div style={{ marginTop: 18, fontFamily: FONT, fontWeight: 700, fontSize: 36, color: '#8A94A6', opacity: rise(frame, fps * 8, 14) }}>gone either way</div>
+    </div>
+  );
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 60, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 56, color: C.text }}>
+        Two doors. Only the <span style={{ color: accent }}>future</span> differs.
+      </div>
+      {door(200, 'STAY', 'a possible future', fps * 1.5)}
+      {door(1080, 'LEAVE', 'a possible future', fps * 3.5)}
+      <div style={{ position: 'absolute', bottom: 70, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 48, color: '#C9D3E0', opacity: rise(frame, fps * 12, 14) }}>
+        Same amount behind both. It can't <span style={{ color: accent }}>tip the choice</span>.
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** Three season tickets handed out by lottery: full price, $2 off, $7 off. */
+export function Theatre() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const items = [
+    { big: '$15', small: 'full price', at: fps * 2 },
+    { big: '$2 off', small: 'a promotion', at: fps * 4 },
+    { big: '$7 off', small: 'a promotion', at: fps * 6 },
+  ];
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 80, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 64, color: C.text }}>
+        Season tickets, price decided by <span style={{ color: accent }}>lottery</span>
+      </div>
+      {items.map((it, i) => (
+        <div key={i} style={{ position: 'absolute', left: 190 + i * 520, top: 300, width: 460, height: 380, borderRadius: 26, background: alpha(accent, 0.14), border: `4px solid ${alpha(accent, 0.8)}`, opacity: rise(frame, it.at, 12), transform: `translateY(${(1 - rise(frame, it.at, 12)) * 40}px) rotate(${(i - 1) * 3}deg)`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 110, color: C.text }}>{it.big}</div>
+          <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 40, color: '#C9D3E0' }}>{it.small}</div>
+        </div>
+      ))}
+      <div style={{ position: 'absolute', top: 790, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 48, color: '#C9D3E0', opacity: rise(frame, fps * 8, 14) }}>
+        Same plays. Same seats. <span style={{ color: accent, fontWeight: 900 }}>Only the price was luck.</span>
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** Tickets used in the first five plays: 4.1 for full price, about 3.3 for both discounts. */
+export function TheatreBars() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const bars = [
+    { label: 'Full price', v: 4.11, at: fps * 1.5, c: accent },
+    { label: '$2 off', v: 3.32, at: fps * 4.5, c: '#8A94A6' },
+    { label: '$7 off', v: 3.29, at: fps * 5.5, c: '#8A94A6' },
+  ];
+  const base = 760;
+  const scale = 140;
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 60, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 56, color: C.text }}>
+        Tickets used, first five plays
+      </div>
+      {bars.map((b, i) => {
+        const p = interpolate(frame, [b.at, b.at + 22], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic) });
+        const h = b.v * scale * p;
+        return (
+          <React.Fragment key={i}>
+            <div style={{ position: 'absolute', left: 330 + i * 450, top: base - h, width: 300, height: h, borderRadius: '18px 18px 0 0', background: b.c }} />
+            <div style={{ position: 'absolute', left: 330 + i * 450, top: base - h - 90, width: 300, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 72, color: C.text, opacity: p }}>{b.v.toFixed(1)}</div>
+            <div style={{ position: 'absolute', left: 330 + i * 450, top: base + 20, width: 300, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 42, color: '#C9D3E0' }}>{b.label}</div>
+          </React.Fragment>
+        );
+      })}
+      <div style={{ position: 'absolute', top: 880, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 46, color: '#C9D3E0', opacity: rise(frame, fps * 8, 14) }}>
+        The more they paid, the more they <span style={{ color: accent }}>showed up</span>.
+      </div>
+    </AbsoluteFill>
+  );
+}
