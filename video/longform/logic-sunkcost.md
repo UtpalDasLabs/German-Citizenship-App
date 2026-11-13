@@ -36,13 +36,18 @@ $1.1 billion, Tennessee-Tombigbee Waterway.
 
 [calm] It's eleven at night, and Lena is lying awake with a sentence she has said to herself many times. "We've been together four years. I can't just throw that away."
 
+> SCENE (photo): Lena and Max at dinner, saying nothing.
+> omni-silence | The last year. | color key
+
+[calm] The last year with Max has been mostly arguments and silence. She isn't sure she wants to stay. But she's even less sure she wants to leave, because of the four years.
+
 > SCENE (line): The sentence.
-> "Four years. I can't throw that away." @ The last year
+> "Four years" is about the past. @ Look at that sentence
 
-[calm] The last year with Max has been mostly arguments and silence. She isn't sure she wants to stay. But she's even less sure she wants to leave, because of the four years. Look at that sentence. It's about the past. It says nothing about the next four.
+[calm] Look at that sentence. It's about the past. It says nothing about the next four.
 
-> SCENE (line): The rule hides in it.
-> Is the past a reason? @ There is a rule
+> SCENE (photo): Lena reads something on her laptop and smiles.
+> omni-lena-reads | There is a rule for this. | color key
 
 [calm] There's a rule from psychology and economics for exactly this trap. It has a name that sounds cold, and it's one of the kindest ideas I know.
 
@@ -58,8 +63,7 @@ $1.1 billion, Tennessee-Tombigbee Waterway.
 
 ## The idea
 
-> SCENE (line): What a sunk cost is.
-> Sunk cost: spent, and gone for good. @ A sunk cost
+> SCENE (spent): Money, time, effort and years turn grey: spent, gone for good.
 
 [calm] A sunk cost is anything you have already spent and cannot get back. Money, time, effort, years. The word that matters is "back". Whatever you do next, it's gone.
 
@@ -67,13 +71,9 @@ $1.1 billion, Tennessee-Tombigbee Waterway.
 
 [calm] Picture two doors for Lena. Stay, or leave. Behind each is a possible future. Now look where the four years are. Behind both doors. Same four years, same gone. So they can't tip the choice either way. A fair choice only compares what is still ahead.
 
-> SCENE (line): The rule.
-> From here on: what does each choice cost, and give? @ That is the rule
+> SCENE (forward): The past greyed out; only the future, two branches, is weighed; then the zero-point question.
 
 [calm] That is the whole rule. Ask one question about the future: from here on, what does each choice cost me, and what does it give me?
-
-> SCENE (line): The trick.
-> If I were starting from zero today, would I choose this? @ And here's a trick
 
 [calm] And here's a trick that makes it easy. Pretend you're starting from zero. If you met this person, this job, this plan today, exactly as it is now, would you begin?
 
@@ -104,8 +104,8 @@ $1.1 billion, Tennessee-Tombigbee Waterway.
 
 [warmly] They change something. Not because of the four years. Because of the next four.
 
-> SCENE (line): Another answer.
-> The question doesn't choose for you. @ And for someone else
+> SCENE (photo): Another pair says a calm goodbye on a station platform.
+> omni-goodbye | A kind goodbye. | color key
 
 [calm] And for someone else, the same question gets a different answer: a quiet, kind goodbye that hurts less than four more years of the same. The question doesn't tell you what to choose. It takes the past off the scale, so you can see what is actually there.
 
@@ -126,8 +126,7 @@ $1.1 billion, Tennessee-Tombigbee Waterway.
 
 [warmly] Over the first five plays, the full-price group used just over four tickets each. The discount groups used just over three. The more people had paid, the more they showed up. Not because the plays were better. Because they had paid.
 
-> SCENE (line): The fade.
-> By the second half of the season, the difference was gone. @ And there is good news
+> SCENE (theatre3): Second-half bars: the groups use about the same number again.
 
 [calm] And there's good news in the result too. In the second half of the season, the difference disappeared. The sting of the price wears off with time. It was one small study, fifty-four people, so treat it as a clue, not a law.
 
@@ -150,8 +149,10 @@ $1.1 billion, Tennessee-Tombigbee Waterway.
 
 [calm] One senator who wanted it to go on said that stopping a project with one point one billion dollars already put into it would be a waste of taxpayers' money. Another said the same: stopping now would waste the funds already invested. Notice what both of them are counting. Not what finishing would still cost, or what the canal would earn. What had already gone.
 
-> SCENE (line): Why we do it.
-> We hate to look wasteful. @ So why do we do this
+> SCENE (list): Why we do it.
+> Leaving | Feels like admitting a mistake @ Leaving feels
+> The mistake | Already happened, at the ticket desk @ But the mistake already happened
+> Staying | Adds a second one @ Staying only adds
 
 [warmly] So why do we do this? The authors of that first study think it comes down to one feeling: we don't want to look wasteful. Leaving feels like admitting the investment was a mistake. But the mistake already happened. Staying only adds a second one.
 
@@ -189,18 +190,19 @@ $1.1 billion, Tennessee-Tombigbee Waterway.
 
 [calm] One. It does not mean "quit when it gets hard". Learning German. Studying for an exam a year away. The gym. The middle of any good goal is hard and boring, and none of that is a sunk-cost problem.
 
-> SCENE (line): The forward test.
-> Is the next month taking me closer? @ The test
+> SCENE (list): The forward test.
+> Is the next month taking me closer? | If yes, keep going, even when it's dull @ The test is still forward
+> Only keeping going to avoid a past mistake? | That's the fallacy @ If you only keep going
 
 [warmly] The test is still forward. Not "how much have I put in", but "is the next month actually taking me closer to something I still want?" If yes, keep going, even when it's dull. If you only keep going to avoid admitting the past was a mistake, that's the fallacy.
 
-> SCENE (line): Limit two.
-> Two: a promise is not a sunk cost. @ Two
+> SCENE (photo): Wrapped birthday gifts.
+> gifts | Two: a promise is not a sunk cost. | color key
 
 [calm] Two. A promise is not a sunk cost. If you told a friend you would come to her birthday, breaking that promise is a cost that's still ahead of you. It counts.
 
-> SCENE (line): Limit three.
-> Three: the past can teach you. @ And three
+> SCENE (photo): Writing in a journal.
+> journal | Three: the past can teach you. | color key
 
 [calm] And three. The past has no vote, but it can give advice. What did that relationship, that course, that job teach you about what you want? Keep that. Let the rest go.
 

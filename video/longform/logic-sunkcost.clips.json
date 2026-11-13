@@ -89,6 +89,56 @@
       "seconds": 15,
       "speed": 0.8,
       "credit": "Video by Amorn_mimi from Pixabay: https://pixabay.com/videos/id-124252/"
+    },
+    {
+      "id": "omni-silence",
+      "source": "veo",
+      "file": "veo/sunkcost/silence.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm dim evening light, small dining table with two plates of untouched food. Same LENA: a woman in her early thirties, shoulder-length wavy auburn hair, teal knit sweater, kind expressive face sits across from MAX: a man in his early thirties, short dark hair, light stubble, grey knit jumper. Neither speaks; Lena stares at her plate, Max looks at his phone, a clock ticks on the wall behind them. Lena glances up at him, he does not notice, she looks down again. Quiet, sad, no dialogue.",
+      "seconds": 8,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "speed": 0.65,
+      "referenceFrom": "omni-hook-lena"
+    },
+    {
+      "id": "omni-lena-reads",
+      "source": "veo",
+      "file": "veo/sunkcost/lena-reads.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm lamp light at night, small kitchen table with a mug and a laptop. Same LENA: a woman in her early thirties, shoulder-length wavy auburn hair, teal knit sweater, kind expressive face reads something on her laptop, leans closer, her eyebrows lift, then she slowly smiles with quiet relief and sits back.",
+      "seconds": 8,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "speed": 0.65,
+      "referenceFrom": "omni-hook-lena"
+    },
+    {
+      "id": "omni-goodbye",
+      "source": "veo",
+      "file": "veo/sunkcost/goodbye.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, soft dusk light, a quiet train platform. Two adults: a woman with a dark bob haircut and a beige coat, and a man in a blue coat with a small suitcase. They face each other, speak a few gentle words, and hug warmly for a long moment; then he picks up the suitcase, smiles sadly, and walks away while she watches with a calm, peaceful face.",
+      "seconds": 8,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "speed": 0.65
+    },
+    {
+      "id": "gifts",
+      "source": "pixabay",
+      "pixabayId": 54846,
+      "start": 0,
+      "seconds": 15,
+      "speed": 0.8,
+      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-54846/"
+    },
+    {
+      "id": "journal",
+      "source": "pixabay",
+      "pixabayId": 43869,
+      "start": 0,
+      "seconds": 11,
+      "speed": 0.8,
+      "credit": "Video by MaxMedyk from Pixabay: https://pixabay.com/videos/id-43869/"
     }
   ]
 }

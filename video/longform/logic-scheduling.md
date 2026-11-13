@@ -1,39 +1,38 @@
 ---
-title: "Which Task First? The Simple Rule Behind a Good To-Do List"
+title: "The Talk You Keep Postponing: A Simple Rule for What to Do First"
 series: logic
 voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 questions: []
-summary: "Stress is not how much work you have, it is how much of it is unfinished. Computer scientists know three rules for the order of a to-do list: earliest due date, shortest job first, and free whoever is blocked. The last one saved NASA's Mars Pathfinder in 1997. How the same rules work for big slow goals like the gym or an exam, and for arguments with the people close to you."
+summary: "Jonas has been avoiding one conversation with his flatmate for nine days. Why do the hard talks wait longest, and is there a smart order for everything on your list? Computer scientists know three rules: earliest due date, shortest job first, and free whoever is blocked. The last one saved NASA's Mars Pathfinder in 1997. How the same rules work on arguments, on big slow goals like the gym or an exam, and on to-do lists."
 sources: ["Jackson's rule (earliest due date) and Smith's rule (shortest processing time): https://en.wikipedia.org/wiki/Single-machine_scheduling", "Glenn Reeves, JPL: What really happened on Mars Pathfinder: https://www.cs.cornell.edu/courses/cs614/1999sp/papers/pathfinder.html", "Mars Pathfinder: https://en.wikipedia.org/wiki/Mars_Pathfinder", "E. J. Masicampo, R. F. Baumeister: Consider it done! Plan making can eliminate the cognitive effects of unfulfilled goals, Journal of Personality and Social Psychology 101(4), 2011", "P. Gollwitzer, P. Sheeran: Implementation intentions and goal achievement: a meta-analysis, Advances in Experimental Social Psychology 38, 2006", "Brian Christian, Tom Griffiths: Algorithms to Live By (2016), chapter 5"]
 target: about 9 minutes
-status: draft 1
+status: draft 2 (13 Nov 2026, personal-life hook)
 ---
 
 <!--
-Logic to Live By, episode 7. Format: see the top of basic-rights.md.
-Delivery: calm and steady (stability 1.0), [warmly] for story peaks, no tag
-for plain practical lines. Never [dramatic].
-Pictures: 3D Jonas (hook, dentist, flatmates, ending), 3D Mira and Tom (made-up
-friends, told as "picture two friends"), 2D explainers for every rule, NASA/JPL
-public-domain images for Mars. The two friends are an illustration, not a true story.
+Logic to Live By, episode 7, v2 (13 Nov 2026): opens on a relationship problem
+(the personal-life hook, docs/PLAYBOOK.md). Jonas and his flatmate Ana, and the
+made-up friends Mira and Tom, are illustrations, not true stories.
+Delivery: [calm] base, [warmly] at human peaks, never [dramatic].
 -->
+
 
 ## Cold open
 
-> SCENE (photo): Jonas at his desk, a sticky note in hand.
-> omni-hook-desk | Which one first? | color key
+> SCENE (photo): Jonas and Ana at the kitchen table, an awkward silence.
+> omni-flatmates | Nine days. | color key
 
-[calm] Here's something odd. Stress isn't about how much work you have. It's about how much of it is unfinished.
+[calm] Jonas has been avoiding the same conversation with his flatmate for nine days.
 
-> SCENE (loops): One task not started against twenty with eight done.
+[calm] Jonas and Ana have three things between them. The heating bill. Whose turn it is to clean. And a comment Ana made two weeks ago that still stings.
 
-[calm] A person with one big thing, not started, can feel more stressed than a person with twenty things who has already done a few of them. The pile isn't the problem. The open loops are.
+> SCENE (photo): Ana in her room, glancing at the door and her phone.
+> omni-ana-waiting | And Ana waits. | color key
 
-> SCENE (line): The lost hour.
-> Three tasks. The first hour lost deciding. @ Three things
+[calm] So he does what most of us do. He starts with none of them. Emails. Laundry. A very long walk. And in the next room, Ana waits.
 
-[calm] Meet Jonas. Three things to do, not enough hours, and he spends the first hour not doing any of them, just deciding which one to start. There is a better way to decide. Computer scientists worked it out, and it takes about ten seconds.
+[calm] Why do the hard talks wait the longest? And is there a smart order for everything else on the list? There is. Computer scientists worked it out, and it takes about ten seconds.
 
 > SCENE (line): Series card.
 > Logic to Live By
@@ -44,6 +43,15 @@ public-domain images for Mars. The two friends are an illustration, not a true s
 > LOGIC TO LIVE BY · EPISODE 7
 
 [calm] Today: scheduling. Which task first, and why the answer depends on one question: what are you trying to protect?
+
+> SCENE (photo): Jonas at his desk, three sticky notes.
+> omni-hook-desk | Which one first? | color key
+
+[calm] Here's something odd. Stress isn't about how much work you have. It's about how much of it is unfinished.
+
+> SCENE (loops): One task not started against twenty with eight done.
+
+[calm] A person with one big thing, not started, can feel more stressed than a person with twenty things who has already done a few of them. The pile isn't the problem. The open loops are.
 
 ## The problem
 
@@ -70,6 +78,11 @@ public-domain images for Mars. The two friends are an illustration, not a true s
 
 [calm] So for Jonas, the rent form, due Tuesday, goes before the essay, due Friday. Even if the essay feels bigger and scarier.
 
+> SCENE (line): Rule one, with people.
+> Rule one: the talk with a date comes first. @ Rule one
+
+[calm] Rule one: whatever has a real date goes first. The bill is due Friday. So that talk happens now, not after the feelings.
+
 ## Rule two
 
 > SCENE (spt): The same two jobs in two orders.
@@ -91,6 +104,11 @@ public-domain images for Mars. The two friends are an illustration, not a true s
 
 [calm] And if some tasks matter more than others, divide importance by length. Do the most important-per-minute job first.
 
+> SCENE (line): Rule two, with people.
+> Rule two: small and quick, today. @ Rule two
+
+[calm] Rule two: small and quick, today. "Sorry, I was short with you this morning." Ten seconds, and a loop closes.
+
 ## The story
 
 > SCENE (place): Mars, 1997.
@@ -108,6 +126,16 @@ public-domain images for Mars. The two friends are an illustration, not a true s
 > pano | Fixed with a patch sent to Mars. | color key @ patch
 
 [calm] The fix was a rule, sent up to Mars as a software patch: if a low task holds something a high task needs, let the low task borrow the high priority until it is done. Pathfinder carried on, and finished its mission.
+
+> SCENE (line): Rule three, with people.
+> Rule three: free the blocker. @ Rule three
+
+[calm] Rule three: free the blocker. If Ana is waiting for his answer about the weekend, and he keeps delaying, he is the low-priority job holding the lock.
+
+> SCENE (photo): Jonas answers Ana's message.
+> omni-reply | Answer, even with "I need until tomorrow." | color key
+
+[calm] Everything she plans is stuck behind him. Answer, even with "I need until tomorrow."
 
 ## Where it breaks
 
@@ -167,44 +195,7 @@ public-domain images for Mars. The two friends are an illustration, not a true s
 
 [calm] And a shared chore chart, at home or at work. If someone is blocked because of a task nobody has touched, move that one first. That's Pathfinder's fix in a flat.
 
-## The same rules work on people
-
-> SCENE (photo): Jonas and Ana at the kitchen table.
-> omni-flatmates | An open loop with a person attached. | color key
-
-[warmly] Now the part I find most useful. These rules don't only work on tasks. They work on people.
-
-> SCENE (line): Open loop, heaviest kind.
-> An unresolved argument is the heaviest open loop. @ An unresolved
-
-[warmly] An unresolved argument is an open loop, and it's the heaviest kind. You carry it into every meal, every message.
-
-> SCENE (list): Three open loops.
-> The heating bill | Due Friday @ Jonas and Ana
-> Whose turn to clean | Small @ Whose turn it is
-> A comment two weeks ago | Still stings @ A comment
-
-[calm] Jonas and Ana have three things between them. The heating bill. Whose turn it is to clean. And a comment Ana made two weeks ago that still stings.
-
-> SCENE (line): Rule one, with people.
-> Rule one: the talk with a date comes first. @ Rule one
-
-[calm] Rule one: whatever has a real date goes first. The bill is due Friday. So that talk happens now, not after the feelings.
-
-> SCENE (line): Rule two, with people.
-> Rule two: small and quick, today. @ Rule two
-
-[calm] Rule two: small and quick, today. "Sorry, I was short with you this morning." Ten seconds, and a loop closes.
-
-> SCENE (line): Rule three, with people.
-> Rule three: free the blocker. @ Rule three
-
-[calm] Rule three: free the blocker. If Ana is waiting for his answer about the weekend, and he keeps delaying, he is the low-priority job holding the lock.
-
-> SCENE (photo): Jonas answers Ana's message.
-> omni-reply | Answer, even with "I need until tomorrow." | color key
-
-[calm] Everything she plans is stuck behind him. Answer, even with "I need until tomorrow."
+## Two old friends
 
 > SCENE (photo): Two old friends on a Sunday walk.
 > omni-walk | Two friends. Two years of silence. | color key
@@ -228,6 +219,11 @@ public-domain images for Mars. The two friends are an illustration, not a true s
 
 [calm] Soonest deadline first, if lateness is the danger. Quickest first, if waiting is the problem. And always free whoever is stuck behind you. For the big, slow goals, give every week its own small deadline.
 
+> SCENE (photo): Jonas and Ana at the kitchen table with tea, laughing with relief.
+> omni-talk | Twenty minutes. Two mugs of tea. | color key
+
+[warmly] And Jonas and Ana? On Thursday evening he knocked on her door and said, "Can we talk about the heating bill? And I'm sorry about last week." Twenty minutes. Two mugs of tea. The loop he had carried for nine days was closed.
+
 > SCENE (photo): Jonas, calm, on Thursday evening.
 > omni-ending | Because he stopped losing the first hour. | color key
 
@@ -241,6 +237,6 @@ public-domain images for Mars. The two friends are an illustration, not a true s
 > SCENE (line): The key line.
 > Soonest deadline. Quickest win. Free the blocker.
 
-[calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description. Next time on Logic to Live By: money already spent, and why you should leave a bad film after twenty minutes.
+[calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description. Next time on Logic to Live By: four years together. Should you stay? The logic of money and time already spent.
 
 > SCENE (end): Closing card.

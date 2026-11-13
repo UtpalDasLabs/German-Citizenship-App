@@ -33,7 +33,7 @@ const THUMBS = [
   { topic: 'logic-explore', series: 'logic', photo: 'thumb-lena', side: true, pos: '22%', narrow: true, lines: ['New, or your', 'favourite?'], accent: 'favourite?', tag: 'The maths of explore vs exploit' },
   { topic: 'logic-sorting', series: 'logic', photo: 'thumb-win', side: true, pos: '40%', narrow: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
   { topic: 'logic-caching', series: 'logic', photo: 'thumb-maya', side: true, pos: '14%', narrow: true, lines: ['The pile on', 'your chair', 'is smart'], accent: 'smart', tag: 'Keep close what you used last' },
-  { topic: 'logic-scheduling', series: 'logic', photo: 'thumb-jonas', side: true, pos: '55%', narrow: true, lines: ['Which task', 'first?'], accent: 'first?', tag: 'Stress is unfinished work', },
+  { topic: 'logic-scheduling', series: 'logic', photo: 'thumb-ana', side: true, pos: '42%', narrow: true, lines: ['The talk you', 'keep postponing'], accent: 'postponing', tag: 'Which task first? The rule that fixes it' },
   // Martinstag A/B test (YouTube "Test & compare", from 3 Nov 2026): B and C against the lantern thumbnail.
   { topic: 'hidden-martinstag', name: 'hidden-martinstag-b-cloak', series: 'hidden', photo: 'thumb-cloak', side: true, pos: '75%', narrow: true, lines: ['He cut his', 'coat in half'], accent: 'half', tag: 'Why Germany walks with lanterns on 11 Nov' },
   { topic: 'hidden-martinstag', name: 'hidden-martinstag-c-geese', series: 'hidden', photo: 'thumb-geese', side: true, pos: '72%', narrow: true, lines: ['Betrayed by', 'geese'], accent: 'geese', tag: 'Martinstag: lanterns, geese, a cloak' },

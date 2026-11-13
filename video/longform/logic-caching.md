@@ -1,13 +1,13 @@
 ---
-title: "The Pile on Your Chair Is an Algorithm — What Computers Know About Keeping Things Close"
+title: "Why Friendships Fade Without a Fight: What Computers Know About Keeping Things Close"
 series: logic
 voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 questions: []
-summary: "The chair in your bedroom with a pile of clothes on it is doing what every computer does billions of times a second: keeping what you just used within reach. In 1966 an IBM engineer, László Bélády, worked out the perfect rule for what to keep close. The simple rule 'throw out what you used longest ago' turns out to come close to it. How to use it with your wardrobe, your desk and your kitchen."
+summary: "No fight, no reason: a friendship just drifts. Computers have the same problem when their fast memory is full, and in 1966 an IBM engineer, László Bélády, worked out the perfect rule for what to keep close. The simple version, keep what you used last, explains the pile of clothes on your chair, a filing system from Tokyo, and why friendships fade, and how a ten-second message pulls one back."
 sources: ["L. A. Belady: A study of replacement algorithms for a virtual-storage computer, IBM Systems Journal 5(2), 1966: https://doi.org/10.1147/sj.52.0078", "Cache replacement policies (Bélády's algorithm, least recently used): https://en.wikipedia.org/wiki/Cache_replacement_policies", "Yukio Noguchi's filing system (Chō seiri-hō, 1993): https://en.wikipedia.org/wiki/Yukio_Noguchi", "Brian Christian, Tom Griffiths: Algorithms to Live By (2016), chapter 4"]
 target: about 6 minutes
-status: draft 1
+status: draft 2 (13 Nov 2026, personal-life hook)
 ---
 
 <!--
@@ -17,9 +17,19 @@ for plain practical lines. Never [dramatic].
 Phrasing: people by place, never nationality generalisations.
 Pictures (re-cut 30 Oct): show what each sentence says. 3D Maya for story,
 2D explainers for every idea, stock only when literal.
+Re-script 13 Nov 2026: opens on a friendship that faded (personal-life hook, docs/PLAYBOOK.md); the chair is the "by the way". Maya and Jule are made-up.
 -->
 
 ## Cold open
+
+> SCENE (photo): Maya scrolling her chat list at midnight.
+> omni-phone-scroll | Fourteen months. | color key
+
+[calm] Maya is scrolling through her chat list at midnight when she reaches the very bottom. Jule. Her best friend since school. The last message between them is fourteen months old.
+
+[calm] There was no fight. No reason. They just drifted. And Maya feels a small, sharp pang, the one that says: you let something good slip.
+
+[calm] There is a reason it happens, and it is the same reason there is a pile of clothes on your chair. To see why, look at something that has nothing to do with friends.
 
 > SCENE (photo): A chair with a pile of clothes on it.
 > omni-hook-chair | The chair. Everyone has one. | color key
@@ -34,9 +44,9 @@ Pictures (re-cut 30 Oct): show what each sentence says. 3D Maya for story,
 
 > SCENE (photo): A wardrobe, doors open.
 > wardrobe | What do you keep close? | color key
-> omni-chair-grab |  | color @ and why the pile
+> omni-chair-grab |  | color @ and why friendships
 
-[calm] Today: caching. How to decide what to keep within reach, what to put away, and why the pile on your chair is smarter than it looks.
+[calm] Today: caching. How to decide what to keep within reach, what to put away, and why friendships fade without anyone deciding.
 
 > SCENE (title): Title card.
 > LOGIC TO LIVE BY · EPISODE 6
@@ -113,6 +123,36 @@ Computers face this question all the time. The memory right next to the processo
 
 [calm] No categories, no labels to keep up. Over time, the files you use often stay on the left, and the ones you never touch drift to the right, ready to be archived. It's least recently used, done by hand.
 
+## Why friendships fade
+
+> SCENE (noguchi2): Friends as envelopes: a message sends one to the left, silence lets it drift right.
+
+[calm] Now think of your friends as envelopes on that shelf. Every time you talk to someone, they jump to the far left. Every week you do not, they drift one step to the right.
+
+> SCENE (line): No fight needed.
+> Nobody decides to lose a friend. @ Nobody decides
+
+[warmly] Nobody decides to lose a friend. There is no fight, no moment. The friendship just drifts, one quiet week at a time, towards the right end of the shelf. And the right end is where things get archived.
+
+> SCENE (list): The fix.
+> Use it | It goes back to the left @ Use it
+> Ten seconds counts | A photo, a voice note, "saw this, thought of you" @ A ten-second message
+
+[calm] The fix is the same as on the shelf. Use it, and it goes back to the left. A ten-second message counts: a photo, a voice note, "I saw this and thought of you". Not a big gesture. A small one, soon.
+
+> SCENE (list): A weekly rule.
+> Once a week | Look at the bottom of your chat list @ Once a week
+> Message the longest-waiting | Not the one you feel best about @ Message whoever
+
+[calm] Here is a rule for it. Once a week, look at the people at the bottom of your chat list. Message whoever has been there the longest.
+
+> SCENE (photo): Maya records a voice note, then laughs at the reply.
+> omni-friend-voice | Eleven seconds. | color key
+
+[warmly] Maya sends Jule a voice note. Eleven seconds. "I found our old school photo. I miss you." Four minutes later Jule answers, laughing: "I was just about to message you!" They talk for an hour.
+
+[calm] Fourteen months of drifting. Eleven seconds to pull it back. The friendship was never the heavy part. The silence was.
+
 ## Where it breaks
 
 > SCENE (list): When to break the rule.
@@ -125,6 +165,11 @@ Computers face this question all the time. The memory right next to the processo
 Seasons break it too. In March, the winter coat was used recently, but you won't need it again until November. Here you know the future, so use it.
 
 And if you simply have too much stuff, no rule will fix that. A cache works because it's small.
+
+> SCENE (line): Same for people.
+> A cache works because it is small. @ The same goes for people
+
+[calm] The same goes for people. The friend who lives far away, who would drop everything for you, gets a fixed place: a call every birthday. And nobody can keep two hundred people close. A cache works because it is small. Choose who goes on your shelf.
 
 ## Three everyday uses
 
@@ -158,6 +203,6 @@ The desk. Keep on it only what you used this week. Everything else goes to a dra
 > SCENE (photo): A to-do list on a desk.
 > todo | Next: which task first? | color key @ Next time
 
-[calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description. Next time on Logic to Live By: which task first? What computers know about deadlines, and why doing everything at once is the slowest way.
+[calm] This idea comes from the book Algorithms to Live By, by Brian Christian and Tom Griffiths. The link is in the description. Next time on Logic to Live By: the talk you keep postponing, and which task to do first.
 
 > SCENE (end): Closing card.

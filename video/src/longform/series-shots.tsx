@@ -1916,3 +1916,103 @@ export function TheatreBars() {
     </AbsoluteFill>
   );
 }
+
+/** What a sunk cost is: money, time, effort and years that turn grey and are gone. */
+export function Spent() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const items = [
+    { t: 'Money', at: fps * 1.5 },
+    { t: 'Time', at: fps * 3.5 },
+    { t: 'Effort', at: fps * 5.5 },
+    { t: 'Years', at: fps * 7.5 },
+  ];
+  const gone = interpolate(frame, [fps * 10, fps * 11.5], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 90, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 64, color: C.text }}>
+        Already spent. <span style={{ color: gone > 0.5 ? '#8A94A6' : accent }}>{gone > 0.5 ? 'Gone for good.' : 'Cannot get it back.'}</span>
+      </div>
+      {items.map((it, i) => {
+        const o = rise(frame, it.at, 12);
+        return (
+          <div key={i} style={{ position: 'absolute', left: 170 + i * 385, top: 340, width: 330, height: 330, borderRadius: 28, opacity: o, transform: `translateY(${(1 - o) * 40}px)`, background: gone > 0.5 ? 'rgba(160,170,185,0.2)' : alpha(accent, 0.16), border: `4px solid ${gone > 0.5 ? '#8A94A6' : alpha(accent, 0.8)}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 70, color: gone > 0.5 ? '#8A94A6' : C.text, textDecoration: gone > 0.5 ? 'line-through' : 'none' }}>{it.t}</div>
+          </div>
+        );
+      })}
+      <div style={{ position: 'absolute', top: 760, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 46, color: '#C9D3E0', opacity: rise(frame, fps * 10, 14) }}>
+        Whatever you do next, it stays <span style={{ color: accent, fontWeight: 900 }}>spent</span>.
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** The forward question: the past is greyed out, only the future (two branches) is weighed. */
+export function Forward() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const q = rise(frame, fps * 12, 16);
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 70, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 60, color: C.text }}>
+        Only look <span style={{ color: accent }}>forward</span>
+      </div>
+      <div style={{ position: 'absolute', left: 120, top: 250, width: 520, height: 380, borderRadius: 26, background: 'rgba(160,170,185,0.18)', border: '4px dashed #8A94A6', opacity: rise(frame, fps * 0.8, 12), display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 64, color: '#8A94A6' }}>THE PAST</div>
+        <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 36, color: '#8A94A6', marginTop: 12 }}>already paid</div>
+      </div>
+      <div style={{ position: 'absolute', left: 700, top: 250, width: 8, height: 380, background: accent, borderRadius: 4, opacity: rise(frame, fps * 2, 12) }} />
+      <div style={{ position: 'absolute', left: 660, top: 200, width: 90, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 30, color: accent, opacity: rise(frame, fps * 2, 12) }}>NOW</div>
+      {[
+        { t: 'Stay', s: 'what it costs, what it gives', y: 250, at: fps * 4 },
+        { t: 'Leave', s: 'what it costs, what it gives', y: 450, at: fps * 6.5 },
+      ].map((b, i) => (
+        <div key={i} style={{ position: 'absolute', left: 790, top: b.y, width: 1000, height: 160, borderRadius: 22, background: alpha(accent, 0.14), border: `4px solid ${alpha(accent, 0.85)}`, opacity: rise(frame, b.at, 12), transform: `translateX(${(1 - rise(frame, b.at, 12)) * 60}px)`, display: 'flex', alignItems: 'center', paddingLeft: 40, gap: 30 }}>
+          <div style={{ fontFamily: FONT, fontWeight: 900, fontSize: 64, color: C.text }}>{b.t}</div>
+          <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: 36, color: '#C9D3E0' }}>{b.s}</div>
+        </div>
+      ))}
+      <div style={{ position: 'absolute', left: 120, right: 120, top: 740, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 56, lineHeight: 1.2, color: C.text, opacity: q, transform: `translateY(${(1 - q) * 20}px)` }}>
+        If I were starting from zero today, <span style={{ color: accent }}>would I choose this?</span>
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+/** Second half of the season: the three groups use about the same number of tickets again. */
+export function TheatreFade() {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const accent = useAccent();
+  const bars = [
+    { label: 'Full price', v: 2.28, at: fps * 1.5 },
+    { label: '$2 off', v: 1.84, at: fps * 2.5 },
+    { label: '$7 off', v: 2.18, at: fps * 3.5 },
+  ];
+  const base = 760;
+  const scale = 140;
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.bg }}>
+      <div style={{ position: 'absolute', top: 60, left: 0, right: 0, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 56, color: C.text }}>
+        Second half of the season
+      </div>
+      {bars.map((b, i) => {
+        const p = interpolate(frame, [b.at, b.at + 22], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic) });
+        const h = b.v * scale * p;
+        return (
+          <React.Fragment key={i}>
+            <div style={{ position: 'absolute', left: 330 + i * 450, top: base - h, width: 300, height: h, borderRadius: '18px 18px 0 0', background: '#8A94A6' }} />
+            <div style={{ position: 'absolute', left: 330 + i * 450, top: base - h - 90, width: 300, textAlign: 'center', fontFamily: FONT, fontWeight: 900, fontSize: 72, color: C.text, opacity: p }}>{b.v.toFixed(1)}</div>
+            <div style={{ position: 'absolute', left: 330 + i * 450, top: base + 20, width: 300, textAlign: 'center', fontFamily: FONT, fontWeight: 700, fontSize: 42, color: '#C9D3E0' }}>{b.label}</div>
+          </React.Fragment>
+        );
+      })}
+      <div style={{ position: 'absolute', top: 880, left: 0, right: 0, textAlign: 'center', fontFamily: FONT, fontWeight: 800, fontSize: 46, color: '#C9D3E0', opacity: rise(frame, fps * 6, 14) }}>
+        The sting of the price <span style={{ color: accent }}>wears off</span>. One small study, 54 people.
+      </div>
+    </AbsoluteFill>
+  );
+}
