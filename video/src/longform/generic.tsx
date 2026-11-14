@@ -65,17 +65,19 @@ function Overline({ children, o = 1 }: { children: React.ReactNode; o?: number }
 }
 
 /** `German | English | reference`: one key term, large. Appears when spoken, if it is. */
-export function Term() {
+export function Term({ topic }: { topic?: string } = {}) {
   const GOLD = useAccent();
   const shot = useShot();
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const [{ fields }] = useLines();
+  const { lines: termLines, backdrop } = useBackdrop(topic);
+  const [{ fields }] = termLines;
   const [de, en, ref] = fields;
   const at = findCue(shot, de, fps) ?? 8;
   const o = rise(frame, at, 16);
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center', gap: 30 }}>
+      {backdrop}
       <Glow strength={0.05 + 0.07 * o} />
       <div style={{ transform: `scale(${useDrift()})`, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 30 }}>
         {ref ? <Overline o={rise(frame, 4)}>{ref}</Overline> : null}
