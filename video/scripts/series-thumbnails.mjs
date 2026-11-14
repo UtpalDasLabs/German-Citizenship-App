@@ -32,16 +32,9 @@ const THUMBS = [
   { topic: 'logic-backoff', series: 'logic', photo: 'thumb-sam', side: true, pos: '78%', narrow: true, lines: ['Try again,', 'wait longer'], accent: 'longer', tag: '1 · 2 · 4 · 8: the smart way to retry' },
   { topic: 'logic-explore', series: 'logic', photo: 'thumb-lena', side: true, pos: '22%', narrow: true, lines: ['New, or your', 'favourite?'], accent: 'favourite?', tag: 'The maths of explore vs exploit' },
   { topic: 'logic-sorting', series: 'logic', photo: 'thumb-win', side: true, pos: '40%', narrow: true, lines: ['Your messy', 'desk is smart'], accent: 'smart', tag: 'When tidying up is a waste of time' },
-  { topic: 'logic-caching', series: 'logic', photo: 'thumb-maya', side: true, pos: '14%', narrow: true, lines: ['The pile on', 'your chair', 'is smart'], accent: 'smart', tag: 'Keep close what you used last' },
-  { topic: 'logic-scheduling', series: 'logic', photo: 'thumb-jonas', side: true, pos: '55%', narrow: true, lines: ['Which task', 'first?'], accent: 'first?', tag: 'Stress is unfinished work', },
-  // Martinstag A/B test (YouTube "Test & compare", from 3 Nov 2026): B and C against the lantern thumbnail.
-  { topic: 'hidden-martinstag', name: 'hidden-martinstag-b-cloak', series: 'hidden', photo: 'thumb-cloak', side: true, pos: '75%', narrow: true, lines: ['He cut his', 'coat in half'], accent: 'half', tag: 'Why Germany walks with lanterns on 11 Nov' },
-  { topic: 'hidden-martinstag', name: 'hidden-martinstag-c-geese', series: 'hidden', photo: 'thumb-geese', side: true, pos: '72%', narrow: true, lines: ['Betrayed by', 'geese'], accent: 'geese', tag: 'Martinstag: lanterns, geese, a cloak' },
-  { topic: 'food-pretzel-v4', series: 'hidden', photo: 'thumb-pretzel', side: true, pos: '40%', narrow: true, lines: ['Dipped in', 'drain cleaner?'], accent: 'drain cleaner?', tag: 'Why it is fine, and what is not' },
-  { topic: 'food-sour', series: 'hidden', photo: 'thumb-ship', side: true, pos: '60%', narrow: true, lines: ['Did sauerkraut', 'save Cook?'], accent: 'save Cook?', tag: 'And why rye bread needs sour' },
-  { topic: 'food-gluehwein', series: 'hidden', photo: 'thumb-glu', side: true, pos: '50%', narrow: true, lines: ['No water in', 'Glühwein?'], accent: 'Glühwein?', tag: 'What European law says is in the cup' },
-  { topic: 'food-beer', series: 'hidden', photo: 'thumb-beer', side: true, pos: '50%', narrow: true, lines: ['The beer law', 'never said yeast'], accent: 'yeast', tag: 'What 1516 really said' },
-  { topic: 'food-fastfood', series: 'hidden', photo: 'thumb-doener', side: true, pos: '45%', narrow: true, lines: ['Döner vs', 'Currywurst'], accent: 'Currywurst', tag: 'What the paperwork says' },
+  { topic: 'logic-caching', series: 'logic', photo: 'thumb-maya', side: true, pos: '22%', narrow: true, lines: ['Why friendships', 'fade without', 'a fight'], accent: 'fade', tag: 'What computers know about keeping things close' },
+  { topic: 'logic-scheduling', series: 'logic', photo: 'thumb-ana', side: true, pos: '42%', narrow: true, lines: ['The talk you', 'keep postponing'], accent: 'postponing', tag: 'Which task first? The rule that fixes it' },
+  { topic: 'logic-sunkcost', series: 'logic', photo: 'thumb-lena', side: true, pos: '55%', narrow: true, lines: ['Four years.', 'Stay?'], accent: 'Stay?', tag: 'The logic of money and time already spent' },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 
@@ -63,10 +56,10 @@ function page({ topic, series, photo, side, pos = 'center', narrow, doors, lines
     .map((l) => `<div>${l.split(accent).join(`<span style="color:${color}">${accent}</span>`)}</div>`)
     .join('');
   return `<!doctype html><html><head><meta charset=utf-8><style>
-@font-face{font-family:Inter;font-weight:700;src:url(file://${FONTS}/inter/files/inter-latin-700-normal.woff2)}
-@font-face{font-family:Inter;font-weight:800;src:url(file://${FONTS}/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url('file://${encodeURI(FONTS)}/inter/files/inter-latin-700-normal.woff2')}
+@font-face{font-family:Inter;font-weight:800;src:url('file://${encodeURI(FONTS)}/inter/files/inter-latin-800-normal.woff2')}
 html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#0B0E14;font-family:Inter,sans-serif;color:#fff}
-.photo{position:absolute;top:0;bottom:0;right:0;left:${side ? (narrow ? '48%' : '42%') : '0'};background:url(file://${img}) ${pos} center/cover;filter:saturate(1.1) contrast(1.05)}
+.photo{position:absolute;top:0;bottom:0;right:0;left:${side ? (narrow ? '48%' : '42%') : '0'};background:url('file://${encodeURI(img)}') ${pos} center/cover;filter:saturate(1.1) contrast(1.05)}
 .doors{position:absolute;right:60px;top:200px;display:flex;gap:14px;align-items:flex-end}
 .door{width:44px;height:300px;border:3px solid;border-radius:8px;display:flex;align-items:flex-end;padding:6px;box-sizing:border-box;background:#1A2130}
 .door div{width:100%;border-radius:4px}
@@ -82,9 +75,9 @@ html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#0B0E14;
 }
 
 fs.mkdirSync(OUT, { recursive: true });
-for (const t of THUMBS) {
-  const html = path.join(OUT, `series-${t.name ?? t.topic}.html`);
-  const png = path.join(OUT, `series-${t.name ?? t.topic}.png`);
+for (const t of THUMBS.filter((x) => !process.argv[2] || x.topic === process.argv[2])) {
+  const html = path.join(OUT, `series-${t.topic}.html`);
+  const png = path.join(OUT, `series-${t.topic}.png`);
   fs.writeFileSync(html, page(t));
   execFileSync(
     CHROME,
