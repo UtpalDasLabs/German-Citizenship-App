@@ -1,0 +1,266 @@
+{
+  "topic": "hidden-nikolaus",
+  "note": "Omni clips made by the Gemini API (private repo clips/veo/nikolaus/).",
+  "clips": [
+    {
+      "id": "lotte-opa-kitchen",
+      "source": "veo",
+      "file": "veo/nikolaus/lotte-opa-kitchen.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A cosy farmhouse kitchen in the evening, a seven-year-old girl with brown plaits and red bobbles, in a mustard wool jumper, scrubs a small red boot over a bucket with a brush. Beside her sits her grandfather, white moustache, round glasses, flat cap, polishing his big brown leather boot with a cloth. They glance at each other and smile. Warm lamp light, steam on the window. Gentle slow camera drift. Tender, funny mood. No text.",
+      "seconds": 8,
+      "speed": 0.79,
+      "credit": "Lotte and Opa: made with Gemini Omni"
+    },
+    {
+      "id": "doorstep-hook",
+      "source": "veo",
+      "file": "veo/nikolaus/doorstep-hook.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Dusk in a snowy German village, a small, perfectly clean red child's boot standing alone on a stone doorstep in front of a wooden front door, lit by a warm yellow window beside it. Soft snowflakes fall. Slow camera push-in towards the boot. A faint footprint trail in the snow leads away. No people, no text. Hushed, hopeful mood.",
+      "seconds": 8,
+      "speed": 0.85,
+      "credit": "A clean boot on the doorstep: made with Gemini Omni"
+    },
+    {
+      "id": "morning-boot",
+      "source": "veo",
+      "file": "veo/nikolaus/morning-boot.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Early morning light through a front door. The same seven-year-old girl in her pyjamas and red hat crouches at the doorstep and pulls her red boot towards her: it is full of walnuts, a chocolate bar, gingerbread and two bright mandarins. Her eyes go wide, then she grins. Slow camera push-in. Joyful mood. No text.",
+      "seconds": 8,
+      "speed": 0.89,
+      "referenceFrom": "lotte-opa-kitchen",
+      "credit": "Made with Gemini Omni"
+    },
+    {
+      "id": "gold-window",
+      "source": "veo",
+      "file": "veo/nikolaus/gold-window.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A poor stone cottage in the 4th century, in a warm Mediterranean night, a single candle glowing behind a small shuttered window. A hand in a plain brown sleeve, nothing else of the person visible, tosses a small cloth bag that glints gold through the window opening, then disappears into the dark. Slow sideways camera move. No faces, no text. Secretive, gentle mood.",
+      "seconds": 8,
+      "speed": 0.65,
+      "credit": "The gold legend: made with Gemini Omni"
+    },
+    {
+      "id": "luther-hearth",
+      "source": "veo",
+      "file": "veo/nikolaus/luther-hearth.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Interior of a German family room in the 1530s, the camera stands behind the family looking towards a crackling fireplace. In the foreground a father in a dark scholar's cap and robe and three small children sit close together on a wooden bench, all seen only from behind, the backs of their heads and shoulders, nobody turns round. A single candle and a small wrapped parcel on the table in front of them, firelight on the walls. Slow camera push-in. Warm, reflective mood. No visible faces at all, no text.",
+      "seconds": 8,
+      "speed": 0.7,
+      "credit": "Made with Gemini Omni"
+    },
+    {
+      "id": "ruprecht-door",
+      "source": "veo",
+      "file": "veo/nikolaus/ruprecht-door.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A snowy village lane at night, a tall figure in a dark brown hooded robe stands at a front door seen from behind, a rod tucked into his belt and a bulging sack on his back, a lantern at his feet. He raises a hand to knock. Slow camera push-in from behind. Face hidden in the hood, not frightening: mysterious and a little comic. No text.",
+      "seconds": 8,
+      "speed": 0.72,
+      "credit": "Made with Gemini Omni"
+    },
+    {
+      "id": "ruprecht-gifts",
+      "source": "veo",
+      "file": "veo/nikolaus/ruprecht-gifts.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Close view of an old cloth sack being opened by weathered hands, out of it tumble mandarins, hazelnuts, gingerbread hearts and chocolate coins onto fresh snow. A birch rod hangs from the belt in the corner of the frame. Lantern light. Slow camera tilt up. No face visible, no text. Warm, amused mood.",
+      "seconds": 8,
+      "speed": 0.65,
+      "credit": "Made with Gemini Omni"
+    },
+    {
+      "id": "lotte-opa-door",
+      "source": "veo",
+      "file": "veo/nikolaus/lotte-opa-door.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. The same girl with brown plaits and the same grandfather, now at night in the hallway of their house. The girl in socks tiptoes to the front door where two boots stand side by side, a small red one and a big brown leather one, looks over her shoulder, and quietly slips a bar of chocolate into the big brown boot. Behind her in the dark doorway of the next room, the grandfather in his nightshirt and cap watches with a soft smile and puts a finger to his lips. Warm lamp glow, slow camera push-in. Tender, secret-gift mood. No text.",
+      "seconds": 8,
+      "speed": 0.65,
+      "referenceFrom": "lotte-opa-kitchen",
+      "credit": "Made with Gemini Omni"
+    },
+    {
+      "id": "opa-morning",
+      "source": "veo",
+      "file": "veo/nikolaus/opa-morning.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. Early morning in a cosy hallway, soft golden light through the front door glass. The same grandfather with white moustache, round glasses and a flat cap, in a green loden jacket, bends and lifts his big brown leather boot from the doorstep and finds a bar of chocolate inside. He looks up across the hall at the same seven-year-old girl with brown plaits and red bobbles, who peeks round a doorway giggling. He slowly winks at her and tucks the chocolate into his pocket. Slow camera push-in. Tender, funny mood. No text.",
+      "seconds": 8,
+      "speed": 0.77,
+      "referenceFrom": "lotte-opa-kitchen",
+      "credit": "Made with Gemini Omni"
+    },
+    {
+      "id": "fire-stock",
+      "source": "pixabay",
+      "pixabayId": 21531,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by Christopher_OToole_Images from Pixabay: https://pixabay.com/videos/id-21531/"
+    },
+    {
+      "id": "silvester-tease",
+      "source": "pixabay",
+      "pixabayId": 326677,
+      "start": 0,
+      "seconds": 12,
+      "credit": "Video by Gylfi from Pixabay: https://pixabay.com/videos/id-326677/"
+    },
+    {
+      "id": "bg-books",
+      "source": "pixabay",
+      "pixabayId": 8852,
+      "start": 0,
+      "seconds": 16,
+      "credit": "Video by krzys16 from Pixabay: https://pixabay.com/videos/id-8852/"
+    },
+    {
+      "id": "bg-ink",
+      "source": "pixabay",
+      "pixabayId": 107243,
+      "start": 0,
+      "seconds": 16,
+      "credit": "Video by mootlak from Pixabay: https://pixabay.com/videos/id-107243/"
+    },
+    {
+      "id": "bg-myra",
+      "source": "pixabay",
+      "pixabayId": 133216,
+      "start": 0,
+      "seconds": 12,
+      "credit": "Video by adege from Pixabay: https://pixabay.com/videos/id-133216/"
+    },
+    {
+      "id": "bg-bible",
+      "source": "pixabay",
+      "pixabayId": 111279,
+      "start": 0,
+      "seconds": 16,
+      "credit": "Video by AttilaPergel from Pixabay: https://pixabay.com/videos/id-111279/"
+    },
+    {
+      "id": "bg-candle",
+      "source": "pixabay",
+      "pixabayId": 192011,
+      "start": 0,
+      "seconds": 16,
+      "credit": "Video by Yulia_Repnikova from Pixabay: https://pixabay.com/videos/id-192011/"
+    },
+    {
+      "id": "bg-lamp",
+      "source": "pixabay",
+      "pixabayId": 321037,
+      "start": 0,
+      "seconds": 9,
+      "credit": "Video by Pix12357996 from Pixabay: https://pixabay.com/videos/id-321037/"
+    },
+    {
+      "id": "bg-forest",
+      "source": "pixabay",
+      "pixabayId": 335688,
+      "start": 0,
+      "seconds": 16,
+      "credit": "Video by IAmTheDrama from Pixabay: https://pixabay.com/videos/id-335688/"
+    },
+    {
+      "id": "bg-moon",
+      "source": "pixabay",
+      "pixabayId": 11721,
+      "start": 0,
+      "seconds": 9,
+      "credit": "Video by Iconikmg from Pixabay: https://pixabay.com/videos/id-11721/"
+    },
+    {
+      "id": "bg-alps",
+      "source": "pixabay",
+      "pixabayId": 220945,
+      "start": 0,
+      "seconds": 16,
+      "credit": "Video by TungArt7 from Pixabay: https://pixabay.com/videos/id-220945/"
+    },
+    {
+      "id": "bg-notebook",
+      "source": "pixabay",
+      "pixabayId": 107143,
+      "start": 0,
+      "seconds": 18,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-107143/"
+    },
+    {
+      "id": "bg-pine",
+      "source": "pixabay",
+      "pixabayId": 25477,
+      "start": 0,
+      "seconds": 9,
+      "credit": "Video by luc_toutsimplement from Pixabay: https://pixabay.com/videos/id-25477/"
+    },
+    {
+      "id": "bg-market",
+      "source": "pixabay",
+      "pixabayId": 143319,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by Nightwolfone from Pixabay: https://pixabay.com/videos/id-143319/"
+    },
+    {
+      "id": "wm-bun",
+      "source": "pixabay",
+      "pixabayId": 207994,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by NGUYENTHONG7997 from Pixabay: https://pixabay.com/videos/id-207994/"
+    },
+    {
+      "id": "wm-loaf",
+      "source": "pixabay",
+      "pixabayId": 205890,
+      "start": 0,
+      "seconds": 9,
+      "credit": "Video by AlfLucio from Pixabay: https://pixabay.com/videos/id-205890/"
+    },
+    {
+      "id": "wm-dough",
+      "source": "pixabay",
+      "pixabayId": 209418,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by NGUYENTHONG7997 from Pixabay: https://pixabay.com/videos/id-209418/"
+    },
+    {
+      "id": "wm-fresh",
+      "source": "pixabay",
+      "pixabayId": 75700,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by sodainua from Pixabay: https://pixabay.com/videos/id-75700/"
+    },
+    {
+      "id": "lt-glow",
+      "source": "pixabay",
+      "pixabayId": 169806,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by Joe_hackney from Pixabay: https://pixabay.com/videos/id-169806/"
+    },
+    {
+      "id": "lt-leaves",
+      "source": "pixabay",
+      "pixabayId": 188021,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by caromaria from Pixabay: https://pixabay.com/videos/id-188021/"
+    },
+    {
+      "id": "lt-book",
+      "source": "pixabay",
+      "pixabayId": 51749,
+      "start": 0,
+      "seconds": 8,
+      "credit": "Video by padrinan from Pixabay: https://pixabay.com/videos/id-51749/"
+    },
+    {
+      "id": "wm-slice",
+      "source": "pixabay",
+      "pixabayId": 186709,
+      "start": 0,
+      "seconds": 10,
+      "credit": "Video by ghasoub from Pixabay: https://pixabay.com/videos/id-186709/"
+    }
+  ]
+}

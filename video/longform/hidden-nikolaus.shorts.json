@@ -1,0 +1,34 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "Clean boots on 5 December.",
+      "spoken": "Soon, doorsteps all over Germany fill with clean boots.",
+      "paragraphs": [
+        0,
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "The man with the rod.",
+      "spoken": "Who is Knecht Ruprecht?",
+      "paragraphs": [
+        12,
+        13,
+        15
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "A secret gift in Opa's boot.",
+      "spoken": "A secret gift, in a boot.",
+      "paragraphs": [
+        18,
+        19
+      ]
+    }
+  ]
+}
