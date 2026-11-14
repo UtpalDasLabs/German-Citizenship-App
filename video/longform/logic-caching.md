@@ -27,7 +27,13 @@ Re-script 13 Nov 2026: opens on a friendship that faded (personal-life hook, doc
 
 [calm] Maya is scrolling through her chat list at midnight when she reaches the very bottom. Jule. Her best friend since school. The last message between them is fourteen months old.
 
+> SCENE (line): No fight.
+> No fight. No reason. They just drifted.
+
 [calm] There was no fight. No reason. They just drifted. And Maya feels a small, sharp pang, the one that says: you let something good slip.
+
+> SCENE (line): There is a reason.
+> The same reason as the pile of clothes on your chair.
 
 [calm] There is a reason it happens, and it is the same reason there is a pile of clothes on your chair. To see why, look at something that has nothing to do with friends.
 
@@ -150,6 +156,9 @@ Computers face this question all the time. The memory right next to the processo
 > omni-friend-voice | Eleven seconds. | color key
 
 [warmly] Maya sends Jule a voice note. Eleven seconds. "I found our old school photo. I miss you." Four minutes later Jule answers, laughing: "I was just about to message you!" They talk for an hour.
+
+> SCENE (line): Eleven seconds.
+> Fourteen months of drifting. Eleven seconds to pull it back.
 
 [calm] Fourteen months of drifting. Eleven seconds to pull it back. The friendship was never the heavy part. The silence was.
 

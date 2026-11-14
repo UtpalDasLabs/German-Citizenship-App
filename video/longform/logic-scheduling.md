@@ -25,12 +25,18 @@ Delivery: [calm] base, [warmly] at human peaks, never [dramatic].
 
 [calm] Jonas has been avoiding the same conversation with his flatmate for nine days.
 
+> SCENE (line): Three things between them.
+> The heating bill. The cleaning rota. One sharp comment.
+
 [calm] Jonas and Ana have three things between them. The heating bill. Whose turn it is to clean. And a comment Ana made two weeks ago that still stings.
 
 > SCENE (photo): Ana in her room, glancing at the door and her phone.
 > omni-ana-waiting | And Ana waits. | color key
 
 [calm] So he does what most of us do. He starts with none of them. Emails. Laundry. A very long walk. And in the next room, Ana waits.
+
+> SCENE (line): The question.
+> Why do hard talks wait the longest?
 
 [calm] Why do the hard talks wait the longest? And is there a smart order for everything else on the list? There is. Computer scientists worked it out, and it takes about ten seconds.
 

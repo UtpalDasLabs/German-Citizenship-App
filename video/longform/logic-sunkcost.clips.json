@@ -117,10 +117,10 @@
       "source": "veo",
       "file": "veo/sunkcost/goodbye.mp4",
       "prompt": "Pixar-style 3D animation, soft global illumination, soft dusk light, a quiet train platform. Two adults: a woman with a dark bob haircut and a beige coat, and a man in a blue coat with a small suitcase. They face each other, speak a few gentle words, and hug warmly for a long moment; then he picks up the suitcase, smiles sadly, and walks away while she watches with a calm, peaceful face.",
-      "seconds": 8,
+      "seconds": 10,
       "credit": "Made with Gemini Omni",
       "start": 0,
-      "speed": 0.65
+      "speed": 0.53
     },
     {
       "id": "gifts",

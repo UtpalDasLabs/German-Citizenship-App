@@ -19,13 +19,9 @@ questions: []
 
 [calm] Picture two doors for Lena. Stay, or leave. Behind each is a possible future. Now look where the four years are. Behind both doors. Same four years, same gone. So they can't tip the choice either way. A fair choice only compares what is still ahead.
 
-> SCENE (line): The rule.
-> From here on: what does each choice cost, and give? @ That is the rule
+> SCENE (forward): The past greyed out; only the future, two branches, is weighed; then the zero-point question.
 
 [calm] That is the whole rule. Ask one question about the future: from here on, what does each choice cost me, and what does it give me?
-
-> SCENE (line): The trick.
-> If I were starting from zero today, would I choose this? @ And here's a trick
 
 [calm] And here's a trick that makes it easy. Pretend you're starting from zero. If you met this person, this job, this plan today, exactly as it is now, would you begin?
 

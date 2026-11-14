@@ -2,12 +2,13 @@
   "shorts": [
     {
       "id": "1",
-      "hook": "The pile on your chair is smart",
-      "spoken": "That pile of clothes on your chair? It's actually smart.",
+      "hook": "Why friendships fade without a fight",
+      "spoken": "Why do friendships fade without a fight?",
       "paragraphs": [
-        3,
-        16,
-        34
+        0,
+        1,
+        23,
+        24
       ]
     },
     {
@@ -23,7 +24,7 @@
     {
       "id": "3",
       "hook": "The perfect rule for what to throw out",
-      "spoken": "There's a perfect rule for what to throw out. One problem.",
+      "spoken": "There is a perfect rule for what to throw out. There's just one catch.",
       "paragraphs": [
         11,
         12,

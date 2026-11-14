@@ -93,22 +93,22 @@
       "source": "veo",
       "file": "veo/scheduling/ana-waiting.mp4",
       "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy student flat, Ana's small room. Same ANA: a young woman, black bob haircut, red scarf, sits on her bed beside the door, glancing at the door, then at her phone, then at the door again, hoping for a knock. She sighs and puts the phone down on her knees. Quiet, gentle comic sadness.",
-      "seconds": 8,
+      "seconds": 10,
       "credit": "Made with Gemini Omni",
       "start": 0,
       "referenceFrom": "omni-flatmates",
-      "speed": 0.65
+      "speed": 0.55
     },
     {
       "id": "omni-talk",
       "source": "veo",
       "file": "veo/scheduling/talk.mp4",
       "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, small cosy kitchen. Same JONAS: a young man in his early twenties, short messy dark hair, green hoodie and same ANA: a young woman, black bob haircut, red scarf sit at the kitchen table with two steaming mugs of tea. They talk, she laughs, he laughs with relief, the tension is gone. On the fridge behind them a paper note reading HEATING BILL has a big tick on it.",
-      "seconds": 8,
+      "seconds": 10,
       "credit": "Made with Gemini Omni",
       "start": 0,
       "referenceFrom": "omni-flatmates",
-      "speed": 0.65
+      "speed": 0.53
     }
   ]
 }

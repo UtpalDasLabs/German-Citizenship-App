@@ -13,14 +13,10 @@ questions: []
 
 ## Short
 
-> SCENE (stat): The hook.
-> 4 years | together. Should you stay?
-
-[calm] Four years together. Should you stay? Ask this first.
-
 > SCENE (photo): Lena at a café, her friend Sara across the table.
 > omni-lena-friend | The one question. | color key
 
+[calm] Four years together. Should you stay? Ask this first.
 
 [warmly] Picture Lena telling her friend Sara. "Four years. I can't throw that away." And Sara does what a good friend does. She doesn't say leave, and she doesn't say stay.
 

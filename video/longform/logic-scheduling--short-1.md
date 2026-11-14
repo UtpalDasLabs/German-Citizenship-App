@@ -5,7 +5,7 @@ voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 media: logic-scheduling
 hook: "Do the quick one first"
-parent: "Which Task First? The Simple Rule Behind a Good To-Do List"
+parent: "The Talk You Keep Postponing: A Simple Rule for What to Do First"
 questions: []
 ---
 
@@ -15,9 +15,11 @@ questions: []
 
 > SCENE (photo): Jonas calls the dentist.
 > omni-dentist | Two minutes. Top of the list. | color key
-> wait-room |  | color @ calling the dentist
 
 [calm] Which task first? Do the quick one first.
+
+> SCENE (photo): Jonas walks to clear his head.
+> omni-walk | Everyone's waiting time drops. | color key
 
 [warmly] That is why, for Jonas, calling the dentist takes two minutes and goes at the very top. Everyone's waiting time drops at once, including his own worry.
 

@@ -5,7 +5,7 @@ voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 media: logic-scheduling
 hook: "The argument you keep postponing"
-parent: "Which Task First? The Simple Rule Behind a Good To-Do List"
+parent: "The Talk You Keep Postponing: A Simple Rule for What to Do First"
 questions: []
 ---
 
@@ -13,32 +13,21 @@ questions: []
 
 ## Short
 
-> SCENE (photo): Jonas and Ana at the kitchen table.
-> omni-flatmates | An open loop with a person attached. | color key
-> argument |  | color @ Now the part
+> SCENE (photo): Ana in her room, glancing at the door and her phone.
+> omni-ana-waiting | And Ana waits. | color key
 
 [calm] The argument you keep postponing costs more than having it.
 
-[warmly] Now the part I find most useful. These rules don't only work on tasks. They work on people.
+[calm] So he does what most of us do. He starts with none of them. Emails. Laundry. A very long walk. And in the next room, Ana waits.
 
-> SCENE (line): Open loop, heaviest kind.
-> An unresolved argument is the heaviest open loop. @ An unresolved
+> SCENE (line): Rule three, with people.
+> Rule three: free the blocker. @ Rule three
 
-[warmly] An unresolved argument is an open loop, and it's the heaviest kind. You carry it into every meal, every message.
-
-> SCENE (line): Rule two, with people.
-> Rule two: small and quick, today. @ Rule two
-
-[calm] Rule two: small and quick, today. "Sorry, I was short with you this morning." Ten seconds, and a loop closes.
+[calm] Rule three: free the blocker. If Ana is waiting for his answer about the weekend, and he keeps delaying, he is the low-priority job holding the lock.
 
 > SCENE (photo): Jonas answers Ana's message.
-> message |  | color key @ Everything she plans
+> omni-reply | Answer, even with "I need until tomorrow." | color key
 
 [calm] Everything she plans is stuck behind him. Answer, even with "I need until tomorrow."
-
-> SCENE (line): The waiting.
-> The conversation was never the heavy part. The waiting was. @ The conversation
-
-[calm] Two years of carrying it. One minute to put it down. The conversation was never the heavy part. The waiting was.
 
 [calm] The full story is in the video on this channel.
