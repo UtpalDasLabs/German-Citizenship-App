@@ -1601,13 +1601,14 @@ export function SaltGauge() {
 }
 
 /** The lab notebook: what we looked for and could not verify. One `item | note @ cue` per line. */
-export function Notebook() {
+export function Notebook({ topic }: { topic?: string } = {}) {
   const frame = useCurrentFrame();
   const accent = useAccent();
-  const lines = useFields();
+  const { lines, backdrop } = useBackdropFields(topic ?? '');
   const o = rise(frame, 0, 20);
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <div
         style={{
           width: 1420,
@@ -1685,10 +1686,11 @@ export function Figure({ topic }: { topic: string }) {
 /**
  * A verdict stamp that slams onto the dark frame: `TEXT | red` (or `amber`) `@ cue`.
  */
-export function Stamp() {
+export function Stamp({ topic }: { topic?: string } = {}) {
   const frame = useCurrentFrame();
   const accent = useAccent();
-  const [{ fields, at }] = useFields();
+  const { lines: stampLines, backdrop } = useBackdropFields(topic ?? '');
+  const [{ fields, at }] = stampLines;
   const colour = fields[1] === 'red' ? '#E5484D' : accent;
   const t = Math.max(0, frame - at);
   const k = Math.min(1, t / 7);
@@ -1696,6 +1698,7 @@ export function Stamp() {
   const shake = t > 7 && t < 16 ? Math.sin(t * 3.4) * (16 - t) * 0.9 : 0;
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center' }}>
+      {backdrop}
       <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 50%, ${alpha(colour, 0.14)} 0%, ${alpha(colour, 0)} 60%)` }} />
       <div
         style={{

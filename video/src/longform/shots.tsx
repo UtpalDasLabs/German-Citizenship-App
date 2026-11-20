@@ -999,7 +999,7 @@ export function shotFor(key: string | null, topic: string, title: string, questi
     case 'question':
       return <Question />;
     case 'term':
-      return <Term />;
+      return <Term topic={topic} />;
     case 'list':
       return <List topic={topic} />;
     case 'stat':
@@ -1069,7 +1069,7 @@ export function shotFor(key: string | null, topic: string, title: string, questi
     case 'figure':
       return <Figure topic={topic} />;
     case 'stamp':
-      return <Stamp />;
+      return <Stamp topic={topic} />;
     case 'bignums':
       return <BigNums topic={topic} />;
     case 'childgauge':
@@ -1081,7 +1081,7 @@ export function shotFor(key: string | null, topic: string, title: string, questi
     case 'saltgauge':
       return <SaltGauge />;
     case 'notebook':
-      return <Notebook />;
+      return <Notebook topic={topic} />;
     case 'sortcost':
       return <SortCost />;
     case 'collide':
