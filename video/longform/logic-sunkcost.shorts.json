@@ -1,0 +1,36 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "Four years together. Stay?",
+      "spoken": "Four years together. Should you stay? Ask this first.",
+      "paragraphs": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "Same plays, same seats",
+      "spoken": "Same plays, same seats, different price. Who showed up more?",
+      "paragraphs": [
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "Money already spent",
+      "spoken": "You paid for it, so you keep going. Here is the trap.",
+      "paragraphs": [
+        7,
+        8,
+        9
+      ]
+    }
+  ]
+}

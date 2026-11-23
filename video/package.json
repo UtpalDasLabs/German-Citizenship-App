@@ -16,6 +16,7 @@
     "coverage": "node scripts/coverage.mjs",
     "check:quiz": "node scripts/check-quiz.mjs",
     "check:shorts": "node scripts/check-shorts.mjs",
+    "check:repeats": "node scripts/check-repeats.mjs",
     "check:plan": "node scripts/check-plan.mjs",
     "state-lessons": "node scripts/state-lessons.mjs",
     "thumbnails": "node scripts/thumbnails.mjs",

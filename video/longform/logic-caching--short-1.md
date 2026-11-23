@@ -1,11 +1,11 @@
 ---
-title: "The pile on your chair is smart"
+title: "Why friendships fade without a fight"
 series: logic
 voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 media: logic-caching
-hook: "The pile on your chair is smart"
-parent: "The Pile on Your Chair Is an Algorithm — What Computers Know About Keeping Things Close"
+hook: "Why friendships fade without a fight"
+parent: "Why Friendships Fade Without a Fight: What Computers Know About Keeping Things Close"
 questions: []
 ---
 
@@ -13,22 +13,27 @@ questions: []
 
 ## Short
 
-> SCENE (photo): A chair with a pile of clothes on it.
-> omni-hook-chair | The chair. Everyone has one. | color key
-> omni-chair-mum |  | color @ Someone has probably told you
+> SCENE (photo): Maya scrolling her chat list at midnight.
+> omni-phone-scroll | Fourteen months. | color key
 
-[calm] That pile of clothes on your chair? It's actually smart.
+[calm] Why do friendships fade without a fight?
 
-[calm] There's a chair in your bedroom. It isn't for sitting. It holds the jeans you wore yesterday, the jumper from Sunday, the shirt you might wear again tomorrow. Someone has probably told you to tidy it. But that pile is doing exactly what every computer on earth does, billions of times a second.
+[calm] Maya is scrolling through her chat list at midnight when she reaches the very bottom. Jule. Her best friend since school. The last message between them is fourteen months old.
 
-> SCENE (photo): The clothes on the chair again.
-> omni-chair-cache | The chair is a cache. | color key @ The chair is
+> SCENE (line): No fight.
+> No fight. No reason. They just drifted.
 
-[warmly] Which brings us back to the chair. The clothes on top are the ones you wore most recently, the ones you're most likely to wear again. The chair is a cache. And the pile is sorted by least recently used, without you even trying.
+[calm] There was no fight. No reason. They just drifted. And Maya feels a small, sharp pang, the one that says: you let something good slip.
 
-> SCENE (line): The key line.
-> Keep close what you used last.
+> SCENE (list): A weekly rule.
+> Once a week | Look at the bottom of your chat list @ Once a week
+> Message the longest-waiting | Not the one you feel best about @ Message whoever
 
-[warmly] So the pile on your chair isn't laziness. It's one of the oldest tricks in computing.
+[calm] Here is a rule for it. Once a week, look at the people at the bottom of your chat list. Message whoever has been there the longest.
+
+> SCENE (photo): Maya records a voice note, then laughs at the reply.
+> omni-friend-voice | Eleven seconds. | color key
+
+[warmly] Maya sends Jule a voice note. Eleven seconds. "I found our old school photo. I miss you." Four minutes later Jule answers, laughing: "I was just about to message you!" They talk for an hour.
 
 [calm] The full story is in the video on this channel.

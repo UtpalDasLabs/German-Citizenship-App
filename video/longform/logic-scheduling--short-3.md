@@ -5,7 +5,7 @@ voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 media: logic-scheduling
 hook: "The Mars computer kept rebooting"
-parent: "Which Task First? The Simple Rule Behind a Good To-Do List"
+parent: "The Talk You Keep Postponing: A Simple Rule for What to Do First"
 questions: []
 ---
 

@@ -125,6 +125,28 @@
       "start": 0.5,
       "seconds": 30,
       "credit": "Video by 32472866 from Pixabay: https://pixabay.com/videos/id-155023/"
+    },
+    {
+      "id": "omni-phone-scroll",
+      "source": "veo",
+      "file": "veo/caching/phone-scroll.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm dim lamp light at night, cosy small bedroom. MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Same Maya sits cross-legged on her bed at midnight, scrolling a long chat list on her phone with her thumb; the glow lights her face. She reaches the very bottom, stops, her smile fades into a small sad look, and she gazes at the screen for a long moment. Quiet, no dialogue.",
+      "seconds": 10,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.55
+    },
+    {
+      "id": "omni-friend-voice",
+      "source": "veo",
+      "file": "veo/caching/friend-voice.mp4",
+      "prompt": "Pixar-style 3D animation, soft global illumination, warm evening light, cosy small bedroom. Same MAYA: a woman in her late twenties, curly dark hair tied up, round glasses, mustard-yellow jumper, jeans. Maya holds her phone near her mouth and records a short voice note, then lowers it and waits; the phone buzzes; she looks at the screen, bursts out laughing with surprised delight and presses the phone to her chest happily.",
+      "seconds": 10,
+      "credit": "Made with Gemini Omni",
+      "start": 0,
+      "referenceFrom": "omni-hook-chair",
+      "speed": 0.55
     }
   ]
 }

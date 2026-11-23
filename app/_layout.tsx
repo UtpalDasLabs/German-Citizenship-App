@@ -7,6 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 
 import { ConsentBanner } from '@/components/ConsentBanner';
+import { LegalFooter } from '@/components/LegalFooter';
 import { initAnalytics, setAnalyticsContext, track, trackPageView } from '@/lib/analytics';
 import { registerServiceWorker } from '@/lib/durability';
 import { hideSplash } from '@/lib/splash';
@@ -83,6 +84,7 @@ function Navigator() {
       </Head>
       <StatusBar style={dark ? 'light' : 'dark'} />
       <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
       <Stack
         screenOptions={{
           headerShown: false,
@@ -99,6 +101,8 @@ function Navigator() {
         <Stack.Screen name="exam-session" />
       </Stack>
       <ConsentBanner />
+      </View>
+      <LegalFooter />
       </View>
     </>
   );

@@ -33,6 +33,7 @@ sources: ["Buß- und Bettag abolished in 1995 except in Saxony; higher employee 
 > SCENE (photo): Dresden from above; coins stacking up.
 > dresden |  | color
 > coins | Saxony kept the day off, and pays for it. | color key @ In return
+> payroll |  | color @ bigger share
 
 [warmly] Saxony kept its day off. In return, employees there pay a bigger share of the care insurance than anywhere else, about half a percentage point of their wages. So in Saxony, this holiday isn't quite free.
 

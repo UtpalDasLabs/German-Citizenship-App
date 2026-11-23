@@ -5,7 +5,7 @@ voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 media: logic-caching
 hook: "The perfect rule for what to throw out"
-parent: "The Pile on Your Chair Is an Algorithm — What Computers Know About Keeping Things Close"
+parent: "Why Friendships Fade Without a Fight: What Computers Know About Keeping Things Close"
 questions: []
 ---
 
@@ -13,14 +13,14 @@ questions: []
 
 ## Short
 
-> SCENE (futurerule): Each thing shows when it is needed next; the furthest goes.
-
-[calm] There's a perfect rule for what to throw out. One problem.
-
-[warmly] And he found the perfect rule. Throw out the thing you will need again furthest in the future. If you won't need it for a year, it can go to the loft.
-
 > SCENE (photo): Maya puzzled at her wardrobe.
 > omni-wardrobe-puzzled | One problem: nobody knows the future. | color key
+
+[calm] There is a perfect rule for what to throw out. There's just one catch.
+
+> SCENE (futurerule): Each thing shows when it is needed next; the furthest goes.
+
+[warmly] And he found the perfect rule. Throw out the thing you will need again furthest in the future. If you won't need it for a year, it can go to the loft.
 
 [calm] There's just one problem. Nobody knows the future. Not you, and not a computer.
 

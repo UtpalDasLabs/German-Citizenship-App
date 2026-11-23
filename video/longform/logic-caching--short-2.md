@@ -5,7 +5,7 @@ voice: Rr3HT8xllxaRdjMZxGBa
 stability: 1.0
 media: logic-caching
 hook: "A filing system with no labels"
-parent: "The Pile on Your Chair Is an Algorithm — What Computers Know About Keeping Things Close"
+parent: "Why Friendships Fade Without a Fight: What Computers Know About Keeping Things Close"
 questions: []
 ---
 
