@@ -35,6 +35,15 @@ const THUMBS = [
   { topic: 'logic-caching', series: 'logic', photo: 'thumb-maya', side: true, pos: '22%', narrow: true, lines: ['Why friendships', 'fade without', 'a fight'], accent: 'fade', tag: 'What computers know about keeping things close' },
   { topic: 'logic-scheduling', series: 'logic', photo: 'thumb-ana', side: true, pos: '42%', narrow: true, lines: ['The talk you', 'keep postponing'], accent: 'postponing', tag: 'Which task first? The rule that fixes it' },
   { topic: 'logic-sunkcost', series: 'logic', photo: 'thumb-lena', side: true, pos: '55%', narrow: true, lines: ['Four years.', 'Stay?'], accent: 'Stay?', tag: 'The logic of money and time already spent' },
+  // Martinstag A/B test (YouTube "Test & compare", from 3 Nov 2026): B and C against the lantern thumbnail.
+  { topic: 'hidden-martinstag', name: 'hidden-martinstag-b-cloak', series: 'hidden', photo: 'thumb-cloak', side: true, pos: '75%', narrow: true, lines: ['He cut his', 'coat in half'], accent: 'half', tag: 'Why Germany walks with lanterns on 11 Nov' },
+  { topic: 'hidden-martinstag', name: 'hidden-martinstag-c-geese', series: 'hidden', photo: 'thumb-geese', side: true, pos: '72%', narrow: true, lines: ['Betrayed by', 'geese'], accent: 'geese', tag: 'Martinstag: lanterns, geese, a cloak' },
+  { topic: 'food-pretzel-v4', series: 'hidden', photo: 'thumb-pretzel', side: true, pos: '40%', narrow: true, lines: ['Dipped in', 'drain cleaner?'], accent: 'drain cleaner?', tag: 'Why it is fine, and what is not' },
+  { topic: 'food-sour', series: 'hidden', photo: 'thumb-ship', side: true, pos: '60%', narrow: true, lines: ['Did sauerkraut', 'save Cook?'], accent: 'save Cook?', tag: 'And why rye bread needs sour' },
+  { topic: 'food-gluehwein', series: 'hidden', photo: 'thumb-glu', side: true, pos: '50%', narrow: true, lines: ['No water in', 'Glühwein?'], accent: 'Glühwein?', tag: 'What European law says is in the cup' },
+  { topic: 'food-beer', series: 'hidden', photo: 'thumb-beer', side: true, pos: '50%', narrow: true, lines: ['The beer law', 'never said yeast'], accent: 'yeast', tag: 'What 1516 really said' },
+  { topic: 'food-fastfood', series: 'hidden', photo: 'thumb-doener', side: true, pos: '45%', narrow: true, lines: ['Döner vs', 'Currywurst'], accent: 'Currywurst', tag: 'What the paperwork says' },
+  { topic: 'blackfriday', series: 'hidden', photo: 'thumb-neon', side: true, pos: '40%', narrow: true, lines: ['Minus 40%?', 'Real or fake?'], accent: '40%?', tag: 'What Black Friday deals really save' },
   { topic: 'hidden-halloween', series: 'hidden', photo: 'thumb-jack', side: true, lines: ['Halloween in', 'Germany?'], accent: 'Germany?', tag: 'Turnips, quiet holidays, giant pumpkins' },
 ];
 
@@ -76,8 +85,8 @@ html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#0B0E14;
 
 fs.mkdirSync(OUT, { recursive: true });
 for (const t of THUMBS.filter((x) => !process.argv[2] || x.topic === process.argv[2])) {
-  const html = path.join(OUT, `series-${t.topic}.html`);
-  const png = path.join(OUT, `series-${t.topic}.png`);
+  const html = path.join(OUT, `series-${t.name ?? t.topic}.html`);
+  const png = path.join(OUT, `series-${t.name ?? t.topic}.png`);
   fs.writeFileSync(html, page(t));
   execFileSync(
     CHROME,
