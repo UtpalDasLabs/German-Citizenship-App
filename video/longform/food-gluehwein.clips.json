@@ -80,19 +80,21 @@
     },
     {
       "id": "glu-history",
-      "source": "pixabay",
-      "pixabayId": 42128,
-      "start": 0,
-      "seconds": 22,
-      "credit": "Video by caelan from Pixabay: https://pixabay.com/videos/id-42128/"
+      "source": "veo",
+      "file": "veo/glu-gluehwein/glu-history.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A candlelit medieval stone kitchen, an old wooden table with a clay jug, a hand pours honey and drops dried spices and herbs into dark red wine, a parchment scroll and a small oil lamp beside it, soft steam. Quiet, old-world mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "Spiced wine through the ages: made with Gemini Omni",
+      "speed": 0.7
     },
     {
       "id": "glu-after",
-      "source": "pixabay",
-      "pixabayId": 63970,
-      "start": 0,
-      "seconds": 31,
-      "credit": "Video by Matthias_Groeneveld from Pixabay: https://pixabay.com/videos/id-63970/"
+      "source": "veo",
+      "file": "veo/glu-gluehwein/glu-after.mp4",
+      "prompt": "A painterly, warmly lit animated scene in the style of a modern illustrated storybook, soft brush textures. A painted Christmas market stall late at night after closing, a hand switches off a string of warm lights, shutters half lowered, one last steaming cup on the counter, soft snowfall in the dark street. Calm, bittersweet mood. No faces, no text.",
+      "seconds": 8,
+      "credit": "After the markets close: made with Gemini Omni",
+      "speed": 0.7
     },
     {
       "id": "bg-paper",
