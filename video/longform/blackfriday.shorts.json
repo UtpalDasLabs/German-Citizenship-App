@@ -1,0 +1,43 @@
+{
+  "shorts": [
+    {
+      "id": "1",
+      "hook": "Minus 40%? The average saving was 7%",
+      "spoken": "On Black Friday, almost every price tag says minus forty. The average saving was seven.",
+      "paragraphs": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "2",
+      "hook": "Shops in Germany must show you this number",
+      "spoken": "Same headphones. Minus forty on the tag. Minus ten in reality. Here's how to see it.",
+      "paragraphs": [
+        9,
+        7,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "3",
+      "hook": "Online you can return it. In a shop, not always",
+      "spoken": "You bought something on Black Friday and it doesn't fit. Can you send it back?",
+      "paragraphs": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "id": "4",
+      "hook": "Black Friday only took off in Germany around 2013",
+      "spoken": "Black Friday is American. In Germany it only took off in a big way around twenty thirteen.",
+      "paragraphs": [
+        2,
+        3
+      ]
+    }
+  ]
+}

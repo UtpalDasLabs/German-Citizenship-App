@@ -1,0 +1,84 @@
+{
+  "topic": "blackfriday",
+  "note": "Pixabay stock (Content License); no AI footage.",
+  "clips": [
+    {
+      "id": "bf-hook",
+      "source": "pixabay",
+      "pixabayId": 19321,
+      "start": 0,
+      "seconds": 10,
+      "speed": 0.85,
+      "credit": "Video by fernandoguimarae from Pixabay: https://pixabay.com/videos/id-19321/"
+    },
+    {
+      "id": "bf-street",
+      "source": "pixabay",
+      "pixabayId": 2121,
+      "start": 0,
+      "seconds": 30,
+      "speed": 1,
+      "credit": "Video by tmeier1964 from Pixabay: https://pixabay.com/videos/id-2121/"
+    },
+    {
+      "id": "bf-compare",
+      "source": "pixabay",
+      "pixabayId": 202987,
+      "start": 0,
+      "seconds": 15,
+      "speed": 1,
+      "credit": "Video by Natures_Embrace from Pixabay: https://pixabay.com/videos/id-202987/"
+    },
+    {
+      "id": "bf-history",
+      "source": "pixabay",
+      "pixabayId": 233382,
+      "start": 0,
+      "seconds": 16,
+      "speed": 1,
+      "credit": "Video by Yasir1120 from Pixabay: https://pixabay.com/videos/id-233382/"
+    },
+    {
+      "id": "bf-parcel",
+      "source": "pixabay",
+      "pixabayId": 40572,
+      "start": 0,
+      "seconds": 13,
+      "speed": 0.8,
+      "credit": "Video by Mohamed_hassan from Pixabay: https://pixabay.com/videos/id-40572/"
+    },
+    {
+      "id": "bf-finale",
+      "source": "pixabay",
+      "pixabayId": 83863,
+      "start": 0,
+      "seconds": 9,
+      "speed": 0.8,
+      "credit": "Video by SYG_Anime from Pixabay: https://pixabay.com/videos/id-83863/"
+    },
+    {
+      "id": "bf-bg-law",
+      "source": "pixabay",
+      "pixabayId": 121776,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by tommyvideo from Pixabay: https://pixabay.com/videos/id-121776/"
+    },
+    {
+      "id": "bf-bg-shop",
+      "source": "pixabay",
+      "pixabayId": 12876,
+      "start": 0,
+      "seconds": 14,
+      "credit": "Video by Werni from Pixabay: https://pixabay.com/videos/id-12876/"
+    },
+    {
+      "id": "bf-bg-gap",
+      "source": "pixabay",
+      "pixabayId": 1735,
+      "start": 0,
+      "seconds": 18,
+      "credit": "Video by Buvrix27 from Pixabay: https://pixabay.com/videos/id-1735/"
+    }
+  ]
+}
